@@ -4,7 +4,14 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['Roboto', 'sans-serif'],
+      },
+      backgroundImage: {
+        'login-image': "url('/src/assets/img/login-image.jpg')"
+      }
+    },
   },
   plugins: [],
 }

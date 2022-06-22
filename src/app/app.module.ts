@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    LoginComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
