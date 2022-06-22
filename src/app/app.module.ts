@@ -8,6 +8,9 @@ import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LayoutComponent } from './layout/layout/layout.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     PageNotFoundComponent,
     LoginComponent,
     LoginFormComponent,
+    LayoutComponent,
+    HomeComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
