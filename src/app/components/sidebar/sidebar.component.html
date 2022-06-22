@@ -1,9 +1,13 @@
-<span
-      class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
-      (click)="buttonSideMenu()"
-    >
-      <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
-    </span>
+
+<nav class="container flex justify-around py-8 mx-auto bg-white">
+  <span
+    class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
+    (click)="buttonSideMenu()">
+    <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
+  </span>
+
+</nav>
+
     <div
       class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
       *ngIf="isOpen"
