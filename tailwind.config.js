@@ -9,7 +9,7 @@ module.exports = {
         'sans': ['Roboto', 'sans-serif'],
       },
       backgroundImage: {
-        'login-image': "url('/src/assets/img/login-image.jpg')"
+        'login-image': "url('assets/img/login-image.jpg')"
       }
     },
   },
