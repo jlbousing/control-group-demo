@@ -10,6 +10,9 @@ module.exports = {
       },
       backgroundImage: {
         'login-image': "url('assets/img/login-image.jpg')"
+      },
+      backgroundColor: {
+        'blue-control-group': '#273492'
       }
     },
   },
