@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
         path: "home",
         title: "Home",
         component: HomeComponent
+      },
+      {
+        path: "users",
+        title: "Usuarios",
+        component: UsersComponent
       }
     ]
   },

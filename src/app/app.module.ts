@@ -11,6 +11,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { LayoutComponent } from './layout/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { UsersComponent } from './pages/users/users.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     LayoutComponent,
     HomeComponent,
     SidebarComponent,
+    UsersComponent,
+    TopbarComponent,
+    UsersTableComponent,
   ],
   imports: [
     BrowserModule,
