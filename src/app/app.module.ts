@@ -14,6 +14,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UsersComponent } from './pages/users/users.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
     UsersComponent,
     TopbarComponent,
     UsersTableComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

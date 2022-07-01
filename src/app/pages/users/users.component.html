@@ -5,18 +5,19 @@
 
           <div class="flex flex-row py-5 lg:flex-col w-full lg:w-1/5 lg:ml-6 bg-gray-300 h-full">
             <div class="w-1/2 lg:py-2 lg:w-full">
-              <span>Lista de Usuario</span>
+              <span><i class="bi bi-person-fill"></i>Lista de Usuario</span>
             </div>
 
             <div class="w-1/2 lg:py-2 lg:w-full">
-              <span>Crear Usuario</span>
+              <span><i class="bi bi-pencil-square"></i>Crear Usuario</span>
             </div>
           </div>
 
           <div class="w-full lg:w-4/5 bg-white rounded-lg">
             <div class="flex flex-col">
-              <div class="flex justify-start pt-16 ml-80">
+              <div class="flex justify-evenly pt-16 ml-80">
                 <h3 class="text-2xl">Lista de usuarios</h3>
+                <custom-button text="Nuevo Usuario"></custom-button>
               </div>
               <div class="flex justify-center p-20">
                 <users-table></users-table>
