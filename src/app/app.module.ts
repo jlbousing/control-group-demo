@@ -17,6 +17,7 @@ import { UsersTableComponent } from './components/users/users-table/users-table.
 import { ButtonComponent } from './components/button/button.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UsersFormComponent } from './components/users/users-form/users-form.component';
+import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UsersFormComponent } from './components/users/users-form/users-form.com
     ButtonComponent,
     CreateUserComponent,
     UsersFormComponent,
+    EnterprisesComponent,
   ],
   imports: [
     BrowserModule,

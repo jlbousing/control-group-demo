@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
         path: "create-user",
         title: "Crear Usuario",
         component: CreateUserComponent
+      },
+      {
+        path: "enterprises",
+        title: "Empresas",
+        component: EnterprisesComponent
       }
     ]
   },
