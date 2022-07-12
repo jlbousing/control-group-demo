@@ -1,6 +1,6 @@
 <div>
   <div>
-    <div class="p-32 lg:pl-72 bg-gray-300 h-screen">
+    <div class="lg:pl-72 lg:pt-32 bg-gray-300 h-screen">
         <div class="flex flex-col lg:flex-row">
 
           <div class="flex flex-row py-5 lg:flex-col w-full lg:w-1/5 lg:ml-6 bg-gray-300 h-full">
@@ -15,11 +15,11 @@
 
           <div class="w-full lg:w-4/5 bg-white rounded-lg">
             <div class="flex flex-col">
-              <div class="flex justify-evenly pt-16 ml-80">
-                <h3 class="text-2xl">Lista de usuarios</h3>
+              <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
+                <h3 class="text-xl lg:text-2xl">Lista de usuarios</h3>
                 <custom-button text="Nuevo Usuario"></custom-button>
               </div>
-              <div class="flex justify-center p-20">
+              <div class="flex justify-center p-20 max-w-full overflow-auto">
                 <users-table></users-table>
               </div>
             </div>
