@@ -13,8 +13,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UsersComponent } from './pages/users/users.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
-import { UsersTableComponent } from './components/users-table/users-table.component';
+import { UsersTableComponent } from './components/users/users-table/users-table.component';
 import { ButtonComponent } from './components/button/button.component';
+import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { UsersFormComponent } from './components/users/users-form/users-form.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ButtonComponent } from './components/button/button.component';
     TopbarComponent,
     UsersTableComponent,
     ButtonComponent,
+    CreateUserComponent,
+    UsersFormComponent,
   ],
   imports: [
     BrowserModule,
