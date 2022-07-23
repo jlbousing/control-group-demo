@@ -1,0 +1,77 @@
+<div>
+  <div>
+    <div class="lg:pl-72 lg:pt-32 bg-gray-300 h-screen">
+        <div class="flex flex-col lg:flex-row">
+
+          <div class="flex flex-row overflow-x-auto py-5 lg:flex-col w-full lg:w-1/5 lg:ml-6  bg-gray-300 h-full">
+            <div class="w-1/2 lg:py-2 lg:w-full">
+              <a href="/users" class="cursor-pointer">
+                <div class="text-2xl">
+                  <i class="bi bi-archive flex justify-center"></i>
+                  <span class="ml-1">Categorias</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-1/2 lg:py-2 lg:w-full">
+              <a href="create-user" class="cursor-pointer">
+                <div class="text-2xl">
+                  <i class="bi bi-pencil-square flex justify-center"></i>
+                  <span class="ml-1">Asignación</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-1/2 lg:py-2 lg:w-full">
+              <a href="create-user" class="cursor-pointer">
+                <div class="text-2xl">
+                  <i class="bi bi-card-checklist flex justify-center"></i>
+                  <span class="ml-1">Instrucciones</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-1/2 lg:py-2 lg:w-full">
+              <a href="create-user" class="cursor-pointer">
+                <div class="text-2xl">
+                  <i class="bi bi-truck-flatbed flex justify-center"></i>
+                  <span class="ml-1">Producción</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-1/2 lg:py-2 lg:w-full">
+              <a href="create-user" class="cursor-pointer">
+                <div class="text-2xl">
+                  <i class="bi bi-truck flex justify-center"></i>
+                  <span class="ml-1">Despacho</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-1/2 lg:py-2 lg:w-full">
+              <a href="create-user" class="cursor-pointer">
+                <div class="text-2xl">
+                  <i class="bi bi-gear flex justify-center"></i>
+                  <span class="ml-1">Configuración</span>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="w-full lg:w-4/5 bg-white rounded-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
+                <h3 class="text-xl lg:text-2xl">Lista de proveedores</h3>
+                <custom-button text="Nuevo Usuario"></custom-button>
+              </div>
+              <div class="flex justify-center p-20 max-w-full overflow-auto">
+                <categories-table></categories-table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

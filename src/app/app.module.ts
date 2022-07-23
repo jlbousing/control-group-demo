@@ -18,6 +18,8 @@ import { ButtonComponent } from './components/button/button.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UsersFormComponent } from './components/users/users-form/users-form.component';
 import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
+import { ProvidersComponent } from './pages/providers/providers.component';
+import { CategoriesComponent } from './components/providers/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { EnterprisesComponent } from './pages/enterprises/enterprises.component'
     CreateUserComponent,
     UsersFormComponent,
     EnterprisesComponent,
+    ProvidersComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
