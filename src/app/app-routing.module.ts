@@ -8,6 +8,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
 import { ProvidersComponent } from './pages/providers/providers.component';
+import { CategoriesComponent } from './pages/providers/categories/categories.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,11 @@ const routes: Routes = [
         path: "providers",
         title: "Proveedores",
         component: ProvidersComponent
+      },
+      {
+        path: "providers/categories",
+        title: "categorias",
+        component: CategoriesComponent
       }
     ]
   },

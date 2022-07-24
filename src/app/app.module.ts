@@ -14,12 +14,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UsersComponent } from './pages/users/users.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { UsersTableComponent } from './components/users/users-table/users-table.component';
-import { ButtonComponent } from './components/button/button.component';
+import { CustomButtonComponent } from './components/button/button.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UsersFormComponent } from './components/users/users-form/users-form.component';
 import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
 import { ProvidersComponent } from './pages/providers/providers.component';
-import { CategoriesComponent } from './components/providers/categories/categories.component';
+import { CategoriesTableComponent } from './components/providers/categories-table/categories-table.component';
+import { CategoriesComponent } from './pages/providers/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,13 @@ import { CategoriesComponent } from './components/providers/categories/categorie
     UsersComponent,
     TopbarComponent,
     UsersTableComponent,
-    ButtonComponent,
+    CustomButtonComponent,
     CreateUserComponent,
     UsersFormComponent,
     EnterprisesComponent,
     ProvidersComponent,
-    CategoriesComponent,
+    CategoriesTableComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
