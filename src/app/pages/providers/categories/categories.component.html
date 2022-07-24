@@ -12,8 +12,8 @@
       <h3 class="text-xl lg:text-2xl">Lista de categorias</h3>
       <custom-button text="Nueva Categoria" (click)="showCreateModal()"></custom-button>
     </div>
-    <div class="flex justify-center p-20 max-w-full overflow-auto">
-      <categories-table (emiterCategoriesTable)="showEditModal($event)"></categories-table>
+    <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+      <categories-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></categories-table>
     </div>
   </div>
 </div>
