@@ -34,14 +34,15 @@ const routes: Routes = [
         path: "enterprises",
         title: "Empresas",
         component: EnterprisesComponent
-      },
+      }
+    ]
+  },
+  {
+    path: 'providers',
+    component: ProvidersComponent,
+    children: [
       {
-        path: "providers",
-        title: "Proveedores",
-        component: ProvidersComponent
-      },
-      {
-        path: "providers/categories",
+        path: "categories",
         title: "categorias",
         component: CategoriesComponent
       }
