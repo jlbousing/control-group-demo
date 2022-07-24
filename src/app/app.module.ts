@@ -21,6 +21,7 @@ import { EnterprisesComponent } from './pages/enterprises/enterprises.component'
 import { ProvidersComponent } from './pages/providers/providers.component';
 import { CategoriesTableComponent } from './components/providers/categories-table/categories-table.component';
 import { CategoriesComponent } from './pages/providers/categories/categories.component';
+import { CreateCategoriesModalComponent } from './components/modals/create-categories-modal/create-categories-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CategoriesComponent } from './pages/providers/categories/categories.com
     EnterprisesComponent,
     ProvidersComponent,
     CategoriesTableComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CreateCategoriesModalComponent
   ],
   imports: [
     BrowserModule,
