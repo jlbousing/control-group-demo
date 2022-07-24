@@ -9,6 +9,7 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { EnterprisesComponent } from './pages/enterprises/enterprises.component';
 import { ProvidersComponent } from './pages/providers/providers.component';
 import { CategoriesComponent } from './pages/providers/categories/categories.component';
+import { AssignmentsComponent } from './pages/providers/assignments/assignments.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,11 @@ const routes: Routes = [
         path: "categories",
         title: "categorias",
         component: CategoriesComponent
+      },
+      {
+        path: "assignments",
+        title: "Asignaciones",
+        component: AssignmentsComponent
       }
     ]
   },

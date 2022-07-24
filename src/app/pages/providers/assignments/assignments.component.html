@@ -1,0 +1,20 @@
+<create-assignments-modal
+  [showModal]="showModalCreate"
+  (emiterModal)="closeModalCreate($event)"></create-assignments-modal>
+
+  <edit-categories-modal
+  [showModal]="showModalEdit"
+  (emiterModal)="closeModalEdit($event)"></edit-categories-modal>
+
+<h3 class="text-xl lg:text-2xl mb-8 pb-8 border-b-[1px] border-black lg:w-[80%] mt-[5px]">Lista de asignaciones</h3>
+<div class="w-full lg:w-4/5 bg-white rounded-lg">
+  <div class="flex flex-col">
+    <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
+      <custom-button text="Nueva Asignación" (click)="showCreateModal()"></custom-button>
+    </div>
+    <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+      <assignments-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></assignments-table>
+    </div>
+  </div>
+</div>
+
