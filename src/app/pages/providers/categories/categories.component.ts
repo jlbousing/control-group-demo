@@ -7,7 +7,8 @@ import { Component, OnInit} from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  showModal: boolean = false;
+  showModalCreate: boolean = false;
+  showModalEdit: boolean = false;
 
   constructor() { }
 
@@ -16,12 +17,21 @@ export class CategoriesComponent implements OnInit {
   }
 
   showCreateModal() {
-    this.showModal = true;
+    this.showModalCreate = true;
   }
 
-  closeModal(msg: boolean){
+  closeModalCreate(msg: boolean){
     console.log("hey uya");
-    this.showModal = false;
+    this.showModalCreate = false;
+  }
+
+  showEditModal(obj: any) {
+    this.showModalEdit = true;
+  }
+
+  closeModalEdit(msg: boolean){
+    console.log("hey uya");
+    this.showModalEdit = false;
   }
 
 

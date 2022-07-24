@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+
 
 @Component({
   selector: 'categories-table',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesTableComponent implements OnInit {
 
+
+  @Output() emiterCategoriesTable = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectEdit(){
+    let category = {};
+    this.emiterCategoriesTable.emit(category);
   }
 
 }

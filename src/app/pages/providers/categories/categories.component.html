@@ -1,15 +1,19 @@
 <create-categories-modal
-  [showModal]="showModal"
-  (emiterModal)="closeModal($event)"></create-categories-modal>
+  [showModal]="showModalCreate"
+  (emiterModal)="closeModalCreate($event)"></create-categories-modal>
+
+  <edit-categories-modal
+  [showModal]="showModalEdit"
+  (emiterModal)="closeModalEdit($event)"></edit-categories-modal>
 
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
     <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
-      <h3 class="text-xl lg:text-2xl">Lista de proveedores</h3>
+      <h3 class="text-xl lg:text-2xl">Lista de categorias</h3>
       <custom-button text="Nueva Categoria" (click)="showCreateModal()"></custom-button>
     </div>
     <div class="flex justify-center p-20 max-w-full overflow-auto">
-      <categories-table></categories-table>
+      <categories-table (emiterCategoriesTable)="showEditModal($event)"></categories-table>
     </div>
   </div>
 </div>

@@ -22,6 +22,7 @@ import { ProvidersComponent } from './pages/providers/providers.component';
 import { CategoriesTableComponent } from './components/providers/categories-table/categories-table.component';
 import { CategoriesComponent } from './pages/providers/categories/categories.component';
 import { CreateCategoriesModalComponent } from './components/modals/create-categories-modal/create-categories-modal.component';
+import { EditCategoriesModalComponent } from './components/modals/edit-categories-modal/edit-categories-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CreateCategoriesModalComponent } from './components/modals/create-categ
     ProvidersComponent,
     CategoriesTableComponent,
     CategoriesComponent,
-    CreateCategoriesModalComponent
+    CreateCategoriesModalComponent,
+    EditCategoriesModalComponent
   ],
   imports: [
     BrowserModule,
