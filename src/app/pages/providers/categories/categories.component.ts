@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-categories',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
+  showModal: boolean = false;
+
   constructor() { }
+
 
   ngOnInit(): void {
   }
+
+  showCreateModal() {
+    this.showModal = true;
+  }
+
+  closeModal(msg: boolean){
+    console.log("hey uya");
+    this.showModal = false;
+  }
+
 
 }

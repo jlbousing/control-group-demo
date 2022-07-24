@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'create-categories-modal',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCategoriesModalComponent implements OnInit {
 
+  @Input('showModal') showModal: boolean = false;
+  @Output() emiterModal = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  onCloseModal(){
+    this.emiterModal.emit(true);
+  }
+
 
 }
