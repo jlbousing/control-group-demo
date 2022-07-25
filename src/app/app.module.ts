@@ -27,6 +27,7 @@ import { SubmenuProvidersComponent } from './components/providers/submenu-provid
 import { AssignmentsComponent } from './pages/providers/assignments/assignments.component';
 import { AssignmentsTableComponent } from './components/assignments-table/assignments-table.component';
 import { CreateAssignmentsModalComponent } from './components/modals/create-assignments-modal/create-assignments-modal.component';
+import { EditAssignmentsModalComponent } from './components/modals/edit-assignments-modal/edit-assignments-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CreateAssignmentsModalComponent } from './components/modals/create-assi
     SubmenuProvidersComponent,
     AssignmentsComponent,
     AssignmentsTableComponent,
-    CreateAssignmentsModalComponent
+    CreateAssignmentsModalComponent,
+    EditAssignmentsModalComponent
   ],
   imports: [
     BrowserModule,
