@@ -32,6 +32,8 @@ import { InstructionsComponent } from './pages/providers/instructions/instructio
 import { InstructionsTableComponent } from './components/providers/instructions-table/instructions-table.component';
 import { CreateInstructionsModalComponent } from './components/modals/create-instructions-modal/create-instructions-modal.component';
 import { EditInstructionsModalComponent } from './components/modals/edit-instructions-modal/edit-instructions-modal.component';
+import { ProductionComponent } from './pages/providers/production/production.component';
+import { ProductionTableComponent } from './components/providers/production-table/production-table.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { EditInstructionsModalComponent } from './components/modals/edit-instruc
     InstructionsComponent,
     InstructionsTableComponent,
     CreateInstructionsModalComponent,
-    EditInstructionsModalComponent
+    EditInstructionsModalComponent,
+    ProductionComponent,
+    ProductionTableComponent
   ],
   imports: [
     BrowserModule,
