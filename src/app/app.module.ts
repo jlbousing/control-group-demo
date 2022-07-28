@@ -30,6 +30,8 @@ import { CreateAssignmentsModalComponent } from './components/modals/create-assi
 import { EditAssignmentsModalComponent } from './components/modals/edit-assignments-modal/edit-assignments-modal.component';
 import { InstructionsComponent } from './pages/providers/instructions/instructions.component';
 import { InstructionsTableComponent } from './components/providers/instructions-table/instructions-table.component';
+import { CreateInstructionsModalComponent } from './components/modals/create-instructions-modal/create-instructions-modal.component';
+import { EditInstructionsModalComponent } from './components/modals/edit-instructions-modal/edit-instructions-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { InstructionsTableComponent } from './components/providers/instructions-
     CreateAssignmentsModalComponent,
     EditAssignmentsModalComponent,
     InstructionsComponent,
-    InstructionsTableComponent
+    InstructionsTableComponent,
+    CreateInstructionsModalComponent,
+    EditInstructionsModalComponent
   ],
   imports: [
     BrowserModule,
