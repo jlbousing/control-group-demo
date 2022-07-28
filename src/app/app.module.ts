@@ -39,6 +39,9 @@ import { EditProductionModalComponent } from './components/modals/edit-productio
 import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
 import { DispatchTableComponent } from './components/provider/dispatch-table/dispatch-table.component';
+import { CreateDispatchModalComponent } from './components/modals/create-dispatch-modal/create-dispatch-modal.component';
+import { EditDispatchModalComponent } from './components/modals/edit-dispatch-modal/edit-dispatch-modal.component';
+import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import { DispatchTableComponent } from './components/provider/dispatch-table/dis
     EditProductionModalComponent,
     ViewProductionModalComponent,
     DispatchComponent,
-    DispatchTableComponent
+    DispatchTableComponent,
+    CreateDispatchModalComponent,
+    EditDispatchModalComponent,
+    ViewDispatchModalComponent
   ],
   imports: [
     BrowserModule,
