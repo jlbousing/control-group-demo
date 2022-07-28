@@ -37,6 +37,8 @@ import { ProductionTableComponent } from './components/providers/production-tabl
 import { CreateProductionModalComponent } from './components/modals/create-production-modal/create-production-modal.component';
 import { EditProductionModalComponent } from './components/modals/edit-production-modal/edit-production-modal.component';
 import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
+import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
+import { DispatchTableComponent } from './components/provider/dispatch-table/dispatch-table.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { ViewProductionModalComponent } from './components/modals/view-productio
     ProductionTableComponent,
     CreateProductionModalComponent,
     EditProductionModalComponent,
-    ViewProductionModalComponent
+    ViewProductionModalComponent,
+    DispatchComponent,
+    DispatchTableComponent
   ],
   imports: [
     BrowserModule,

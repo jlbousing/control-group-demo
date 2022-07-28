@@ -12,6 +12,7 @@ import { CategoriesComponent } from './pages/providers/categories/categories.com
 import { AssignmentsComponent } from './pages/providers/assignments/assignments.component';
 import { InstructionsComponent } from './pages/providers/instructions/instructions.component';
 import { ProductionComponent } from './pages/providers/production/production.component';
+import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,11 @@ const routes: Routes = [
         path: "production",
         title: "Produccion",
         component: ProductionComponent
+      },
+      {
+        path: "dispatch",
+        title: "Despacho",
+        component: DispatchComponent
       }
     ]
   },
