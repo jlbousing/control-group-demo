@@ -35,6 +35,8 @@ import { EditInstructionsModalComponent } from './components/modals/edit-instruc
 import { ProductionComponent } from './pages/providers/production/production.component';
 import { ProductionTableComponent } from './components/providers/production-table/production-table.component';
 import { CreateProductionModalComponent } from './components/modals/create-production-modal/create-production-modal.component';
+import { EditProductionModalComponent } from './components/modals/edit-production-modal/edit-production-modal.component';
+import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { CreateProductionModalComponent } from './components/modals/create-produ
     EditInstructionsModalComponent,
     ProductionComponent,
     ProductionTableComponent,
-    CreateProductionModalComponent
+    CreateProductionModalComponent,
+    EditProductionModalComponent,
+    ViewProductionModalComponent
   ],
   imports: [
     BrowserModule,
