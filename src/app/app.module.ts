@@ -25,9 +25,11 @@ import { CreateCategoriesModalComponent } from './components/modals/create-categ
 import { EditCategoriesModalComponent } from './components/modals/edit-categories-modal/edit-categories-modal.component';
 import { SubmenuProvidersComponent } from './components/providers/submenu-providers/submenu-providers.component';
 import { AssignmentsComponent } from './pages/providers/assignments/assignments.component';
-import { AssignmentsTableComponent } from './components/assignments-table/assignments-table.component';
+import { AssignmentsTableComponent } from './components/providers/assignments-table/assignments-table.component';
 import { CreateAssignmentsModalComponent } from './components/modals/create-assignments-modal/create-assignments-modal.component';
 import { EditAssignmentsModalComponent } from './components/modals/edit-assignments-modal/edit-assignments-modal.component';
+import { InstructionsComponent } from './pages/providers/instructions/instructions.component';
+import { InstructionsTableComponent } from './components/providers/instructions-table/instructions-table.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { EditAssignmentsModalComponent } from './components/modals/edit-assignme
     AssignmentsComponent,
     AssignmentsTableComponent,
     CreateAssignmentsModalComponent,
-    EditAssignmentsModalComponent
+    EditAssignmentsModalComponent,
+    InstructionsComponent,
+    InstructionsTableComponent
   ],
   imports: [
     BrowserModule,

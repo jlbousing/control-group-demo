@@ -10,6 +10,7 @@ import { EnterprisesComponent } from './pages/enterprises/enterprises.component'
 import { ProvidersComponent } from './pages/providers/providers.component';
 import { CategoriesComponent } from './pages/providers/categories/categories.component';
 import { AssignmentsComponent } from './pages/providers/assignments/assignments.component';
+import { InstructionsComponent } from './pages/providers/instructions/instructions.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
         path: "assignments",
         title: "Asignaciones",
         component: AssignmentsComponent
+      },
+      {
+        path: "instructions",
+        title: "Instrucciones",
+        component: InstructionsComponent
       }
     ]
   },
