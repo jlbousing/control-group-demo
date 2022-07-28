@@ -42,6 +42,7 @@ import { DispatchTableComponent } from './components/provider/dispatch-table/dis
 import { CreateDispatchModalComponent } from './components/modals/create-dispatch-modal/create-dispatch-modal.component';
 import { EditDispatchModalComponent } from './components/modals/edit-dispatch-modal/edit-dispatch-modal.component';
 import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
+import { SettingsComponent } from './pages/providers/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { ViewDispatchModalComponent } from './components/modals/view-dispatch-mo
     DispatchTableComponent,
     CreateDispatchModalComponent,
     EditDispatchModalComponent,
-    ViewDispatchModalComponent
+    ViewDispatchModalComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
