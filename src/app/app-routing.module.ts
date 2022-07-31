@@ -22,7 +22,7 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        title: "Home",
+        title: "Inicio",
         component: HomeComponent
       },
       {

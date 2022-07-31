@@ -44,6 +44,7 @@ import { EditDispatchModalComponent } from './components/modals/edit-dispatch-mo
 import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
 import { SettingsComponent } from './pages/providers/settings/settings.component';
 import { TitleServicesService } from './services/title/title-services.service';
+import { HomeCardsComponent } from './components/home/home-cards/home-cards.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { TitleServicesService } from './services/title/title-services.service';
     CreateDispatchModalComponent,
     EditDispatchModalComponent,
     ViewDispatchModalComponent,
-    SettingsComponent
+    SettingsComponent,
+    HomeCardsComponent
   ],
   imports: [
     BrowserModule,
