@@ -43,6 +43,7 @@ import { CreateDispatchModalComponent } from './components/modals/create-dispatc
 import { EditDispatchModalComponent } from './components/modals/edit-dispatch-modal/edit-dispatch-modal.component';
 import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
 import { SettingsComponent } from './pages/providers/settings/settings.component';
+import { TitleServicesService } from './services/title/title-services.service';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,9 @@ import { SettingsComponent } from './pages/providers/settings/settings.component
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    TitleServicesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

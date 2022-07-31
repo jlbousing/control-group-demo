@@ -6,6 +6,8 @@
     <i class="bi bi-filter-left  bg-gray-900 rounded-md"></i>
   </span>
 
+  <h1 class="text-3xl">{{title.getTitle()}}</h1>
+
 </nav>
 
     <div
@@ -26,19 +28,25 @@
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
       >
         <i class="bi bi-house-door-fill text-2xl"></i>
-        <span class="text-2xl ml-4 text-gray-200 font-bold">Inicio</span>
+        <a [routerLink]="''">
+          <span class="text-2xl ml-4 text-gray-200 font-bold">Inicio</span>
+        </a>
       </div>
       <div
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
       >
         <i class="bi bi-people-fill text-2xl"></i>
-        <span class="text-2xl ml-4 text-gray-200 font-bold">Usuario</span>
+        <a [routerLink]="'/users'">
+          <span class="text-2xl ml-4 text-gray-200 font-bold">Usuario</span>
+        </a>
       </div>
       <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
     >
       <i class="bi bi-briefcase-fill text-2xl"></i>
-      <span class="text-2xl ml-4 text-gray-200 font-bold">Empresas</span>
+      <a [routerLink]="'/enterprises'">
+        <span class="text-2xl ml-4 text-gray-200 font-bold">Empresas</span>
+      </a>
     </div>
     <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
@@ -56,6 +64,8 @@
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
       >
         <i class="bi bi-box-arrow-in-right text-2xl"></i>
-        <span class="text-2xl ml-4 text-gray-200 font-bold">Logout</span>
+        <a [routerLink]="'/login'">
+          <span class="text-2xl ml-4 text-gray-200 font-bold">Logout</span>
+        </a>
       </div>
     </div>
