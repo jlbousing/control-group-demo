@@ -45,6 +45,7 @@ import { ViewDispatchModalComponent } from './components/modals/view-dispatch-mo
 import { SettingsComponent } from './pages/providers/settings/settings.component';
 import { TitleServicesService } from './services/title/title-services.service';
 import { HomeCardsComponent } from './components/home/home-cards/home-cards.component';
+import { SidebarUserInfoComponent } from './components/sidebar-user-info/sidebar-user-info.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { HomeCardsComponent } from './components/home/home-cards/home-cards.comp
     EditDispatchModalComponent,
     ViewDispatchModalComponent,
     SettingsComponent,
-    HomeCardsComponent
+    HomeCardsComponent,
+    SidebarUserInfoComponent
   ],
   imports: [
     BrowserModule,
