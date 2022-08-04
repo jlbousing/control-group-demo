@@ -14,6 +14,8 @@ import { InstructionsComponent } from './pages/providers/instructions/instructio
 import { ProductionComponent } from './pages/providers/production/production.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
 import { SettingsComponent } from './pages/providers/settings/settings.component';
+import { AppSettingComponent } from './pages/app-setting/app-setting.component';
+import { SettingsCategoriesComponent } from './pages/app-setting/settings-categories/settings-categories.component';
 
 const routes: Routes = [
   {
@@ -75,6 +77,17 @@ const routes: Routes = [
         path: "settings",
         title: "Configuracion",
         component: SettingsComponent
+      }
+    ]
+  },
+  {
+    path: 'settings',
+    component: AppSettingComponent,
+    children: [
+      {
+        path: 'categories',
+        title: 'Categorias',
+        component: SettingsCategoriesComponent
       }
     ]
   },
