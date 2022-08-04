@@ -53,6 +53,8 @@ import { CreateEnterpriseComponent } from './pages/app-setting/create-enterprise
 import { CreateProviderComponent } from './pages/app-setting/create-provider/create-provider.component';
 import { RolsComponent } from './pages/app-setting/rols/rols.component';
 import { SettingsCategoriesTableComponent } from './components/settings/settings-categories-table/settings-categories-table.component';
+import { SeparatorTitleComponent } from './components/separator-title/separator-title.component';
+import { CreateCategoryComponent } from './pages/app-setting/create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +105,9 @@ import { SettingsCategoriesTableComponent } from './components/settings/settings
     CreateEnterpriseComponent,
     CreateProviderComponent,
     RolsComponent,
-    SettingsCategoriesTableComponent
+    SettingsCategoriesTableComponent,
+    SeparatorTitleComponent,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,

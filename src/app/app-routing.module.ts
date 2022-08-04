@@ -16,6 +16,7 @@ import { DispatchComponent } from './pages/providers/dispatch/dispatch.component
 import { SettingsComponent } from './pages/providers/settings/settings.component';
 import { AppSettingComponent } from './pages/app-setting/app-setting.component';
 import { SettingsCategoriesComponent } from './pages/app-setting/settings-categories/settings-categories.component';
+import { CreateCategoryComponent } from './pages/app-setting/create-category/create-category.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,11 @@ const routes: Routes = [
         path: 'categories',
         title: 'Categorias',
         component: SettingsCategoriesComponent
+      },
+      {
+        path: 'create-category',
+        title: 'Nueva categoria',
+        component: CreateCategoryComponent
       }
     ]
   },

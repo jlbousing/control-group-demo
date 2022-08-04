@@ -1,9 +1,11 @@
 
-<h3 class="text-xl lg:text-2xl mb-8 pb-8 border-b-[1px] border-black lg:w-[80%] mt-[5px]">Lista de categorias</h3>
+<separator-title [title]="'Lista de categorias'"></separator-title>
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
     <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
-      <custom-button text="Nueva Categoria"></custom-button>
+      <a [routerLink]="'/settings/create-category'">
+        <custom-button text="Nueva Categoria"></custom-button>
+      </a>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <settings-categories-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></settings-categories-table>
