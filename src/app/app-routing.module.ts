@@ -14,6 +14,13 @@ import { InstructionsComponent } from './pages/providers/instructions/instructio
 import { ProductionComponent } from './pages/providers/production/production.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
 import { SettingsComponent } from './pages/providers/settings/settings.component';
+import { AppSettingComponent } from './pages/app-setting/app-setting.component';
+import { SettingsCategoriesComponent } from './pages/app-setting/settings-categories/settings-categories.component';
+import { CreateCategoryComponent } from './pages/app-setting/create-category/create-category.component';
+import { CreateEnterpriseComponent } from './pages/app-setting/create-enterprise/create-enterprise.component';
+import { CreateProviderComponent } from './pages/app-setting/create-provider/create-provider.component';
+import { RolsComponent } from './pages/app-setting/rols/rols.component';
+import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 
 const routes: Routes = [
   {
@@ -75,6 +82,42 @@ const routes: Routes = [
         path: "settings",
         title: "Configuracion",
         component: SettingsComponent
+      }
+    ]
+  },
+  {
+    path: 'settings',
+    component: AppSettingComponent,
+    children: [
+      {
+        path: "categories",
+        title: "Categorias",
+        component: SettingsCategoriesComponent
+      },
+      {
+        path: "create-category",
+        title: "Nueva categoria",
+        component: CreateCategoryComponent
+      },
+      {
+        path: "create-enterprise",
+        title: "Nueva empresa",
+        component: CreateEnterpriseComponent
+      },
+      {
+        path: "create-provider",
+        title: "Nuevo proveedor",
+        component: CreateProviderComponent
+      },
+      {
+        path: "rols",
+        title: "Roles",
+        component: RolsComponent
+      },
+      {
+        path: "create-rol",
+        title: "Nuevo rol",
+        component: CreateRolComponent
       }
     ]
   },

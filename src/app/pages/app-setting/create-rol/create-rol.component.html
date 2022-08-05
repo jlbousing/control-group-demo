@@ -1,0 +1,184 @@
+<div class="w-full flex flex-row justify-start">
+  <a class="cursor-pointer text-blue-700 hover:text-white" [routerLink]="'/settings/rols'">
+    <i class="bi bi-caret-left"></i><span class="">Atras</span>
+  </a>
+</div>
+<separator-title title="Roles"></separator-title>
+<div class="w-full lg:w-4/5 bg-white rounded-lg">
+  <div class="flex flex-col p-8">
+    <div class="w-full flex flex-row justify-start">
+      <h3>Indique los datos del rol</h3>
+    </div>
+    <div class="w-full flex flex-row justify-start">
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+          Nombre
+        </label>
+        <input class="shadow appearance-none border
+                      rounded w-full py-2 px-3 text-gray-700
+                      leading-tight focus:outline-none
+                      focus:shadow-outline"
+               type="text"
+               placeholder="nombre"
+         />
+      </div>
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+          Identificador
+        </label>
+        <input class="shadow appearance-none border
+                      rounded w-full py-2 px-3 text-gray-700
+                      leading-tight focus:outline-none
+                      focus:shadow-outline"
+               type="text"
+               placeholder="Identificador"
+         />
+      </div>
+
+    </div>
+    <div class="w-full flex flex-row justify-start">
+      <h3 class="font-bold">Indique los permisos de creación</h3>
+    </div>
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear categorías</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear asignación</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear producción</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear despacho</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear instrucción</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear empresas</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear proveedor</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Crear usuarios</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-full flex flex-row justify-start">
+      <h3 class="font-bold">Indique los permisos de visualización</h3>
+    </div>
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ver categorías</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ver asignacion</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ver instrucción</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/4 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ver producción</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ver despachos</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ver reportes</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-full flex flex-row justify-start">
+      <h3 class="font-bold">Indique los permisos de configuración</h3>
+    </div>
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Configurar</label>
+        </div>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <div class="flex items-center mb-4">
+          <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Configurar Adm</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="w-full flex flex-row justify-end mt-8">
+      <custom-button text="Agregar"></custom-button>
+    </div>
+  </div>
+</div>
+

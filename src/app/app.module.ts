@@ -46,6 +46,17 @@ import { SettingsComponent } from './pages/providers/settings/settings.component
 import { TitleServicesService } from './services/title/title-services.service';
 import { HomeCardsComponent } from './components/home/home-cards/home-cards.component';
 import { SidebarUserInfoComponent } from './components/sidebar-user-info/sidebar-user-info.component';
+import { AppSettingComponent } from './pages/app-setting/app-setting.component';
+import { SubmenuSettingsComponent } from './components/settings/submenu-settings/submenu-settings.component';
+import { SettingsCategoriesComponent } from './pages/app-setting/settings-categories/settings-categories.component';
+import { CreateEnterpriseComponent } from './pages/app-setting/create-enterprise/create-enterprise.component';
+import { CreateProviderComponent } from './pages/app-setting/create-provider/create-provider.component';
+import { RolsComponent } from './pages/app-setting/rols/rols.component';
+import { SettingsCategoriesTableComponent } from './components/settings/settings-categories-table/settings-categories-table.component';
+import { SeparatorTitleComponent } from './components/separator-title/separator-title.component';
+import { CreateCategoryComponent } from './pages/app-setting/create-category/create-category.component';
+import { SettingsRolTableComponent } from './components/settings/settings-rol-table/settings-rol-table.component';
+import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +100,18 @@ import { SidebarUserInfoComponent } from './components/sidebar-user-info/sidebar
     ViewDispatchModalComponent,
     SettingsComponent,
     HomeCardsComponent,
-    SidebarUserInfoComponent
+    SidebarUserInfoComponent,
+    AppSettingComponent,
+    SubmenuSettingsComponent,
+    SettingsCategoriesComponent,
+    CreateEnterpriseComponent,
+    CreateProviderComponent,
+    RolsComponent,
+    SettingsCategoriesTableComponent,
+    SeparatorTitleComponent,
+    CreateCategoryComponent,
+    SettingsRolTableComponent,
+    CreateRolComponent
   ],
   imports: [
     BrowserModule,
