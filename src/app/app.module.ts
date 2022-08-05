@@ -56,6 +56,7 @@ import { SettingsCategoriesTableComponent } from './components/settings/settings
 import { SeparatorTitleComponent } from './components/separator-title/separator-title.component';
 import { CreateCategoryComponent } from './pages/app-setting/create-category/create-category.component';
 import { SettingsRolTableComponent } from './components/settings/settings-rol-table/settings-rol-table.component';
+import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { SettingsRolTableComponent } from './components/settings/settings-rol-ta
     SettingsCategoriesTableComponent,
     SeparatorTitleComponent,
     CreateCategoryComponent,
-    SettingsRolTableComponent
+    SettingsRolTableComponent,
+    CreateRolComponent
   ],
   imports: [
     BrowserModule,

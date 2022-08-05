@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-settings-rol-table',
+  selector: 'settings-rol-table',
   templateUrl: './settings-rol-table.component.html',
   styleUrls: ['./settings-rol-table.component.scss']
 })

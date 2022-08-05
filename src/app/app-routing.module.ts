@@ -20,6 +20,7 @@ import { CreateCategoryComponent } from './pages/app-setting/create-category/cre
 import { CreateEnterpriseComponent } from './pages/app-setting/create-enterprise/create-enterprise.component';
 import { CreateProviderComponent } from './pages/app-setting/create-provider/create-provider.component';
 import { RolsComponent } from './pages/app-setting/rols/rols.component';
+import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 
 const routes: Routes = [
   {
@@ -112,6 +113,11 @@ const routes: Routes = [
         path: "rols",
         title: "Roles",
         component: RolsComponent
+      },
+      {
+        path: "create-rol",
+        title: "Nuevo rol",
+        component: CreateRolComponent
       }
     ]
   },
