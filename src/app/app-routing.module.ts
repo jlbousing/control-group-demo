@@ -18,6 +18,7 @@ import { AppSettingComponent } from './pages/app-setting/app-setting.component';
 import { SettingsCategoriesComponent } from './pages/app-setting/settings-categories/settings-categories.component';
 import { CreateCategoryComponent } from './pages/app-setting/create-category/create-category.component';
 import { CreateEnterpriseComponent } from './pages/app-setting/create-enterprise/create-enterprise.component';
+import { CreateProviderComponent } from './pages/app-setting/create-provider/create-provider.component';
 
 const routes: Routes = [
   {
@@ -100,6 +101,11 @@ const routes: Routes = [
         path: "create-enterprise",
         title: "Nueva empresa",
         component: CreateEnterpriseComponent
+      },
+      {
+        path: "create-provider",
+        title: "Nuevo proveedor",
+        component: CreateProviderComponent
       }
     ]
   },
