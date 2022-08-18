@@ -14,7 +14,8 @@ module.exports = {
       backgroundColor: {
         'blue-control-group': '#273492',
         'modal': 'rgba(0,0,0, 0.5)',
-        'grey-control-group': '#eeeeee'
+        'grey-control-group': '#eeeeee',
+        'green-button': '#2d8b26'
       }
     },
   },
