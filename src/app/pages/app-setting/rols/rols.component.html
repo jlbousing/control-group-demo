@@ -2,13 +2,13 @@
 <separator-title title="Roles"></separator-title>
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
-    <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
+    <div class="flex justify-end items-center pt-16 mr-12">
       <a [routerLink]="'/settings/create-rol'">
         <custom-button text="Nuevo rol"></custom-button>
       </a>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
-      <settings-rol-table></settings-rol-table>
+      <settings-rol-table class="w-full"></settings-rol-table>
     </div>
   </div>
 </div>
