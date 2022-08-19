@@ -29,7 +29,7 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        title: "Inicio",
+        title: "Bienvenido Usuario",
         component: HomeComponent
       },
       {
