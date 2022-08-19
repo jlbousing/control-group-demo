@@ -1,13 +1,29 @@
-
-<nav class="container bg-gray-900 w-full flex justify-around py-10 mx-auto lg:bg-white lg:h-[130px] shadow-cyan-500/50 ">
+<!--<nav class="container bg-gray-900 w-full flex justify-center py-10 mx-auto
+          md:bg-white md:justify-center
+          lg:h-[130px] lg:justify-start md:pl-[25%]">
   <span
     class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
     (click)="buttonSideMenu()">
     <i class="bi bi-filter-left  bg-gray-900 rounded-md"></i>
   </span>
 
-  <h1 class="text-3xl text-white lg:text-black">{{title.getTitle()}}</h1>
+  <h1 class="text-3xl text-white md:text-black">{{title.getTitle()}}</h1>
 
+</nav> -->
+
+<nav class="bg-gray-900 md:bg-white">
+  <div class="container bg-gray-900 w-full flex justify-center py-10 mx-auto
+            md:bg-white md:justify-center
+              lg:h-[130px] lg:justify-start md:pl-[25%]">
+
+  <span
+  class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
+  (click)="buttonSideMenu()">
+  <i class="bi bi-filter-left  bg-gray-900 rounded-md"></i>
+</span>
+
+<h1 class="text-3xl text-white md:text-black">{{title.getTitle()}}</h1>
+  </div>
 </nav>
 
     <div
