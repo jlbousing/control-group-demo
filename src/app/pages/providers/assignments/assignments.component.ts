@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateAssignmentsModalComponent } from 'src/app/components/modals/create-assignments-modal/create-assignments-modal.component';
+import { EditAssignmentsModalComponent } from 'src/app/components/modals/edit-assignments-modal/edit-assignments-modal.component';
+import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-assignments',
@@ -10,14 +13,15 @@ export class AssignmentsComponent implements OnInit {
   showModalCreate: boolean = false;
   showModalEdit: boolean = false;
 
-  constructor() { }
+  constructor(public dialog: Dialog) { }
 
 
   ngOnInit(): void {
   }
 
   showCreateModal() {
-    this.showModalCreate = true;
+    //this.showModalCreate = true;
+    this.dialog.open(CreateAssignmentsModalComponent);
   }
 
   closeModalCreate(msg: boolean){
@@ -26,7 +30,8 @@ export class AssignmentsComponent implements OnInit {
   }
 
   showEditModal(obj: any) {
-    this.showModalEdit = true;
+    //this.showModalEdit = true;
+    this.dialog.open(EditAssignmentsModalComponent);
   }
 
   closeModalEdit(msg: boolean){

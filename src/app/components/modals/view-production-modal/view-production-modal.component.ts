@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'view-production-modal',
@@ -10,7 +11,7 @@ export class ViewProductionModalComponent implements OnInit {
   @Input('showModal') showModal: boolean = false;
   @Output() emiterModal = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(public dialogRef: DialogRef) { }
 
   ngOnInit(): void {
   }
