@@ -65,6 +65,7 @@ import { PlatformModule } from '@angular/cdk/platform';
 import { PortalModule } from '@angular/cdk/portal';
 import { Dialog } from '@angular/cdk/dialog';
 import { DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/dialog';
+import { DinamicTitleIconComponent } from './components/dinamic-title-icon/dinamic-title-icon.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/dialog';
     SeparatorTitleComponent,
     CreateCategoryComponent,
     SettingsRolTableComponent,
-    CreateRolComponent
+    CreateRolComponent,
+    DinamicTitleIconComponent
   ],
   imports: [
     BrowserModule,
