@@ -18,7 +18,6 @@ export class DinamicTitleIconComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     this.currentTitle = this.getCurrentIcon(this.title)
   }
 
