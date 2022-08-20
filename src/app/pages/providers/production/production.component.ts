@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateProductionModalComponent } from 'src/app/components/modals/create-production-modal/create-production-modal.component';
+import { ViewProductionModalComponent } from 'src/app/components/modals/view-production-modal/view-production-modal.component';
+import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-production',
@@ -10,14 +13,14 @@ export class ProductionComponent implements OnInit {
   showModalCreate: boolean = false;
   showModalEdit: boolean = false;
 
-  constructor() { }
+  constructor(public dialog: Dialog) { }
 
 
   ngOnInit(): void {
   }
 
   showCreateModal() {
-    this.showModalCreate = true;
+    this.dialog.open(CreateProductionModalComponent);
   }
 
   closeModalCreate(msg: boolean){
@@ -26,7 +29,7 @@ export class ProductionComponent implements OnInit {
   }
 
   showEditModal(obj: any) {
-    this.showModalEdit = true;
+    this.dialog.open(ViewProductionModalComponent);
   }
 
   closeModalEdit(msg: boolean){

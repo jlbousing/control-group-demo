@@ -1,4 +1,7 @@
 import { Component, OnInit} from '@angular/core';
+import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
+import { CreateCategoriesModalComponent } from 'src/app/components/modals/create-categories-modal/create-categories-modal.component';
+import { EditCategoriesModalComponent } from 'src/app/components/modals/edit-categories-modal/edit-categories-modal.component';
 
 @Component({
   selector: 'app-categories',
@@ -10,14 +13,13 @@ export class CategoriesComponent implements OnInit {
   showModalCreate: boolean = false;
   showModalEdit: boolean = false;
 
-  constructor() { }
-
+  constructor(public dialog: Dialog) { }
 
   ngOnInit(): void {
   }
 
   showCreateModal() {
-    this.showModalCreate = true;
+    this.dialog.open(CreateCategoriesModalComponent);
   }
 
   closeModalCreate(msg: boolean){
@@ -26,7 +28,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   showEditModal(obj: any) {
-    this.showModalEdit = true;
+    this.dialog.open(EditCategoriesModalComponent);
   }
 
   closeModalEdit(msg: boolean){

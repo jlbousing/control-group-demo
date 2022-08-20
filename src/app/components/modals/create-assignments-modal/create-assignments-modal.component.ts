@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { DialogRef } from '@angular/cdk/dialog';
 @Component({
   selector: 'create-assignments-modal',
   templateUrl: './create-assignments-modal.component.html',
@@ -10,7 +10,7 @@ export class CreateAssignmentsModalComponent implements OnInit {
   @Input('showModal') showModal: boolean = false;
   @Output() emiterModal = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(public dialogRef: DialogRef) { }
 
   ngOnInit(): void {
   }

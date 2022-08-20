@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,6 +59,13 @@ import { CreateCategoryComponent } from './pages/app-setting/create-category/cre
 import { SettingsRolTableComponent } from './components/settings/settings-rol-table/settings-rol-table.component';
 import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 
+import { ObserversModule } from '@angular/cdk/observers';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PlatformModule } from '@angular/cdk/platform';
+import { PortalModule } from '@angular/cdk/portal';
+import { Dialog } from '@angular/cdk/dialog';
+import { DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,16 +123,23 @@ import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.co
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    OverlayModule,
+    PlatformModule,
+    ObserversModule,
+    PortalModule
   ],
   providers: [
-    TitleServicesService
+    TitleServicesService,
+    Dialog,
+    DIALOG_SCROLL_STRATEGY_PROVIDER
   ],
   bootstrap: [AppComponent]
 })

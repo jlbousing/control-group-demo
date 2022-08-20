@@ -4,3 +4,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+.cdk-overlay-dark-backdrop {
+  background: rgb(0 0 0 / 66%);
+}
