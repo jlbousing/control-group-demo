@@ -55,7 +55,7 @@ const routes: Routes = [
     children: [
       {
         path: "categories",
-        title: "categorias",
+        title: "Categorias",
         component: CategoriesComponent
       },
       {
