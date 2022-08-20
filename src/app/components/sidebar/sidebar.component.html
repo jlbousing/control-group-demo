@@ -1,16 +1,3 @@
-<!--<nav class="container bg-gray-900 w-full flex justify-center py-10 mx-auto
-          md:bg-white md:justify-center
-          lg:h-[130px] lg:justify-start md:pl-[25%]">
-  <span
-    class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
-    (click)="buttonSideMenu()">
-    <i class="bi bi-filter-left  bg-gray-900 rounded-md"></i>
-  </span>
-
-  <h1 class="text-3xl text-white md:text-black">{{title.getTitle()}}</h1>
-
-</nav> -->
-
 <nav class="bg-gray-900 md:bg-white md:shadow-lg md:shadow-gray-300 md:mb-2">
   <div class="container bg-gray-900 w-full flex justify-center py-10 mx-auto
             md:bg-white md:justify-center md:pl-[20%]
@@ -22,9 +9,8 @@
   <i class="bi bi-filter-left  bg-gray-900 rounded-md"></i>
 </span>
 
-<h1 class="text-3xl text-white md:text-black">
-  <i class="{{currentTitle}} mx-2"></i>{{title.getTitle()}}
-</h1>
+<dinamic-title-icon title="{{title.getTitle()}}"></dinamic-title-icon>
+
   </div>
 </nav>
 
