@@ -15,7 +15,7 @@ export class EnterpriseCardComponent implements OnInit {
 
   goToProviders()
   {
-    this.router.navigateByUrl('providers/assignments')
+    this.router.navigateByUrl('/providers')
   }
 
 }

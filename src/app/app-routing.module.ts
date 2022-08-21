@@ -21,6 +21,7 @@ import { CreateEnterpriseComponent } from './pages/app-setting/create-enterprise
 import { CreateProviderComponent } from './pages/app-setting/create-provider/create-provider.component';
 import { RolsComponent } from './pages/app-setting/rols/rols.component';
 import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
+import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
         path: "enterprises",
         title: "Empresas",
         component: EnterprisesComponent
+      },
+      {
+        path: "providers",
+        title: "Proveedores",
+        component: ProviderPageComponent
       }
     ]
   },

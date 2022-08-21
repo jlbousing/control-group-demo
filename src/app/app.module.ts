@@ -68,6 +68,8 @@ import { DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/dialog';
 import { DinamicTitleIconComponent } from './components/dinamic-title-icon/dinamic-title-icon.component';
 import { SubmenuUsersComponent } from './components/users/submenu-users/submenu-users.component';
 import { EnterpriseCardComponent } from './components/enterprises/enterprise-card/enterprise-card.component';
+import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
+import { ProviderCardComponent } from './components/providers/provider-card/provider-card.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +128,8 @@ import { EnterpriseCardComponent } from './components/enterprises/enterprise-car
     DinamicTitleIconComponent,
     SubmenuUsersComponent,
     EnterpriseCardComponent,
+    ProviderPageComponent,
+    ProviderCardComponent,
   ],
   imports: [
     BrowserModule,
