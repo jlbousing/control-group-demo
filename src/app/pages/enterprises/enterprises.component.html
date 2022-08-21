@@ -1,17 +1,17 @@
 <div>
   <div>
-    <div class="lg:pl-80 lg:pt-32 h-screen"  style="background-color: #eeeeee">
+    <div class="lg:pl-80 lg:pt-4 h-screen"  style="background-color: #eeeeee">
       <div class="flex flex-col w-full items-center">
 
         <div class="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-start">
-          <h5 class="text-xl">Seleccione la empresa</h5>
+          <h5 class="text-subtitle">Seleccione la empresa</h5>
         </div>
 
         <div class="w-full flex flex-col items-center lg:flex-row lg:justify-between">
           <div class="w-1/2 flex flex-col items-center lg:flex-row lg:justify-between">
 
             <div class="my-4 w-full lg:w-1/2 mx-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="enterprises">
+              <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
                 Seleccione la empresa
               </label>
               <select
@@ -27,7 +27,7 @@
             </div>
 
             <div class="my-4 w-full lg:w-1/2 mx-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+              <label class="block text-gray-700 text-label font-bold mb-2" for="status">
                 Estatus
               </label>
               <select
@@ -49,28 +49,8 @@
           </div>
         </div>
       </div>
-      <div class="rounded overflow-hidden shadow-lg border-black bg-white mt-16">
-        <div class="w-full bg-blue-control-group text-white">
-            <div class="flex flex-row justify-between">
-              <h5 class="ml-2">Alianzas Inc</h5>
-              <h6 class="mr-2">ID: 166587421</h6>
-            </div>
-        </div>
-        <div class="px-6 py-4">
-          <div class="text-gray-700 text-base">
-            <div class="w-full flex flex-col justify-items-start">
-              <span>Rif: <b>J-6849874156</b></span>
-              <span>Nombre Comercial: <b>Abonanza Alimentos</b></span>
-              <span>Estatus: <b>Activo</b></span>
-            </div>
-          </div>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-          <div class="flex flex-row justify-end">
-            <custom-button text="Ver Proveedores" (click)="goToProviders()"></custom-button>
-          </div>
-        </div>
-      </div>
+
+      <enterprise-card></enterprise-card>
     </div>
   </div>
 </div>

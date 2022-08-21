@@ -67,6 +67,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/dialog';
 import { DinamicTitleIconComponent } from './components/dinamic-title-icon/dinamic-title-icon.component';
 import { SubmenuUsersComponent } from './components/users/submenu-users/submenu-users.component';
+import { EnterpriseCardComponent } from './components/enterprises/enterprise-card/enterprise-card.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { SubmenuUsersComponent } from './components/users/submenu-users/submenu-
     CreateRolComponent,
     DinamicTitleIconComponent,
     SubmenuUsersComponent,
+    EnterpriseCardComponent,
   ],
   imports: [
     BrowserModule,

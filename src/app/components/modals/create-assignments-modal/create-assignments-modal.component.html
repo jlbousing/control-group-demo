@@ -30,23 +30,6 @@
                 <form>
                   <h5>Indique la categoría</h5>
                   <div class="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-between">
-                    <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
-                        Categoría
-                      </label>
-                      <select
-                        class="shadow appearance-none border
-                               rounded w-full py-2 px-3 text-gray-700
-                               leading-tight focus:outline-none
-                               focus:shadow-outline"
-                               id="status"
-                               type="text"
-                               placeholder="Usuario">
-                               <option>Categoria 1</option>
-                               <option>Categoria 2</option>
-                               <option>Categoria 3</option>
-                       </select>
-                    </div>
                     <div class="my-4 w-full lg:w-1/2">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                         Nombre
@@ -60,8 +43,46 @@
                                type="text"
                                placeholder="Nombre">
                     </div>
+                    <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+                        Categoría
+                      </label>
+                      <select
+                        class="shadow appearance-none border
+                               rounded w-full py-2 px-3 text-gray-700
+                               leading-tight focus:outline-none
+                               focus:shadow-outline"
+                               id="status"
+                               type="text"
+                               placeholder="Usuario" disabled>
+                               <option>Categoria 1</option>
+                               <option>Categoria 2</option>
+                               <option>Categoria 3</option>
+                       </select>
+                    </div>
                   </div>
-                  <h5>Agregue los productos de la asignación</h5>
+
+                  <h5>Agregar receta</h5>
+                  <div class="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-between">
+                    <div class="my-4 w-full lg:w-1/2">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="recipe">
+                        Receta
+                      </label>
+                      <select
+                        class="shadow appearance-none border
+                               rounded w-full py-2 px-3 text-gray-700
+                               leading-tight focus:outline-none
+                               focus:shadow-outline"
+                               id="recipe"
+                               placeholder="Recata">
+                               <option>Receta 1</option>
+                               <option>Receta 2</option>
+                               <option>Receta 3</option>
+                       </select>
+                    </div>
+                  </div>
+
+                 <!-- <h5>Agregue los productos de la asignación</h5>
                   <div class="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-between">
                     <div class="my-4 w-full lg:w-1/4">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name-assignment">
@@ -115,8 +136,9 @@
                              type="number"
                              placeholder="Nombre">
                     </div>
-                  </div>
-                  <div class="my-4 w-full lg:w-1/4 lg:mx-4 lg:mt-8">
+                  </div> -->
+
+                  <!--<div class="my-4 w-full lg:w-1/4 lg:mx-4 lg:mt-8">
                     <div class="w-full flex flex-row">
                       <div class="w-1/2 mx-4">
                         <button data-modal-toggle="defaultModal"
@@ -191,7 +213,7 @@
                         </tr>
                       </tbody>
                     </table>
-                   </div>
+                   </div> -->
                 </form>
             </div>
             <!-- Modal footer -->
