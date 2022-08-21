@@ -8,6 +8,11 @@ module.exports = {
       fontFamily: {
         'sans': ['Roboto', 'sans-serif'],
       },
+      fontSize: {
+        'subtitle': '28px',
+        'label': '17px',
+        'custom-button': '18px'
+      },
       backgroundImage: {
         'login-image': "url('assets/img/login-image.jpg')"
       },

@@ -10,23 +10,21 @@
         <div class="w-full flex flex-col items-center lg:flex-row lg:justify-between">
           <div class="w-1/2 flex flex-col items-center lg:flex-row lg:justify-between">
 
-            <div class="my-4 w-full lg:w-1/2 mx-4">
-              <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
-                Seleccione la empresa
+            <div class="my-4 w-full lg:w-1/4 mx-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                Nombre
               </label>
-              <select
+              <input
                 class="shadow appearance-none border
                        rounded w-full py-2 px-3 text-gray-700
                        leading-tight focus:outline-none
                        focus:shadow-outline"
-                       id="enterprises">
-                       <option>Empresa 1</option>
-                       <option>Empresa 2</option>
-                       <option>Empresa 3</option>
-               </select>
+                       id="name"
+                       type="text"
+                       placeholder="Nombre">
             </div>
 
-            <div class="my-4 w-full lg:w-1/2 mx-4">
+            <div class="my-4 w-full lg:w-1/4 mx-4">
               <label class="block text-gray-700 text-label font-bold mb-2" for="status">
                 Estatus
               </label>
@@ -41,16 +39,33 @@
                        <option>Estatus 3</option>
                </select>
             </div>
+            <div class="my-4 w-full lg:w-1/4 mx-4">
+              <label class="block text-gray-700 text-label font-bold mb-2" for="status">
+                Categoría
+              </label>
+              <select
+                class="shadow appearance-none border
+                       rounded w-full py-2 px-3 text-gray-700
+                       leading-tight focus:outline-none
+                       focus:shadow-outline"
+                       id="status">
+                       <option>Todos</option>
+                       <option>Categoria 2</option>
+                       <option>Categoria 3</option>
+               </select>
+            </div>
           </div>
-          <div class="w-1/2 flex flex-row justify-between">
+          <div class="w-1/4 flex flex-row justify-between">
             <div class="mt-8">
-              <custom-button class="mt-4" text="Buscar Empresas"></custom-button>
+              <custom-button class="mt-4" text="Buscar Proveedor"></custom-button>
             </div>
           </div>
         </div>
       </div>
 
-      <enterprise-card></enterprise-card>
+      <provider-card></provider-card>
+      <provider-card></provider-card>
+      <provider-card></provider-card>
     </div>
   </div>
 </div>

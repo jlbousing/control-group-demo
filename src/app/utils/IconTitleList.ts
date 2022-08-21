@@ -18,6 +18,10 @@ export const iconTitleList: IIconTitleList[] = [
     iconClass: "bi bi-briefcase-fill"
   },
   {
+    title: "Proveedores",
+    iconClass: "bi bi-briefcase-fill"
+  },
+  {
     title: "Categorias",
     iconClass: "bi bi-archive"
   },
