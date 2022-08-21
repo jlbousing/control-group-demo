@@ -66,6 +66,8 @@ import { PortalModule } from '@angular/cdk/portal';
 import { Dialog } from '@angular/cdk/dialog';
 import { DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/cdk/dialog';
 import { DinamicTitleIconComponent } from './components/dinamic-title-icon/dinamic-title-icon.component';
+import { SubmenuUsersComponent } from './components/users/submenu-users/submenu-users.component';
+import { UserLayoutComponent } from './users/user-layout/user-layout.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +123,9 @@ import { DinamicTitleIconComponent } from './components/dinamic-title-icon/dinam
     CreateCategoryComponent,
     SettingsRolTableComponent,
     CreateRolComponent,
-    DinamicTitleIconComponent
+    DinamicTitleIconComponent,
+    SubmenuUsersComponent,
+    UserLayoutComponent
   ],
   imports: [
     BrowserModule,
