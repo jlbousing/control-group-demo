@@ -21,57 +21,24 @@
           </tr>
       </thead>
       <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 text-black">
-              <th scope="row" class="px-6 py-4 font-medium text-black dark:text-white whitespace-nowrap">
-                 1
-              </th>
-              <td class="px-6 py-4">
-                  Jesus Sanchez
-              </td>
-              <td class="px-6 py-4">
-                  Activo
-              </td>
-              <td class="px-6 py-4">
-                  Administrador
-              </td>
-              <td class="px-6 py-4 text-right">
-                <button><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
-              </td>
-          </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 text-black">
-              <th scope="row" class="px-6 py-4 font-medium text-black dark:text-white whitespace-nowrap">
-                  2
-              </th>
-              <td class="px-6 py-4">
-                  Pedro Hernandez
-              </td>
-              <td class="px-6 py-4">
-                  Activo
-              </td>
-              <td class="px-6 py-4">
-                  Operador
-              </td>
-              <td class="px-6 py-4 text-right">
-                <button><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
-              </td>
-          </tr>
-          <tr class="bg-white dark:bg-gray-800 text-black">
-              <th scope="row" class="px-6 py-4 font-medium text-black dark:text-white whitespace-nowrap">
-                  3
-              </th>
-              <td class="px-6 py-4">
-                  Pablo Perez
-              </td>
-              <td class="px-6 py-4">
-                  Suspendido
-              </td>
-              <td class="px-6 py-4">
-                  Operador
-              </td>
-              <td class="px-6 py-4 text-right">
-                <button><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
-              </td>
-          </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-800 text-black" *ngFor="let user of users">
+          <th scope="row" class="px-6 py-4 font-medium text-black dark:text-white whitespace-nowrap">
+             {{user.id}}
+          </th>
+          <td class="px-6 py-4">
+              {{user.name}}
+          </td>
+          <td class="px-6 py-4">
+              {{user.status}}
+          </td>
+          <td class="px-6 py-4">
+              {{user.rol}}
+          </td>
+          <td class="px-6 py-4 text-right">
+            <button><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
+          </td>
+      </tr>
       </tbody>
   </table>
 </div>

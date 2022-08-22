@@ -71,6 +71,9 @@ import { EnterpriseCardComponent } from './components/enterprises/enterprise-car
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
 import { ProviderCardComponent } from './components/providers/provider-card/provider-card.component';
 
+//import { UsersService } from './services/users/users.service';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -144,12 +147,14 @@ import { ProviderCardComponent } from './components/providers/provider-card/prov
     OverlayModule,
     PlatformModule,
     ObserversModule,
-    PortalModule
+    PortalModule,
+    HttpClientModule
   ],
   providers: [
     TitleServicesService,
     Dialog,
-    DIALOG_SCROLL_STRATEGY_PROVIDER
+    DIALOG_SCROLL_STRATEGY_PROVIDER,
+    //UsersService
   ],
   bootstrap: [AppComponent]
 })
