@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IUser } from 'src/app/interfaces/user.model';
+import { StoreGlobalInformation } from 'src/app/global/StoreGlobalInformation';
+import { IStatus } from 'src/app/interfaces/IStatus';
 
 @Component({
   selector: 'users-table',

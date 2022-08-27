@@ -1,3 +1,6 @@
+import { IStatus } from "./IStatus";
+import { IRol } from "./IRol";
+
 export interface IUser {
   id: number;
   lastIp: string;
@@ -5,8 +8,8 @@ export interface IUser {
   username: string;
   email: string;
   session: string;
-  status: number;
-  rol: number;
+  statusData: IStatus;
+  rolData: IRol;
   sessionDate: string;
   modifyDate: string;
   createdDate: string;

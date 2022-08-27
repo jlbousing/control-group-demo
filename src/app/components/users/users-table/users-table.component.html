@@ -24,16 +24,16 @@
 
         <tr class="bg-white border-b dark:bg-gray-800 text-black" *ngFor="let user of users">
           <th scope="row" class="px-6 py-4 font-medium text-black dark:text-white whitespace-nowrap">
-             {{user.id}}
+             {{ user.id }}
           </th>
           <td class="px-6 py-4">
-              {{user.name}}
+              {{ user.name }}
           </td>
           <td class="px-6 py-4">
-              {{user.status}}
+              {{ user.statusData.status }}
           </td>
           <td class="px-6 py-4">
-              {{user.rol}}
+            {{ user.rolData.name }}
           </td>
           <td class="px-6 py-4 text-right">
             <button><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>

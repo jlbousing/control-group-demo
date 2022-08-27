@@ -7,6 +7,10 @@ export const environment = {
   api_url: 'https://safe-plateau-23354.herokuapp.com',
   port: '',
   endpoints: {
+    status: {
+      status_type_list: '',
+      list: '/api/status/'
+    },
     users: {
       list: '/api/users/'
     }
