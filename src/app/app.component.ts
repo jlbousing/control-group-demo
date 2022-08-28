@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.statusServices.getStatues(50,0).subscribe((response: IStatus) => {
       console.log(response);
-      StoreGlobalInformation.storeStatues(response)
+      //StoreGlobalInformation.storeStatues(response)
     })
   }
 

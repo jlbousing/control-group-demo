@@ -1,17 +1,97 @@
 <div>
   <div>
-    <div class="lg:pl-72 lg:pt-32 h-screen" style="background: #eeeeee;">
+    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
         <div class="flex flex-col lg:flex-row">
+          <submenu-users class="w-full lg:w-1/4"></submenu-users>
+          <div class="w-full lg:pt-4">
+            <div class="w-full lg:w-4/5 bg-white rounded-lg">
+              <div class="flex flex-col p-8">
+                <div class="w-full flex flex-row justify-start">
+                  <h3>Indique los datos del usuario</h3>
+                </div>
+                <div class="w-full flex flex-row justify-start">
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                      Nombre
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="text"
+                           placeholder="Nombre"
+                     />
+                  </div>
 
-          <app-submenu-users class="w-full lg:w-1/4"></app-submenu-users>
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="rol">
+                      ROL
+                    </label>
+                    <select
+                        class="shadow appearance-none border
+                               rounded w-full py-2 px-3 text-gray-700
+                               leading-tight focus:outline-none
+                               focus:shadow-outline"
+                               id="rol"
+                               type="text"
+                               placeholder="Usuario" disabled>
+                               <option>Categoria 1</option>
+                               <option>Categoria 2</option>
+                               <option>Categoria 3</option>
+                       </select>
 
-          <div class="w-full lg:w-4/5 bg-white rounded-lg">
-            <div class="flex flex-col">
-              <div class="flex justify-evenly items-center lg:justify-start pt-16 lg:ml-80">
-                <h3 class="text-xl lg:text-2xl">Crear Usuario</h3>
-              </div>
-              <div class="flex justify-center p-20 max-w-full overflow-auto">
-                <users-form></users-form>
+                  </div>
+
+                </div>
+
+                <div class="w-full flex flex-row justify-start">
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                      Correo electronico
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="text"
+                           placeholder="ejemplo@controlgroup.com"
+                     />
+                  </div>
+
+                </div>
+
+                <div class="w-full flex flex-row justify-start">
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                      Contraseña
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="text"
+                           placeholder="ejemplo@controlgroup.com"
+                     />
+                  </div>
+
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="repeat-password">
+                      Repita la contraseña
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="text"
+                           placeholder="ejemplo@controlgroup.com"
+                     />
+                  </div>
+
+                </div>
+
+                <div class="w-full flex flex-row justify-end mt-8">
+                  <custom-button text="Agregar"></custom-button>
+                </div>
               </div>
             </div>
           </div>

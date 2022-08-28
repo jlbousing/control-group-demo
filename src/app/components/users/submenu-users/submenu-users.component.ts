@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-submenu-users',
+  selector: 'submenu-users',
   templateUrl: './submenu-users.component.html',
   styleUrls: ['./submenu-users.component.scss']
 })
