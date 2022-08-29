@@ -74,6 +74,7 @@ import { ProviderCardComponent } from './components/providers/provider-card/prov
 //import { UsersService } from './services/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditUsersModalComponent } from './components/modals/edit-users-modal/edit-users-modal.component';
 
 @NgModule({
   declarations: [
@@ -134,6 +135,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EnterpriseCardComponent,
     ProviderPageComponent,
     ProviderCardComponent,
+    EditUsersModalComponent,
   ],
   imports: [
     BrowserModule,

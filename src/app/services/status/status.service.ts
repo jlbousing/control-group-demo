@@ -14,10 +14,10 @@ export class StatusService {
 
   constructor(private http: HttpClient) { }
 
-  getStatues(limit: number,offset:number) {
+  getStatues(type: number,limit: number,offset:number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.status.list}`;
-    const params: string = `types?limit=${limit}&offset=${offset}`
+    const params: string = `?type=${type}&limit=${limit}&offset=${offset}`;
 
     return this.http.get<IStatus>(
       url + params,
