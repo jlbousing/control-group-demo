@@ -12,7 +12,7 @@ export const handleError = (error: HttpErrorResponse) => {
       `Servidor ha retornado codigo ${error.status}, el mensaje es: `, error.error);
 
     //const message = iterateJson(error.message);
-    const message = error.error.message;
+    const message = error.error.result.exception;
     console.log(message);
 
     //this.presentAlert("Error al registrar informacion de paciente",message);

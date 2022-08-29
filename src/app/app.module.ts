@@ -73,6 +73,7 @@ import { ProviderCardComponent } from './components/providers/provider-card/prov
 
 //import { UsersService } from './services/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,8 @@ import { HttpClientModule } from '@angular/common/http';
     PlatformModule,
     ObserversModule,
     PortalModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     TitleServicesService,

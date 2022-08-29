@@ -12,7 +12,11 @@ export const environment = {
       list: '/api/status/'
     },
     users: {
-      list: '/api/users/'
+      list: '/api/users/',
+      roles: {
+        list: '/api/users/rols'
+      },
+      create: '/api/users/create'
     }
   }
 

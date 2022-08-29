@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
     this.statues = StorageManager.getFromLocalStorage("statues");
     console.log("mostrando statues ",this.statues)
 
-    this.userService.getUsers().subscribe((response: IUser[]) => {
+    this.userService.getUsers(1,50,0).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
     })

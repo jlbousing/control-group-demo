@@ -4,7 +4,7 @@
         <div class="flex flex-col lg:flex-row">
           <submenu-users class="w-full lg:w-1/4"></submenu-users>
           <div class="w-full lg:pt-4">
-            <div class="w-full lg:w-4/5 bg-white rounded-lg">
+            <form [formGroup]="form" class="w-full lg:w-4/5 bg-white rounded-lg">
               <div class="flex flex-col p-8">
                 <div class="w-full flex flex-row justify-start">
                   <h3>Indique los datos del usuario</h3>
@@ -20,6 +20,7 @@
                                   focus:shadow-outline"
                            type="text"
                            placeholder="Nombre"
+                           formControlName="name"
                      />
                   </div>
 
@@ -34,12 +35,30 @@
                                focus:shadow-outline"
                                id="rol"
                                type="text"
-                               placeholder="Usuario" disabled>
-                               <option>Categoria 1</option>
-                               <option>Categoria 2</option>
-                               <option>Categoria 3</option>
+                               placeholder="ROL"
+                               formControlName="rol">
+                               <option value="0">Seleccionar Rol</option>
+                               <option *ngFor="let rol of roles" [value]="rol.id">{{rol.name}}</option>
+
                        </select>
 
+                  </div>
+
+                </div>
+
+                <div class="w-full flex flex-row justify-start">
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                      Usuario
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="text"
+                           placeholder="username"
+                           formControlName="username"
+                     />
                   </div>
 
                 </div>
@@ -55,6 +74,7 @@
                                   focus:shadow-outline"
                            type="text"
                            placeholder="ejemplo@controlgroup.com"
+                           formControlName="email"
                      />
                   </div>
 
@@ -71,6 +91,7 @@
                                   focus:shadow-outline"
                            type="text"
                            placeholder="ejemplo@controlgroup.com"
+                           formControlName="password1"
                      />
                   </div>
 
@@ -84,16 +105,17 @@
                                   focus:shadow-outline"
                            type="text"
                            placeholder="ejemplo@controlgroup.com"
+                           formControlName="password2"
                      />
                   </div>
 
                 </div>
 
                 <div class="w-full flex flex-row justify-end mt-8">
-                  <custom-button text="Agregar"></custom-button>
+                  <custom-button text="Agregar" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
     </div>
