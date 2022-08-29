@@ -20,9 +20,9 @@
                        leading-tight focus:outline-none
                        focus:shadow-outline"
                        id="enterprises">
-                       <option>Empresa 1</option>
-                       <option>Empresa 2</option>
-                       <option>Empresa 3</option>
+                       <option *ngFor="let company of companies" [value]="company.id">
+                         {{company.name}}
+                       </option>
                </select>
             </div>
 
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <enterprise-card></enterprise-card>
+      <enterprise-card *ngFor="let company of companies" [company]="company"></enterprise-card>
     </div>
   </div>
 </div>

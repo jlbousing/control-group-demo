@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ICompany } from 'src/app/interfaces/ICompanies';
 
 @Component({
   selector: 'enterprise-card',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./enterprise-card.component.scss']
 })
 export class EnterpriseCardComponent implements OnInit {
+
+  @Input('company') company: ICompany | null = null;
 
   constructor(private router: Router) { }
 

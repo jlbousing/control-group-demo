@@ -17,6 +17,13 @@ export const environment = {
         list: '/api/users/rols'
       },
       create: '/api/users/create'
+    },
+    companies: {
+      list: '/api/companies/',
+      create: '/api/companies/create'
+    },
+    categories: {
+      list: '/api/categories/'
     }
   }
 
