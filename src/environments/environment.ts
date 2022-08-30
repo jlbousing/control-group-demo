@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   api_url: 'https://safe-plateau-23354.herokuapp.com',
+  apikey: '62baee13ddde2867c6901ad4b0ef17103dd7694d5bc977ad',
   port: '',
   endpoints: {
     status: {
@@ -20,7 +21,8 @@ export const environment = {
     },
     companies: {
       list: '/api/companies/',
-      create: '/api/companies/create'
+      create: '/api/companies/create',
+      find: '/api/companies/find'
     },
     categories: {
       list: '/api/categories/'

@@ -57,4 +57,23 @@ export class CompaniesService {
       })
     );
   }
+
+  findCompany(name: string,rif: string) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.companies.find}`;
+    const params: string = `?name=${name}&rif=${rif}`;
+
+    return this.http.get<ICompany[]>(
+      url + params,
+      {observe: 'response'}
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
 }
