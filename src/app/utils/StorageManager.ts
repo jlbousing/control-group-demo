@@ -11,4 +11,9 @@ export class StorageManager {
 
     return value ? JSON.parse(value) : null;
   }
+
+  static setStringValue(key: string, value: string) {
+    localStorage.setItem(key,value);
+  }
+
 }

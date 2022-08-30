@@ -7,4 +7,8 @@ export class StoreGlobalInformation {
     StorageManager.setJSONToLocalStorage("statues",statues);
   }
 
+  static storeJWT(jwt: string) {
+    StorageManager.setStringValue('token',jwt);
+  }
+
 }

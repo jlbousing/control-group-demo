@@ -8,6 +8,7 @@ export const environment = {
   apikey: '62baee13ddde2867c6901ad4b0ef17103dd7694d5bc977ad',
   port: '',
   endpoints: {
+    login: '/api/login',
     status: {
       status_type_list: '',
       list: '/api/status/'

@@ -17,34 +17,43 @@
               <h6 class="text-2xl">Acceder</h6>
               <p class="text-xl">Coloque sus datos de usuario</p>
 
-              <div class="form">
+              <form class="form" [formGroup]="form">
                 <div>
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                     Usuario
                   </label>
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Usuario">
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                         type="text"
+                         placeholder="Usuario"
+                         formControlName="username">
                 </div>
 
                 <div>
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                     Contraseña
                   </label>
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Contraseña">
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                         id="username"
+                         type="text"
+                         placeholder="Contraseña"
+                         formControlName="password">
                 </div>
 
                 <div class="mt-4">
                   <p class="text-xl">¿No puedes acceder? </p>
                   <a href="#" class="text-blue-400">Contacte a su administrador</a>
                 </div>
-              </div>
 
-              <div class="flex flex-col items-center">
-                <a [routerLink]="'/users'">
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                    Ingresar
-                 </button>
-                </a>
-              </div>
+                <div class="flex flex-col items-center mt-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                            [disabled]="form.invalid"
+                            [ngClass]="{'bg-blue-300': form.invalid}"
+                            (click)="onSubmit()">
+                      Ingresar
+                   </button>
+                </div>
+              </form>
             </div>
         </div>
       </div>
