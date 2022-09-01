@@ -18,11 +18,16 @@ export class CompaniesService {
   getCompanies(limit: number, offset: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.companies.list}`;
-    const params: string = `?limit=${limit}&offset=${offset}`;
+    const params: string = `?limit=${limit}&offset=${offset}&getSuppliers=true`;
 
     return this.http.get<ICompany[]>(
       url + params,
-      {observe: 'response'}
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
     ).pipe(
       retry(3),
       catchError(handleError),
@@ -41,7 +46,12 @@ export class CompaniesService {
     return this.http.post<ICompanyRequest>(
       url,
       payload,
-      {observe: 'response'}
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
     ).pipe(
       retry(3),
       catchError(handleError),
@@ -58,14 +68,19 @@ export class CompaniesService {
     );
   }
 
-  findCompany(name: string,rif: string) {
+  findCompany(name: string | null,rif: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.companies.find}`;
-    const params: string = `?name=${name}&rif=${rif}`;
+    const params: string = `?name=${name}&rif=${rif}&getSuppliers=true`;
 
     return this.http.get<ICompany[]>(
       url + params,
-      {observe: 'response'}
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
     ).pipe(
       retry(3),
       catchError(handleError),

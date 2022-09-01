@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
 import { ILogin } from 'src/app/interfaces/Ilogin';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { StorageManager } from 'src/app/utils/StorageManager';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-form',
@@ -16,7 +18,8 @@ export class LoginFormComponent implements OnInit {
   });
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +38,8 @@ export class LoginFormComponent implements OnInit {
         this.loginService.login(payload)
           .subscribe((response: any) => {
             console.log(response);
+            StorageManager.setJSONToLocalStorage('userInfo',response);
+            this.router.navigateByUrl("/home");
           })
       }
   }

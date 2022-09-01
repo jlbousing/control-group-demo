@@ -7,6 +7,7 @@ export const environment = {
   api_url: 'https://safe-plateau-23354.herokuapp.com',
   apikey: '62baee13ddde2867c6901ad4b0ef17103dd7694d5bc977ad',
   port: '',
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoxLCJpYXQiOjE2NjIwMTYwMTR9.yKiS86GG19niW43DSEeP6orDEMZ9PMwMV4xvxmHbf-I",
   endpoints: {
     login: '/api/login',
     status: {

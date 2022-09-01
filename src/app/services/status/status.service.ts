@@ -21,7 +21,12 @@ export class StatusService {
 
     return this.http.get<IStatus>(
       url + params,
-      {observe: 'response'}
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
     ).pipe(
       retry(3),
       catchError(handleError),

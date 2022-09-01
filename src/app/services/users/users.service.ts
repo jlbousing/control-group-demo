@@ -22,7 +22,12 @@ export class UsersService {
 
     return this.http.get<any>(
       url + params,
-      {observe: 'response'}
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
     ).pipe(
       retry(3),
       catchError(handleError),
@@ -42,7 +47,12 @@ export class UsersService {
     return this.http.post<IUserRequest>(
       url,
       payload,
-      {observe: 'response'}
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
     ).pipe(
       retry(3),
       catchError(handleError),

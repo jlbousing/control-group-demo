@@ -1,7 +1,10 @@
+import { IStatus } from "./IStatus";
+
 export interface ICompany {
   id: number;
   rif: string;
   name: string;
   comercialName: string;
-  status: number;
+  statusData: IStatus;
+  suppliersOfCompany: any[]
 }

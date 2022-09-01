@@ -10,7 +10,7 @@
       <div class="w-full flex flex-col justify-items-start">
         <span>Rif: <b>{{ company?.rif }}</b></span>
         <span>Nombre Comercial: <b>{{ company?.comercialName }}</b></span>
-        <span>Estatus: <b>{{company?.status === 1 ? 'Activo' : 'Suspendido' }}</b></span>
+        <span>Estatus: <b>{{company?.statusData?.id === 1 ? 'Activo' : 'Suspendido' }}</b></span>
       </div>
     </div>
   </div>
