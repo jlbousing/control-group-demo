@@ -49,7 +49,7 @@ const routes: Routes = [
         component: EnterprisesComponent
       },
       {
-        path: "providers",
+        path: "providers/:rif",
         title: "Proveedores",
         component: ProviderPageComponent
       }

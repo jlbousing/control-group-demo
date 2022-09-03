@@ -63,9 +63,10 @@
         </div>
       </div>
 
-      <provider-card></provider-card>
-      <provider-card></provider-card>
-      <provider-card></provider-card>
+      <provider-card *ngFor="let provider of suppliers"
+        [supplier]="provider"
+        [company]="company"></provider-card>
+
     </div>
   </div>
 </div>

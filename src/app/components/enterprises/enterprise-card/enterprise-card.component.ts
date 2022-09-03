@@ -17,13 +17,9 @@ export class EnterpriseCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToProviders(suppliers: ISupplier[])
+  goToProviders(company: ICompany)
   {
-    this.router.navigateByUrl('/providers',{
-      state: {
-        suppliers
-      }
-    })
+    this.router.navigate(['/providers', company.rif]);
   }
 
 }

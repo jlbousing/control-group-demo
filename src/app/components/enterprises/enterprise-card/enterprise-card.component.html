@@ -18,7 +18,7 @@
     <div class="flex flex-row justify-end">
       <custom-button text="Ver Proveedores"
                      [disable]="!company?.suppliersOfCompany || company?.suppliersOfCompany?.length === 0"
-                     (click)="goToProviders(company!.suppliersOfCompany)"></custom-button>
+                     (click)="goToProviders(company!)"></custom-button>
     </div>
   </div>
 </div>
