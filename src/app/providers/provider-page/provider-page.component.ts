@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 @Component({
   selector: 'app-provider-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProviderPageComponent implements OnInit {
 
-  constructor() { }
+  suppliers: ISupplier[] = [];
+
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
+
   }
 
 }

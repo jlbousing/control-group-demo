@@ -1,4 +1,5 @@
 import { IStatus } from "./IStatus";
+import { ISupplier } from "./ISupplier";
 
 export interface ICompany {
   id: number;
@@ -6,5 +7,5 @@ export interface ICompany {
   name: string;
   comercialName: string;
   statusData: IStatus;
-  suppliersOfCompany: any[]
+  suppliersOfCompany: ISupplier[];
 }
