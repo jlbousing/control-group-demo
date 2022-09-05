@@ -9,8 +9,8 @@
     <div class="text-gray-700 text-base">
       <div class="w-full flex flex-row justify-between">
         <div class="w-full lg:w-1/2 flex flex-col justify-items-start">
-          <span>Estatus: <b>Activo</b></span>
-          <span>Asignaciones pendientes: <b>1.028</b></span>
+          <span>Estatus: <b> {{ supplier?.statusData?.status }}</b></span>
+          <span>Asignaciones pendientes: <b>{{ supplier?.asignaments}}</b></span>
           <span>Categoría:  <b>Alimentos</b></span>
         </div>
 

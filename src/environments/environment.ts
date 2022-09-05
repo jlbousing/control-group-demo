@@ -28,6 +28,10 @@ export const environment = {
     },
     categories: {
       list: '/api/categories/'
+    },
+    suppliers: {
+      list: '/api/suppliers/list',
+      create: '/api/suppliers/create'
     }
   }
 

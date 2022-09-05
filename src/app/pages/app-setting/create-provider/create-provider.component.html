@@ -1,13 +1,13 @@
 
 <separator-title [title]="'Nuevo proveedor'"></separator-title>
-<div class="w-full lg:w-4/5 bg-white rounded-lg">
+<form [formGroup]="form" class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col p-8">
-    <div class="w-full flex flex-row justify-start">
+    <div class="w-full flex flex-col lg:flex-row justify-start">
       <h3>Indique los datos del proveedor</h3>
     </div>
-    <div class="w-full flex flex-row justify-start">
+    <div class="w-full flex flex-col lg:flex-row justify-start">
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
           Empresa
         </label>
         <select
@@ -15,17 +15,17 @@
                  rounded w-full py-2 px-3 text-gray-700
                  leading-tight focus:outline-none
                  focus:shadow-outline"
-          id="status"
-          type="text"
-          placeholder="Usuario">
-          <option>Empresa 1</option>
-          <option>Empresa 2</option>
-          <option>Empresa 3</option>
+          id="company"
+          formControlName="companyId"
+          >
+          <option *ngFor="let company of companies" [value]="company.id">
+            {{ company.name }}
+          </option>
         </select>
       </div>
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
           Categoría
         </label>
         <select
@@ -33,20 +33,19 @@
                  rounded w-full py-2 px-3 text-gray-700
                  leading-tight focus:outline-none
                  focus:shadow-outline"
-          id="status"
-          type="text"
-          placeholder="Usuario">
-          <option>Categoría 1</option>
-          <option>Categoría 2</option>
-          <option>Categoría 3</option>
+          id="category"
+          formControlName="categoryId">
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
         </select>
       </div>
 
     </div>
 
-    <div class="w-full flex flex-row justify-start">
+    <div class="w-full flex flex-col lg:flex-row justify-start">
       <div class="my-4 w-full lg:w-1/3 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
           Nombre
         </label>
         <input class="shadow appearance-none border
@@ -55,11 +54,12 @@
                       focus:shadow-outline"
                type="text"
                placeholder="nombre"
+               formControlName="name"
          />
       </div>
 
       <div class="my-4 w-full lg:w-1/3 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="rif">
           RIF
         </label>
         <input class="shadow appearance-none border
@@ -68,11 +68,12 @@
                       focus:shadow-outline"
                type="text"
                placeholder="rif"
+               formControlName="rif"
          />
       </div>
 
       <div class="my-4 w-full lg:w-1/3 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="comercialName">
           Nombre comercial
         </label>
         <input class="shadow appearance-none border
@@ -81,12 +82,16 @@
                       focus:shadow-outline"
                type="text"
                placeholder="nombre"
+               formControlName="comercialName"
          />
       </div>
     </div>
     <div class="w-full flex flex-row justify-end mt-8">
-      <custom-button text="Agregar"></custom-button>
+      <custom-button text="Agregar"
+                     [disable]="form.invalid"
+                     (click)="onSubmit()"
+                     ></custom-button>
     </div>
   </div>
-</div>
+</form>
 
