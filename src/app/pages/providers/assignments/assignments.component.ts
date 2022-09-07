@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CreateAssignmentsModalComponent } from 'src/app/components/modals/create-assignments-modal/create-assignments-modal.component';
 import { EditAssignmentsModalComponent } from 'src/app/components/modals/edit-assignments-modal/edit-assignments-modal.component';
 import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
+import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
+import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -13,10 +16,27 @@ export class AssignmentsComponent implements OnInit {
   showModalCreate: boolean = false;
   showModalEdit: boolean = false;
 
-  constructor(public dialog: Dialog) { }
+  assignaments: IAssignament[] = [];
+  supplierId: number = 0;
+
+  constructor(
+    public dialog: Dialog,
+    private assignamentService: AssignamentService,
+    private route: ActivatedRoute
+  ) { }
 
 
   ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+      this.supplierId = params['supplierId'];
+      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+        .subscribe((response: IAssignament[]) => {
+          this.assignaments = response;
+          console.log("probando asignaciones ",this.assignaments);
+        })
+   });
+
   }
 
   showCreateModal() {

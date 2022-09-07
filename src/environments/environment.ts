@@ -10,6 +10,10 @@ export const environment = {
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoxLCJpYXQiOjE2NjIwMTYwMTR9.yKiS86GG19niW43DSEeP6orDEMZ9PMwMV4xvxmHbf-I",
   endpoints: {
     login: '/api/login',
+    assignaments: {
+      list: '/api/asignaments/list',
+      find: '/api/asignaments/find'
+    },
     status: {
       status_type_list: '',
       list: '/api/status/'

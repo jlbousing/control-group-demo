@@ -18,9 +18,9 @@ export class ProviderCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToProvidersDetail()
+  goToProvidersDetail(supplierId: number)
   {
-    this.router.navigateByUrl('providers/assignments')
+    this.router.navigateByUrl(`providers/assignments/${supplierId}`)
   }
 
 }

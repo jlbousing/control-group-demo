@@ -22,6 +22,7 @@ import { CreateProviderComponent } from './pages/app-setting/create-provider/cre
 import { RolsComponent } from './pages/app-setting/rols/rols.component';
 import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
+import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 
 const routes: Routes = [
   {
@@ -65,7 +66,7 @@ const routes: Routes = [
         component: CategoriesComponent
       },
       {
-        path: "assignments",
+        path: "assignments/:supplierId",
         title: "Asignaciones",
         component: AssignmentsComponent
       },
@@ -88,6 +89,11 @@ const routes: Routes = [
         path: "settings",
         title: "Configuracion",
         component: SettingsComponent
+      },
+      {
+        path: "create-assigment",
+        title: "Nueva asignacion",
+        component: CreateAssignmentsComponent
       }
     ]
   },

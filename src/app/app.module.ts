@@ -75,6 +75,7 @@ import { ProviderCardComponent } from './components/providers/provider-card/prov
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUsersModalComponent } from './components/modals/edit-users-modal/edit-users-modal.component';
+import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 
 @NgModule({
   declarations: [
@@ -136,6 +137,7 @@ import { EditUsersModalComponent } from './components/modals/edit-users-modal/ed
     ProviderPageComponent,
     ProviderCardComponent,
     EditUsersModalComponent,
+    CreateAssignmentsComponent,
   ],
   imports: [
     BrowserModule,
