@@ -4,6 +4,8 @@ import { IAssignamentRequest } from 'src/app/interfaces/IAssignamentRequest';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ICategory } from 'src/app/interfaces/ICategory';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 @Component({
   selector: 'app-create-assignments',
@@ -24,9 +26,11 @@ export class CreateAssignmentsComponent implements OnInit {
   categoryId: number = 0;
   categories: ICategory[] = [];
   subcategories: ISubcategory[] = [];
+  suppliers: ISupplier[] = [];
 
   constructor(
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private suppliersService: SuppliersService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +39,8 @@ export class CreateAssignmentsComponent implements OnInit {
       .subscribe((response: ICategory[]) => {
         this.categories = response;
       });
+
+    this.suppliersService.getSuppliers
   }
 
   setSubcategoryId(id: any) {
