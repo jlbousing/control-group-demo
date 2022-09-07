@@ -52,29 +52,16 @@
                  leading-tight focus:outline-none
                  focus:shadow-outline"
           id="company"
+          formControlName="categoryId"
           >
-          <option>Categoria 1</option>
-          <option>Categoria 1</option>
-          <option>Categoria 1</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
         </select>
       </div>
 
-      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
-          Subcategoría
-        </label>
-        <select
-          class="shadow appearance-none border
-                 rounded w-full py-2 px-3 text-gray-700
-                 leading-tight focus:outline-none
-                 focus:shadow-outline"
-          id="company"
-          formControlName="subcategoryId"
-          >
-          <option>Categoria 1</option>
-          <option>Categoria 1</option>
-          <option>Categoria 1</option>
-        </select>
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
+        <subcategory-select [categoryId]="form.value.categoryId" (subCategoryEmiter)="setSubcategoryId($event)"></subcategory-select>
       </div>
 
     </div>
@@ -116,7 +103,7 @@
     </div>
 
     <div class="w-full flex flex-row justify-end mt-8">
-      <custom-button text="Agregar"></custom-button>
+      <custom-button text="Agregar" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
     </div>
   </form>
 </div>

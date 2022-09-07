@@ -72,10 +72,12 @@ import { ProviderPageComponent } from './providers/provider-page/provider-page.c
 import { ProviderCardComponent } from './components/providers/provider-card/provider-card.component';
 
 //import { UsersService } from './services/users/users.service';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUsersModalComponent } from './components/modals/edit-users-modal/edit-users-modal.component';
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
+import { SubcategorySelectComponent } from './components/subcategory-select/subcategory-select.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +140,7 @@ import { CreateAssignmentsComponent } from './pages/providers/create-assignments
     ProviderCardComponent,
     EditUsersModalComponent,
     CreateAssignmentsComponent,
+    SubcategorySelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -154,7 +157,8 @@ import { CreateAssignmentsComponent } from './pages/providers/create-assignments
     ObserversModule,
     PortalModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     TitleServicesService,

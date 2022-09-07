@@ -31,12 +31,15 @@ export const environment = {
       find: '/api/companies/find'
     },
     categories: {
-      list: '/api/categories/'
+      list: '/api/categories/',
+      subcategories: {
+        list: '/api/categories/subcategories'
+      }
     },
     suppliers: {
       list: '/api/suppliers/list',
       create: '/api/suppliers/create'
-    }
+    },
   }
 
 };
