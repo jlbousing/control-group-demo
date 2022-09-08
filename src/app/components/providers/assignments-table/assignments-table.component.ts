@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { IAssignament } from 'src/app/interfaces/IAssignament';
 
 @Component({
   selector: 'assignments-table',
@@ -7,15 +8,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AssignmentsTableComponent implements OnInit {
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
+  //@Output() emiterCategoriesTable = new EventEmitter<any>();
+  @Input("assignments") assignments: IAssignament[] = [];
   constructor() { }
 
   ngOnInit(): void {
   }
 
   selectEdit(){
-    let category = {};
-    this.emiterCategoriesTable.emit(category);
+    //let category = {};
+    //this.emiterCategoriesTable.emit(category);
   }
 
 }

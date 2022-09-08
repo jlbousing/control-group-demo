@@ -61,7 +61,7 @@ const routes: Routes = [
     component: ProvidersComponent,
     children: [
       {
-        path: "categories",
+        path: "categories/:supplierId",
         title: "Categorias",
         component: CategoriesComponent
       },
@@ -71,22 +71,22 @@ const routes: Routes = [
         component: AssignmentsComponent
       },
       {
-        path: "instructions",
+        path: "instructions/:supplierId",
         title: "Instrucciones",
         component: InstructionsComponent
       },
       {
-        path: "production",
+        path: "production/:supplierId",
         title: "Produccion",
         component: ProductionComponent
       },
       {
-        path: "dispatch",
+        path: "dispatch/:supplierId",
         title: "Despacho",
         component: DispatchComponent
       },
       {
-        path: "settings",
+        path: "settings/:supplierId",
         title: "Configuracion",
         component: SettingsComponent
       },

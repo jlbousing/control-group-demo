@@ -22,6 +22,29 @@
       </div>
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
+          Categoría
+        </label>
+        <select
+          class="shadow appearance-none border
+                 rounded w-full py-2 px-3 text-gray-700
+                 leading-tight focus:outline-none
+                 focus:shadow-outline"
+          id="company"
+          formControlName="categoryId"
+          (ngModelChange)="setSuppliers(form.value.categoryId)"
+          >
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
           Proveedor
         </label>
@@ -33,29 +56,8 @@
           id="company"
           formControlName="supplierId"
           >
-          <option>Categoria 1</option>
-          <option>Categoria 1</option>
-          <option>Categoria 1</option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="w-full flex flex-row justify-start">
-      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
-          Categoría
-        </label>
-        <select
-          class="shadow appearance-none border
-                 rounded w-full py-2 px-3 text-gray-700
-                 leading-tight focus:outline-none
-                 focus:shadow-outline"
-          id="company"
-          formControlName="categoryId"
-          >
-          <option *ngFor="let category of categories" [value]="category.id">
-            {{ category.name }}
+          <option *ngFor="let supplier of suppliers" [value]="supplier.id">
+            {{supplier.name}}
           </option>
         </select>
       </div>
@@ -82,10 +84,6 @@
          />
       </div>
 
-    </div>
-
-    <div class="w-full flex flex-row justify-start">
-
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="comments">
           Comentarios
@@ -97,6 +95,24 @@
                type="text"
                placeholder="Comentarios"
                formControlName="comments"
+         />
+      </div>
+
+    </div>
+
+    <div class="w-full flex flex-row justify-start">
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="record">
+          Meta de asignación
+        </label>
+        <input class="shadow appearance-none border
+                      rounded w-full py-2 px-3 text-gray-700
+                      leading-tight focus:outline-none
+                      focus:shadow-outline"
+               type="number"
+               placeholder="meta"
+               formControlName="record"
          />
       </div>
 

@@ -20,7 +20,7 @@ export class SuppliersService {
   getSuppliers(category: number,limit: number,offset:number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.suppliers.list}`;
-    const params: string = `?category=${category}&limit=${limit}&offset=${offset}`;
+    const params: string = `?categoryId=${category}&limit=${limit}&offset=${offset}`;
 
     return this.http.get<ISupplier[]>(
       url + params,

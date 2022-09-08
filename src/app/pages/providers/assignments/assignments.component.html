@@ -1,11 +1,3 @@
-<!-- <create-assignments-modal
-  [showModal]="showModalCreate"
-  (emiterModal)="closeModalCreate($event)"></create-assignments-modal> -->
-
-  <!-- <edit-assignments-modal
-  [showModal]="showModalEdit"
-  (emiterModal)="closeModalEdit($event)"></edit-assignments-modal> -->
-
 <separator-title title="Lista de asignaciones (Alianza Inc)"></separator-title>
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
@@ -15,7 +7,7 @@
       </a>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
-      <assignments-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></assignments-table>
+      <assignments-table class="w-full" [assignments]="assignaments"></assignments-table>
     </div>
   </div>
 </div>

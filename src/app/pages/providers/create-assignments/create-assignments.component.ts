@@ -6,6 +6,8 @@ import { ICategory } from 'src/app/interfaces/ICategory';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { StorageManager } from 'src/app/utils/StorageManager';
+import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 
 @Component({
   selector: 'app-create-assignments',
@@ -20,7 +22,8 @@ export class CreateAssignmentsComponent implements OnInit {
     categoryId: new FormControl<number>(0,Validators.required),
     subcategoryId: new FormControl<number>(0,Validators.required),
     description: new FormControl<string>('',Validators.required),
-    comments: new FormControl<string>('',Validators.required)
+    comments: new FormControl<string>('',Validators.required),
+    record: new FormControl<number>(0,Validators.required)
   });
 
   categoryId: number = 0;
@@ -30,7 +33,8 @@ export class CreateAssignmentsComponent implements OnInit {
 
   constructor(
     private categoryService: CategoriesService,
-    private suppliersService: SuppliersService
+    private suppliersService: SuppliersService,
+    private assignmentService: AssignamentService
   ) { }
 
   ngOnInit(): void {
@@ -50,9 +54,54 @@ export class CreateAssignmentsComponent implements OnInit {
     })
   }
 
+  setSuppliers(id: any){
+    this.suppliersService.getSuppliers(id,50,0)
+      .subscribe((response: ISupplier[]) => {
+        this.suppliers = response;
+      });
+  }
+
   onSubmit(){
 
     console.log(this.form.value);
+
+    if(this.form.value.name
+       && this.form.value.supplierId
+       && this.form.value.categoryId
+       && this.form.value.subcategoryId
+       && this.form.value.description
+       && this.form.value.comments
+       && this.form.value.record) {
+
+        const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
+
+        const payload: IAssignamentRequest = {
+          name: this.form.value.name,
+          subcategoryId: this.form.value.subcategoryId,
+          suppliersId: this.form.value.supplierId,
+          userId: userInfo.id,
+          description: this.form.value.description,
+          comments: this.form.value.comments,
+          record: this.form.value.record
+        };
+
+        this.assignmentService.createAssignaments(payload).subscribe((response: any) => {
+
+          console.log(response)
+
+          if(response !== undefined){
+            if(response.status !== undefined){
+              if(response.status === 400){
+                alert(response.body.result.exception)
+              }
+            }else{
+              alert(response.message.label)
+            }
+
+          }
+
+        })
+       }
   }
 
 }

@@ -12,7 +12,8 @@ export const environment = {
     login: '/api/login',
     assignaments: {
       list: '/api/asignaments/list',
-      find: '/api/asignaments/find'
+      find: '/api/asignaments/find',
+      create: '/api/asignaments/create'
     },
     status: {
       status_type_list: '',
@@ -37,7 +38,7 @@ export const environment = {
       }
     },
     suppliers: {
-      list: '/api/suppliers/list',
+      list: '/api/suppliers/',
       create: '/api/suppliers/create'
     },
   }

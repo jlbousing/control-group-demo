@@ -20,7 +20,7 @@ export class AssignamentService {
   getAssignamentsBySupplier(id: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.find}`;
-    const params: string = `?suppliersId=${id}`;
+    const params: string = `?suppliersId=${id}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,
@@ -40,6 +40,35 @@ export class AssignamentService {
       })
     );
 
+  }
+
+  createAssignaments(payload: IAssignamentRequest) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.create}`;
+
+    return this.http.post<IAssignamentRequest>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 201){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
+        }
+      })
+    );
   }
 
 

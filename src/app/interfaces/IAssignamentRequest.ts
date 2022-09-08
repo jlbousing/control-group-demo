@@ -2,7 +2,8 @@ export interface IAssignamentRequest {
   name: string;
   subcategoryId: number;
   suppliersId: number;
-  idUser: number;
+  userId: number;
   description: string;
   comments: string;
+  record: number;
 }
