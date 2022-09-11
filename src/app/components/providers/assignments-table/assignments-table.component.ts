@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { Dialog } from '@angular/cdk/dialog';
 import { EditAssignmentsModalComponent } from '../../modals/edit-assignments-modal/edit-assignments-modal.component';
+import { IStatus } from 'src/app/interfaces/IStatus';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 @Component({
   selector: 'assignments-table',
@@ -11,6 +13,8 @@ import { EditAssignmentsModalComponent } from '../../modals/edit-assignments-mod
 export class AssignmentsTableComponent implements OnInit {
 
   @Input("assignments") assignments: IAssignament[] = [];
+  @Input("statues") statues: IStatus[] = [];
+  @Input("suppliers") suppliers: ISupplier[] = [];
 
   constructor(
     private dialog: Dialog
@@ -23,7 +27,9 @@ export class AssignmentsTableComponent implements OnInit {
 
     this.dialog.open(EditAssignmentsModalComponent,{
       data: {
-        assignment: assignment
+        assignment: assignment,
+        statues: this.statues,
+        suppliers: this.suppliers
       }
     })
   }

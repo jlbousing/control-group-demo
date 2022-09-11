@@ -1,11 +1,15 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { IStatus } from 'src/app/interfaces/IStatus';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Inject } from '@angular/core';
 
 interface IDialogData {
-  assignment: IAssignament
+  assignment: IAssignament,
+  statues: IStatus[],
+  suppliers: ISupplier[]
 }
 
 @Component({

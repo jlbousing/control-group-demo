@@ -34,7 +34,7 @@
                         <span>ID: {{ data.assignment.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span class="text-red-700">Estatus: Atrasado</span>
+                      <span class="text-red-700">Estatus: {{data.assignment.statusData.status}}</span>
                   </div>
                 </div>
                   <div class="w-full flex-col justify-center items-center">
@@ -59,9 +59,9 @@
                                id="status"
                                type="text"
                                placeholder="Usuario">
-                               <option>Activo</option>
-                               <option>No activo</option>
-                               <option>Estatus 3</option>
+                               <option *ngFor="let status of data.statues" [value]="status.id">
+                                  {{status.status}}
+                               </option>
                        </select>
                     </div>
                     <div class="my-4 w-full">
@@ -76,9 +76,9 @@
                                id="supplier"
                                type="text"
                                placeholder="Usuario">
-                               <option>proveedor 1</option>
-                               <option>proveedor 2</option>
-                               <option>proveedor 3</option>
+                               <option *ngFor="let supplier of data.suppliers" [value]="supplier.id">
+                                {{supplier.name}}
+                             </option>
                        </select>
                     </div>
                     <div class="my-4 w-full">
