@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DialogRef } from '@angular/cdk/dialog';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Inject } from '@angular/core';
+
+interface IDialogData {
+  assignment: IAssignament
+}
 
 @Component({
   selector: 'edit-assignments-modal',
@@ -8,16 +15,16 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class EditAssignmentsModalComponent implements OnInit {
 
-  @Input('showModal') showModal: boolean = false;
-  @Output() emiterModal = new EventEmitter<boolean>();
-
-  constructor(public dialogRef: DialogRef) { }
+  constructor(
+    @Inject(DIALOG_DATA) public data: IDialogData,
+    public dialogRef: DialogRef
+  ) { }
 
   ngOnInit(): void {
+
+    console.log("hey uya ",this.data.assignment)
   }
 
-  onCloseModal(){
-    this.emiterModal.emit(true);
-  }
+
 
 }

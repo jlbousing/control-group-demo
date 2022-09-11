@@ -31,13 +31,22 @@
                   <h5>Datos de Asignación</h5>
                   <div class="flex justify-around">
                     <div class="w-1/2">
-                        <span>ID: 48489794</span>
+                        <span>ID: {{ data.assignment.id }}</span>
                     </div>
                     <div class="w-1/2">
                       <span class="text-red-700">Estatus: Atrasado</span>
                   </div>
                 </div>
                   <div class="w-full flex-col justify-center items-center">
+                    <div class="my-4 w-full">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                        Nombre
+                      </label>
+                      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                         type="text"
+                         placeholder="Usuario"
+                         >
+                    </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
                         Modificar Estatus
@@ -56,33 +65,31 @@
                        </select>
                     </div>
                     <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
-                        Fecha de entrega
-                      </label>
-                      <input
-                        class="shadow appearance-none border
-                               rounded w-full py-2 px-3 text-gray-700
-                               leading-tight focus:outline-none
-                               focus:shadow-outline"
-                               id="category"
-                               type="date"
-                               placeholder="fecha">
-                    </div>
-                    <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
-                        Categoría
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
+                        Modificar Proveedor
                       </label>
                       <select
                         class="shadow appearance-none border
                                rounded w-full py-2 px-3 text-gray-700
                                leading-tight focus:outline-none
                                focus:shadow-outline"
-                               id="category"
-                               placeholder="category">
-                               <option>categoria 1</option>
-                               <option>categoria 2</option>
-                               <option>categoria 3</option>
+                               id="supplier"
+                               type="text"
+                               placeholder="Usuario">
+                               <option>proveedor 1</option>
+                               <option>proveedor 2</option>
+                               <option>proveedor 3</option>
                        </select>
+                    </div>
+                    <div class="my-4 w-full">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="commen">
+                        Comentario
+                      </label>
+                      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                         type="text"
+                         placeholder="commentario"
+                         id="commen"
+                         >
                     </div>
                   </div>
                 </form>

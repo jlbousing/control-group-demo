@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { Dialog } from '@angular/cdk/dialog';
+import { EditAssignmentsModalComponent } from '../../modals/edit-assignments-modal/edit-assignments-modal.component';
 
 @Component({
   selector: 'assignments-table',
@@ -8,16 +10,22 @@ import { IAssignament } from 'src/app/interfaces/IAssignament';
 })
 export class AssignmentsTableComponent implements OnInit {
 
-  //@Output() emiterCategoriesTable = new EventEmitter<any>();
   @Input("assignments") assignments: IAssignament[] = [];
-  constructor() { }
+
+  constructor(
+    private dialog: Dialog
+  ) { }
 
   ngOnInit(): void {
   }
 
-  selectEdit(){
-    //let category = {};
-    //this.emiterCategoriesTable.emit(category);
+  selectEdit(assignment: IAssignament){
+
+    this.dialog.open(EditAssignmentsModalComponent,{
+      data: {
+        assignment: assignment
+      }
+    })
   }
 
 }

@@ -30,8 +30,6 @@ export class EditUsersModalComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("hey uya ",this.data)
-
-
   }
 
 }
