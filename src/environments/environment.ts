@@ -13,7 +13,8 @@ export const environment = {
     assignaments: {
       list: '/api/asignaments/list',
       find: '/api/asignaments/find',
-      create: '/api/asignaments/create'
+      create: '/api/asignaments/create',
+      changes: '/api/asignaments/changes/'
     },
     status: {
       status_type_list: '',

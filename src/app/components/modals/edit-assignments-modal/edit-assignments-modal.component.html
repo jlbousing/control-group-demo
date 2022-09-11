@@ -27,7 +27,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form>
+                <form [formGroup]="form">
                   <h5>Datos de Asignación</h5>
                   <div class="flex justify-around">
                     <div class="w-1/2">
@@ -35,8 +35,8 @@
                     </div>
                     <div class="w-1/2">
                       <span class="text-red-700">Estatus: {{data.assignment.statusData.status}}</span>
+                    </div>
                   </div>
-                </div>
                   <div class="w-full flex-col justify-center items-center">
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
@@ -45,6 +45,7 @@
                       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
                          type="text"
                          placeholder="Usuario"
+                         formControlName="name"
                          >
                     </div>
                     <div class="my-4 w-full">
@@ -58,7 +59,8 @@
                                focus:shadow-outline"
                                id="status"
                                type="text"
-                               placeholder="Usuario">
+                               placeholder="Usuario"
+                               formControlName="statusId">
                                <option *ngFor="let status of data.statues" [value]="status.id">
                                   {{status.status}}
                                </option>
@@ -75,7 +77,8 @@
                                focus:shadow-outline"
                                id="supplier"
                                type="text"
-                               placeholder="Usuario">
+                               placeholder="Usuario"
+                               formControlName="supplierId">
                                <option *ngFor="let supplier of data.suppliers" [value]="supplier.id">
                                 {{supplier.name}}
                              </option>
@@ -89,23 +92,26 @@
                          type="text"
                          placeholder="commentario"
                          id="commen"
+                         formControlName="comments"
                          >
                     </div>
                   </div>
                 </form>
             </div>
             <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+            <div class="flex justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
                 <button data-modal-toggle="defaultModal"
                         type="button"
+                        [disabled]="form.invalid"
                         class="text-white
-                               bg-green-700
                                hover:bg-green-800
                                  focus:ring-4
                                  focus:outline-none
                                focus:ring-blue-300
                                  font-medium rounded-lg
-                                 text-sm px-5 py-2.5 text-center">
+                                 text-sm px-5 py-2.5 text-center"
+                        [ngClass]="{'bg-green-button': !form.invalid, 'bg-green-200': form.invalid}"
+                        (click)="onSubmit()">
                                Guardar
                   </button>
                 <button data-modal-toggle="defaultModal"
@@ -132,6 +138,6 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
 </div>
 
