@@ -78,6 +78,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditUsersModalComponent } from './components/modals/edit-users-modal/edit-users-modal.component';
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 import { SubcategorySelectComponent } from './components/subcategory-select/subcategory-select.component';
+import { ViewAssignmentsModalComponent } from './components/modals/view-assignments-modal/view-assignments-modal.component';
 
 @NgModule({
   declarations: [
@@ -141,6 +142,7 @@ import { SubcategorySelectComponent } from './components/subcategory-select/subc
     EditUsersModalComponent,
     CreateAssignmentsComponent,
     SubcategorySelectComponent,
+    ViewAssignmentsModalComponent,
   ],
   imports: [
     BrowserModule,

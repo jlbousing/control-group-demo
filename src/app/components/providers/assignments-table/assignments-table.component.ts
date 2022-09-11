@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { Dialog } from '@angular/cdk/dialog';
 import { EditAssignmentsModalComponent } from '../../modals/edit-assignments-modal/edit-assignments-modal.component';
+import { ViewAssignmentsModalComponent } from '../../modals/view-assignments-modal/view-assignments-modal.component';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 
@@ -32,6 +33,15 @@ export class AssignmentsTableComponent implements OnInit {
         suppliers: this.suppliers
       }
     })
+  }
+
+  showAssignment(assignment: IAssignament){
+
+    this.dialog.open(ViewAssignmentsModalComponent,{
+      data: {
+        assignment: assignment
+      }
+    });
   }
 
 }
