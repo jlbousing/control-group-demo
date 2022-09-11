@@ -28,22 +28,26 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
                 <form [formGroup]="form">
-                  <h5 class="font-semibold">Datos</h5>
-                  <div class="flex flex-col w-full">
-                    <div class="flex flex-row w-full">
-                        <div class="w-1/2">
-                            ID: {{data.user.id}}
-                        </div>
-                        <div class="w-1/2">
-                          <h6 class="text-green-700">Estatus: {{data.user.statusData.status}}</h6>
-                      </div>
-                    </div>
+                  <div class="my-4 w-full">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                      Nombre
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                       type="text"
+                       placeholder="Usuario"
+                       formControlName="name"
+                       >
+                  </div>
 
-                    <div class="flex flex-row w-full mt-1">
-                      <div class="w-1/2">
-                          Usuario: {{ data.user.name }}
-                      </div>
-                    </div>
+                  <div class="my-4 w-full">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                      Nombre de usuario
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                       type="text"
+                       placeholder="Usuario"
+                       formControlName="username"
+                       >
                   </div>
 
                   <h5 class="font-semibold mt-4">Modificar</h5>
@@ -90,17 +94,19 @@
                 </form>
             </div>
             <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+            <div class="flex justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
                 <button data-modal-toggle="defaultModal"
                         type="button"
                         class="text-white
-                               bg-green-700
                                hover:bg-green-800
                                  focus:ring-4
                                  focus:outline-none
                                focus:ring-blue-300
                                  font-medium rounded-lg
-                                 text-sm px-5 py-2.5 text-center">
+                                 text-sm px-5 py-2.5 text-center"
+                        [ngClass]="{'bg-green-button': !form.invalid, 'bg-green-200': form.invalid}"
+                        [disabled]="form.invalid"
+                        (click)="onSubmit()">
                                Guardar
                   </button>
                 <button data-modal-toggle="defaultModal"

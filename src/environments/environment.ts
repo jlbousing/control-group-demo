@@ -25,7 +25,8 @@ export const environment = {
       roles: {
         list: '/api/users/rols'
       },
-      create: '/api/users/create'
+      create: '/api/users/create',
+      changes: '/api/users/changes/'
     },
     companies: {
       list: '/api/companies/',
