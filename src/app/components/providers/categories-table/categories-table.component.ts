@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 
 
 @Component({
@@ -9,8 +9,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CategoriesTableComponent implements OnInit {
 
+  @Input("subcategories") subcategories: ISubcategory[] = [];
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -18,7 +18,6 @@ export class CategoriesTableComponent implements OnInit {
 
   selectEdit(){
     let category = {};
-    this.emiterCategoriesTable.emit(category);
   }
 
 }

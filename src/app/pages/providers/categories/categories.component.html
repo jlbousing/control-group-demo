@@ -5,7 +5,8 @@
       <custom-button text="Nueva Categoria" (click)="showCreateModal()"></custom-button>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
-      <categories-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></categories-table>
+      <categories-table class="w-full"
+                        [subcategories]="subcategories"></categories-table>
     </div>
   </div>
 </div>
