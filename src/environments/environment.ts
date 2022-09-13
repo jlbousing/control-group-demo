@@ -41,7 +41,8 @@ export const environment = {
     },
     suppliers: {
       list: '/api/suppliers/',
-      create: '/api/suppliers/create'
+      create: '/api/suppliers/create',
+      findById: '/api/suppliers/finder'
     },
   }
 

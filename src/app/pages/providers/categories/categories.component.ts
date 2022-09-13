@@ -6,6 +6,8 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { IStatus } from 'src/app/interfaces/IStatus';
+import { StatusService } from 'src/app/services/status/status.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,12 +20,15 @@ export class CategoriesComponent implements OnInit {
 
   subcategories: ISubcategory[] = [];
   supplierId: number = 0;
+  statues: IStatus[] = [];
+  supplier: ISupplier | null = null;
 
   constructor(
     public dialog: Dialog,
     private categoriesService: CategoriesService,
     private supplierService: SuppliersService,
     private route: ActivatedRoute,
+    private statusSevice: StatusService
   ) { }
 
   ngOnInit(): void {
@@ -31,9 +36,23 @@ export class CategoriesComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
 
-      this.categoriesService.getSubcategoryByCategoryId(1)
+      //SE CABLEA CON ID 1 POR LOS MOMENTOS
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response;
+
+          //SE CONSUMEN LAS CATEGORIAS
+          this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
         .subscribe((response: ISubcategory[]) => {
           this.subcategories = response;
+        })
+        });
+
+
+
+      this.statusSevice.getStatues(1,50,0)
+        .subscribe((response: IStatus[]) => {
+          this.statues = response;
         })
 
    });

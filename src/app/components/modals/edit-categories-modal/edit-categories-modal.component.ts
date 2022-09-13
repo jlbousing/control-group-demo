@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DialogRef } from '@angular/cdk/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { ISubcategory } from 'src/app/interfaces/ISubcategory';
+import { IStatus} from 'src/app/interfaces/IStatus';
+
+interface IDialogData {
+  subcategory: ISubcategory,
+  statues: IStatus[]
+}
 
 @Component({
   selector: 'edit-categories-modal',
@@ -8,16 +15,14 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class EditCategoriesModalComponent implements OnInit {
 
-  @Input('showModal') showModal: boolean = false;
-  @Output() emiterModal = new EventEmitter<boolean>();
 
-  constructor(public dialogRef: DialogRef) { }
+  constructor(
+    @Inject(DIALOG_DATA) public data: IDialogData,
+    public dialogRef: DialogRef) { }
 
   ngOnInit(): void {
-  }
 
-  onCloseModal(){
-    this.emiterModal.emit(true);
+    console.log(this.data);
   }
 
 

@@ -70,4 +70,27 @@ export class SuppliersService {
       })
     );
   }
+
+  findSupplierById(id: number) {
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.suppliers.findById}`;
+    const params: string = `?id=${id}&getAsignaments=true`;
+
+    return this.http.get<ISupplier>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
 }
