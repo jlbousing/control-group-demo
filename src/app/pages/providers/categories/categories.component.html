@@ -6,8 +6,10 @@
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <categories-table class="w-full"
+                        *ngIf="supplier"
                         [subcategories]="subcategories"
-                        [statues]="statues"></categories-table>
+                        [statues]="statues"
+                        [supplierId]="supplier!.id"></categories-table>
     </div>
   </div>
 </div>

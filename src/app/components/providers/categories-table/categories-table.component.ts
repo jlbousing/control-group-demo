@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { IStatus } from 'src/app/interfaces/IStatus';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { Dialog } from '@angular/cdk/dialog';
 import { EditCategoriesModalComponent } from '../../modals/edit-categories-modal/edit-categories-modal.component';
 
@@ -14,6 +15,7 @@ export class CategoriesTableComponent implements OnInit {
 
   @Input("subcategories") subcategories: ISubcategory[] = [];
   @Input("statues") statues: IStatus[] = [];
+  @Input("supplierId") supplierId: number = 0;
 
   constructor(
     private dialog: Dialog
@@ -27,7 +29,8 @@ export class CategoriesTableComponent implements OnInit {
     this.dialog.open(EditCategoriesModalComponent,{
       data: {
         subcategory: subcategory,
-        statues: this.statues
+        statues: this.statues,
+        supplierId: this.supplierId
       }
     })
   }

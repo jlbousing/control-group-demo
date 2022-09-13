@@ -8,6 +8,7 @@ import { ICategory } from 'src/app/interfaces/ICategory';
 import { ICategoyRequest } from 'src/app/interfaces/ICategoryRequest';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { ISubcategoryRequest } from 'src/app/interfaces/ISubcategoryRequest';
+import { ISubcategoryPatch } from 'src/app/interfaces/ISubcategoryPatch';
 import { handleError } from 'src/app/utils/handleError';
 
 @Injectable({
@@ -68,5 +69,33 @@ export class CategoriesService {
       })
     );
 
+  }
+
+  patchSubcategory(payload: ISubcategoryPatch, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.categories.subcategories.changes}${id}`;
+
+    return this.http.patch<ISubcategoryPatch>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
+        }
+      })
+    )
   }
 }

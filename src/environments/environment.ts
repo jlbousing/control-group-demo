@@ -36,7 +36,8 @@ export const environment = {
     categories: {
       list: '/api/categories/',
       subcategories: {
-        list: '/api/categories/subcategories'
+        list: '/api/categories/subcategories',
+        changes: '/api/categories/subcategory/changes/'
       }
     },
     suppliers: {
