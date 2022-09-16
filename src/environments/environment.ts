@@ -40,6 +40,11 @@ export const environment = {
         changes: '/api/categories/subcategory/changes/'
       }
     },
+    recipes: {
+      list: '/api/clap/recipes',
+      create: '/api/clap/recipes/create',
+      find: '/api/clap/recipes/find'
+    },
     suppliers: {
       list: '/api/suppliers/',
       create: '/api/suppliers/create',
