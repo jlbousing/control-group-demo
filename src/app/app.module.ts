@@ -79,6 +79,7 @@ import { EditUsersModalComponent } from './components/modals/edit-users-modal/ed
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 import { SubcategorySelectComponent } from './components/subcategory-select/subcategory-select.component';
 import { ViewAssignmentsModalComponent } from './components/modals/view-assignments-modal/view-assignments-modal.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { ViewAssignmentsModalComponent } from './components/modals/view-assignme
     CreateAssignmentsComponent,
     SubcategorySelectComponent,
     ViewAssignmentsModalComponent,
+    SearchInputComponent,
   ],
   imports: [
     BrowserModule,
