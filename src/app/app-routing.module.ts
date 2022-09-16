@@ -23,6 +23,7 @@ import { RolsComponent } from './pages/app-setting/rols/rols.component';
 import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
+import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
 
 const routes: Routes = [
   {
@@ -94,6 +95,11 @@ const routes: Routes = [
         path: "create-assigment",
         title: "Nueva asignacion",
         component: CreateAssignmentsComponent
+      },
+      {
+        path: "create-recipe",
+        title: "Nueva Receta",
+        component: CreateRecipeComponent
       }
     ]
   },

@@ -25,7 +25,9 @@
           </div>
         </div>
       </div>
-      <custom-button class="mx-12" text="Nueva Instrucción" (click)="showCreateModal()"></custom-button>
+      <a [routerLink]="'/providers/create-recipe'">
+        <custom-button class="mx-12" text="Nueva Instrucción"></custom-button>
+      </a>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <instructions-table class="w-full"
