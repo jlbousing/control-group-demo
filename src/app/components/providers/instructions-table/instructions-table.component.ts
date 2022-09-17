@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges ,Input, SimpleChanges } from '@angular/core';
 import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
+import { IAssignament } from 'src/app/interfaces/IAssignament';
 
 @Component({
   selector: 'instructions-table',
@@ -9,7 +10,7 @@ import { IRecipe } from 'src/app/interfaces/IRecipe';
 })
 export class InstructionsTableComponent implements OnInit, OnChanges {
 
-  @Input("assignamentId") assignamentId: number = 0;
+  @Input("assignament") assignament: IAssignament | null = null;
 
   recipes: IRecipe[] = [];
 
@@ -22,10 +23,13 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if(changes["assignamentId"].currentValue && changes["assignamentId"].currentValue > 0){
+    console.log("cambio asignacion ",changes['assignament']);
 
-      console.log("probando id assigment ",changes["assignamentId"]);
-      let id = parseInt(changes["assignamentId"].currentValue);
+    if(changes["assignament"].currentValue){
+
+      console.log("probando id assigment ",changes["assignament"]);
+      this.assignament = <IAssignament> changes["assignament"].currentValue;
+      let id = parseInt(changes["assignament"].currentValue.id);
       this.recipesService.getRecipes(50,0,id).subscribe((response: IRecipe[]) => {
         this.recipes = response;
         console.log("mostrando recipes ",this.recipes)

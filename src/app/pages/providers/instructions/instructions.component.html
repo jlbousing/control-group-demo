@@ -17,8 +17,9 @@
                      leading-tight focus:outline-none
                      focus:shadow-outline"
                      id="assignament"
-                     [(ngModel)]="assignamentId">
-                     <option *ngFor="let assignament of assignaments" [value]="assignament.id">
+                     [(ngModel)]="assignament"
+                     (ngModelChange)="setAssignament($event)">
+                     <option *ngFor="let assignament of assignaments" [ngValue]="assignament">
                         {{assignament.name}}
                      </option>
              </select>
@@ -31,7 +32,7 @@
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <instructions-table class="w-full"
-                          [assignamentId]="assignamentId"></instructions-table>
+                          [assignament]="assignament"></instructions-table>
     </div>
   </div>
 </div>
