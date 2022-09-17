@@ -40,6 +40,13 @@ export const environment = {
         changes: '/api/categories/subcategory/changes/'
       }
     },
+    instructions: {
+      create_group: '/api/instructions/create/group'
+    },
+    items: {
+      list: '/api/clap/items',
+      create: '/api/clap/items/create'
+    },
     recipes: {
       list: '/api/clap/recipes',
       create: '/api/clap/recipes/create',

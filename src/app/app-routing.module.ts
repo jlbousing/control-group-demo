@@ -97,7 +97,7 @@ const routes: Routes = [
         component: CreateAssignmentsComponent
       },
       {
-        path: "create-recipe",
+        path: "create-recipe/:supplierId",
         title: "Nueva Receta",
         component: CreateRecipeComponent
       }

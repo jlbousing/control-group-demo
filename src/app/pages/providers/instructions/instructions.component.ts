@@ -19,6 +19,7 @@ export class InstructionsComponent implements OnInit {
   recipes: IRecipe[] = [];
   assignaments: IAssignament[] = [];
   assignamentId: number = 0;
+  assignament: IAssignament | null = null;
 
   constructor(
     private dialog: Dialog,
@@ -40,6 +41,12 @@ export class InstructionsComponent implements OnInit {
         })
    });
 
+  }
+
+  setAssignament(value: any) {
+    let assignament = <IAssignament> value;
+    this.assignament = assignament;
+    console.log("probando asignacion ",value)
   }
 
   showCreateModal() {
