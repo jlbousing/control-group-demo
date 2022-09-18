@@ -24,6 +24,7 @@ import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.co
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
+import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
 
 const routes: Routes = [
   {
@@ -100,6 +101,11 @@ const routes: Routes = [
         path: "create-recipe/:supplierId",
         title: "Nueva Receta",
         component: CreateRecipeComponent
+      },
+      {
+        path: "create-production/:supplierId",
+        title: "Nueva Produccion",
+        component: CreateProductionComponent
       }
     ]
   },

@@ -81,6 +81,7 @@ import { SubcategorySelectComponent } from './components/subcategory-select/subc
 import { ViewAssignmentsModalComponent } from './components/modals/view-assignments-modal/view-assignments-modal.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
+import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
 
 @NgModule({
   declarations: [
@@ -147,6 +148,7 @@ import { CreateRecipeComponent } from './pages/providers/create-recipe/create-re
     ViewAssignmentsModalComponent,
     SearchInputComponent,
     CreateRecipeComponent,
+    CreateProductionComponent,
   ],
   imports: [
     BrowserModule,

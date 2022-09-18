@@ -1,0 +1,146 @@
+<separator-title title="Crear Asignación"></separator-title>
+
+<div class="w-full lg:w-4/5 bg-white rounded-lg">
+  <div  class="flex flex-col p-8">
+
+    <form [formGroup]="form">
+      <div class="w-full flex flex-row justify-start">
+        <h3>Seleccione la instrucción a producir:</h3>
+      </div>
+      <div class="w-full flex flex-row justify-start">
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
+            Asignación
+          </label>
+          <select
+            class="shadow appearance-none border
+                   rounded w-full py-2 px-3 text-gray-700
+                   leading-tight focus:outline-none
+                   focus:shadow-outline"
+            id="assignament"
+            formControlName="assignament"
+            (ngModelChange)="setAssignament($event)"
+            >
+            <option *ngFor="let assignament of assignaments" [ngValue]="assignament">
+                {{ assignament.name}}
+            </option>
+
+          </select>
+        </div>
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
+            Receta
+          </label>
+          <select
+            class="shadow appearance-none border
+                   rounded w-full py-2 px-3 text-gray-700
+                   leading-tight focus:outline-none
+                   focus:shadow-outline"
+            id="assignament"
+            formControlName="recipe"
+            (ngModelChange)="setRecipe($event)"
+            >
+            <option *ngFor="let recipe of recipes" [ngValue]="recipe">
+                {{ recipe.name }}
+            </option>
+
+          </select>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-row justify-start">
+        <h3>Indique los datos de la Producción</h3>
+      </div>
+      <div class="w-full flex flex-row justify-start">
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            Nombre
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="text"
+                 placeholder="Nombre"
+                 formControlName="name"
+           />
+        </div>
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
+            Cantidad producida:
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="number"
+                 placeholder="1"
+                 formControlName="quantity"
+           />
+        </div>
+      </div>
+
+      <div class="w-full flex flex-row justify-start">
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+            Estatus
+          </label>
+          <select
+            class="shadow appearance-none border
+                   rounded w-full py-2 px-3 text-gray-700
+                   leading-tight focus:outline-none
+                   focus:shadow-outline"
+            id="assignament"
+            formControlName="status"
+            >
+            <option *ngFor="let status of statues" [value]="status.id">
+                {{ status.status}}
+            </option>
+
+          </select>
+        </div>
+
+      </div>
+
+      <div class="w-full flex flex-row justify-start">
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+            Observaciones
+          </label>
+          <textarea class="shadow appearance-none border
+                           rounded w-full py-2 px-3 text-gray-700
+                           leading-tight focus:outline-none
+                           focus:shadow-outline"
+                           formControlName="comments">
+          </textarea>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-row justify-end mt-8">
+
+        <div class="w-1/2 mx-4 lg:w-[10%]">
+          <button data-modal-toggle="defaultModal"
+          type="button"
+          class="text-white
+                 hover:bg-green-800
+                   focus:ring-4
+                   focus:outline-none
+                 focus:ring-blue-300
+                   font-medium rounded-lg
+                   text-sm px-5 py-2.5 text-center"
+          [ngClass]="{'bg-green-700': form.valid, 'bg-green-300': form.invalid}"
+          [disabled]="form.invalid"
+          (click)="onSubmit()">
+                 Agregar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

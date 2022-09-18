@@ -50,7 +50,7 @@ export const environment = {
     },
     productions: {
       list: '/api/clap/production/',
-      create: 'api/clap/production/create'
+      create: '/api/clap/production/create'
     },
     recipes: {
       list: '/api/clap/recipes',

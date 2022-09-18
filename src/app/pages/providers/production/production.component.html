@@ -44,7 +44,9 @@
         </div>
       </div>
       </div>
-      <custom-button class="mx-12" text="Nueva Producción"></custom-button>
+      <a [routerLink]="'/providers/create-production/'+supplierId">
+        <custom-button class="mx-12" text="Nueva Producción"></custom-button>
+      </a>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <production-table class="w-full"
