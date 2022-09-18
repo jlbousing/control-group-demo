@@ -27,6 +27,7 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
 
     if(changes["assignament"].currentValue){
 
+      this.recipes = [];
       console.log("probando id assigment ",changes["assignament"]);
       this.assignament = <IAssignament> changes["assignament"].currentValue;
       let id = parseInt(changes["assignament"].currentValue.id);
