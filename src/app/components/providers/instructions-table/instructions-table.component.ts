@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges ,Input, SimpleChanges } from '@angular/cor
 import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { Dialog } from '@angular/cdk/dialog';
+import { EditInstructionsModalComponent } from '../../modals/edit-instructions-modal/edit-instructions-modal.component';
 
 @Component({
   selector: 'instructions-table',
@@ -15,7 +17,8 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
   recipes: IRecipe[] = [];
 
   constructor(
-    private recipesService: RecipesService
+    private recipesService: RecipesService,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
@@ -38,8 +41,12 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
     }
   }
 
-  selectEdit(){
-    let category = {};
+  selectEdit(instruction: IRecipe){
+    this.dialog.open(EditInstructionsModalComponent,{
+      data: {
+        instruction: instruction
+      }
+    });
   }
 
 }
