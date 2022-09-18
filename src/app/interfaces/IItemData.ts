@@ -1,4 +1,6 @@
 export interface IItemData {
-  itemId: number;
-  quantity: number;
+  itemData: {
+    itemId: number;
+    quantity: number;
+  }
 }

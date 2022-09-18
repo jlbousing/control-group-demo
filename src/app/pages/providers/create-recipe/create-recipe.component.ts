@@ -10,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IProductRecipe } from 'src/app/interfaces/IProductRecipe';
 import { IInstructionRequest } from 'src/app/interfaces/IInstuctionRequest';
 import { InstructionService } from 'src/app/services/instructions/instruction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-recipe',
@@ -22,9 +23,7 @@ export class CreateRecipeComponent implements OnInit {
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required),
     assignament: new FormControl<IAssignament | null>(null,Validators.required),
-    itemId: new FormControl<number>(0,Validators.required),
-    qtx: new FormControl<number>(0,Validators.required),
-    unit: new FormControl<string>('',Validators.required),
+    item: new FormControl<IItem | null>(null,Validators.required),
     qtx2: new FormControl<number>(0,Validators.required)
   });
 
@@ -43,7 +42,8 @@ export class CreateRecipeComponent implements OnInit {
     private assignamentService: AssignamentService,
     private categoriesService: CategoriesService,
     private itemsService: ItemsService,
-    private instructionsService: InstructionService
+    private instructionsService: InstructionService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -76,10 +76,11 @@ export class CreateRecipeComponent implements OnInit {
 
   setItem(value: any) {
     if(value) {
-      this.form.value.itemId = value.id;
+      this.form.value.item = <IItem>value.id;
       this.currentItem = value;
-      console.log("itemId ",this.form.value.itemId);
+
       console.log("currentItem ",this.currentItem);
+      console.log("form ",this.form.value)
     }
    }
 
@@ -90,22 +91,28 @@ export class CreateRecipeComponent implements OnInit {
 
   storeItem(){
 
+
     if(this.form.value.name
-      && this.form.value.itemId
-      && this.form.value.qtx
-      && this.form.value.unit) {
+      && this.form.value.item
+      && this.form.value.qtx2) {
+
 
         let newProduct: IProductRecipe = {
           name: this.currentItem.name,
-          unit: this.form.value.unit,
-          qtx: this.form.value.qtx
+          unit: this.currentItem.unit,
+          qtx: this.currentItem.quantity
         };
 
         this.products.push(newProduct);
 
-        this.form.value.unit = '';
+        this.itemData.push({
+          itemData: {
+            itemId: this.form.value.item.id,
+            quantity: this.form.value.qtx2
+          }
+        });
+
         this.form.value.qtx2 = 0;
-        this.form.value.qtx = 0;
         //this.form.reset();
       }
 
@@ -114,6 +121,7 @@ export class CreateRecipeComponent implements OnInit {
   deleteItem(item: IProductRecipe) {
     let index = this.products.indexOf(item);
     this.products.splice(index,1);
+    this.itemData.splice(index,1);
   }
 
   onSubmit() {
@@ -127,11 +135,16 @@ export class CreateRecipeComponent implements OnInit {
           name: this.form.value.name,
           asignamentId: this.form.value.assignament!.id,
           description: this.form.value.description,
-          itemGroup: this.products
+          itemGroup: this.itemData
         };
 
         console.log(payload);
-        //this.instructionsService.createInstruction(payload)
+        this.instructionsService.createInstruction(payload)
+          .subscribe((response: any) => {
+            console.log(response);
+            alert(response.message.label);
+            this.router.navigateByUrl(`/providers/instructions/${this.supplierId}`)
+          })
 
       }
   }

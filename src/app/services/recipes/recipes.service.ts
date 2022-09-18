@@ -6,6 +6,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IRecipeRequest } from 'src/app/interfaces/IRecipeRequest';
+import { IRecipePatch } from 'src/app/interfaces/IRecipePatch';
 import { handleError } from 'src/app/utils/handleError';
 
 @Injectable({
@@ -87,6 +88,34 @@ export class RecipesService {
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
+        }
+      })
+    );
+  }
+
+  patchRecipe(payload: IRecipePatch, id: number) {
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.instructions}${id}`;
+
+    return this.http.patch<IRecipePatch>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
         }
       })
     );

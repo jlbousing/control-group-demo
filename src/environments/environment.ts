@@ -41,7 +41,8 @@ export const environment = {
       }
     },
     instructions: {
-      create_group: '/api/instructions/create/group'
+      create_group: '/api/instructions/create/group',
+      change: "/api/instructions/changes/",
     },
     items: {
       list: '/api/clap/items',

@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { IStatus } from 'src/app/interfaces/IStatus';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
 
 interface IDialogData {
-  instruction: IRecipe
+  instruction: IRecipe;
+  statues: IStatus[];
 }
 
 @Component({

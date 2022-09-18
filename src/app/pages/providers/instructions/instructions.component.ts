@@ -5,7 +5,9 @@ import { EditInstructionsModalComponent } from 'src/app/components/modals/edit-i
 import { ActivatedRoute } from '@angular/router';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 import { RecipesService } from 'src/app/services/recipes/recipes.service';
+import { StatusService } from 'src/app/services/status/status.service';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
+import { IStatus } from 'src/app/interfaces/IStatus';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 
 @Component({
@@ -20,16 +22,23 @@ export class InstructionsComponent implements OnInit {
   assignaments: IAssignament[] = [];
   assignamentId: number = 0;
   assignament: IAssignament | null = null;
+  statues: IStatus[] = [];
 
   constructor(
     private dialog: Dialog,
     private assignamentService: AssignamentService,
     private recipesService: RecipesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private statusService: StatusService
   ) { }
 
 
   ngOnInit(): void {
+
+    this.statusService.getStatues(1,50,0)
+      .subscribe((response: IStatus[]) => {
+        this.statues = response;
+      });
 
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];

@@ -34,20 +34,10 @@
                         <span>ID: {{ data.instruction.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span class="text-red-700">Estatus: Estatus </span>
+                      <span class="text-red-700">Estatus: {{ data.instruction.statusData.status }} </span>
                     </div>
                   </div>
                   <div class="w-full flex-col justify-center items-center">
-                    <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                        Nombre
-                      </label>
-                      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
-                         type="text"
-                         placeholder="Usuario"
-                         formControlName="name"
-                         >
-                    </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
                         Modificar Estatus
@@ -61,7 +51,9 @@
                                type="text"
                                placeholder="Usuario"
                                formControlName="statusId">
-                               <option>1</option>
+                               <option *ngFor="let status of data.statues" [value]="status.id">
+                                  {{ status.status }}
+                               </option>
                        </select>
                     </div>
 

@@ -17,6 +17,7 @@ export class InstructionService {
   ) { }
 
   createInstruction(payload: IInstructionRequest) {
+    console.log("entrando en function")
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.instructions.create_group}`;
 
     return this.http.post<IInstructionRequest>(
