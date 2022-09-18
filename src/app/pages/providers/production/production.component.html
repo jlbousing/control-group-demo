@@ -10,28 +10,47 @@
         </div>
         <div class="w-full">
           <div class="my-4 w-full">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="rol">
-
-            </label>
             <select
               class="shadow appearance-none border
                      rounded w-full py-2 px-3 text-gray-700
                      leading-tight focus:outline-none
                      focus:shadow-outline"
-                     id="rol"
-                     type="text"
-                     placeholder="Usuario">
-                     <option>Marzo</option>
-                     <option>item 2</option>
-                     <option>item 3</option>
+                     id="assignament"
+                     [(ngModel)]="assignament"
+                     (ngModelChange)="setAssignament($event)">
+                     <option *ngFor="let assignament of assignaments" [ngValue]="assignament">
+                        {{assignament.name}}
+                     </option>
              </select>
           </div>
         </div>
+        <div class="w-full text-center lg:mx-2">
+          <h6>Receta:</h6>
       </div>
-      <custom-button class="mx-12" text="Nueva Producción" (click)="showCreateModal()"></custom-button>
+      <div class="w-full">
+        <div class="my-4 w-full">
+          <select
+            class="shadow appearance-none border
+                   rounded w-full py-2 px-3 text-gray-700
+                   leading-tight focus:outline-none
+                   focus:shadow-outline"
+                   id="assignament"
+                   [(ngModel)]="recipe"
+                   (ngModelChange)="setRecipe($event)">
+                   <option *ngFor="let recipe of recipes" [ngValue]="recipe">
+                      {{ recipe.name }}
+                   </option>
+           </select>
+        </div>
+      </div>
+      </div>
+      <custom-button class="mx-12" text="Nueva Producción"></custom-button>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
-      <production-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></production-table>
+      <production-table class="w-full"
+                        [productions]="productions"
+                        [recipe]="recipe"
+                        [assignament]="assignament"></production-table>
     </div>
   </div>
 </div>

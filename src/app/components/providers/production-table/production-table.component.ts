@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, INJECTOR } from '@angular/core';
+import { IProduction } from 'src/app/interfaces/IProduction';
+import { IRecipe } from 'src/app/interfaces/IRecipe';
+import { IAssignament } from 'src/app/interfaces/IAssignament';
 
 @Component({
   selector: 'production-table',
@@ -7,7 +10,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ProductionTableComponent implements OnInit {
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
+  @Input("productions") productions: IProduction[] = [];
+  @Input("recipe") recipe: IRecipe | null = null;
+  @Input("assignament") assignament: IAssignament | null = null;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -15,7 +21,6 @@ export class ProductionTableComponent implements OnInit {
 
   selectEdit(){
     let category = {};
-    this.emiterCategoriesTable.emit(category);
   }
 
 }

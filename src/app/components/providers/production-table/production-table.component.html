@@ -24,21 +24,22 @@
           </tr>
       </thead>
       <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black"
+              *ngFor="let production of productions">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                1
+                {{ production.id }}
               </th>
               <td class="px-6 py-4">
-                Receta 1
+                {{ production.name }}
               </td>
               <td class="px-6 py-4">
-                Receta 1
+                {{ recipe?.name }}
               </td>
               <td class="px-6 py-4">
-                Marzo
+                {{ assignament?.name }}
               </td>
               <td class="px-6 py-4">
-                Por Despachar
+                {{ production.statusData.status }}
               </td>
               <td class="px-6 py-4 text-right">
                 <div class="flex flex-row justify-start">

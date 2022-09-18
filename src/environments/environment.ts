@@ -48,6 +48,10 @@ export const environment = {
       list: '/api/clap/items',
       create: '/api/clap/items/create'
     },
+    productions: {
+      list: '/api/clap/production/',
+      create: 'api/clap/production/create'
+    },
     recipes: {
       list: '/api/clap/recipes',
       create: '/api/clap/recipes/create',
