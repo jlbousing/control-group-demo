@@ -25,6 +25,7 @@ import { ProviderPageComponent } from './providers/provider-page/provider-page.c
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
 import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
+import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,11 @@ const routes: Routes = [
         path: "create-production/:supplierId",
         title: "Nueva Produccion",
         component: CreateProductionComponent
+      },
+      {
+        path: "create-dispatch/:supplierId/production/:production",
+        title: "Nuevo Despacho",
+        component: CreateDispatchComponent
       }
     ]
   },

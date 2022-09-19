@@ -16,6 +16,10 @@ export const environment = {
       create: '/api/asignaments/create',
       changes: '/api/asignaments/changes/'
     },
+    dispatch: {
+      list: '/api/clap/dispatch/',
+      create: '/api/clap/dispatch/create'
+    },
     status: {
       status_type_list: '',
       list: '/api/status/'

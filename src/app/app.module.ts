@@ -82,6 +82,7 @@ import { ViewAssignmentsModalComponent } from './components/modals/view-assignme
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
 import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
+import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +150,7 @@ import { CreateProductionComponent } from './pages/providers/create-production/c
     SearchInputComponent,
     CreateRecipeComponent,
     CreateProductionComponent,
+    CreateDispatchComponent,
   ],
   imports: [
     BrowserModule,
