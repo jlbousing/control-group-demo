@@ -109,7 +109,7 @@ const routes: Routes = [
         component: CreateProductionComponent
       },
       {
-        path: "create-dispatch/:supplierId/production/:production",
+        path: "create-dispatch/:supplierId/production/:productionId",
         title: "Nuevo Despacho",
         component: CreateDispatchComponent
       }

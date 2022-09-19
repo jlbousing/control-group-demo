@@ -1,6 +1,6 @@
 export interface IDispatchRequest {
-  guideNumber: number;
-  noteNumber: number;
+  guideNumber: string;
+  noteNumber: string;
   productionId: number;
   destination: string;
   dispatchQuantity: number;
