@@ -9,4 +9,5 @@ export interface IProduction {
   comments: string;
   conciliationsData: IConcilation[];
   statusData: IStatus;
+  createdDate: string;
 }
