@@ -55,7 +55,8 @@ export const environment = {
     productions: {
       list: '/api/clap/production/',
       create: '/api/clap/production/create',
-      find: '/api/clap/production/find'
+      find: '/api/clap/production/find',
+      revert: '/api/clap/production/revert/'
     },
     recipes: {
       list: '/api/clap/recipes',

@@ -83,6 +83,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
 import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
 import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
+import { RemakeProductionModalComponent } from './components/modals/remake-production-modal/remake-production-modal.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +152,7 @@ import { CreateDispatchComponent } from './pages/providers/create-dispatch/creat
     CreateRecipeComponent,
     CreateProductionComponent,
     CreateDispatchComponent,
+    RemakeProductionModalComponent,
   ],
   imports: [
     BrowserModule,
