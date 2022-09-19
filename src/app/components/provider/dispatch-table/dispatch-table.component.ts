@@ -4,6 +4,7 @@ import { IProduction } from 'src/app/interfaces/IProduction';
 import { Dialog } from '@angular/cdk/dialog';
 import { EditDispatchModalComponent } from '../../modals/edit-dispatch-modal/edit-dispatch-modal.component';
 import { ReturnDispatchModalComponent } from '../../modals/return-dispatch-modal/return-dispatch-modal.component';
+import { ViewDispatchModalComponent } from '../../modals/view-dispatch-modal/view-dispatch-modal.component';
 
 @Component({
   selector: 'dispatch-table',
@@ -34,6 +35,15 @@ export class DispatchTableComponent implements OnInit {
   returnDispatch(dispatch: IDispatch){
 
     this.dialog.open(ReturnDispatchModalComponent,{
+      data: {
+        dispatch: dispatch
+      }
+    });
+  }
+
+  viewDispatch(dispatch: IDispatch){
+
+    this.dialog.open(ViewDispatchModalComponent,{
       data: {
         dispatch: dispatch
       }

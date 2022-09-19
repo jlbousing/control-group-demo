@@ -21,7 +21,7 @@ export class DispachtService {
   getDispatchsByProductionId(limit: number, offset: number, productionId: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.dispatch.list}`;
-    const params: string = `?offset=${offset}&limit=${limit}&productionId=${productionId}&getProductions=true&getUser=false&getStatus=true`;
+    const params: string = `?offset=${offset}&limit=${limit}&productionId=${productionId}&getProductions=true&getUser=true&getStatus=true`;
 
     return this.http.get<IDispatch[]>(
       url + params,

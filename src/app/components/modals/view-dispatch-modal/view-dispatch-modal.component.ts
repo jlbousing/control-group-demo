@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+
+interface IDialogData {
+  dispatch: IDispatch
+}
 
 @Component({
   selector: 'app-view-dispatch-modal',
@@ -7,9 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewDispatchModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(DIALOG_DATA) public data: IDialogData,
+    public dialogRef: DialogRef
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onCloseModal(){
+    this.dialogRef.close();
   }
 
 }
