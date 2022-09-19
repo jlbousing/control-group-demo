@@ -84,6 +84,7 @@ import { CreateRecipeComponent } from './pages/providers/create-recipe/create-re
 import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
 import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 import { RemakeProductionModalComponent } from './components/modals/remake-production-modal/remake-production-modal.component';
+import { ReturnDispatchModalComponent } from './components/modals/return-dispatch-modal/return-dispatch-modal.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +154,7 @@ import { RemakeProductionModalComponent } from './components/modals/remake-produ
     CreateProductionComponent,
     CreateDispatchComponent,
     RemakeProductionModalComponent,
+    ReturnDispatchModalComponent,
   ],
   imports: [
     BrowserModule,
