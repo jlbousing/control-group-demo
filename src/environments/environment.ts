@@ -18,7 +18,9 @@ export const environment = {
     },
     dispatch: {
       list: '/api/clap/dispatch/',
-      create: '/api/clap/dispatch/create'
+      create: '/api/clap/dispatch/create',
+      revert: '/api/clap/dispatch/revert/',
+      changes: '/api/clap/dispatch/changes/'
     },
     status: {
       status_type_list: '',

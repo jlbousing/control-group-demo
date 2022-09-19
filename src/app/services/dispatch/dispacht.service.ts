@@ -6,6 +6,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
 import { IDispatchRequest } from 'src/app/interfaces/IDispatchRequest';
+import { IDispatchPatch } from 'src/app/interfaces/IDispatchPatch';
 import { handleError } from 'src/app/utils/handleError';
 
 @Injectable({
@@ -64,6 +65,30 @@ export class DispachtService {
 
         if(response.status === 400){
           return response;
+        }
+      })
+    );
+  }
+
+  changeStatus(payload: IDispatchPatch, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.dispatch.changes}`;
+
+    return this.http.patch<IDispatchPatch>(
+      url + id,
+      payload,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
         }
       })
     );
