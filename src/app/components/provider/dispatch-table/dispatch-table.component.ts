@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { IProduction } from 'src/app/interfaces/IProduction';
+import { Dialog } from '@angular/cdk/dialog';
+import { EditDispatchModalComponent } from '../../modals/edit-dispatch-modal/edit-dispatch-modal.component';
+import { ReturnDispatchModalComponent } from '../../modals/return-dispatch-modal/return-dispatch-modal.component';
+import { ViewDispatchModalComponent } from '../../modals/view-dispatch-modal/view-dispatch-modal.component';
 
 @Component({
   selector: 'dispatch-table',
@@ -7,15 +13,41 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class DispatchTableComponent implements OnInit {
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
-  constructor() { }
+  @Input("dispatchs") dispatchs: IDispatch[] = [];
+  @Input("production") production: IProduction | null = null;
+
+  constructor(
+    private dialog: Dialog
+  ) { }
 
   ngOnInit(): void {
   }
 
-  selectEdit(){
-    let category = {};
-    this.emiterCategoriesTable.emit(category);
+  selectEdit(dispatch: IDispatch){
+
+    this.dialog.open(EditDispatchModalComponent,{
+      data: {
+        dispatch: dispatch
+      }
+    });
+  }
+
+  returnDispatch(dispatch: IDispatch){
+
+    this.dialog.open(ReturnDispatchModalComponent,{
+      data: {
+        dispatch: dispatch
+      }
+    });
+  }
+
+  viewDispatch(dispatch: IDispatch){
+
+    this.dialog.open(ViewDispatchModalComponent,{
+      data: {
+        dispatch: dispatch
+      }
+    });
   }
 
 }

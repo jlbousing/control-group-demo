@@ -16,6 +16,12 @@ export const environment = {
       create: '/api/asignaments/create',
       changes: '/api/asignaments/changes/'
     },
+    dispatch: {
+      list: '/api/clap/dispatch/',
+      create: '/api/clap/dispatch/create',
+      revert: '/api/clap/dispatch/revert/',
+      changes: '/api/clap/dispatch/changes/'
+    },
     status: {
       status_type_list: '',
       list: '/api/status/'
@@ -39,6 +45,25 @@ export const environment = {
         list: '/api/categories/subcategories',
         changes: '/api/categories/subcategory/changes/'
       }
+    },
+    instructions: {
+      create_group: '/api/instructions/create/group',
+      change: "/api/instructions/changes/",
+    },
+    items: {
+      list: '/api/clap/items',
+      create: '/api/clap/items/create'
+    },
+    productions: {
+      list: '/api/clap/production/',
+      create: '/api/clap/production/create',
+      find: '/api/clap/production/find',
+      revert: '/api/clap/production/revert/'
+    },
+    recipes: {
+      list: '/api/clap/recipes',
+      create: '/api/clap/recipes/create',
+      find: '/api/clap/recipes/find'
     },
     suppliers: {
       list: '/api/suppliers/',

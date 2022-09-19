@@ -79,6 +79,12 @@ import { EditUsersModalComponent } from './components/modals/edit-users-modal/ed
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
 import { SubcategorySelectComponent } from './components/subcategory-select/subcategory-select.component';
 import { ViewAssignmentsModalComponent } from './components/modals/view-assignments-modal/view-assignments-modal.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
+import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
+import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
+import { RemakeProductionModalComponent } from './components/modals/remake-production-modal/remake-production-modal.component';
+import { ReturnDispatchModalComponent } from './components/modals/return-dispatch-modal/return-dispatch-modal.component';
 
 @NgModule({
   declarations: [
@@ -143,6 +149,12 @@ import { ViewAssignmentsModalComponent } from './components/modals/view-assignme
     CreateAssignmentsComponent,
     SubcategorySelectComponent,
     ViewAssignmentsModalComponent,
+    SearchInputComponent,
+    CreateRecipeComponent,
+    CreateProductionComponent,
+    CreateDispatchComponent,
+    RemakeProductionModalComponent,
+    ReturnDispatchModalComponent,
   ],
   imports: [
     BrowserModule,

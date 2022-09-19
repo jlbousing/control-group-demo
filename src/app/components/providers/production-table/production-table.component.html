@@ -24,26 +24,30 @@
           </tr>
       </thead>
       <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black"
+              *ngFor="let production of productions">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                1
+                {{ production.id }}
               </th>
               <td class="px-6 py-4">
-                Receta 1
+                {{ production.name }}
               </td>
               <td class="px-6 py-4">
-                Receta 1
+                {{ recipe?.name }}
               </td>
               <td class="px-6 py-4">
-                Marzo
+                {{ assignament?.name }}
               </td>
               <td class="px-6 py-4">
-                Por Despachar
+                {{ production.statusData.status }}
               </td>
               <td class="px-6 py-4 text-right">
                 <div class="flex flex-row justify-start">
-                    <button (click)="selectEdit()"><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
-                    <button><i class="bi bi-truck text-2xl mx-2 text-blue-700"></i></button>
+                    <button (click)="selectView(production)"><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
+                    <a [routerLink]="'/providers/create-dispatch/'+supplierId+'/production/'+production.id">
+                      <button><i class="bi bi-truck text-2xl mx-2 text-blue-700"></i></button>
+                    </a>
+                    <button (click)="selectRemake(production)"><i class="bi bi-trash text-2xl mx-2 text-blue-700"></i></button>
                 </div>
               </td>
           </tr>

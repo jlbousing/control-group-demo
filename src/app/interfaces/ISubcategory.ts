@@ -4,4 +4,5 @@ export interface ISubcategory {
   name: string;
   description: string;
   status: boolean;
+  items: any[]
 }

@@ -23,6 +23,9 @@ import { RolsComponent } from './pages/app-setting/rols/rols.component';
 import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
 import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
+import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
+import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
+import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 
 const routes: Routes = [
   {
@@ -94,6 +97,21 @@ const routes: Routes = [
         path: "create-assigment",
         title: "Nueva asignacion",
         component: CreateAssignmentsComponent
+      },
+      {
+        path: "create-recipe/:supplierId",
+        title: "Nueva Receta",
+        component: CreateRecipeComponent
+      },
+      {
+        path: "create-production/:supplierId",
+        title: "Nueva Produccion",
+        component: CreateProductionComponent
+      },
+      {
+        path: "create-dispatch/:supplierId/production/:productionId",
+        title: "Nuevo Despacho",
+        component: CreateDispatchComponent
       }
     ]
   },

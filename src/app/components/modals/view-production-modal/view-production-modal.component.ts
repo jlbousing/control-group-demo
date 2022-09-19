@@ -1,5 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DialogRef } from '@angular/cdk/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { IProduction } from 'src/app/interfaces/IProduction';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+
+interface IDialogData {
+  production: IProduction
+}
 
 @Component({
   selector: 'view-production-modal',
@@ -8,16 +13,18 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class ViewProductionModalComponent implements OnInit {
 
-  @Input('showModal') showModal: boolean = false;
-  @Output() emiterModal = new EventEmitter<boolean>();
 
-  constructor(public dialogRef: DialogRef) { }
+  constructor(
+    @Inject(DIALOG_DATA) public data: IDialogData,
+    public dialogRef: DialogRef
+  ) { }
 
   ngOnInit(): void {
+    console.log("view production ",this.data);
   }
 
   onCloseModal(){
-    this.emiterModal.emit(true);
+    this.dialogRef.close();
   }
 
 }

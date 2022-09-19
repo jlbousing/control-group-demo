@@ -27,86 +27,44 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form>
-                  <h5>Datos</h5>
+                <div>
+                  <h5>Datos de Producción</h5>
                   <div class="flex justify-around">
-                      <div class="w-1/2">
-                          <span>ID 1</span>
-                      </div>
-                      <div class="w-1/2">
-                        <span class="text-green-700">Estatus: Activo</span>
+                    <div class="w-1/2">
+                        <span>ID: {{ data.dispatch.id }}</span>
+                    </div>
+                    <div class="w-1/2">
+                      <span>Estatus: {{ data.dispatch.statusData.status }}</span>
                     </div>
                   </div>
-                  <div class="flex justify-around">
-                    <div class="w-1/2">
-                        <span>Guia</span>
+
+                  <div class="flex justify-start">
+                    <div class="w-full">
+                        <div class="flex flex-col">
+                          <h3 class="font-bold">Procesar despacho</h3>
+                          {{ data.dispatch.comments }}
+                        </div>
                     </div>
-                    <div class="w-1/2">
-                      <span>9849848-45</span>
+                  </div>
+
+                  <div class="flex justify-end">
+
+                    <button class="text-white
+                                     bg-green-700
+                                   hover:bg-green-800
+                                     focus:ring-4
+                                     focus:outline-none
+                                   focus:ring-blue-300
+                                     font-medium rounded-lg
+                                     text-sm px-5 py-2.5 text-center"
+                            (click)="changeStatus(data.dispatch.id)">
+                                    Despachado</button>
                   </div>
                 </div>
-                  <div class="w-full flex-col justify-center items-center lg:flex-row lg:justify-between">
-                    <div class="my-4 w-full">
-                      <h6>Modificar:</h6>
-                    </div>
-                    <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
-                        Estatus
-                      </label>
-                      <select
-                        class="shadow appearance-none border
-                               rounded w-full py-2 px-3 text-gray-700
-                               leading-tight focus:outline-none
-                               focus:shadow-outline"
-                               id="status"
-                               type="text"
-                               placeholder="Usuario">
-                               <option>Activo</option>
-                               <option>Cancelado</option>
-                               <option>Estatus 3</option>
-                       </select>
-                    </div>
-                  </div>
-                </form>
             </div>
-            <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                <button data-modal-toggle="defaultModal"
-                        type="button"
-                        class="text-white
-                               bg-green-700
-                               hover:bg-green-800
-                                 focus:ring-4
-                                 focus:outline-none
-                               focus:ring-blue-300
-                                 font-medium rounded-lg
-                                 text-sm px-5 py-2.5 text-center">
-                               Guardar
-                  </button>
-                <button data-modal-toggle="defaultModal"
-                        type="button"
-                        class="text-gray-500
-                               bg-white
-                               hover:bg-gray-100
-                                 focus:ring-4
-                                 focus:outline-none
-                               focus:ring-blue-300
-                                 rounded-lg border
-                               border-gray-200 text-sm
-                                font-medium px-5 py-2.5
-                               hover:text-gray-900 focus:z-10
-                               dark:bg-gray-700
-                               dark:text-gray-300
-                                dark:border-gray-500
-                                dark:hover:text-white
-                                dark:hover:bg-gray-600
-                                dark:focus:ring-gray-600"
-                          (click)="dialogRef.close()">
-                                Cancelar
-                </button>
-            </div>
+
         </div>
     </div>
-</div>
+  </div>
 </div>
 
