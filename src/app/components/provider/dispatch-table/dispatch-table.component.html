@@ -24,21 +24,22 @@
           </tr>
       </thead>
       <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black"
+            *ngFor="let dispatch of dispatchs">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                8
+                {{ dispatch.id }}
               </th>
               <td class="px-6 py-4">
-                9849848-45
+                {{ dispatch.guideNumber}}
               </td>
               <td class="px-6 py-4">
-                Despachado
+                {{ dispatch.statusData.status }}
               </td>
               <td class="px-6 py-4">
-                Receta 1
+                {{ production?.name }}
               </td>
               <td class="px-6 py-4">
-                100,00
+                {{ dispatch.dispatchQuantity }}
               </td>
               <td class="px-6 py-4 text-right">
                 <div class="flex flex-row justify-start">
@@ -47,29 +48,6 @@
                 </div>
               </td>
           </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-              9
-            </th>
-            <td class="px-6 py-4">
-              894847163-45
-            </td>
-            <td class="px-6 py-4">
-              Despachado
-            </td>
-            <td class="px-6 py-4">
-              Receta 1
-            </td>
-            <td class="px-6 py-4">
-              900,00
-            </td>
-            <td class="px-6 py-4 text-right">
-              <div class="flex flex-row justify-start">
-                  <button><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
-                  <button (click)="selectEdit()"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
-              </div>
-            </td>
-        </tr>
       </tbody>
   </table>
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { IProduction } from 'src/app/interfaces/IProduction';
 
 @Component({
   selector: 'dispatch-table',
@@ -7,7 +9,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class DispatchTableComponent implements OnInit {
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
+  @Input("dispatchs") dispatchs: IDispatch[] = [];
+  @Input("production") production: IProduction | null = null;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -15,7 +19,6 @@ export class DispatchTableComponent implements OnInit {
 
   selectEdit(){
     let category = {};
-    this.emiterCategoriesTable.emit(category);
   }
 
 }
