@@ -22,28 +22,28 @@
       <div class="w-full flex flex-col lg:flex-row lg:justify-between mt-12">
 
         <div class="w-full flex flex-row justify-start overflow-x-auto">
-          <a [routerLink]="'/providers/assignments'" class="cursor-pointer hover:text-blue-700 mx-2">
+          <a [routerLink]="'/providers/assignments/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
             <div class="text-xl font-bold">
               <i class="bi bi-pencil-square flex justify-center lg:inline-block"></i>
               <span class="">Asignación</span>
             </div>
           </a>
 
-          <a [routerLink]="'/providers/instructions'" class="cursor-pointer hover:text-blue-700 mx-2">
+          <a [routerLink]="'/providers/instructions/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
             <div class="text-xl font-bold">
               <i class="bi bi-card-checklist flex justify-center lg:inline-block"></i>
               <span class="">Instrucciones</span>
             </div>
           </a>
 
-          <a [routerLink]="'/providers/production'" class="cursor-pointer hover:text-blue-700 mx-2">
+          <a [routerLink]="'/providers/production/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
             <div class="text-xl font-bold">
               <i class="bi bi-truck-flatbed flex justify-center lg:inline-block"></i>
               <span class="">Producción</span>
             </div>
           </a>
 
-          <a [routerLink]="'/providers/dispatch'" class="cursor-pointer hover:text-blue-700 mx-2">
+          <a [routerLink]="'/providers/dispatch/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
             <div class="text-xl font-bold">
               <i class="bi bi-truck flex justify-center lg:inline-block"></i>
               <span class="">Despacho</span>

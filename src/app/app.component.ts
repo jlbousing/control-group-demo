@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusService } from './services/status/status.service';
-import { StoreGlobalInformation } from './global/StoreGlobalInformation';
-import { IStatus } from './interfaces/IStatus';
+import { StorageManager } from './utils/StorageManager';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -12,14 +12,18 @@ export class AppComponent implements OnInit {
   title = 'control-group-admin';
 
   constructor(
-    private statusServices: StatusService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    /*this.statusServices.getStatues(50,0).subscribe((response: IStatus) => {
-      console.log(response);
-      //StoreGlobalInformation.storeStatues(response)
-    }) */
+
+    const userInfo = StorageManager.getFromLocalStorage("userInfo");
+
+    if(userInfo){
+      this.router.navigateByUrl("/home");
+    }else{
+      this.router.navigateByUrl("/login");
+    }
   }
 
 

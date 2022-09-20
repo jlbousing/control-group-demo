@@ -4,7 +4,9 @@
         <div class="flex flex-col lg:flex-row">
           <submenu-users class="w-full lg:w-1/4"></submenu-users>
           <div class="w-full lg:pt-4">
-            <form [formGroup]="form" class="w-full lg:w-4/5 bg-white rounded-lg">
+            <loading *ngIf="loading"></loading>
+            <form [formGroup]="form" class="w-full lg:w-4/5 bg-white rounded-lg"
+                  *ngIf="!loading">
               <div class="flex flex-col p-8">
                 <div class="w-full flex flex-row justify-start">
                   <h3>Indique los datos del usuario</h3>
@@ -89,7 +91,7 @@
                                   rounded w-full py-2 px-3 text-gray-700
                                   leading-tight focus:outline-none
                                   focus:shadow-outline"
-                           type="text"
+                           type="password"
                            placeholder="ejemplo@controlgroup.com"
                            formControlName="password1"
                      />
@@ -103,7 +105,7 @@
                                   rounded w-full py-2 px-3 text-gray-700
                                   leading-tight focus:outline-none
                                   focus:shadow-outline"
-                           type="text"
+                           type="password"
                            placeholder="ejemplo@controlgroup.com"
                            formControlName="password2"
                      />
@@ -112,7 +114,7 @@
                 </div>
 
                 <div class="w-full flex flex-row justify-end mt-8">
-                  <custom-button text="Agregar" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
+                  <custom-button text="Registrar Usuario" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
                 </div>
               </div>
             </form>

@@ -1,10 +1,14 @@
 <separator-title title="Lista de asignaciones (Alianza Inc)"></separator-title>
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
-    <div class="flex flex-col items-center m-auto lg:flex-row lg:justify-between items-center pt-16 lg:mr-12">
+    <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
-       <search-input class="flex flex-row justify-center"></search-input>
-      <a [routerLink]="'/providers/create-assigment'">
+       <search-input class="flex flex-row justify-center px-4"
+                     [label]="'Buscar Asignación'"
+                     [placeholder]="'Buscar por id'"
+                    (searching)="getSearch($event)"></search-input>
+      <a [routerLink]="'/providers/create-assigment'"
+         class="flex items-center">
         <custom-button text="Nueva Asignación"></custom-button>
       </a>
     </div>

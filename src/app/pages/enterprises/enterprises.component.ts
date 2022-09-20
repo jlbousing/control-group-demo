@@ -3,7 +3,6 @@ import { CompaniesService } from 'src/app/services/companies/companies.service';
 import { ICompany } from 'src/app/interfaces/ICompanies';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { StatusService } from 'src/app/services/status/status.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-enterprises',
@@ -15,10 +14,7 @@ export class EnterprisesComponent implements OnInit {
   companies: ICompany[] = [];
   statues: IStatus[] = [];
 
-  form = new FormGroup({
-    name: new FormControl<string | null>(''),
-    rif: new FormControl<string>('', Validators.required)
-  });
+  loading: boolean = true;
 
   constructor(
     private companieService: CompaniesService,
@@ -26,25 +22,33 @@ export class EnterprisesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.companieService.getCompanies(50,0).subscribe((response: ICompany[]) => this.companies = response);
-    this.statusService.getStatues(0,50,0).subscribe((response: IStatus[]) => this.statues = response);
+    this.companieService.getCompanies(50,0).subscribe((response: ICompany[]) => {
+      this.companies = response;
+      this.loading = false;
+    });
+    this.statusService.getStatues(0,50,0).subscribe((response: IStatus[]) => {
+      this.statues = response;
+      this.loading = false;
+    });
   }
 
-  findCompany() {
-
-    if(this.form.value.rif){
-
-      let name: string | null = this.form.value.name ? this.form.value.name : null;
-      let rif: string = this.form.value.rif;
-
-      this.companieService.findCompany(name,rif)
-        .subscribe((response: ICompany[]) => {
-          console.log("buscando empresas");
-          console.log(response)
-          this.companies = response;
-        })
-    }
+  setLoading(value: any) {
+    this.loading = <boolean>value;
   }
 
+  setCompanies(value: any) {
+    this.companies = <ICompany[]>value;
+  }
+
+  resetCompanies() {
+
+    this.loading = true;
+
+    this.companieService.getCompanies(50,0).subscribe((response: ICompany[]) => {
+      this.companies = response;
+      this.loading = false;
+    });
+
+  }
 
 }

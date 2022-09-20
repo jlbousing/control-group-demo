@@ -79,4 +79,8 @@ export class AssignmentsComponent implements OnInit {
     this.showModalEdit = false;
   }
 
+  getSearch(value: string) {
+    console.log("probando evento ",value);
+  }
+
 }

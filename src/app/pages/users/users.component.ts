@@ -18,6 +18,8 @@ export class UsersComponent implements OnInit {
   roles: IRol[] = [];
   statues: IStatus[] = [];
 
+  loading: boolean = true;
+
   constructor(
     private userService: UsersService,
     private statusService: StatusService,
@@ -36,6 +38,7 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers(1,50,0).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
+      this.loading = false;
     })
   }
 
