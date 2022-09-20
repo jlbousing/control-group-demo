@@ -26,6 +26,7 @@ import { CreateAssignmentsComponent } from './pages/providers/create-assignments
 import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
 import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
 import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -150,6 +151,11 @@ const routes: Routes = [
         component: CreateRolComponent
       }
     ]
+  },
+  {
+    path: "reports",
+    title: "Reportes",
+    component: ReportsComponent
   },
   {
     path: "login",

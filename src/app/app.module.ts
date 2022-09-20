@@ -88,6 +88,9 @@ import { ReturnDispatchModalComponent } from './components/modals/return-dispatc
 import { LoadingComponent } from './components/spinner/loading/loading.component';
 import { SearchEnterpriseComponent } from './components/enterprises/search-enterprise/search-enterprise.component';
 
+import { NgChartsModule } from 'ng2-charts';
+import { ReportsComponent } from './pages/reports/reports.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -159,6 +162,7 @@ import { SearchEnterpriseComponent } from './components/enterprises/search-enter
     ReturnDispatchModalComponent,
     LoadingComponent,
     SearchEnterpriseComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,
@@ -176,7 +180,8 @@ import { SearchEnterpriseComponent } from './components/enterprises/search-enter
     PortalModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   providers: [
     TitleServicesService,
