@@ -86,6 +86,7 @@ import { CreateDispatchComponent } from './pages/providers/create-dispatch/creat
 import { RemakeProductionModalComponent } from './components/modals/remake-production-modal/remake-production-modal.component';
 import { ReturnDispatchModalComponent } from './components/modals/return-dispatch-modal/return-dispatch-modal.component';
 import { LoadingComponent } from './components/spinner/loading/loading.component';
+import { SearchEnterpriseComponent } from './components/enterprises/search-enterprise/search-enterprise.component';
 
 @NgModule({
   declarations: [
@@ -157,6 +158,7 @@ import { LoadingComponent } from './components/spinner/loading/loading.component
     RemakeProductionModalComponent,
     ReturnDispatchModalComponent,
     LoadingComponent,
+    SearchEnterpriseComponent,
   ],
   imports: [
     BrowserModule,
