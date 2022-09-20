@@ -1,3 +1,5 @@
 <input class="shadow appearance-none border rounded w-full mb-4 py-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 type="text"
+[(ngModel)]="_search"
+(ngModelChange)="search()"
 placeholder="Buscar por id">

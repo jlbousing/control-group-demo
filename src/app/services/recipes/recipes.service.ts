@@ -55,7 +55,7 @@ export class RecipesService {
       }
     }
     ).pipe(
-      retry(3),
+      retry(1),
       catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
