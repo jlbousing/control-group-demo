@@ -23,6 +23,8 @@ export class CreateUserComponent implements OnInit {
     password2: new FormControl<string>('', Validators.required)
   });
 
+  loading: boolean = true;
+
   constructor(
     private rolService: RolsService,
     private userService: UsersService
@@ -33,6 +35,7 @@ export class CreateUserComponent implements OnInit {
     this.rolService.getRoles(50,0).subscribe((response: IRol[]) => {
       this.roles = response;
       console.log("mostrando roles ",this.roles)
+      this.loading = false;
     })
   }
 
