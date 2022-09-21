@@ -49,6 +49,8 @@
                   leading-tight focus:outline-none
                   focus:shadow-outline"
            type="date"
+           [(ngModel)]="startDate"
+           (ngModelChange)="setStartDate($event)"
      />
   </div>
 
@@ -61,6 +63,8 @@
                   leading-tight focus:outline-none
                   focus:shadow-outline"
            type="date"
+           [(ngModel)]="endDate"
+           (ngModelChange)="setEndDate($event)"
      />
   </div>
 </div>

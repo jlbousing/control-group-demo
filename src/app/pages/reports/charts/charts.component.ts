@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { ConciliationService } from 'src/app/services/conciliations/conciliation.service';
+import { IInquirySupplierData } from 'src/app/interfaces/InquirySupplierData';
+//import { IConcilation } from 'src/app/interfaces/IConcilation';
+import { IConciliationData } from 'src/app/interfaces/IConcilationData';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { last } from 'rxjs';
 
 @Component({
   selector: 'charts',
@@ -11,11 +16,11 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 })
 export class ChartsComponent implements OnInit {
 
-  ngOnInit(): void {
-
-  }
+  loading: boolean = false;
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  conciliations: IConciliationData[] | null = null;
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -36,20 +41,26 @@ export class ChartsComponent implements OnInit {
       }
     }
   };
+
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: [ 'Enero', 'Febrero'],
-    datasets: [
-      { data: [ 65, 59, ], label: 'Series A' },
-      { data: [ 28, 48, ], label: 'Series B' },
-      { data: [ 28, 48, ], label: 'Series C' },
-      { data: [ 28, 48, ], label: 'Series D' }
-    ]
+  barChartData: ChartData<'bar'> = {
+    labels: [],
+    datasets: []
   };
+
+  constructor(
+    private conciliationService: ConciliationService
+  ) {
+
+  }
+
+  ngOnInit(): void {
+
+  }
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
@@ -57,7 +68,7 @@ export class ChartsComponent implements OnInit {
   }
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-    console.log(event, active);
+    //console.log(event, active);
   }
 
   public randomize(): void {
@@ -72,6 +83,46 @@ export class ChartsComponent implements OnInit {
       40 ];
 
     this.chart?.update();
+  }
+
+  setCharData(value: any) {
+
+    this.loading = true;
+    const data: IInquirySupplierData = <IInquirySupplierData>value;
+    console.log("mostrando data ",data);
+    this.conciliationService
+      .getConciliationInquiryBySupplier(50,0,data.supplierId,data.endDate,data.endDate)
+        .subscribe((response: IConciliationData[]) => {
+          console.log("probando response ",response);
+          this.conciliations = response;
+
+          let labels = this.conciliations.map((item: IConciliationData) => {
+            return item.asignamentData.name
+          });
+
+          let datasets: any[] = [];
+
+          this.conciliations.forEach((item: IConciliationData) => {
+
+            let data1 = { data: [item.asignamentData.record], label: 'Meta'};
+            let data2 = { data: [item.asignamentQuantity], label: 'Meta Pendiente'};
+
+            datasets.push(data1);
+            datasets.push(data2);
+          })
+
+
+          console.log("mostrando data ",datasets);
+
+          this.barChartData.labels = labels;
+          this.barChartData.datasets = datasets;
+
+          console.log(this.barChartData.datasets);
+
+          this.chart?.update();
+          this.loading = false;
+
+        });
   }
 
 }

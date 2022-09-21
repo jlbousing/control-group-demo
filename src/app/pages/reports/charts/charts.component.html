@@ -1,7 +1,8 @@
 
 <div class="p-20">
   <div>
-    <data-controllers></data-controllers>
+    <data-controllers
+      (inquiryData)="setCharData($event)"></data-controllers>
     <div style="display: block">
       <canvas baseChart
         [data]="barChartData"
