@@ -31,6 +31,8 @@ export class CreateAssignmentsComponent implements OnInit {
   subcategories: ISubcategory[] = [];
   suppliers: ISupplier[] = [];
 
+  loading: boolean = true;
+
   constructor(
     private categoryService: CategoriesService,
     private suppliersService: SuppliersService,
@@ -42,6 +44,7 @@ export class CreateAssignmentsComponent implements OnInit {
     this.categoryService.getCategories()
       .subscribe((response: ICategory[]) => {
         this.categories = response;
+        this.loading = false;
       });
 
     this.suppliersService.getSuppliers
@@ -55,9 +58,12 @@ export class CreateAssignmentsComponent implements OnInit {
   }
 
   setSuppliers(id: any){
+
+    this.loading = true;
     this.suppliersService.getSuppliers(id,50,0)
       .subscribe((response: ISupplier[]) => {
         this.suppliers = response;
+        this.loading = false;
       });
   }
 

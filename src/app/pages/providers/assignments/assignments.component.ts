@@ -26,6 +26,8 @@ export class AssignmentsComponent implements OnInit {
   statues: IStatus[] = [];
   suppliers: ISupplier[] = [];
 
+  loading: boolean = true;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,
@@ -44,6 +46,7 @@ export class AssignmentsComponent implements OnInit {
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           console.log("probando asignaciones ",this.assignaments);
+          this.loading = false;
         })
    });
 

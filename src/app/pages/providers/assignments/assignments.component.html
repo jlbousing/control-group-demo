@@ -12,7 +12,9 @@
         <custom-button text="Nueva Asignación"></custom-button>
       </a>
     </div>
-    <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+
+    <loading *ngIf="loading"></loading>
+    <div *ngIf="!loading" class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <assignments-table class="w-full"
                          [assignments]="assignaments"
                          [statues]="statues"

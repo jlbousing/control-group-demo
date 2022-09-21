@@ -23,6 +23,8 @@ export class CategoriesComponent implements OnInit {
   statues: IStatus[] = [];
   supplier: ISupplier | null = null;
 
+  loading: boolean = true;
+
   constructor(
     public dialog: Dialog,
     private categoriesService: CategoriesService,
@@ -45,6 +47,7 @@ export class CategoriesComponent implements OnInit {
           this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
         .subscribe((response: ISubcategory[]) => {
           this.subcategories = response;
+          this.loading = false;
         })
         });
 
