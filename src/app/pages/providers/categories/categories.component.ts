@@ -69,5 +69,41 @@ export class CategoriesComponent implements OnInit {
     this.dialog.open(EditCategoriesModalComponent);
   }
 
+  getSearch(value: any) {
+
+    this.loading = true;
+
+    if(value && value !== "") {
+      let id = <number>value;
+
+    this.categoriesService.findSubcategory(id)
+      .subscribe((response: ISubcategory) => {
+        this.subcategories = [];
+        this.subcategories.push(response);
+        this.loading = false;
+      })
+    }else {
+
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response;
+
+          //SE CONSUMEN LAS CATEGORIAS
+          this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
+        .subscribe((response: ISubcategory[]) => {
+          console.log("entra aqui ",response);
+          if(response) {
+            this.subcategories = response;
+          }else {
+            console.log("entra aqui ",response);
+            this.subcategories = [];
+          }
+
+          this.loading = false;
+        })
+        });
+    }
+  }
+
 
 }

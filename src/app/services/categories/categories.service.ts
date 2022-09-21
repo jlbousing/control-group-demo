@@ -98,4 +98,33 @@ export class CategoriesService {
       })
     )
   }
+
+  findSubcategory(id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.categories.subcategories.find}`;
+    const params: string = `?id=${id}`;
+
+    return this.http.get<ISubcategory>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 404){
+          return null;
+        }
+      })
+    );
+
+  }
 }

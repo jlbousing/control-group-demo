@@ -9,6 +9,8 @@ import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IProduction } from 'src/app/interfaces/IProduction';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 
 @Component({
   selector: 'app-production',
@@ -24,6 +26,8 @@ export class ProductionComponent implements OnInit {
   recipe: IRecipe | null = null;
   productions: IProduction[] = [];
 
+  supplier: ISupplier | null = null;
+
   loading: boolean = true;
 
   constructor(
@@ -31,7 +35,8 @@ export class ProductionComponent implements OnInit {
     private assignamentService: AssignamentService,
     private recipesService: RecipesService,
     private productionService: ProductionService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private supplierService: SuppliersService
   ) { }
 
 
@@ -39,6 +44,11 @@ export class ProductionComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
+
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response
+        })
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {

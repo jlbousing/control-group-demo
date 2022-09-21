@@ -26,6 +26,8 @@ export class AssignmentsComponent implements OnInit {
   statues: IStatus[] = [];
   suppliers: ISupplier[] = [];
 
+  supplier: ISupplier | null = null;
+
   loading: boolean = true;
 
   constructor(
@@ -41,6 +43,11 @@ export class AssignmentsComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
+
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response
+        })
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
@@ -82,8 +89,27 @@ export class AssignmentsComponent implements OnInit {
     this.showModalEdit = false;
   }
 
-  getSearch(value: string) {
-    console.log("probando evento ",value);
+  getSearch(value: any) {
+
+    this.loading = true;
+
+    if(value && value !== "") {
+      let id = <number>value;
+
+    this.assignamentService.findAssignaents(id)
+      .subscribe((response: IAssignament[]) => {
+        this.assignaments = response;
+        this.loading = false;
+      })
+    }else {
+
+      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+        .subscribe((response: IAssignament[]) => {
+          this.assignaments = response;
+          console.log("probando asignaciones ",this.assignaments);
+          this.loading = false;
+        })
+    }
   }
 
 }

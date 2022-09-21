@@ -14,7 +14,7 @@ export const environment = {
       list: '/api/asignaments/list',
       find: '/api/asignaments/find',
       create: '/api/asignaments/create',
-      changes: '/api/asignaments/changes/'
+      changes: '/api/asignaments/changes/',
     },
     conciliations: {
       inquiry: {
@@ -48,7 +48,8 @@ export const environment = {
       list: '/api/categories/',
       subcategories: {
         list: '/api/categories/subcategories',
-        changes: '/api/categories/subcategory/changes/'
+        changes: '/api/categories/subcategory/changes/',
+        find: '/api/categories/subcategory/find'
       }
     },
     instructions: {

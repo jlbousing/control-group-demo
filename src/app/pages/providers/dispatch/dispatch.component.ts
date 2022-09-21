@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IProduction } from 'src/app/interfaces/IProduction';
 import { DispachtService } from 'src/app/services/dispatch/dispacht.service';
@@ -9,6 +10,7 @@ import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { ProductionService } from 'src/app/services/production/production.service';
 import { ActivatedRoute } from '@angular/router';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 
 @Component({
   selector: 'app-dispatch',
@@ -29,13 +31,16 @@ export class DispatchComponent implements OnInit {
 
   loading: boolean = true;
 
+  supplier: ISupplier | null = null;
+
   constructor(
     public dialog: Dialog,
     private route: ActivatedRoute,
     private dispatchService: DispachtService,
     private assignamentService: AssignamentService,
     private recipeService: RecipesService,
-    private productionService: ProductionService
+    private productionService: ProductionService,
+    private supplierService: SuppliersService
   ) { }
 
 
@@ -43,6 +48,11 @@ export class DispatchComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.supplierId = params["supplierId"];
+
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response
+        })
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {

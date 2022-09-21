@@ -9,6 +9,8 @@ import { StatusService } from 'src/app/services/status/status.service';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 @Component({
   selector: 'app-instructions',
@@ -26,12 +28,15 @@ export class InstructionsComponent implements OnInit {
 
   loading: boolean = true;
 
+  supplier: ISupplier | null = null;
+
   constructor(
     private dialog: Dialog,
     private assignamentService: AssignamentService,
     private recipesService: RecipesService,
     private route: ActivatedRoute,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private supplierService: SuppliersService
   ) { }
 
 
@@ -44,6 +49,11 @@ export class InstructionsComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
+
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response
+        })
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
@@ -67,6 +77,10 @@ export class InstructionsComponent implements OnInit {
 
   showEditModal(obj: any) {
     this.dialog.open(EditInstructionsModalComponent);
+  }
+
+  getSearch(value: any) {
+
   }
 
 
