@@ -4,15 +4,15 @@
   <div class="flex flex-col">
     <loading *ngIf="loading"></loading>
     <div *ngIf="!loading" class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">
-      <div class="flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8">
-        <div class="w-full text-center lg:mx-2">
-            <h6>Asignación:</h6>
-        </div>
-        <div class="w-full">
-          <div class="my-4 w-full">
-            <select
+      <div class="w-full flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8">
+
+        <div class="my-4 w-full lg:w-1/2 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
+            Asignación:
+          </label>
+          <select
               class="shadow appearance-none border
-                     rounded w-full py-2 px-3 text-gray-700
+                     rounded w-full py-2 px-5 text-gray-700
                      leading-tight focus:outline-none
                      focus:shadow-outline"
                      id="assignament"
@@ -22,16 +22,15 @@
                         {{assignament.name}}
                      </option>
              </select>
-          </div>
         </div>
-        <div class="w-full text-center lg:mx-2">
-          <h6>Receta:</h6>
-      </div>
-      <div class="w-full">
-        <div class="my-4 w-full">
+
+        <div class="my-4 w-full lg:w-1/2 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
+            Receta:
+          </label>
           <select
             class="shadow appearance-none border
-                   rounded w-full py-2 px-3 text-gray-700
+                   rounded w-full py-2 px-5 text-gray-700
                    leading-tight focus:outline-none
                    focus:shadow-outline"
                    id="assignament"
@@ -42,15 +41,14 @@
                    </option>
            </select>
         </div>
-      </div>
-      <div class="w-full text-center lg:mx-2">
-        <h6>Producción</h6>
-    </div>
-    <div class="w-full">
-      <div class="my-4 w-full">
-        <select
+
+        <div class="my-4 w-full lg:w-1/2 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
+            Producción:
+          </label>
+          <select
           class="shadow appearance-none border
-                 rounded w-full py-2 px-3 text-gray-700
+                 rounded w-full py-2 px-5 text-gray-700
                  leading-tight focus:outline-none
                  focus:shadow-outline"
                  id="assignament"
@@ -60,8 +58,8 @@
                     {{ production.name }}
                  </option>
          </select>
-      </div>
-    </div>
+        </div>
+
       </div>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">

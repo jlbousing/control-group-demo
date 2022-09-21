@@ -6,17 +6,14 @@
   <div class="flex flex-col">
     <div class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">
       <div *ngIf="!loading" class="flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8 lg:w-[40%]">
-        <div class="w-full text-center lg:mx-2">
-            <h6>Asignación:</h6>
-        </div>
-        <div class="w-full">
-          <div class="my-4 w-full">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
 
-            </label>
-            <select
+        <div class="my-4 w-1/2 lg:w-1/3 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
+            Asignación:
+          </label>
+          <select
               class="shadow appearance-none border
-                     rounded w-full py-2 px-3 text-gray-700
+                     rounded w-full py-2 px-5 text-gray-700
                      leading-tight focus:outline-none
                      focus:shadow-outline"
                      id="assignament"
@@ -26,7 +23,6 @@
                         {{assignament.name}}
                      </option>
              </select>
-          </div>
         </div>
       </div>
       <a [routerLink]="'/providers/create-recipe/'+supplierId">
