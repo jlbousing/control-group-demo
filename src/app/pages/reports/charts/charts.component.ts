@@ -91,7 +91,7 @@ export class ChartsComponent implements OnInit {
     const data: IInquirySupplierData = <IInquirySupplierData>value;
     console.log("mostrando data ",data);
     this.conciliationService
-      .getConciliationInquiryBySupplier(50,0,data.supplierId,data.endDate,data.endDate)
+      .getConciliationInquiryBySupplier(50,0,data.supplierId,data.startDate,data.endDate)
         .subscribe((response: IConciliationData[]) => {
           console.log("probando response ",response);
           this.conciliations = response;
@@ -102,22 +102,33 @@ export class ChartsComponent implements OnInit {
 
           let datasets: any[] = [];
 
+          //METAS
+          datasets.push({
+            data: [],
+            labels: "Meta"
+          });
+
+           //METAS PENDIENTES
+           datasets.push({
+            data: [],
+            labels: "Meta Pendiente"
+          });
+
           this.conciliations.forEach((item: IConciliationData) => {
 
-            let data1 = { data: [item.asignamentData.record], label: 'Meta'};
-            let data2 = { data: [item.asignamentQuantity], label: 'Meta Pendiente'};
+            //SE INSERTA DATOS EN LA META
+            datasets[0].data.push(item.asignamentData.record);
 
-            datasets.push(data1);
-            datasets.push(data2);
+            //SE ASIGNA DATOS EN LA META PENDIENTE
+            datasets[1].data.push(item.asignamentQuantity);
+
           })
 
-
-          console.log("mostrando data ",datasets);
 
           this.barChartData.labels = labels;
           this.barChartData.datasets = datasets;
 
-          console.log(this.barChartData.datasets);
+          console.log(this.barChartData);
 
           this.chart?.update();
           this.loading = false;

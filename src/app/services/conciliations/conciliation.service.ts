@@ -21,7 +21,7 @@ export class ConciliationService {
   getConciliationInquiryBySupplier(limit: number, offset: number, supplierId: number ,startDate: string, endDate: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.conciliations.inquiry.supplier}`;
-    const params: string = `?supplierId=${supplierId}&offset=${offset}&limit=${limit}&getProductions=true&getDispatchs=true&getRecipes=true&getSupplier=true&getAsignament=true`;
+    const params: string = `?supplierId=${supplierId}&offset=${offset}&limit=${limit}&getProductions=true&getDispatchs=true&getRecipes=true&getSupplier=true&getAsignament=true&startDate=${startDate}&endDate=${endDate}`;
 
     console.log("conciliacion ",url+params);
 

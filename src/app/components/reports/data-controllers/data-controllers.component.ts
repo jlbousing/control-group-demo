@@ -41,29 +41,65 @@ export class DataControllersComponent implements OnInit {
   setCompany(value: any) {
     this.company = <ICompany>value;
     this.suppliers = this.company.suppliersOfCompany;
-  }
-
-  setSupplier(value: any) {
-    this.supplier = <ISupplier>value;
-  }
-
-  setStartDate(value: any) {
-    let valueDate: string = <string>value;
-    console.log(valueDate);
-    let positions = valueDate.split("-");
-    //this.startDate = positions[1] + "-" + positions[2] + "-" + positions[0];
-    valueDate = positions[1] + "-" + positions[2] + "-" + positions[0];
-
-    console.log("bandera 1 ",valueDate)
 
     if(this.supplier
       && this.startDate && this.endDate
       && this.startDate !== "" && this.endDate !== "") {
 
+        console.log("bandera 1 ",this.formatDate(this.startDate))
+        console.log("bandera 2 ",this.formatDate(this.endDate))
+
         const data: IInquirySupplierData = {
           supplierId: this.supplier.id,
-          startDate: this.startDate,
-          endDate: this.endDate
+          startDate: this.formatDate(this.startDate),
+          endDate: this.formatDate(this.endDate)
+        };
+
+        this.inquiryData.emit(data);
+      }
+
+  }
+
+  setSupplier(value: any) {
+    this.supplier = <ISupplier>value;
+
+    if(this.supplier
+      && this.startDate && this.endDate
+      && this.startDate !== "" && this.endDate !== "") {
+
+        console.log("bandera 1 ",this.formatDate(this.startDate))
+        console.log("bandera 2 ",this.formatDate(this.endDate))
+
+        const data: IInquirySupplierData = {
+          supplierId: this.supplier.id,
+          startDate: this.formatDate(this.startDate),
+          endDate: this.formatDate(this.endDate)
+        };
+
+        this.inquiryData.emit(data);
+      }
+
+  }
+
+  formatDate(date: string) {
+    let positions = date.split("-");
+    return positions[1] + "-" + positions[2] + "-" + positions[0];
+  }
+
+  setStartDate(value: any) {
+    let valueDate: string = <string>value;
+    this.startDate = valueDate;
+
+    if(this.supplier
+      && this.startDate && this.endDate
+      && this.startDate !== "" && this.endDate !== "") {
+
+        console.log("bandera 1 ",this.formatDate(this.startDate))
+        console.log("bandera 2 ",this.formatDate(this.endDate))
+        const data: IInquirySupplierData = {
+          supplierId: this.supplier.id,
+          startDate: this.formatDate(this.startDate),
+          endDate: this.formatDate(this.endDate)
         };
 
         this.inquiryData.emit(data);
@@ -72,21 +108,19 @@ export class DataControllersComponent implements OnInit {
 
   setEndDate(value: any) {
     let valueDate: string = <string>value;
-    console.log(valueDate);
-    let positions = valueDate.split("-");
-    console.log(value);
-    valueDate = positions[1] + "-" + positions[2] + "-" + positions[0];
-
-    console.log("bandera 2 ",valueDate)
+    this.endDate = valueDate;
 
     if(this.supplier
       && this.startDate && this.endDate
       && this.startDate !== "" && this.endDate !== "") {
 
+        console.log("bandera 1 ",this.formatDate(this.startDate))
+        console.log("bandera 2 ",this.formatDate(this.endDate))
+
         const data: IInquirySupplierData = {
           supplierId: this.supplier.id,
-          startDate: this.startDate,
-          endDate: this.endDate
+          startDate: this.formatDate(this.startDate),
+          endDate: this.formatDate(this.endDate)
         };
 
         this.inquiryData.emit(data);
