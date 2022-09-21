@@ -87,6 +87,7 @@ export class ChartsComponent implements OnInit {
 
   setCharData(value: any) {
 
+    this.conciliations = [];
     this.loading = true;
     const data: IInquirySupplierData = <IInquirySupplierData>value;
     console.log("mostrando data ",data);
@@ -99,6 +100,8 @@ export class ChartsComponent implements OnInit {
           let labels = this.conciliations.map((item: IConciliationData) => {
             return item.asignamentData.name
           });
+
+          console.log("mostrando array labels ",labels);
 
           let datasets: any[] = [];
 

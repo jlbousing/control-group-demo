@@ -3,7 +3,8 @@
   <div>
     <data-controllers
       (inquiryData)="setCharData($event)"></data-controllers>
-    <div style="display: block">
+    <loading *ngIf="loading"></loading>
+    <div style="display: block" *ngIf="!loading">
       <canvas baseChart
         [data]="barChartData"
         [options]="barChartOptions"
