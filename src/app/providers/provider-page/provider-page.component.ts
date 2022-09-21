@@ -3,8 +3,6 @@ import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { ICompany } from 'src/app/interfaces/ICompanies'
 import { ActivatedRoute } from '@angular/router';
 import { CompaniesService } from 'src/app/services/companies/companies.service';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-provider-page',
@@ -16,6 +14,8 @@ export class ProviderPageComponent implements OnInit {
   suppliers: ISupplier[] = [];
   company: ICompany | null = null;
   rif: string = '';
+
+  loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +29,8 @@ export class ProviderPageComponent implements OnInit {
       this.companyService.findCompany(null,this.rif).subscribe((response: ICompany[]) => {
         this.company = response[0];
         this.suppliers = response[0].suppliersOfCompany;
+
+        this.loading = false;
       })
    });
   }
