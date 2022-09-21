@@ -19,6 +19,8 @@ export class CreateDispatchComponent implements OnInit {
 
   production: IProduction | null = null;
 
+  loading: boolean = true;
+
   form = new FormGroup({
     guideNumber: new FormControl<string>('',Validators.required),
     noteNumber: new FormControl<string>('',Validators.required),
@@ -43,6 +45,7 @@ export class CreateDispatchComponent implements OnInit {
       this.productionService.findProduction(this.productionId)
         .subscribe((production: IProduction) => {
           this.production = production;
+          this.loading = false;
         })
 
     })

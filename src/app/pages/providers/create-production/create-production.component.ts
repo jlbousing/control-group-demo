@@ -33,6 +33,8 @@ export class CreateProductionComponent implements OnInit {
   assignaments: IAssignament[] = [];
   supplierId: number = 0;
 
+  loading: boolean = true;
+
   constructor(
     private statusService: StatusService,
     private recipeService: RecipesService,
@@ -54,17 +56,20 @@ export class CreateProductionComponent implements OnInit {
         this.assignamentService.getAssignamentsBySupplier(this.supplierId)
           .subscribe((response: IAssignament[]) => {
             this.assignaments = response;
+            this.loading = false;
             console.log("probando asignaciones ",this.assignaments);
           })
      });
   }
 
   setAssignament(value: any) {
+    this.loading = true;
     this.form.value.assignament = <IAssignament> value;
 
     this.recipeService.getRecipes(50,0,value.id)
       .subscribe((response: IRecipe[]) => {
         this.recipes = response;
+        this.loading = false;
       });
   }
 

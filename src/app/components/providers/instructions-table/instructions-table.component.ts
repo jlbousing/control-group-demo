@@ -18,6 +18,8 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
 
   recipes: IRecipe[] = [];
 
+  loading: boolean = false;
+
   constructor(
     private recipesService: RecipesService,
     private dialog: Dialog
@@ -32,12 +34,14 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
 
     if(changes["assignament"].currentValue){
 
+      this.loading = true;
       this.recipes = [];
       console.log("probando id assigment ",changes["assignament"]);
       this.assignament = <IAssignament> changes["assignament"].currentValue;
       let id = parseInt(changes["assignament"].currentValue.id);
       this.recipesService.getRecipes(50,0,id).subscribe((response: IRecipe[]) => {
         this.recipes = response;
+        this.loading = false;
         console.log("mostrando recipes ",this.recipes)
       })
     }

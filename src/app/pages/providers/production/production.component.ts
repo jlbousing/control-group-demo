@@ -24,6 +24,8 @@ export class ProductionComponent implements OnInit {
   recipe: IRecipe | null = null;
   productions: IProduction[] = [];
 
+  loading: boolean = true;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,
@@ -41,6 +43,7 @@ export class ProductionComponent implements OnInit {
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
+          this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
         })
    });
@@ -48,21 +51,25 @@ export class ProductionComponent implements OnInit {
   }
 
   setAssignament(value: any) {
+    this.loading = true;
     let assignament = <IAssignament> value;
     this.assignament = assignament;
     console.log("probando asignacion ",value)
 
     this.recipesService.getRecipes(50,0,assignament.id).subscribe((response: IRecipe[]) => {
       this.recipes = response;
+      this.loading = false;
       console.log("mostrando recipes ",this.recipes)
     })
   }
 
   setRecipe(value: any) {
+    this.loading = true;
     this.recipe = <IRecipe> value;
     this.productionService.getProductionByRecipe(50,0,this.recipe.id)
       .subscribe((response: IProduction[]) => {
         this.productions = response;
+        this.loading = false;
       })
   }
 

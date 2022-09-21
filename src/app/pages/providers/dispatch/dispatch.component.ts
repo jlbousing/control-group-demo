@@ -27,6 +27,7 @@ export class DispatchComponent implements OnInit {
   recipe: IRecipe | null = null;
   production: IProduction | null = null;
 
+  loading: boolean = true;
 
   constructor(
     public dialog: Dialog,
@@ -46,35 +47,42 @@ export class DispatchComponent implements OnInit {
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
+          this.loading = false;
         })
     });
   }
 
   setAssignament(value: any) {
+    this.loading = true;
     let assignament = <IAssignament> value;
     this.assignament = assignament;
     console.log("probando asignacion ",value)
 
     this.recipeService.getRecipes(50,0,assignament.id).subscribe((response: IRecipe[]) => {
       this.recipes = response;
+      this.loading = false;
       console.log("mostrando recipes ",this.recipes)
     })
   }
 
   setRecipe(value: any) {
+    this.loading = true;
     this.recipe = <IRecipe> value;
     this.productionService.getProductionByRecipe(50,0,this.recipe.id)
       .subscribe((response: IProduction[]) => {
         this.productions = response;
+        this.loading = false;
       })
   }
 
   setProduction(value: any) {
+    this.loading = true;
     this.production = <IProduction> value;
 
     this.dispatchService.getDispatchsByProductionId(50,0,this.production.id)
       .subscribe((response: IDispatch[]) => {
         this.dispatchs = response;
+        this.loading = false;
         console.log("probando despachos ",this.dispatchs);
       });
   }

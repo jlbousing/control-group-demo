@@ -36,6 +36,8 @@ export class CreateRecipeComponent implements OnInit {
 
   products: IProductRecipe[] = [];
 
+  loading: boolean = true;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -54,6 +56,7 @@ export class CreateRecipeComponent implements OnInit {
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
+          this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
         })
    });
@@ -61,6 +64,7 @@ export class CreateRecipeComponent implements OnInit {
 
   setItems(value: any) {
 
+    this.loading = false;
     console.log(value)
     if(this.form.value.assignament){
       console.log(this.form.value)
@@ -69,6 +73,7 @@ export class CreateRecipeComponent implements OnInit {
       this.itemsService.getItems(50,0,assignament.subcategoryData.id)
         .subscribe((response: IItem[]) => {
           this.items = response;
+          this.loading = false;
           console.log("probando items ",this.items);
       });
     }

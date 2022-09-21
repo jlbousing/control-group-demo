@@ -24,6 +24,8 @@ export class InstructionsComponent implements OnInit {
   assignament: IAssignament | null = null;
   statues: IStatus[] = [];
 
+  loading: boolean = true;
+
   constructor(
     private dialog: Dialog,
     private assignamentService: AssignamentService,
@@ -46,6 +48,7 @@ export class InstructionsComponent implements OnInit {
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
+          this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
         })
    });
