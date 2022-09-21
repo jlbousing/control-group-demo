@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Component({
   selector: 'sidebar-user-info',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarUserInfoComponent implements OnInit {
 
+  name: string | null = null;
+  id: number | null = null;
+
   constructor() { }
 
   ngOnInit(): void {
+    let userInfo: any = StorageManager.getFromLocalStorage('userInfo');
+    this.name = userInfo.name;
+    this.id = userInfo.id;
   }
 
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { ICompany } from 'src/app/interfaces/ICompanies'
+import { ActivatedRoute } from '@angular/router';
+import { CompaniesService } from 'src/app/services/companies/companies.service';
 
 @Component({
   selector: 'app-provider-page',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProviderPageComponent implements OnInit {
 
-  constructor() { }
+  suppliers: ISupplier[] = [];
+  company: ICompany | null = null;
+  rif: string = '';
+
+  loading: boolean = true;
+
+  constructor(
+    private route: ActivatedRoute,
+    private companyService: CompaniesService
+  ) { }
 
   ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+      this.rif = params['rif'];
+      this.companyService.findCompany(null,this.rif).subscribe((response: ICompany[]) => {
+        this.company = response[0];
+        this.suppliers = response[0].suppliersOfCompany;
+
+        this.loading = false;
+      })
+   });
   }
 
 }

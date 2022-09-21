@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CustomButtonComponent implements OnInit {
 
   @Input("text") text!: string;
+  @Input("disable") isDisable: boolean = false;
 
   constructor() { }
 

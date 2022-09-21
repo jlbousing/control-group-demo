@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ICompany } from 'src/app/interfaces/ICompanies';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 @Component({
   selector: 'enterprise-card',
@@ -8,14 +10,16 @@ import { Router } from '@angular/router';
 })
 export class EnterpriseCardComponent implements OnInit {
 
+  @Input('company') company: ICompany | null = null;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  goToProviders()
+  goToProviders(company: ICompany)
   {
-    this.router.navigateByUrl('/providers')
+    this.router.navigate(['/providers/supplier', company.rif]);
   }
 
 }

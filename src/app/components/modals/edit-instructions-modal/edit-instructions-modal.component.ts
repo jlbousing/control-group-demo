@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DialogRef } from '@angular/cdk/dialog';
+import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { IStatus } from 'src/app/interfaces/IStatus';
+import { IRecipe } from 'src/app/interfaces/IRecipe';
+
+interface IDialogData {
+  instruction: IRecipe;
+  statues: IStatus[];
+}
 
 @Component({
   selector: 'edit-instructions-modal',
@@ -11,7 +18,10 @@ export class EditInstructionsModalComponent implements OnInit {
   @Input('showModal') showModal: boolean = false;
   @Output() emiterModal = new EventEmitter<boolean>();
 
-  constructor(public dialogRef: DialogRef) { }
+  constructor(
+    @Inject(DIALOG_DATA) public data: IDialogData,
+    public dialogRef: DialogRef
+    ) { }
 
   ngOnInit(): void {
   }

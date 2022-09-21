@@ -1,56 +1,15 @@
 <div>
   <div>
     <div class="lg:pl-80 lg:pt-4 h-screen"  style="background-color: #eeeeee">
-      <div class="flex flex-col w-full items-center">
-
-        <div class="w-full flex flex-col justify-center items-center lg:flex-row lg:justify-start">
-          <h5 class="text-subtitle">Seleccione la empresa</h5>
-        </div>
-
-        <div class="w-full flex flex-col items-center lg:flex-row lg:justify-between">
-          <div class="w-1/2 flex flex-col items-center lg:flex-row lg:justify-between">
-
-            <div class="my-4 w-full lg:w-1/2 mx-4">
-              <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
-                Seleccione la empresa
-              </label>
-              <select
-                class="shadow appearance-none border
-                       rounded w-full py-2 px-3 text-gray-700
-                       leading-tight focus:outline-none
-                       focus:shadow-outline"
-                       id="enterprises">
-                       <option>Empresa 1</option>
-                       <option>Empresa 2</option>
-                       <option>Empresa 3</option>
-               </select>
-            </div>
-
-            <div class="my-4 w-full lg:w-1/2 mx-4">
-              <label class="block text-gray-700 text-label font-bold mb-2" for="status">
-                Estatus
-              </label>
-              <select
-                class="shadow appearance-none border
-                       rounded w-full py-2 px-3 text-gray-700
-                       leading-tight focus:outline-none
-                       focus:shadow-outline"
-                       id="status">
-                       <option>Todos</option>
-                       <option>Estatus 2</option>
-                       <option>Estatus 3</option>
-               </select>
-            </div>
-          </div>
-          <div class="w-1/2 flex flex-row justify-between">
-            <div class="mt-8">
-              <custom-button class="mt-4" text="Buscar Empresas"></custom-button>
-            </div>
-          </div>
-        </div>
+      <search-enterprise
+        [statues]="statues"
+        (loading)="setLoading($event)"
+        (searchedCompanies)="setCompanies($event)"
+        (resetCompanies)="resetCompanies()"></search-enterprise>
+      <loading *ngIf="loading"></loading>
+      <div *ngIf="!loading">
+        <enterprise-card *ngFor="let company of companies" [company]="company"></enterprise-card>
       </div>
-
-      <enterprise-card></enterprise-card>
     </div>
   </div>
 </div>

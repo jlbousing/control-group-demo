@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Component({
   selector: 'submenu-providers',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmenuProvidersComponent implements OnInit {
 
-  constructor() { }
+  supplierId: string | null = null;
+  constructor() {
+    this.supplierId = StorageManager.getFromLocalStorage("supplierId");
+  }
 
   ngOnInit(): void {
   }

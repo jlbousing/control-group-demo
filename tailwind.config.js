@@ -21,6 +21,9 @@ module.exports = {
         'modal': 'rgba(0,0,0, 0.5)',
         'grey-control-group': '#eeeeee',
         'green-button': '#2d8b26'
+      },
+      borderColor: {
+        'blue-control-group': "#273492"
       }
     },
   },

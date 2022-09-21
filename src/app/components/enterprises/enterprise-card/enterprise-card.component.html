@@ -1,22 +1,24 @@
 <div class="rounded overflow-hidden shadow-lg border-black bg-white mt-4 mx-4">
   <div class="w-full bg-blue-control-group text-white p-2">
       <div class="flex flex-row justify-between items-center">
-        <h5 class="ml-2 text-subtitle">Alianzas Inc</h5>
-        <h6 class="mr-2 text-[15px]">ID: 166587421</h6>
+        <h5 class="ml-2 text-subtitle">{{ company?.name }}</h5>
+        <h6 class="mr-2 text-[15px]">ID: {{ company?.id }}</h6>
       </div>
   </div>
   <div class="px-6 py-4">
     <div class="text-gray-700 text-base">
       <div class="w-full flex flex-col justify-items-start">
-        <span>Rif: <b>J-6849874156</b></span>
-        <span>Nombre Comercial: <b>Abonanza Alimentos</b></span>
-        <span>Estatus: <b>Activo</b></span>
+        <span>Rif: <b>{{ company?.rif }}</b></span>
+        <span>Nombre Comercial: <b>{{ company?.comercialName }}</b></span>
+        <span>Estatus: <b>{{company?.statusData?.id === 1 ? 'Activo' : 'Suspendido' }}</b></span>
       </div>
     </div>
   </div>
-  <div class="px-6 pt-4 pb-2">
+  <div class="px-6 pt-4 pb-2" *ngIf="company?.suppliersOfCompany">
     <div class="flex flex-row justify-end">
-      <custom-button text="Ver Proveedores" (click)="goToProviders()"></custom-button>
+      <custom-button text="Ver Proveedores"
+                     [disable]="!company?.suppliersOfCompany || company?.suppliersOfCompany?.length === 0"
+                     (click)="goToProviders(company!)"></custom-button>
     </div>
   </div>
 </div>

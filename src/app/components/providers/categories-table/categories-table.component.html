@@ -18,48 +18,21 @@
           </tr>
       </thead>
       <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
+          <tr *ngFor="let subcategory of subcategories"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                 1
+                 {{ subcategory.id }}
               </th>
               <td class="px-6 py-4">
-                  Alimentos
+                  {{ subcategory.name }}
               </td>
               <td class="px-6 py-4">
-                  Activo
+                  {{ subcategory.status }}
               </td>
               <td class="px-6 py-4 text-right">
-                <button (click)="selectEdit()"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
+                <button (click)="selectEdit(subcategory)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
             </td>
           </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-               2
-            </th>
-            <td class="px-6 py-4">
-                Proteinas
-            </td>
-            <td class="px-6 py-4">
-                Activo
-            </td>
-            <td class="px-6 py-4 text-right">
-              <button (click)="selectEdit()"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
-          </td>
-        </tr>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-             4
-          </th>
-          <td class="px-6 py-4">
-              Hortalizas
-          </td>
-          <td class="px-6 py-4">
-              Desactivado
-          </td>
-          <td class="px-6 py-4 text-right">
-            <button (click)="selectEdit()"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
-          </td>
-      </tr>
       </tbody>
   </table>
 </div>

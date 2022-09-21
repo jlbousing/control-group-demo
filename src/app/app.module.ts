@@ -71,6 +71,28 @@ import { EnterpriseCardComponent } from './components/enterprises/enterprise-car
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
 import { ProviderCardComponent } from './components/providers/provider-card/provider-card.component';
 
+//import { UsersService } from './services/users/users.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditUsersModalComponent } from './components/modals/edit-users-modal/edit-users-modal.component';
+import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
+import { SubcategorySelectComponent } from './components/subcategory-select/subcategory-select.component';
+import { ViewAssignmentsModalComponent } from './components/modals/view-assignments-modal/view-assignments-modal.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
+import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
+import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
+import { RemakeProductionModalComponent } from './components/modals/remake-production-modal/remake-production-modal.component';
+import { ReturnDispatchModalComponent } from './components/modals/return-dispatch-modal/return-dispatch-modal.component';
+import { LoadingComponent } from './components/spinner/loading/loading.component';
+import { SearchEnterpriseComponent } from './components/enterprises/search-enterprise/search-enterprise.component';
+
+import { NgChartsModule } from 'ng2-charts';
+import { ReportsComponent } from './pages/reports/reports.component';
+import { DataControllersComponent } from './components/reports/data-controllers/data-controllers.component';
+import { ChartsComponent } from './pages/reports/charts/charts.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -130,6 +152,21 @@ import { ProviderCardComponent } from './components/providers/provider-card/prov
     EnterpriseCardComponent,
     ProviderPageComponent,
     ProviderCardComponent,
+    EditUsersModalComponent,
+    CreateAssignmentsComponent,
+    SubcategorySelectComponent,
+    ViewAssignmentsModalComponent,
+    SearchInputComponent,
+    CreateRecipeComponent,
+    CreateProductionComponent,
+    CreateDispatchComponent,
+    RemakeProductionModalComponent,
+    ReturnDispatchModalComponent,
+    LoadingComponent,
+    SearchEnterpriseComponent,
+    ReportsComponent,
+    DataControllersComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,
@@ -144,12 +181,17 @@ import { ProviderCardComponent } from './components/providers/provider-card/prov
     OverlayModule,
     PlatformModule,
     ObserversModule,
-    PortalModule
+    PortalModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgChartsModule
   ],
   providers: [
     TitleServicesService,
     Dialog,
-    DIALOG_SCROLL_STRATEGY_PROVIDER
+    DIALOG_SCROLL_STRATEGY_PROVIDER,
+    //UsersService
   ],
   bootstrap: [AppComponent]
 })

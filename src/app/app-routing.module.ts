@@ -22,6 +22,12 @@ import { CreateProviderComponent } from './pages/app-setting/create-provider/cre
 import { RolsComponent } from './pages/app-setting/rols/rols.component';
 import { CreateRolComponent } from './pages/app-setting/create-rol/create-rol.component';
 import { ProviderPageComponent } from './providers/provider-page/provider-page.component';
+import { CreateAssignmentsComponent } from './pages/providers/create-assignments/create-assignments.component';
+import { CreateRecipeComponent } from './pages/providers/create-recipe/create-recipe.component';
+import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
+import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+import { ChartsComponent } from './pages/reports/charts/charts.component';
 
 const routes: Routes = [
   {
@@ -49,7 +55,7 @@ const routes: Routes = [
         component: EnterprisesComponent
       },
       {
-        path: "providers",
+        path: "providers/supplier/:rif",
         title: "Proveedores",
         component: ProviderPageComponent
       }
@@ -60,34 +66,54 @@ const routes: Routes = [
     component: ProvidersComponent,
     children: [
       {
-        path: "categories",
+        path: "categories/:supplierId",
         title: "Categorias",
         component: CategoriesComponent
       },
       {
-        path: "assignments",
+        path: "assignments/:supplierId",
         title: "Asignaciones",
         component: AssignmentsComponent
       },
       {
-        path: "instructions",
+        path: "instructions/:supplierId",
         title: "Instrucciones",
         component: InstructionsComponent
       },
       {
-        path: "production",
+        path: "production/:supplierId",
         title: "Produccion",
         component: ProductionComponent
       },
       {
-        path: "dispatch",
+        path: "dispatch/:supplierId",
         title: "Despacho",
         component: DispatchComponent
       },
       {
-        path: "settings",
+        path: "settings/:supplierId",
         title: "Configuracion",
         component: SettingsComponent
+      },
+      {
+        path: "create-assigment",
+        title: "Nueva asignacion",
+        component: CreateAssignmentsComponent
+      },
+      {
+        path: "create-recipe/:supplierId",
+        title: "Nueva Receta",
+        component: CreateRecipeComponent
+      },
+      {
+        path: "create-production/:supplierId",
+        title: "Nueva Produccion",
+        component: CreateProductionComponent
+      },
+      {
+        path: "create-dispatch/:supplierId/production/:productionId",
+        title: "Nuevo Despacho",
+        component: CreateDispatchComponent
       }
     ]
   },
@@ -128,6 +154,17 @@ const routes: Routes = [
     ]
   },
   {
+    path: "reports",
+    component: ReportsComponent,
+    children: [
+      {
+        path: "charts",
+        title: "Reportes",
+        component: ChartsComponent
+      }
+    ]
+  },
+  {
     path: "login",
     title: "Inicio de Sesion",
     component: LoginComponent
@@ -140,7 +177,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    onSameUrlNavigation: "reload"
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

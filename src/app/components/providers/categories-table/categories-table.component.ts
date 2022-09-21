@@ -1,5 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ISubcategory } from 'src/app/interfaces/ISubcategory';
+import { IStatus } from 'src/app/interfaces/IStatus';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { Dialog } from '@angular/cdk/dialog';
+import { EditCategoriesModalComponent } from '../../modals/edit-categories-modal/edit-categories-modal.component';
 
 
 @Component({
@@ -9,16 +13,26 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CategoriesTableComponent implements OnInit {
 
+  @Input("subcategories") subcategories: ISubcategory[] = [];
+  @Input("statues") statues: IStatus[] = [];
+  @Input("supplierId") supplierId: number = 0;
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
-  constructor() { }
+  constructor(
+    private dialog: Dialog
+  ) { }
 
   ngOnInit(): void {
   }
 
-  selectEdit(){
-    let category = {};
-    this.emiterCategoriesTable.emit(category);
+  selectEdit(subcategory: ISubcategory){
+
+    this.dialog.open(EditCategoriesModalComponent,{
+      data: {
+        subcategory: subcategory,
+        statues: this.statues,
+        supplierId: this.supplierId
+      }
+    })
   }
 
 }

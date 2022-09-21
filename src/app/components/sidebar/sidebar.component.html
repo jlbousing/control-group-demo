@@ -1,8 +1,8 @@
 <nav class="bg-gray-900 md:bg-white md:shadow-lg md:shadow-gray-300 md:mb-2">
   <div class="container bg-gray-900 w-full flex justify-center py-10 mx-auto
-            md:bg-white md:justify-center md:pl-[20%]
+            md:bg-white md:justify-center
               lg:h-[130px] lg:justify-start
-              lg:pl-[15%]">
+              lg:ml-[350px]">
   <span
   class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
   (click)="buttonSideMenu()">
@@ -56,16 +56,18 @@
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
     >
       <i class="bi bi-card-checklist text-2xl"></i>
-      <span class="text-2xl ml-4 text-gray-200 font-bold">Reportes</span>
+      <a [routerLink]="'/reports/charts'">
+        <span class="text-2xl ml-4 text-gray-200 font-bold">Reportes</span>
+      </a>
     </div>
-    <div
+    <!-- <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white lg:mb-40"
     >
       <i class="bi bi-gear-fill text-2xl"></i>
       <a [routerLink]="'/settings/categories'">
         <span class="text-2xl ml-4 text-gray-200 font-bold">Ajustes</span>
       </a>
-    </div>
+    </div> -->
     <div>
       <sidebar-user-info></sidebar-user-info>
     </div>

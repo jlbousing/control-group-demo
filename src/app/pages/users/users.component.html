@@ -1,21 +1,35 @@
 <div>
   <div>
-    <div class="lg:pl-72 lg:pt-32 h-screen" style="background-color: #eeeeee">
+    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background-color: #eeeeee">
         <div class="flex flex-col lg:flex-row">
 
-          <app-submenu-users class="w-full lg:w-1/4"></app-submenu-users>
+          <submenu-users class="w-full lg:w-1/4"></submenu-users>
 
           <div class="w-full lg:w-4/5 bg-white rounded-lg">
+            <separator-title title="Lista de usuarios"></separator-title>
             <div class="flex flex-col">
-              <div class="flex justify-evenly items-center lg:justify-evenly pt-16 lg:ml-80">
-                <h3 class="text-xl lg:text-2xl">Lista de usuarios</h3>
-              </div>
-              <div class="flex justify-center p-20 max-w-full overflow-auto">
-                <users-table class="w-full"></users-table>
-              </div>
+              <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
+
+                <search-input class="flex flex-row justify-center px-4"
+                              [label]="'Buscar usuario'"
+                              [placeholder]="'Buscar por id'"
+                             ></search-input>
+               <a [routerLink]="'/providers/create-assigment'"
+                  class="flex items-center">
+               </a>
+             </div>
+             <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+              <users-table class="w-full"
+                  [users]="users"
+                  [statues]="statues"
+                  [roles]="roles"
+                *ngIf="!loading"></users-table>
+            </div>
             </div>
           </div>
         </div>
     </div>
   </div>
 </div>
+
+

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { IIconTitleList } from 'src/app/interfaces/IIConTitleList';
+import { IIconTitleList } from 'src/app/interfaces/iIConTitleList';
 import { iconTitleList } from 'src/app/utils/IconTitleList';
 
 @Component({

@@ -1,35 +1,45 @@
-<separator-title title="Instrucciones  (Alianza Inc)"></separator-title>
+<separator-title *ngIf="supplier" [title]="'Recetas ('+supplier.name+')'"></separator-title>
+
+<loading *ngIf="loading"></loading>
+
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
-    <div class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">
-      <div class="flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8">
-        <div class="w-full text-center lg:mx-2">
-            <h6>Asignación:</h6>
-        </div>
-        <div class="w-full">
-          <div class="my-4 w-full">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="rol">
+    <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
-            </label>
-            <select
+      <search-input class="flex flex-row justify-center px-4"
+                    [label]="'Buscar Asignación'"
+                    [placeholder]="'Buscar por id'"
+                   ></search-input>
+   </div>
+    <div class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">
+      <div *ngIf="!loading" class="flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8 lg:w-[40%]">
+
+        <div class="my-4 w-1/2 lg:w-1/3 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
+            Asignación:
+          </label>
+          <select
               class="shadow appearance-none border
-                     rounded w-full py-2 px-3 text-gray-700
+                     rounded w-full py-2 px-5 text-gray-700
                      leading-tight focus:outline-none
                      focus:shadow-outline"
-                     id="rol"
-                     type="text"
-                     placeholder="Usuario">
-                     <option>item 1</option>
-                     <option>item 2</option>
-                     <option>item 3</option>
+                     id="assignament"
+                     [(ngModel)]="assignament"
+                     (ngModelChange)="setAssignament($event)">
+                     <option *ngFor="let assignament of assignaments" [ngValue]="assignament">
+                        {{assignament.name}}
+                     </option>
              </select>
-          </div>
         </div>
       </div>
-      <custom-button class="mx-12" text="Nueva Instrucción" (click)="showCreateModal()"></custom-button>
+      <a [routerLink]="'/providers/create-recipe/'+supplierId">
+        <custom-button class="mx-12" text="Nueva Instrucción"></custom-button>
+      </a>
     </div>
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
-      <instructions-table class="w-full" (emiterCategoriesTable)="showEditModal($event)"></instructions-table>
+      <instructions-table class="w-full"
+                          [assignament]="assignament"
+                          [statues]="statues"></instructions-table>
     </div>
   </div>
 </div>

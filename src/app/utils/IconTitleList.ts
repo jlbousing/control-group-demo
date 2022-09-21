@@ -1,4 +1,4 @@
-import { IIconTitleList } from "../interfaces/IIConTitleList";
+import { IIconTitleList } from "../interfaces/iIConTitleList";
 
 export const iconTitleList: IIconTitleList[] = [
   {

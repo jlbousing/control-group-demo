@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DialogRef } from '@angular/cdk/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { DispachtService } from 'src/app/services/dispatch/dispacht.service';
+import { IDispatchPatch } from 'src/app/interfaces/IDispatchPatch';
+import { IDispatch } from 'src/app/interfaces/IDispacht';
+
+interface IDialogData {
+  dispatch: IDispatch
+}
 
 @Component({
   selector: 'edit-dispatch-modal',
@@ -8,16 +15,31 @@ import { DialogRef } from '@angular/cdk/dialog';
 })
 export class EditDispatchModalComponent implements OnInit {
 
-  @Input('showModal') showModal: boolean = false;
-  @Output() emiterModal = new EventEmitter<boolean>();
-
-  constructor(public dialogRef: DialogRef) { }
+  constructor(
+    @Inject(DIALOG_DATA) public data: IDialogData,
+    public dialogRef: DialogRef,
+    private dispatchService: DispachtService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onCloseModal(){
-    this.emiterModal.emit(true);
+    this.dialogRef.close();
+  }
+
+  changeStatus(id: number) {
+
+    const payload: IDispatchPatch = {
+      status: 10
+    };
+
+    this.dispatchService.changeStatus(payload,this.data.dispatch.id)
+      .subscribe((response: any) => {
+        console.log(response);
+        alert(response.label);
+      })
+
   }
 
 }
