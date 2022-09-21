@@ -27,6 +27,7 @@ import { CreateRecipeComponent } from './pages/providers/create-recipe/create-re
 import { CreateProductionComponent } from './pages/providers/create-production/create-production.component';
 import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { ChartsComponent } from './pages/reports/charts/charts.component';
 
 const routes: Routes = [
   {
@@ -154,8 +155,14 @@ const routes: Routes = [
   },
   {
     path: "reports",
-    title: "Reportes",
-    component: ReportsComponent
+    component: ReportsComponent,
+    children: [
+      {
+        path: "charts",
+        title: "Reportes",
+        component: ChartsComponent
+      }
+    ]
   },
   {
     path: "login",

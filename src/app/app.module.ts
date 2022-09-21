@@ -90,6 +90,8 @@ import { SearchEnterpriseComponent } from './components/enterprises/search-enter
 
 import { NgChartsModule } from 'ng2-charts';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { DataControllersComponent } from './components/reports/data-controllers/data-controllers.component';
+import { ChartsComponent } from './pages/reports/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -163,6 +165,8 @@ import { ReportsComponent } from './pages/reports/reports.component';
     LoadingComponent,
     SearchEnterpriseComponent,
     ReportsComponent,
+    DataControllersComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,

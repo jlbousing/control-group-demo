@@ -16,6 +16,11 @@ export const environment = {
       create: '/api/asignaments/create',
       changes: '/api/asignaments/changes/'
     },
+    conciliations: {
+      inquiry: {
+        supplier: '/api/clap/conciliations/inquiry/supplier'
+      }
+    },
     dispatch: {
       list: '/api/clap/dispatch/',
       create: '/api/clap/dispatch/create',

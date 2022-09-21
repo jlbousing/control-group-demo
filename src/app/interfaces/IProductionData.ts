@@ -1,3 +1,6 @@
+import { IDispatch } from "./IDispacht";
+import { IRecipe } from "./IRecipe";
+
 export interface IProductionData {
   id: number;
   quantity: number;
@@ -5,4 +8,6 @@ export interface IProductionData {
   name: string;
   comments: string;
   image: string;
+  dispatchData: IDispatch,
+  recipeData: IRecipe
 }

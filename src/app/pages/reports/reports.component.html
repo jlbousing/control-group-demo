@@ -1,16 +1,12 @@
-<sidebar></sidebar>
 <div>
+  <sidebar></sidebar>
   <div>
-    <div style="display: block">
-      <canvas baseChart
-        [data]="barChartData"
-        [options]="barChartOptions"
-        [plugins]="barChartPlugins"
-        [type]="barChartType"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)">
-      </canvas>
+    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
+        <div class="flex flex-col lg:flex-row">
+          <div class="w-full lg:pt-4">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
     </div>
-    <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
   </div>
 </div>

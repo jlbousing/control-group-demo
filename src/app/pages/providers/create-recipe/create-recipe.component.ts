@@ -107,7 +107,7 @@ export class CreateRecipeComponent implements OnInit {
 
         this.itemData.push({
           itemData: {
-            itemId: this.form.value.item.id,
+            itemId: this.currentItem.id,
             quantity: this.form.value.qtx2
           }
         });
