@@ -28,6 +28,8 @@ import { CreateProductionComponent } from './pages/providers/create-production/c
 import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ChartsComponent } from './pages/reports/charts/charts.component';
+import { ItemsComponent } from './pages/providers/items/items.component';
+import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
 
 const routes: Routes = [
   {
@@ -114,6 +116,16 @@ const routes: Routes = [
         path: "create-dispatch/:supplierId/production/:productionId",
         title: "Nuevo Despacho",
         component: CreateDispatchComponent
+      },
+      {
+        path: "items/:supplierId",
+        title: "Productos",
+        component: ItemsComponent
+      },
+      {
+        path: "create-item/:supplierId",
+        title: "Nuevo producto",
+        component: CreateItemComponent
       }
     ]
   },

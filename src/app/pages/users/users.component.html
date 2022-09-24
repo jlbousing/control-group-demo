@@ -19,6 +19,7 @@
                </a>
              </div>
              <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+               <loading *ngIf="loading"></loading>
               <users-table class="w-full"
                   [users]="users"
                   [statues]="statues"

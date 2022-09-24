@@ -39,7 +39,7 @@ import { CreateProductionModalComponent } from './components/modals/create-produ
 import { EditProductionModalComponent } from './components/modals/edit-production-modal/edit-production-modal.component';
 import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
-import { DispatchTableComponent } from './components/provider/dispatch-table/dispatch-table.component';
+import { DispatchTableComponent } from './components/providers/dispatch-table/dispatch-table.component';
 import { CreateDispatchModalComponent } from './components/modals/create-dispatch-modal/create-dispatch-modal.component';
 import { EditDispatchModalComponent } from './components/modals/edit-dispatch-modal/edit-dispatch-modal.component';
 import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
@@ -92,6 +92,10 @@ import { NgChartsModule } from 'ng2-charts';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { DataControllersComponent } from './components/reports/data-controllers/data-controllers.component';
 import { ChartsComponent } from './pages/reports/charts/charts.component';
+import { ItemsComponent } from './pages/providers/items/items.component';
+import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
+import { ItemsTableComponent } from './components/providers/items-table/items-table.component';
+import { EditItemModalComponent } from './components/modals/edit-item-modal/edit-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -167,6 +171,10 @@ import { ChartsComponent } from './pages/reports/charts/charts.component';
     ReportsComponent,
     DataControllersComponent,
     ChartsComponent,
+    ItemsComponent,
+    CreateItemComponent,
+    ItemsTableComponent,
+    EditItemModalComponent,
   ],
   imports: [
     BrowserModule,
