@@ -95,6 +95,7 @@ import { ChartsComponent } from './pages/reports/charts/charts.component';
 import { ItemsComponent } from './pages/providers/items/items.component';
 import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
 import { ItemsTableComponent } from './components/providers/items-table/items-table.component';
+import { EditItemModalComponent } from './components/modals/edit-item-modal/edit-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -173,6 +174,7 @@ import { ItemsTableComponent } from './components/providers/items-table/items-ta
     ItemsComponent,
     CreateItemComponent,
     ItemsTableComponent,
+    EditItemModalComponent,
   ],
   imports: [
     BrowserModule,

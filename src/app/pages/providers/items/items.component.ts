@@ -54,4 +54,26 @@ export class ItemsComponent implements OnInit {
     });
   }
 
+  searchByName(value: any) {
+
+    const name = <string>value;
+
+    if(name && name !== "") {
+
+      this.items = [];
+      this.itemService.findItems(this.subcategory!.id,name)
+        .subscribe((response: IItem) => {
+          this.items.push(response);
+        });
+      }else {
+
+        this.loading = true;
+        this.itemService.getItems(50,0,this.subcategory!.id)
+                .subscribe((response: IItem[]) => {
+                  this.items = response;
+                  this.loading = false;
+                })
+      }
+  }
+
 }

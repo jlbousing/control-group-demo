@@ -58,7 +58,9 @@ export const environment = {
     },
     items: {
       list: '/api/clap/items',
-      create: '/api/clap/items/create'
+      create: '/api/clap/items/create',
+      changes: '/api/clap/items/changes/',
+      find: '/api/clap/items/find',
     },
     productions: {
       list: '/api/clap/production/',
