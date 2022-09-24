@@ -96,6 +96,7 @@ import { ItemsComponent } from './pages/providers/items/items.component';
 import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
 import { ItemsTableComponent } from './components/providers/items-table/items-table.component';
 import { EditItemModalComponent } from './components/modals/edit-item-modal/edit-item-modal.component';
+import { AlertModalComponent } from './components/modals/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -175,6 +176,7 @@ import { EditItemModalComponent } from './components/modals/edit-item-modal/edit
     CreateItemComponent,
     ItemsTableComponent,
     EditItemModalComponent,
+    AlertModalComponent,
   ],
   imports: [
     BrowserModule,

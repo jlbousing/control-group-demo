@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { DialogRef, DIALOG_DATA, Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { IItem } from 'src/app/interfaces/IItem';
 import { Router } from '@angular/router';
@@ -29,7 +30,8 @@ export class EditItemModalComponent implements OnInit {
     @Inject(DIALOG_DATA) public data: IDialogData,
     public dialogRef: DialogRef,
     private itemsService: ItemsService,
-    private router: Router
+    private router: Router,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
@@ -53,7 +55,13 @@ export class EditItemModalComponent implements OnInit {
 
         this.itemsService.changeItem(payload,this.data.item.id)
           .subscribe((response: any) => {
-            alert(response.label);
+            //alert(response.label);
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 200,
+                message: <string>response.label
+              }
+            });
             this.router.navigateByUrl("/providers/items/"+this.data.supplierId)
             this.dialogRef.close();
           });

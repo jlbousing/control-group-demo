@@ -4,6 +4,9 @@ import { IUserRequest } from 'src/app/interfaces/IUserRequest';
 import { IRol } from 'src/app/interfaces/IRol';
 import { RolsService } from 'src/app/services/rols/rols.service';
 import { UsersService } from 'src/app/services/users/users.service';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'create-user',
@@ -27,10 +30,14 @@ export class CreateUserComponent implements OnInit {
 
   constructor(
     private rolService: RolsService,
-    private userService: UsersService
+    private userService: UsersService,
+    private dialog: Dialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.rolService.getRoles(50,0).subscribe((response: IRol[]) => {
       this.roles = response;
@@ -71,10 +78,25 @@ export class CreateUserComponent implements OnInit {
             if(response !== undefined){
               if(response.status !== undefined){
                 if(response.status === 400){
-                  alert(response.body.result.exception)
+                  //alert(response.body.result.exception)
+                  this.dialog.open(AlertModalComponent,{
+                    data: {
+                      status: 400,
+                      message: <string>response.body.result.exception
+                    }
+                  })
                 }
               }else{
-                alert(response.message.label)
+                //alert(response.message.label)
+                this.dialog.open(AlertModalComponent,{
+                  data: {
+                    status: 201,
+                    message: <string>response.message.label
+                  }
+                });
+
+                this.router.navigateByUrl("/users");
+
               }
 
             }

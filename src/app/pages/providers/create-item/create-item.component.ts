@@ -7,6 +7,8 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-create-item',
@@ -34,10 +36,12 @@ export class CreateItemComponent implements OnInit {
     private route: ActivatedRoute,
     private categoriesService: CategoriesService,
     private itemService: ItemsService,
-    private router: Router
+    private router: Router,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.route.params.subscribe(params => {
 
@@ -76,7 +80,14 @@ export class CreateItemComponent implements OnInit {
         this.itemService.createItem(payload)
           .subscribe((response: any) => {
 
-            alert(response.message.label);
+            //alert(response.message.label);
+
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 201,
+                message: <string>response.message.label
+              }
+            });
 
             this.router.navigateByUrl("/providers/items/"+this.supplierId);
           });

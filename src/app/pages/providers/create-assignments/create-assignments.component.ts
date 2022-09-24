@@ -8,6 +8,9 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
+import { Router } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-create-assignments',
@@ -36,10 +39,14 @@ export class CreateAssignmentsComponent implements OnInit {
   constructor(
     private categoryService: CategoriesService,
     private suppliersService: SuppliersService,
-    private assignmentService: AssignamentService
+    private assignmentService: AssignamentService,
+    private router: Router,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.categoryService.getCategories()
       .subscribe((response: ICategory[]) => {
@@ -98,10 +105,25 @@ export class CreateAssignmentsComponent implements OnInit {
           if(response !== undefined){
             if(response.status !== undefined){
               if(response.status === 400){
-                alert(response.body.result.exception)
+                //alert(response.body.result.exception)
+                this.dialog.open(AlertModalComponent,{
+                  data: {
+                    status: 400,
+                    message: <string>response.body.result.exception
+                  }
+                });
+
               }
             }else{
-              alert(response.message.label)
+              //alert(response.message.label)
+              this.dialog.open(AlertModalComponent,{
+                data: {
+                  status: 201,
+                  message: <string>response.message.label
+                }
+              });
+
+              this.router.navigateByUrl("/providers/assignments/"+this.form.value.supplierId);
             }
 
           }

@@ -6,6 +6,9 @@ import { IProduction } from 'src/app/interfaces/IProduction';
 import { IDispatchRequest } from 'src/app/interfaces/IDispatchRequest';
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-dispatch',
@@ -33,10 +36,14 @@ export class CreateDispatchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productionService: ProductionService,
-    private dispatchService: DispachtService
+    private dispatchService: DispachtService,
+    private dialog: Dialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.route.params.subscribe(params => {
       this.supplierId = params["supplierId"];
@@ -82,7 +89,15 @@ export class CreateDispatchComponent implements OnInit {
 
         this.dispatchService.createProduction(payload)
           .subscribe((response: any) => {
-            alert(response.message.label);
+            //alert(response.message.label);
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 201,
+                message: <string>response.message.label
+              }
+            });
+
+            this.router.navigateByUrl("/providers/dispatch/"+this.supplierId);
           })
 
       }

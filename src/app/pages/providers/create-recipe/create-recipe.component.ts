@@ -11,6 +11,8 @@ import { IProductRecipe } from 'src/app/interfaces/IProductRecipe';
 import { IInstructionRequest } from 'src/app/interfaces/IInstuctionRequest';
 import { InstructionService } from 'src/app/services/instructions/instruction.service';
 import { Router } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-create-recipe',
@@ -45,11 +47,13 @@ export class CreateRecipeComponent implements OnInit {
     private categoriesService: CategoriesService,
     private itemsService: ItemsService,
     private instructionsService: InstructionService,
-    private router: Router
+    private router: Router,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
 
@@ -147,7 +151,13 @@ export class CreateRecipeComponent implements OnInit {
         this.instructionsService.createInstruction(payload)
           .subscribe((response: any) => {
             console.log(response);
-            alert(response.message.label);
+            //alert(response.message.label);
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 201,
+                message: <string>response.message.label
+              }
+            })
             this.router.navigateByUrl(`/providers/instructions/${this.supplierId}`)
           })
 

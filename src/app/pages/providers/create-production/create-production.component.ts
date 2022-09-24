@@ -10,6 +10,9 @@ import { ProductionService } from 'src/app/services/production/production.servic
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { ActivatedRoute } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -40,10 +43,14 @@ export class CreateProductionComponent implements OnInit {
     private recipeService: RecipesService,
     private route: ActivatedRoute,
     private assignamentService: AssignamentService,
-    private productionService: ProductionService
+    private productionService: ProductionService,
+    private dialog: Dialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.statusService.getStatues(2,50,0)
       .subscribe((response: IStatus[]) => {
@@ -106,7 +113,15 @@ export class CreateProductionComponent implements OnInit {
         this.productionService.createProduction(payload)
           .subscribe((response: any) => {
             console.log(response);
-            alert(response.message.label);
+            //alert(response.message.label);
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 201,
+                message: <string>response.message.label
+              }
+            });
+
+            this.router.navigateByUrl("/providers/production/"+this.supplierId);
           })
 
       }
