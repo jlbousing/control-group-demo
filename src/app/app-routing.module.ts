@@ -30,6 +30,10 @@ import { ReportsComponent } from './pages/reports/reports.component';
 import { ChartsComponent } from './pages/reports/charts/charts.component';
 import { ItemsComponent } from './pages/providers/items/items.component';
 import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
+import { PlacesComponent } from './pages/places/places.component';
+import { StatesComponent } from './pages/places/states/states.component';
+import { MunicipalityComponent } from './pages/places/municipality/municipality.component';
+import { ParishComponent } from './pages/places/parish/parish.component';
 
 const routes: Routes = [
   {
@@ -162,6 +166,27 @@ const routes: Routes = [
         path: "create-rol",
         title: "Nuevo rol",
         component: CreateRolComponent
+      }
+    ]
+  },
+  {
+    path: "places",
+    component: PlacesComponent,
+    children: [
+      {
+        path: "state",
+        title: "Estados",
+        component: StatesComponent
+      },
+      {
+        path: "municipality",
+        title: "Municipios",
+        component: MunicipalityComponent
+      },
+      {
+        path: "parish",
+        title: "Parroquias",
+        component: ParishComponent
       }
     ]
   },

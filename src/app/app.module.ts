@@ -97,6 +97,11 @@ import { CreateItemComponent } from './pages/providers/create-item/create-item.c
 import { ItemsTableComponent } from './components/providers/items-table/items-table.component';
 import { EditItemModalComponent } from './components/modals/edit-item-modal/edit-item-modal.component';
 import { AlertModalComponent } from './components/modals/alert-modal/alert-modal.component';
+import { SubmenuPlacesComponent } from './components/places/submenu-places/submenu-places.component';
+import { PlacesComponent } from './pages/places/places.component';
+import { StatesComponent } from './pages/places/states/states.component';
+import { MunicipalityComponent } from './pages/places/municipality/municipality.component';
+import { ParishComponent } from './pages/places/parish/parish.component';
 
 @NgModule({
   declarations: [
@@ -177,6 +182,11 @@ import { AlertModalComponent } from './components/modals/alert-modal/alert-modal
     ItemsTableComponent,
     EditItemModalComponent,
     AlertModalComponent,
+    SubmenuPlacesComponent,
+    PlacesComponent,
+    StatesComponent,
+    MunicipalityComponent,
+    ParishComponent,
   ],
   imports: [
     BrowserModule,
