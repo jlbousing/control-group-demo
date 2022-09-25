@@ -105,7 +105,7 @@ export class AssignamentService {
   findAssignaents(id: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.find}`;
-    const params: string = `?suppliersId=${id}&getRecipesClap=true`;
+    const params: string = `?id=${id}&getRecipesClap=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,
