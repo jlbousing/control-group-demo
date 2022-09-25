@@ -4,20 +4,14 @@
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
               <th scope="col" class="px-6 py-3">
-                Asignación
+                id
               </th>
               <th scope="col" class="px-6 py-3">
                 Nombre
               </th>
               <th scope="col" class="px-6 py-3">
-                Meta
+                Estatus
               </th>
-              <th scope="col" class="px-6 py-3">
-                Pendiente por produccion
-            </th>
-            <th scope="col" class="px-6 py-3">
-              Subcategoria
-          </th>
           <th scope="col" class="px-6 py-3">
               Acciones
           </th>
@@ -25,26 +19,20 @@
       </thead>
       <tbody>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black"
-              *ngFor="let item of assignments">
+              *ngFor="let state of states">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                {{ item.id }}
+                {{ state.id }}
               </th>
               <td class="px-6 py-4">
-                {{ item.name }}
+                {{ state.name }}
               </td>
               <td class="px-6 py-4">
-                {{ item.record}}
-              </td>
-              <td class="px-6 py-4">
-                {{ item.recordStock }}
-              </td>
-              <td class="px-6 py-4">
-                {{ item.subcategoryData.name }}
+                {{ state.status }}
               </td>
               <td class="px-6 py-4 text-right">
                 <div class="flex flex-row justify-start">
-                    <button (click)="showAssignment(item)"><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
-                    <button (click)="selectEdit(item)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
+                    <button><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
+                    <button><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
                 </div>
               </td>
           </tr>

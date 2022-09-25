@@ -102,6 +102,7 @@ import { PlacesComponent } from './pages/places/places.component';
 import { StatesComponent } from './pages/places/states/states.component';
 import { MunicipalityComponent } from './pages/places/municipality/municipality.component';
 import { ParishComponent } from './pages/places/parish/parish.component';
+import { StateTableComponent } from './components/places/state-table/state-table.component';
 
 @NgModule({
   declarations: [
@@ -187,6 +188,7 @@ import { ParishComponent } from './pages/places/parish/parish.component';
     StatesComponent,
     MunicipalityComponent,
     ParishComponent,
+    StateTableComponent,
   ],
   imports: [
     BrowserModule,

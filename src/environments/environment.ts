@@ -73,6 +73,12 @@ export const environment = {
       create: '/api/clap/recipes/create',
       find: '/api/clap/recipes/find'
     },
+    states: {
+      list: '/api/clap/states/',
+      create: '/api/clap/states/create',
+      find: '/api/clap/states/find',
+      changes: '/api/clap/states/changes/'
+    },
     suppliers: {
       list: '/api/suppliers/',
       create: '/api/suppliers/create',
