@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IState } from 'src/app/interfaces/IState';
+import { Dialog } from '@angular/cdk/dialog';
+import { ViewStateModalComponent } from '../../modals/view-state-modal/view-state-modal.component';
 
 @Component({
   selector: 'state-table',
@@ -9,9 +11,20 @@ import { IState } from 'src/app/interfaces/IState';
 export class StateTableComponent implements OnInit {
 
   @Input("states") states: IState[] = [];
-  constructor() { }
+  constructor(
+    private dialog: Dialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  selectView(state: IState) {
+
+    this.dialog.open(ViewStateModalComponent,{
+      data: {
+        state: state
+      }
+    });
   }
 
 }
