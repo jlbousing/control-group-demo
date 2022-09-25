@@ -22,10 +22,10 @@ interface IDialogData {
 export class EditAssignmentsModalComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
-    statusId: new FormControl<number>(0,Validators.required),
-    supplierId: new FormControl<number>(0,Validators.required),
-    comments: new FormControl<string>("",Validators.required)
+    name: new FormControl<string>(this.data.assignment.name,Validators.required),
+    statusId: new FormControl<number>(this.data.assignment.statusData.id,Validators.required),
+    supplierId: new FormControl<number>(this.data.assignment.supplierData.id,Validators.required),
+    comments: new FormControl<string>(this.data.assignment.comments,Validators.required)
   });
 
   constructor(
