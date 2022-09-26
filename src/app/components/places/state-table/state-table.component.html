@@ -27,7 +27,7 @@
                 {{ state.name }}
               </td>
               <td class="px-6 py-4">
-                {{ state.status }}
+                {{ state.status ? 'Activo' : 'Inactivo' }}
               </td>
               <td class="px-6 py-4 text-right">
                 <div class="flex flex-row justify-start">

@@ -34,6 +34,9 @@ import { PlacesComponent } from './pages/places/places.component';
 import { StatesComponent } from './pages/places/states/states.component';
 import { MunicipalityComponent } from './pages/places/municipality/municipality.component';
 import { ParishComponent } from './pages/places/parish/parish.component';
+import { CreateStateComponent } from './pages/places/create-state/create-state.component';
+import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
+import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
 
 const routes: Routes = [
   {
@@ -187,6 +190,21 @@ const routes: Routes = [
         path: "parish",
         title: "Parroquias",
         component: ParishComponent
+      },
+      {
+        path: "create-state",
+        title: "Nuevo estado",
+        component: CreateStateComponent
+      },
+      {
+        path: "create-municipality",
+        title: "Nuevo municipio",
+        component: CreateMunicipalityComponent
+      },
+      {
+        path: "create-parsih",
+        title: "Nueva parroquia",
+        component: CreateParishComponent
       }
     ]
   },
