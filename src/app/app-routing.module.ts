@@ -202,7 +202,7 @@ const routes: Routes = [
         component: CreateMunicipalityComponent
       },
       {
-        path: "create-parsih",
+        path: "create-parish",
         title: "Nueva parroquia",
         component: CreateParishComponent
       }

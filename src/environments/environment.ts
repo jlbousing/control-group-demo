@@ -68,6 +68,12 @@ export const environment = {
       changes: '/api/clap/municipality/changes/',
       find: '/api/clap/municipality/find'
     },
+    parish: {
+      list: '/api/clap/parish',
+      create: '/api/clap/parish/create',
+      changes: '/api/clap/parish/changes/',
+      find: '/api/clap/parish/find'
+    },
     productions: {
       list: '/api/clap/production/',
       create: '/api/clap/production/create',

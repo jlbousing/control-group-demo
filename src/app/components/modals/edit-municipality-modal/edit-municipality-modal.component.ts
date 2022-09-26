@@ -56,7 +56,7 @@ export class EditMunicipalityModalComponent implements OnInit {
           statesId: this.form.value.state.id
         };
 
-        this.municipalityService.patchState(payload,this.data.municipality.id)
+        this.municipalityService.patchMunicipality(payload,this.data.municipality.id)
           .subscribe((response: any) => {
 
             this.dialog.open(AlertModalComponent, {

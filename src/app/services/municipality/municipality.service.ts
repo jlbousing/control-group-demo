@@ -93,7 +93,7 @@ export class MunicipalityService {
     );
   }
 
-  patchState(payload: IMunicipalityRequest, id: number) {
+  patchMunicipality(payload: IMunicipalityRequest, id: number) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.municipality.changes}${id}`;
 
     return this.http.patch<IMunicipalityRequest>(
