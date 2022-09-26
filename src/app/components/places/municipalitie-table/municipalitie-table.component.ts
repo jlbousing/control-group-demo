@@ -3,6 +3,7 @@ import { IMunicipality } from 'src/app/interfaces/IMunicipality';
 import { ViewMunicipalityModalComponent } from '../../modals/view-municipality-modal/view-municipality-modal.component';
 import { EditMunicipalityModalComponent } from '../../modals/edit-municipality-modal/edit-municipality-modal.component';
 import { Dialog } from '@angular/cdk/dialog';
+import { IState } from 'src/app/interfaces/IState';
 
 @Component({
   selector: 'municipalitie-table',
@@ -12,6 +13,8 @@ import { Dialog } from '@angular/cdk/dialog';
 export class MunicipalitieTableComponent implements OnInit {
 
   @Input("municipalities") municipalities: IMunicipality[] = [];
+  @Input("states") states: IState[] = [];
+  @Input("state") state: IState | null = null;
 
   constructor(
     private dialog: Dialog
@@ -31,7 +34,9 @@ export class MunicipalitieTableComponent implements OnInit {
   selectEdit(municipality: IMunicipality) {
     this.dialog.open(EditMunicipalityModalComponent, {
       data: {
-        municipality: municipality
+        municipality: municipality,
+        states: this.states,
+        state: this.state
       }
     })
   }
