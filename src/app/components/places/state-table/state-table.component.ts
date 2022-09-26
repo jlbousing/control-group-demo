@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IState } from 'src/app/interfaces/IState';
 import { Dialog } from '@angular/cdk/dialog';
 import { ViewStateModalComponent } from '../../modals/view-state-modal/view-state-modal.component';
+import { EditStateModalComponent } from '../../modals/edit-state-modal/edit-state-modal.component';
 
 @Component({
   selector: 'state-table',
@@ -21,6 +22,15 @@ export class StateTableComponent implements OnInit {
   selectView(state: IState) {
 
     this.dialog.open(ViewStateModalComponent,{
+      data: {
+        state: state
+      }
+    });
+  }
+
+  selectEdit(state: IState) {
+
+    this.dialog.open(EditStateModalComponent,{
       data: {
         state: state
       }

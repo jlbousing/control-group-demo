@@ -107,6 +107,7 @@ import { ViewStateModalComponent } from './components/modals/view-state-modal/vi
 import { CreateStateComponent } from './pages/places/create-state/create-state.component';
 import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
+import { EditStateModalComponent } from './components/modals/edit-state-modal/edit-state-modal.component';
 
 @NgModule({
   declarations: [
@@ -197,6 +198,7 @@ import { CreateParishComponent } from './pages/places/create-parish/create-paris
     CreateStateComponent,
     CreateMunicipalityComponent,
     CreateParishComponent,
+    EditStateModalComponent,
   ],
   imports: [
     BrowserModule,
