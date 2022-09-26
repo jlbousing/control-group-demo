@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { IAssignamentRequest } from 'src/app/interfaces/IAssignamentRequest';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ICategory } from 'src/app/interfaces/ICategory';
@@ -26,7 +26,8 @@ export class CreateAssignmentsComponent implements OnInit {
     subcategoryId: new FormControl<number>(0,Validators.required),
     description: new FormControl<string>('',Validators.required),
     comments: new FormControl<string>('',Validators.required),
-    record: new FormControl<number>(0,Validators.required)
+    record: new FormControl<number>(0,Validators.required),
+    special: new FormControl<boolean>(false,Validators.required)
   });
 
   categoryId: number = 0;
@@ -84,7 +85,9 @@ export class CreateAssignmentsComponent implements OnInit {
        && this.form.value.subcategoryId
        && this.form.value.description
        && this.form.value.comments
-       && this.form.value.record) {
+       && this.form.value.record
+       && this.form.value.special !== undefined
+       && this.form.value.special !== null) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
@@ -95,7 +98,8 @@ export class CreateAssignmentsComponent implements OnInit {
           userId: userInfo.id,
           description: this.form.value.description,
           comments: this.form.value.comments,
-          record: this.form.value.record
+          record: this.form.value.record,
+          special: this.form.value.special
         };
 
         this.assignmentService.createAssignaments(payload).subscribe((response: any) => {
