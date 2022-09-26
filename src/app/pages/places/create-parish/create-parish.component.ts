@@ -9,7 +9,6 @@ import { ParishService } from 'src/app/services/parsih/parish.service';
 import { Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
-import { IParish } from 'src/app/interfaces/IParish';
 
 
 @Component({

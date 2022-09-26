@@ -112,6 +112,8 @@ import { MunicipalitieTableComponent } from './components/places/municipalitie-t
 import { ParishTableComponent } from './components/places/parish-table/parish-table.component';
 import { ViewMunicipalityModalComponent } from './components/modals/view-municipality-modal/view-municipality-modal.component';
 import { EditMunicipalityModalComponent } from './components/modals/edit-municipality-modal/edit-municipality-modal.component';
+import { ViewParishModalComponent } from './components/modals/view-parish-modal/view-parish-modal.component';
+import { EditParishModalComponent } from './components/modals/edit-parish-modal/edit-parish-modal.component';
 
 @NgModule({
   declarations: [
@@ -207,6 +209,8 @@ import { EditMunicipalityModalComponent } from './components/modals/edit-municip
     ParishTableComponent,
     ViewMunicipalityModalComponent,
     EditMunicipalityModalComponent,
+    ViewParishModalComponent,
+    EditParishModalComponent,
   ],
   imports: [
     BrowserModule,

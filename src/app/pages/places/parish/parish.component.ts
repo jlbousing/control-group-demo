@@ -5,6 +5,8 @@ import { StateService } from 'src/app/services/states/state.service';
 import { MunicipalityService } from 'src/app/services/municipality/municipality.service';
 import { ParishService } from 'src/app/services/parsih/parish.service';
 import { IParish } from 'src/app/interfaces/IParish';
+import { Dialog } from '@angular/cdk/dialog';
+
 
 @Component({
   selector: 'app-parish',
@@ -26,7 +28,8 @@ export class ParishComponent implements OnInit {
   constructor(
     private stateService: StateService,
     private muncipalityService: MunicipalityService,
-    private parishService: ParishService
+    private parishService: ParishService,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
