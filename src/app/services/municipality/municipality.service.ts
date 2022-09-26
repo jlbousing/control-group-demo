@@ -42,7 +42,7 @@ export class MunicipalityService {
     );
   }
 
-  createState(payload: IStateRequest) {
+  createMunicipality(payload: IMunicipalityRequest) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.municipality.create}`;
 
     return this.http.post<IMunicipalityRequest>(
@@ -70,7 +70,7 @@ export class MunicipalityService {
     );
   }
 
-  findState(name: string) {
+  findMunicipality(name: string) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.municipality.find}`;
     const params: string = `?name=${name}&getParish=true&getState=true`;
 
