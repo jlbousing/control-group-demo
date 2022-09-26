@@ -108,6 +108,8 @@ import { CreateStateComponent } from './pages/places/create-state/create-state.c
 import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
 import { EditStateModalComponent } from './components/modals/edit-state-modal/edit-state-modal.component';
+import { MunicipalitieTableComponent } from './components/places/municipalitie-table/municipalitie-table.component';
+import { ParishTableComponent } from './components/places/parish-table/parish-table.component';
 
 @NgModule({
   declarations: [
@@ -199,6 +201,8 @@ import { EditStateModalComponent } from './components/modals/edit-state-modal/ed
     CreateMunicipalityComponent,
     CreateParishComponent,
     EditStateModalComponent,
+    MunicipalitieTableComponent,
+    ParishTableComponent,
   ],
   imports: [
     BrowserModule,

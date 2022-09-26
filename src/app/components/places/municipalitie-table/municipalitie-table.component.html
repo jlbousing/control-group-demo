@@ -1,0 +1,41 @@
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                ID
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Nombre
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Estatus
+              </th>
+          <th scope="col" class="px-6 py-3">
+              Acciones
+          </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black"
+              *ngFor="let municipality of municipalities">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                {{ municipality.id }}
+              </th>
+              <td class="px-6 py-4">
+                {{ municipality.name }}
+              </td>
+              <td class="px-6 py-4">
+                {{ municipality.status ? 'Activo' : 'Inactivo' }}
+              </td>
+              <td class="px-6 py-4 text-right">
+                <div class="flex flex-row justify-start">
+                    <button (click)="selectView(municipality)"><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
+                    <button (click)="selectEdit(municipality)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
+                </div>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

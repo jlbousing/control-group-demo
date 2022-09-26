@@ -1,1 +1,49 @@
-<p>municipality works!</p>
+<separator-title [title]="'Lista de municipios'"></separator-title>
+<div class="w-full lg:w-4/5 bg-white rounded-lg">
+  <div class="flex flex-col">
+
+    <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
+
+      <search-input class="flex flex-row justify-center px-4"
+                    [label]="'Buscar Asignación'"
+                    [placeholder]="'Buscar por id'"
+                   ></search-input>
+   </div>
+    <div class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">
+      <loading *ngIf="loading"></loading>
+      <div *ngIf="!loading" class="w-full flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8">
+
+        <div class="my-4 w-1/2 lg:w-1/3 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="state">
+            Estado:
+          </label>
+          <select
+              class="shadow appearance-none border
+                     rounded w-full py-2 px-5 text-gray-700
+                     leading-tight focus:outline-none
+                     focus:shadow-outline"
+                     id="state"
+                     [(ngModel)]="state"
+                     (ngModelChange)="setState($event)">
+                     <option *ngFor="let state of states" [ngValue]="state">
+                        {{ state.name }}
+                     </option>
+             </select>
+        </div>
+
+      </div>
+      <a class="flex flex-row justify-start"
+      [routerLink]="'/places/create-municipality'">
+        <custom-button class="mx-12" text="Nuevo municipio"></custom-button>
+      </a>
+    </div>
+
+    <loading *ngIf="loading"></loading>
+    <div *ngIf="!loading" class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+      <municipalitie-table class="w-full"
+                           [municipalities]="municipalities">
+      </municipalitie-table>
+    </div>
+  </div>
+</div>
+
