@@ -1,0 +1,29 @@
+<div class="flex flex-row overflow-x-auto py-5 lg:flex-col w-full lg:ml-6  bg-grey-control-group h-full">
+  <div class="w-full lg:pb-4 lg:pl-4 lg:w-full">
+    <a [routerLink]="'/places/state'" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
+      <div class="text-2xl">
+        <i class="bi bi-archive flex justify-center lg:inline-block"></i>
+        <span class="ml-4">Estados</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="w-full lg:pb-4 lg:pl-4 lg:w-full">
+    <a [routerLink]="'/places/municipality'" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
+      <div class="text-2xl">
+        <i class="bi bi-briefcase flex justify-center lg:inline-block"></i>
+        <span class="ml-4">Municipios</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="w-full lg:pb-4 lg:pl-4 lg:w-full">
+    <a [routerLink]="'/places/parish'" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
+      <div class="text-2xl">
+        <i class="bi bi-briefcase flex justify-center lg:inline-block"></i>
+        <span class="ml-4">Parroquias</span>
+      </div>
+    </a>
+  </div>
+
+</div>

@@ -1,8 +1,9 @@
 export interface IProductionRequest {
-  name: string;
+  //name: string;
   recipeId: number;
   status: number;
   userId: number;
   comments: string;
   quantity: number;
+  incidents: string;
 }

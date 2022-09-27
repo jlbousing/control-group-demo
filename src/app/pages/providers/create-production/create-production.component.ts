@@ -10,6 +10,9 @@ import { ProductionService } from 'src/app/services/production/production.servic
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { ActivatedRoute } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,10 +25,11 @@ export class CreateProductionComponent implements OnInit {
   form = new FormGroup({
     assignament: new FormControl<IAssignament | null>(null,Validators.required),
     recipe: new FormControl<IRecipe | null>(null,Validators.required),
-    name: new FormControl<string>('',Validators.required),
+    //name: new FormControl<string>('',Validators.required),
     comments: new FormControl<string>('', Validators.required),
     quantity: new FormControl<number>(0,Validators.required),
-    status: new FormControl<number>(0,Validators.required)
+    status: new FormControl<number>(0,Validators.required),
+    incidents: new FormControl<string>('',Validators.required)
   });
 
   statues: IStatus[] = [];
@@ -40,10 +44,14 @@ export class CreateProductionComponent implements OnInit {
     private recipeService: RecipesService,
     private route: ActivatedRoute,
     private assignamentService: AssignamentService,
-    private productionService: ProductionService
+    private productionService: ProductionService,
+    private dialog: Dialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.statusService.getStatues(2,50,0)
       .subscribe((response: IStatus[]) => {
@@ -83,22 +91,24 @@ export class CreateProductionComponent implements OnInit {
     console.log("bandera 1");
     if(this.form.value.assignament
       && this.form.value.recipe
-      && this.form.value.name
+      //&& this.form.value.name
       && this.form.value.comments
       && this.form.value.quantity
       && this.form.value.quantity > 0
-      && this.form.value.status) {
+      && this.form.value.status
+      && this.form.value.incidents) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
         console.log("bandera 2");
         const payload: IProductionRequest = {
-          name: this.form.value.name,
+          //name: this.form.value.name,
           recipeId: this.form.value.recipe.id,
           status: this.form.value.status,
           userId: <number> userInfo.id,
           comments: this.form.value.comments,
-          quantity: this.form.value.quantity
+          quantity: this.form.value.quantity,
+          incidents: this.form.value.incidents
         };
 
         console.log(payload);
@@ -106,7 +116,15 @@ export class CreateProductionComponent implements OnInit {
         this.productionService.createProduction(payload)
           .subscribe((response: any) => {
             console.log(response);
-            alert(response.message.label);
+            //alert(response.message.label);
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 201,
+                message: <string>response.message.label
+              }
+            });
+
+            this.router.navigateByUrl("/providers/production/"+this.supplierId);
           })
 
       }

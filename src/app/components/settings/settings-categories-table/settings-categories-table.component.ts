@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ICategory } from 'src/app/interfaces/ICategory';
+import { EditSettingsCategoryModalComponent } from '../../modals/edit-settings-category-modal/edit-settings-category-modal.component';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'settings-categories-table',
@@ -7,16 +10,23 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SettingsCategoriesTableComponent implements OnInit {
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
+  @Input("categories") categories: ICategory[] = [];
+  category: ICategory | null = null;
 
-  constructor() { }
+  constructor(
+    private dialog: Dialog
+  ) { }
 
   ngOnInit(): void {
   }
 
-  selectEdit(){
-    let category = {};
-    this.emiterCategoriesTable.emit(category);
+  selectEdit(category: ICategory){
+
+    this.dialog.open(EditSettingsCategoryModalComponent,{
+      data: {
+        category: category
+      }
+    });
   }
 
 }

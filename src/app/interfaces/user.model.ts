@@ -7,6 +7,8 @@ export interface IUser {
   name: string;
   username: string;
   email: string;
+  dni: number;
+  phone: string;
   session: string;
   statusData: IStatus;
   rolData: IRol;

@@ -28,6 +28,15 @@ import { CreateProductionComponent } from './pages/providers/create-production/c
 import { CreateDispatchComponent } from './pages/providers/create-dispatch/create-dispatch.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ChartsComponent } from './pages/reports/charts/charts.component';
+import { ItemsComponent } from './pages/providers/items/items.component';
+import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
+import { PlacesComponent } from './pages/places/places.component';
+import { StatesComponent } from './pages/places/states/states.component';
+import { MunicipalityComponent } from './pages/places/municipality/municipality.component';
+import { ParishComponent } from './pages/places/parish/parish.component';
+import { CreateStateComponent } from './pages/places/create-state/create-state.component';
+import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
+import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
 
 const routes: Routes = [
   {
@@ -114,6 +123,16 @@ const routes: Routes = [
         path: "create-dispatch/:supplierId/production/:productionId",
         title: "Nuevo Despacho",
         component: CreateDispatchComponent
+      },
+      {
+        path: "items/:supplierId",
+        title: "Productos",
+        component: ItemsComponent
+      },
+      {
+        path: "create-item/:supplierId",
+        title: "Nuevo producto",
+        component: CreateItemComponent
       }
     ]
   },
@@ -150,6 +169,42 @@ const routes: Routes = [
         path: "create-rol",
         title: "Nuevo rol",
         component: CreateRolComponent
+      }
+    ]
+  },
+  {
+    path: "places",
+    component: PlacesComponent,
+    children: [
+      {
+        path: "state",
+        title: "Estados",
+        component: StatesComponent
+      },
+      {
+        path: "municipality",
+        title: "Municipios",
+        component: MunicipalityComponent
+      },
+      {
+        path: "parish",
+        title: "Parroquias",
+        component: ParishComponent
+      },
+      {
+        path: "create-state",
+        title: "Nuevo estado",
+        component: CreateStateComponent
+      },
+      {
+        path: "create-municipality",
+        title: "Nuevo municipio",
+        component: CreateMunicipalityComponent
+      },
+      {
+        path: "create-parish",
+        title: "Nueva parroquia",
+        component: CreateParishComponent
       }
     ]
   },

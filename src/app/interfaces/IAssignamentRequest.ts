@@ -6,4 +6,5 @@ export interface IAssignamentRequest {
   description: string;
   comments: string;
   record: number;
+  special: boolean;
 }

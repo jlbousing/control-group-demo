@@ -39,7 +39,7 @@ import { CreateProductionModalComponent } from './components/modals/create-produ
 import { EditProductionModalComponent } from './components/modals/edit-production-modal/edit-production-modal.component';
 import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
-import { DispatchTableComponent } from './components/provider/dispatch-table/dispatch-table.component';
+import { DispatchTableComponent } from './components/providers/dispatch-table/dispatch-table.component';
 import { CreateDispatchModalComponent } from './components/modals/create-dispatch-modal/create-dispatch-modal.component';
 import { EditDispatchModalComponent } from './components/modals/edit-dispatch-modal/edit-dispatch-modal.component';
 import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
@@ -92,6 +92,29 @@ import { NgChartsModule } from 'ng2-charts';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { DataControllersComponent } from './components/reports/data-controllers/data-controllers.component';
 import { ChartsComponent } from './pages/reports/charts/charts.component';
+import { ItemsComponent } from './pages/providers/items/items.component';
+import { CreateItemComponent } from './pages/providers/create-item/create-item.component';
+import { ItemsTableComponent } from './components/providers/items-table/items-table.component';
+import { EditItemModalComponent } from './components/modals/edit-item-modal/edit-item-modal.component';
+import { AlertModalComponent } from './components/modals/alert-modal/alert-modal.component';
+import { SubmenuPlacesComponent } from './components/places/submenu-places/submenu-places.component';
+import { PlacesComponent } from './pages/places/places.component';
+import { StatesComponent } from './pages/places/states/states.component';
+import { MunicipalityComponent } from './pages/places/municipality/municipality.component';
+import { ParishComponent } from './pages/places/parish/parish.component';
+import { StateTableComponent } from './components/places/state-table/state-table.component';
+import { ViewStateModalComponent } from './components/modals/view-state-modal/view-state-modal.component';
+import { CreateStateComponent } from './pages/places/create-state/create-state.component';
+import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
+import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
+import { EditStateModalComponent } from './components/modals/edit-state-modal/edit-state-modal.component';
+import { MunicipalitieTableComponent } from './components/places/municipalitie-table/municipalitie-table.component';
+import { ParishTableComponent } from './components/places/parish-table/parish-table.component';
+import { ViewMunicipalityModalComponent } from './components/modals/view-municipality-modal/view-municipality-modal.component';
+import { EditMunicipalityModalComponent } from './components/modals/edit-municipality-modal/edit-municipality-modal.component';
+import { ViewParishModalComponent } from './components/modals/view-parish-modal/view-parish-modal.component';
+import { EditParishModalComponent } from './components/modals/edit-parish-modal/edit-parish-modal.component';
+import { EditSettingsCategoryModalComponent } from './components/modals/edit-settings-category-modal/edit-settings-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -167,6 +190,29 @@ import { ChartsComponent } from './pages/reports/charts/charts.component';
     ReportsComponent,
     DataControllersComponent,
     ChartsComponent,
+    ItemsComponent,
+    CreateItemComponent,
+    ItemsTableComponent,
+    EditItemModalComponent,
+    AlertModalComponent,
+    SubmenuPlacesComponent,
+    PlacesComponent,
+    StatesComponent,
+    MunicipalityComponent,
+    ParishComponent,
+    StateTableComponent,
+    ViewStateModalComponent,
+    CreateStateComponent,
+    CreateMunicipalityComponent,
+    CreateParishComponent,
+    EditStateModalComponent,
+    MunicipalitieTableComponent,
+    ParishTableComponent,
+    ViewMunicipalityModalComponent,
+    EditMunicipalityModalComponent,
+    ViewParishModalComponent,
+    EditParishModalComponent,
+    EditSettingsCategoryModalComponent,
   ],
   imports: [
     BrowserModule,

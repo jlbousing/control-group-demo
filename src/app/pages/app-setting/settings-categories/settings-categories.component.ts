@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategory } from 'src/app/interfaces/ICategory';
+import { CategoriesService } from 'src/app/services/categories/categories.service';
 
 @Component({
   selector: 'app-settings-categories',
@@ -7,30 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsCategoriesComponent implements OnInit {
 
-  showModalCreate: boolean = false;
-  showModalEdit: boolean = false;
+  categories: ICategory[] = [];
+  loading: boolean = true;
 
-  constructor() { }
+  constructor(
+    private categoryService: CategoriesService
+  ) { }
 
   ngOnInit(): void {
+
+    this.categoryService.getCategories(50,0)
+      .subscribe((response: ICategory[]) => {
+        this.categories = response;
+        this.loading = false;
+      });
   }
 
-  showCreateModal() {
-    this.showModalCreate = true;
-  }
-
-  closeModalCreate(msg: boolean){
-    console.log("hey uya");
-    this.showModalCreate = false;
-  }
-
-  showEditModal(obj: any) {
-    this.showModalEdit = true;
-  }
-
-  closeModalEdit(msg: boolean){
-    console.log("hey uya");
-    this.showModalEdit = false;
-  }
 
 }

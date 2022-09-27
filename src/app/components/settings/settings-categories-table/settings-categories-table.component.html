@@ -10,10 +10,7 @@
                   Categorias
               </th>
               <th scope="col" class="px-6 py-3">
-                  Estatus
-              </th>
-              <th scope="col" class="px-6 py-3">
-                  Fecha
+                  Descripción
               </th>
               <th scope="col" class="px-6 py-3">
                   Acciones
@@ -21,18 +18,16 @@
           </tr>
       </thead>
       <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black"
+              *ngFor="let category of categories">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                 1
+                 {{ category.id }}
               </th>
               <td class="px-6 py-4">
-                  Alimentos
+                {{ category.name }}
               </td>
               <td class="px-6 py-4">
-                  Activo
-              </td>
-              <td class="px-6 py-4">
-                13/03/2022
+                  {{ category.description}}
               </td>
               <td class="px-6 py-4 text-right">
                 <button
@@ -41,86 +36,11 @@
                         text-blue-600
                         dark:text-blue-500
                         hover:underline"
-                        (click)="selectEdit()">
+                        (click)="selectEdit(category)">
                         <i class="bi bi-pencil-square text-2xl mx-2"></i>
                 </button>
             </td>
           </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-               2
-            </th>
-            <td class="px-6 py-4">
-                Medicina
-            </td>
-            <td class="px-6 py-4">
-                Activo
-            </td>
-            <td class="px-6 py-4">
-              13/03/2022
-            </td>
-            <td class="px-6 py-4 text-right">
-                    <button
-                type="button"
-                class="font-medium
-                      text-blue-600
-                      dark:text-blue-500
-                      hover:underline"
-                      (click)="selectEdit()">
-                      <i class="bi bi-pencil-square text-2xl mx-2"></i>
-              </button>
-          </td>
-        </tr>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-             4
-          </th>
-          <td class="px-6 py-4">
-              Proteinas
-          </td>
-          <td class="px-6 py-4">
-              Desactivado
-          </td>
-          <td class="px-6 py-4">
-            13/03/2022
-          </td>
-          <td class="px-6 py-4 text-right">
-              <button
-                type="button"
-                class="font-medium
-                      text-blue-600
-                      dark:text-blue-500
-                      hover:underline"
-                      (click)="selectEdit()">
-                    <i class="bi bi-pencil-square text-2xl mx-2"></i>
-              </button>
-          </td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-           5
-        </th>
-        <td class="px-6 py-4">
-            Hortalizas
-        </td>
-        <td class="px-6 py-4">
-            Desactivado
-        </td>
-        <td class="px-6 py-4">
-          13/03/2022
-        </td>
-        <td class="px-6 py-4 text-right">
-            <button
-              type="button"
-              class="font-medium
-                    text-blue-600
-                    dark:text-blue-500
-                    hover:underline"
-                    (click)="selectEdit()">
-                    <i class="bi bi-pencil-square text-2xl mx-2"></i>
-            </button>
-        </td>
-    </tr>
       </tbody>
   </table>
 </div>

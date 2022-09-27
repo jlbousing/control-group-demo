@@ -11,4 +11,6 @@ export interface IDispatch {
   productionData: IProductionData;
   userData: IUserData;
   statusData: IStatus;
+  incidents: string;
+  registrationNumber: string;
 }

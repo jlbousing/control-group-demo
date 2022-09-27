@@ -10,6 +10,12 @@
                   Usuario
               </th>
               <th scope="col" class="px-6 py-3">
+                CI
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Telefono
+              </th>
+              <th scope="col" class="px-6 py-3">
                   Estatus
               </th>
               <th scope="col" class="px-6 py-3">
@@ -28,6 +34,12 @@
           </th>
           <td class="px-6 py-4">
               {{ user.name }}
+          </td>
+          <td class="px-6 py-4">
+            {{ user.dni}}
+          </td>
+          <td class="px-6 py-4">
+            {{ user.phone }}
           </td>
           <td class="px-6 py-4">
               {{ user.statusData.status }}

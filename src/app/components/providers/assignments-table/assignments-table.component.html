@@ -13,11 +13,14 @@
                 Meta
               </th>
               <th scope="col" class="px-6 py-3">
-                Meta pendiente
+                Pendiente por produccion
             </th>
             <th scope="col" class="px-6 py-3">
               Subcategoria
-          </th>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Especial
+            </th>
           <th scope="col" class="px-6 py-3">
               Acciones
           </th>
@@ -40,6 +43,9 @@
               </td>
               <td class="px-6 py-4">
                 {{ item.subcategoryData.name }}
+              </td>
+              <td class="px-6 py-4">
+                {{ item.special ? 'Especial' : 'No Especial' }}
               </td>
               <td class="px-6 py-4 text-right">
                 <div class="flex flex-row justify-start">

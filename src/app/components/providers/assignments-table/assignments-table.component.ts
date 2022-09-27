@@ -16,6 +16,7 @@ export class AssignmentsTableComponent implements OnInit {
   @Input("assignments") assignments: IAssignament[] = [];
   @Input("statues") statues: IStatus[] = [];
   @Input("suppliers") suppliers: ISupplier[] = [];
+  @Input("supplierId") supplierId: number = 0;
 
   constructor(
     private dialog: Dialog
@@ -30,7 +31,8 @@ export class AssignmentsTableComponent implements OnInit {
       data: {
         assignment: assignment,
         statues: this.statues,
-        suppliers: this.suppliers
+        suppliers: this.suppliers,
+        supplierId: this.supplierId
       }
     })
   }

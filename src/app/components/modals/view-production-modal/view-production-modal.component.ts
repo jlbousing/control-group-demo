@@ -13,6 +13,7 @@ interface IDialogData {
 })
 export class ViewProductionModalComponent implements OnInit {
 
+  assignamentDate: string = "";
 
   constructor(
     @Inject(DIALOG_DATA) public data: IDialogData,
@@ -21,6 +22,8 @@ export class ViewProductionModalComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("view production ",this.data);
+
+    this.assignamentDate = this.data.production.createdDate.split("T")[0];
   }
 
   onCloseModal(){

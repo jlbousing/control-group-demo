@@ -8,4 +8,6 @@ export interface IDispatchRequest {
   partial: boolean;
   onHold: boolean;
   comments: string;
+  incidents: string;
+  registrationNumber: string;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { IAssignamentRequest } from 'src/app/interfaces/IAssignamentRequest';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ICategory } from 'src/app/interfaces/ICategory';
@@ -8,6 +8,9 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
+import { Router } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-create-assignments',
@@ -23,7 +26,8 @@ export class CreateAssignmentsComponent implements OnInit {
     subcategoryId: new FormControl<number>(0,Validators.required),
     description: new FormControl<string>('',Validators.required),
     comments: new FormControl<string>('',Validators.required),
-    record: new FormControl<number>(0,Validators.required)
+    record: new FormControl<number>(0,Validators.required),
+    special: new FormControl<boolean>(false,Validators.required)
   });
 
   categoryId: number = 0;
@@ -36,12 +40,16 @@ export class CreateAssignmentsComponent implements OnInit {
   constructor(
     private categoryService: CategoriesService,
     private suppliersService: SuppliersService,
-    private assignmentService: AssignamentService
+    private assignmentService: AssignamentService,
+    private router: Router,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
 
-    this.categoryService.getCategories()
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    this.categoryService.getCategories(50,0)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;
@@ -77,7 +85,9 @@ export class CreateAssignmentsComponent implements OnInit {
        && this.form.value.subcategoryId
        && this.form.value.description
        && this.form.value.comments
-       && this.form.value.record) {
+       && this.form.value.record
+       && this.form.value.special !== undefined
+       && this.form.value.special !== null) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
@@ -88,7 +98,8 @@ export class CreateAssignmentsComponent implements OnInit {
           userId: userInfo.id,
           description: this.form.value.description,
           comments: this.form.value.comments,
-          record: this.form.value.record
+          record: this.form.value.record,
+          special: this.form.value.special
         };
 
         this.assignmentService.createAssignaments(payload).subscribe((response: any) => {
@@ -98,10 +109,25 @@ export class CreateAssignmentsComponent implements OnInit {
           if(response !== undefined){
             if(response.status !== undefined){
               if(response.status === 400){
-                alert(response.body.result.exception)
+                //alert(response.body.result.exception)
+                this.dialog.open(AlertModalComponent,{
+                  data: {
+                    status: 400,
+                    message: <string>response.body.result.exception
+                  }
+                });
+
               }
             }else{
-              alert(response.message.label)
+              //alert(response.message.label)
+              this.dialog.open(AlertModalComponent,{
+                data: {
+                  status: 201,
+                  message: <string>response.message.label
+                }
+              });
+
+              this.router.navigateByUrl("/providers/assignments/"+this.form.value.supplierId);
             }
 
           }

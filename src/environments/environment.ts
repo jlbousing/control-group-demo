@@ -9,6 +9,10 @@ export const environment = {
   port: '',
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoxLCJpYXQiOjE2NjIwMTYwMTR9.yKiS86GG19niW43DSEeP6orDEMZ9PMwMV4xvxmHbf-I",
   endpoints: {
+    admin: {
+      recovery: '/api/admin/recovery',
+      reset: '/api/admin/change/password'
+    },
     login: '/api/login',
     assignaments: {
       list: '/api/asignaments/list',
@@ -46,6 +50,8 @@ export const environment = {
     },
     categories: {
       list: '/api/categories/',
+      create: '/api/categories/create',
+      changes: '/api/categories/changes/',
       subcategories: {
         list: '/api/categories/subcategories',
         changes: '/api/categories/subcategory/changes/',
@@ -58,7 +64,21 @@ export const environment = {
     },
     items: {
       list: '/api/clap/items',
-      create: '/api/clap/items/create'
+      create: '/api/clap/items/create',
+      changes: '/api/clap/items/changes/',
+      find: '/api/clap/items/find',
+    },
+    municipality: {
+      list: '/api/clap/municipality',
+      create: '/api/clap/municipality/create',
+      changes: '/api/clap/municipality/changes/',
+      find: '/api/clap/municipality/find'
+    },
+    parish: {
+      list: '/api/clap/parish',
+      create: '/api/clap/parish/create',
+      changes: '/api/clap/parish/changes/',
+      find: '/api/clap/parish/find'
     },
     productions: {
       list: '/api/clap/production/',
@@ -71,11 +91,17 @@ export const environment = {
       create: '/api/clap/recipes/create',
       find: '/api/clap/recipes/find'
     },
+    states: {
+      list: '/api/clap/states/',
+      create: '/api/clap/states/create',
+      find: '/api/clap/states/find',
+      changes: '/api/clap/states/changes/'
+    },
     suppliers: {
       list: '/api/suppliers/',
       create: '/api/suppliers/create',
       findById: '/api/suppliers/finder'
-    },
+    }
   }
 
 };

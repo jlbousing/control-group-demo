@@ -119,6 +119,19 @@
 
     </div>
 
+    <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+      <input id="hold-checkbok"
+             type="checkbox"
+             value=""
+             class="w-4 h-4 text-blue-600 bg-gray-100 rounded
+                  border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600
+                    dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700
+                    dark:border-gray-600"
+            formControlName="special">
+
+      <label for="hold-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">¿Es una asignacion especial?</label>
+    </div>
+
     <div class="w-full flex flex-row justify-end mt-8">
       <custom-button text="Agregar" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
     </div>

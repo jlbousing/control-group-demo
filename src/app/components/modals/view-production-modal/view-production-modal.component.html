@@ -30,7 +30,7 @@
                 <div>
                   <h5>Datos de Producción</h5>
                   <div class="flex justify-around">
-                    <div class="w-1/2">
+                    <div class="w-full">
                         <span>ID: {{ data.production.id }}</span>
                     </div>
                     <div class="w-1/2">
@@ -38,21 +38,27 @@
                     </div>
                   </div>
 
-                  <div class="flex justify-around">
-                    <div class="w-1/2">
+                  <div class="flex flex-col justify-center mt-4">
+                    <div class="w-full">
                         <div class="flex flex-col">
                           <h3 class="font-bold">Asignación</h3>
-                          Fecha: {{data.production.createdDate}}
-                          Asignación: {{ data.production.conciliationsData[0].asignamentQuantity }}
+                          <span>Fecha: {{ assignamentDate }}</span>
+                          <span>Asignación: {{ data.production.conciliationsData[0].asignamentQuantity }}</span>
                         </div>
                     </div>
-                    <div class="w-1/2">
+                    <div class="w-full">
                       <div class="flex flex-col">
                         <h3 class="font-bold">Despacho</h3>
-                        Fecha: {{data.production.createdDate}}
-                        Despacho: {{ data.production.conciliationsData[0].dispatchQuantity }}
+                        <span>Despacho: {{ data.production.conciliationsData[0].dispatchQuantity }}</span>
+                        <span>Incidencias: {{ data.production.incidents }}</span>
                       </div>
                   </div>
+                  <div class="w-full">
+                    <div class="flex flex-col">
+                      <h3 class="font-bold">Incidencias</h3>
+                      {{ data.production.incidents }}
+                    </div>
+                </div>
                   </div>
                 </div>
             </div>

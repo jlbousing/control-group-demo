@@ -13,5 +13,5 @@ export interface IAssignament {
   subcategoryData: ISubcategory;
   supplierData: ISupplier;
   statusData: IStatus;
-
+  special: boolean;
 }
