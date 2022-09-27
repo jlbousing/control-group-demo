@@ -1,12 +1,13 @@
 <div>
   <div>
-    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background-color: #eeeeee">
+    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
         <div class="flex flex-col lg:flex-row">
 
           <submenu-users class="w-full lg:w-1/4"></submenu-users>
 
-          <div class="w-full lg:w-4/5 bg-white rounded-lg">
+          <div class="w-full lg:pt-4">
             <separator-title title="Lista de usuarios"></separator-title>
+          <div class="w-full lg:w-4/5 bg-white rounded-lg">
             <div class="flex flex-col">
               <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
@@ -27,6 +28,7 @@
                 *ngIf="!loading"></users-table>
             </div>
             </div>
+          </div>
           </div>
         </div>
     </div>
