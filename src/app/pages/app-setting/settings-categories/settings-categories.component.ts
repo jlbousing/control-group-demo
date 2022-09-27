@@ -10,6 +10,7 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 export class SettingsCategoriesComponent implements OnInit {
 
   categories: ICategory[] = [];
+  loading: boolean = true;
 
   constructor(
     private categoryService: CategoriesService
@@ -20,6 +21,7 @@ export class SettingsCategoriesComponent implements OnInit {
     this.categoryService.getCategories(50,0)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
+        this.loading = false;
       });
   }
 

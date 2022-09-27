@@ -157,4 +157,32 @@ export class CategoriesService {
     );
 
   }
+
+  patchCategory(payload: ICategoyRequest, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.categories.changes}${id}`;
+
+    return this.http.patch<ISubcategoryPatch>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'Authorization': `Bearer ${environment.token}`,
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      catchError(handleError),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
+        }
+      })
+    )
+  }
 }

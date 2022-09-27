@@ -114,6 +114,7 @@ import { ViewMunicipalityModalComponent } from './components/modals/view-municip
 import { EditMunicipalityModalComponent } from './components/modals/edit-municipality-modal/edit-municipality-modal.component';
 import { ViewParishModalComponent } from './components/modals/view-parish-modal/view-parish-modal.component';
 import { EditParishModalComponent } from './components/modals/edit-parish-modal/edit-parish-modal.component';
+import { EditSettingsCategoryModalComponent } from './components/modals/edit-settings-category-modal/edit-settings-category-modal.component';
 
 @NgModule({
   declarations: [
@@ -211,6 +212,7 @@ import { EditParishModalComponent } from './components/modals/edit-parish-modal/
     EditMunicipalityModalComponent,
     ViewParishModalComponent,
     EditParishModalComponent,
+    EditSettingsCategoryModalComponent,
   ],
   imports: [
     BrowserModule,

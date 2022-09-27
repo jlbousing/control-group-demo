@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ICategory } from 'src/app/interfaces/ICategory';
+import { EditSettingsCategoryModalComponent } from '../../modals/edit-settings-category-modal/edit-settings-category-modal.component';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'settings-categories-table',
@@ -9,18 +11,22 @@ import { ICategory } from 'src/app/interfaces/ICategory';
 export class SettingsCategoriesTableComponent implements OnInit {
 
   @Input("categories") categories: ICategory[] = [];
+  category: ICategory | null = null;
 
-  constructor() { }
+  constructor(
+    private dialog: Dialog
+  ) { }
 
   ngOnInit(): void {
   }
 
-  selectView() {
+  selectEdit(category: ICategory){
 
-  }
-
-  selectEdit(){
-
+    this.dialog.open(EditSettingsCategoryModalComponent,{
+      data: {
+        category: category
+      }
+    });
   }
 
 }
