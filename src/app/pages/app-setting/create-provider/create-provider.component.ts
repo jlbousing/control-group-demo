@@ -36,7 +36,7 @@ export class CreateProviderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categoryService.getCategories().subscribe((response: ICategory[]) => {
+    this.categoryService.getCategories(50,0).subscribe((response: ICategory[]) => {
       this.categories = response;
     });
 

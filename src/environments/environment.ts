@@ -9,6 +9,10 @@ export const environment = {
   port: '',
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sIjoxLCJpYXQiOjE2NjIwMTYwMTR9.yKiS86GG19niW43DSEeP6orDEMZ9PMwMV4xvxmHbf-I",
   endpoints: {
+    admin: {
+      recovery: '/api/admin/recovery',
+      reset: '/api/admin/change/password'
+    },
     login: '/api/login',
     assignaments: {
       list: '/api/asignaments/list',
@@ -46,6 +50,7 @@ export const environment = {
     },
     categories: {
       list: '/api/categories/',
+      create: '/api/categories/create',
       subcategories: {
         list: '/api/categories/subcategories',
         changes: '/api/categories/subcategory/changes/',
@@ -95,7 +100,7 @@ export const environment = {
       list: '/api/suppliers/',
       create: '/api/suppliers/create',
       findById: '/api/suppliers/finder'
-    },
+    }
   }
 
 };

@@ -49,7 +49,7 @@ export class CreateAssignmentsComponent implements OnInit {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
-    this.categoryService.getCategories()
+    this.categoryService.getCategories(50,0)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;

@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ICategory } from 'src/app/interfaces/ICategory';
 
 @Component({
   selector: 'settings-categories-table',
@@ -7,16 +8,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SettingsCategoriesTableComponent implements OnInit {
 
-  @Output() emiterCategoriesTable = new EventEmitter<any>();
+  @Input("categories") categories: ICategory[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectView() {
+
+  }
+
   selectEdit(){
-    let category = {};
-    this.emiterCategoriesTable.emit(category);
+
   }
 
 }
