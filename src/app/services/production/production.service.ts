@@ -22,7 +22,7 @@ export class ProductionService {
   getProductionByRecipe(limit: number, offset: number, recipeId: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.productions.list}`;
-    const params: string = `?offset=${offset}&limit=${limit}&recipeId=${recipeId}&getConciliation=true&getStatus=true`;
+    const params: string = `?offset=${offset}&limit=${limit}&recipeId=${recipeId}&getConciliation=true&getStatus=true&getRecipes=true`;
 
     return this.http.get<IProduction[]>(
       url + params,

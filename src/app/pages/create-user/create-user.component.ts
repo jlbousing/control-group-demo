@@ -22,6 +22,8 @@ export class CreateUserComponent implements OnInit {
     username: new FormControl<string>('', Validators.required),
     rol: new FormControl<number | null>(0, Validators.required),
     email: new FormControl<string>('', Validators.required),
+    dni: new FormControl<number>(0,Validators.required),
+    phone: new FormControl<string>('',Validators.required),
     password1: new FormControl<string>('', Validators.required),
     password2: new FormControl<string>('', Validators.required)
   });
@@ -53,12 +55,26 @@ export class CreateUserComponent implements OnInit {
        && this.form.value.email
        && this.form.value.rol
        && this.form.value.password1
-       && this.form.value.password2) {
+       && this.form.value.password2
+       && this.form.value.dni
+       && this.form.value.phone) {
 
         if(this.form.value.password1 !== this.form.value.password2){
-          alert("Las contrasenas no coinciden");
+          //alert("Las contrasenas no coinciden");
+          this.dialog.open(AlertModalComponent,{
+            data: {
+              status: 400,
+              message: "Las contrasenas no coinciden"
+            }
+          });
         }else if(this.form.value.rol === 0){
-          alert("Debe seleccionar un Rol de usuario");
+          //alert("Debe seleccionar un Rol de usuario");
+          this.dialog.open(AlertModalComponent,{
+            data: {
+              status: 400,
+              message: "Debe seleccionar un Rol de usuario"
+            }
+          });
         }
         else{
           const payload: IUserRequest = {
@@ -66,7 +82,9 @@ export class CreateUserComponent implements OnInit {
             email: this.form.value.email,
             username: this.form.value.username,
             rol: this.form.value.rol,
-            password: this.form.value.password1
+            password: this.form.value.password1,
+            phone: this.form.value.phone,
+            dni: this.form.value.dni
           }
 
           console.log("mostrando payload ",payload);

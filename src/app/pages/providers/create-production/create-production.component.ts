@@ -25,10 +25,11 @@ export class CreateProductionComponent implements OnInit {
   form = new FormGroup({
     assignament: new FormControl<IAssignament | null>(null,Validators.required),
     recipe: new FormControl<IRecipe | null>(null,Validators.required),
-    name: new FormControl<string>('',Validators.required),
+    //name: new FormControl<string>('',Validators.required),
     comments: new FormControl<string>('', Validators.required),
     quantity: new FormControl<number>(0,Validators.required),
-    status: new FormControl<number>(0,Validators.required)
+    status: new FormControl<number>(0,Validators.required),
+    incidents: new FormControl<string>('',Validators.required)
   });
 
   statues: IStatus[] = [];
@@ -90,22 +91,24 @@ export class CreateProductionComponent implements OnInit {
     console.log("bandera 1");
     if(this.form.value.assignament
       && this.form.value.recipe
-      && this.form.value.name
+      //&& this.form.value.name
       && this.form.value.comments
       && this.form.value.quantity
       && this.form.value.quantity > 0
-      && this.form.value.status) {
+      && this.form.value.status
+      && this.form.value.incidents) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
         console.log("bandera 2");
         const payload: IProductionRequest = {
-          name: this.form.value.name,
+          //name: this.form.value.name,
           recipeId: this.form.value.recipe.id,
           status: this.form.value.status,
           userId: <number> userInfo.id,
           comments: this.form.value.comments,
-          quantity: this.form.value.quantity
+          quantity: this.form.value.quantity,
+          incidents: this.form.value.incidents
         };
 
         console.log(payload);

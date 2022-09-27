@@ -30,7 +30,9 @@ export class CreateDispatchComponent implements OnInit {
     destination: new FormControl<string>('',Validators.required),
     dispatchQuantity: new FormControl<number>(0,Validators.required),
     onHold: new FormControl<boolean>(false,Validators.required),
-    comments: new FormControl<string>('',Validators.required)
+    comments: new FormControl<string>('',Validators.required),
+    incidents: new FormControl<string>('',Validators.required),
+    registrationNumber: new FormControl<string>('',Validators.required)
   });
 
   constructor(
@@ -68,7 +70,9 @@ export class CreateDispatchComponent implements OnInit {
       && this.form.value.dispatchQuantity
       && this.form.value.comments
       && this.form.value.onHold !== undefined
-      && this.form.value.onHold !== null) {
+      && this.form.value.onHold !== null
+      && this.form.value.incidents
+      && this.form.value.registrationNumber) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
@@ -81,7 +85,9 @@ export class CreateDispatchComponent implements OnInit {
           userId: <number> userInfo.id,
           partial: true,
           onHold: this.form.value.onHold,
-          comments: this.form.value.comments
+          comments: this.form.value.comments,
+          incidents: this.form.value.incidents,
+          registrationNumber: this.form.value.registrationNumber
         };
 
         console.log(payload);

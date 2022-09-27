@@ -1,5 +1,6 @@
 import { IConcilation } from "./IConcilation";
 import { IStatus } from "./IStatus";
+import { IRecipe } from "./IRecipe";
 
 export interface IProduction {
   id: number;
@@ -8,6 +9,8 @@ export interface IProduction {
   name: string;
   comments: string;
   conciliationsData: IConcilation[];
+  recipeData: IRecipe;
   statusData: IStatus;
+  incidents: string;
   createdDate: string;
 }
