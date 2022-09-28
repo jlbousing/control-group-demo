@@ -1,0 +1,6 @@
+<button class="text-white text-sm lg:text-custom-button rounded-lg py-4 px-6 text-[20px]"
+        [ngClass]="{'bg-blue-control-group': !isDisable, 'bg-blue-300': isDisable}"
+        [disabled]="isDisable"
+        (click)="changeOffset()">
+        Cargar más
+      </button>

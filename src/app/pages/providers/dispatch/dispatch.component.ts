@@ -31,6 +31,8 @@ export class DispatchComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   supplier: ISupplier | null = null;
 
   constructor(
@@ -63,6 +65,7 @@ export class DispatchComponent implements OnInit {
   }
 
   setAssignament(value: any) {
+    this.offset = 0;
     this.loading = true;
     let assignament = <IAssignament> value;
     this.assignament = assignament;
@@ -76,6 +79,7 @@ export class DispatchComponent implements OnInit {
   }
 
   setRecipe(value: any) {
+    this.offset = 0;
     this.loading = true;
     this.recipe = <IRecipe> value;
     this.productionService.getProductionByRecipe(50,0,this.recipe.id)
@@ -86,10 +90,23 @@ export class DispatchComponent implements OnInit {
   }
 
   setProduction(value: any) {
+    this.offset = 0;
     this.loading = true;
     this.production = <IProduction> value;
 
-    this.dispatchService.getDispatchsByProductionId(50,0,this.production.id)
+    this.dispatchService.getDispatchsByProductionId(50,this.offset,this.production.id)
+      .subscribe((response: IDispatch[]) => {
+        this.dispatchs = response;
+        this.loading = false;
+        console.log("probando despachos ",this.dispatchs);
+      });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.dispatchService.getDispatchsByProductionId(50,this.offset,this.production!.id)
       .subscribe((response: IDispatch[]) => {
         this.dispatchs = response;
         this.loading = false;

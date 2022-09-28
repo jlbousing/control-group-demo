@@ -20,6 +20,8 @@ export class UsersComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     private userService: UsersService,
     private statusService: StatusService,
@@ -31,15 +33,30 @@ export class UsersComponent implements OnInit {
     //this.statues = StorageManager.getFromLocalStorage("statues");
     //console.log("mostrando statues ",this.statues)
 
-    this.statusService.getStatues(0,50,0).subscribe((response: IStatus[]) => this.statues = response);
+    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => this.statues = response);
 
-    this.rolsService.getRoles(50,0).subscribe((response: IRol[]) => this.roles = response);
+    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => this.roles = response);
 
-    this.userService.getUsers(1,50,0).subscribe((response: IUser[]) => {
+    this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
-    })
+    });
+  }
+
+  changePagination(value: any){
+    this.offset = <number>value;
+    console.log(this.offset);
+
+    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => this.statues = response);
+
+    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => this.roles = response);
+
+    this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
+      this.users = response;
+      console.log(this.users)
+      this.loading = false;
+    });
   }
 
 }

@@ -22,6 +22,8 @@ export class ItemsComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private itemService: ItemsService,
@@ -44,11 +46,11 @@ export class ItemsComponent implements OnInit {
               this.subcategories = response;
               this.subcategory = response[0]
 
-              this.itemService.getItems(50,0,this.subcategory.id)
+              this.itemService.getItems(50,this.offset,this.subcategory.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
-                })
+                });
             })
         })
     });
@@ -68,12 +70,25 @@ export class ItemsComponent implements OnInit {
       }else {
 
         this.loading = true;
-        this.itemService.getItems(50,0,this.subcategory!.id)
+        this.offset = 0;
+        this.itemService.getItems(50,this.offset,this.subcategory!.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
                 })
       }
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.itemService.getItems(50,this.offset,this.subcategory!.id)
+                .subscribe((response: IItem[]) => {
+                  this.items = response;
+                  this.loading = false;
+                });
+
   }
 
 }

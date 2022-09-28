@@ -17,6 +17,8 @@ export class MunicipalityComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     private stateService: StateService,
     private municipalityService: MunicipalityService
@@ -33,14 +35,27 @@ export class MunicipalityComponent implements OnInit {
 
   setState(value: any) {
 
+    this.offset = 0;
     this.loading = true;
     this.state = <IState>value;
 
-    this.municipalityService.getMunicipality(50,0,this.state.id)
+    this.municipalityService.getMunicipality(50,this.offset,this.state.id)
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;
       });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.municipalityService.getMunicipality(50,this.offset,this.state!.id)
+      .subscribe((response: IMunicipality[]) => {
+        this.municipalities = response;
+        this.loading = false;
+      });
+
   }
 
 }

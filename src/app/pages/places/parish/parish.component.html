@@ -64,6 +64,11 @@
                     [municipality]="municipality"
                     [municipalities]="municipalities"></parish-table>
     </div>
+
+    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="parishs.length < 10">
+            </load-more>
   </div>
 </div>
 

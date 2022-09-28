@@ -12,13 +12,26 @@ export class SettingsCategoriesComponent implements OnInit {
   categories: ICategory[] = [];
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     private categoryService: CategoriesService
   ) { }
 
   ngOnInit(): void {
 
-    this.categoryService.getCategories(50,0)
+    this.categoryService.getCategories(50,this.offset)
+      .subscribe((response: ICategory[]) => {
+        this.categories = response;
+        this.loading = false;
+      });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.categoryService.getCategories(50,this.offset)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;

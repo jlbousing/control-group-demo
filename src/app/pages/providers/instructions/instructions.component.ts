@@ -30,6 +30,8 @@ export class InstructionsComponent implements OnInit {
 
   supplier: ISupplier | null = null;
 
+  offset: number = 0;
+
   constructor(
     private dialog: Dialog,
     private assignamentService: AssignamentService,

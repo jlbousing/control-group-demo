@@ -10,6 +10,10 @@
       <div *ngIf="!loading">
         <enterprise-card *ngFor="let company of companies" [company]="company"></enterprise-card>
       </div>
+      <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="companies.length < 10">
+            </load-more>
     </div>
   </div>
 </div>

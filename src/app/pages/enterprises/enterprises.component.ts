@@ -16,17 +16,19 @@ export class EnterprisesComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     private companieService: CompaniesService,
     private statusService: StatusService
   ) { }
 
   ngOnInit(): void {
-    this.companieService.getCompanies(50,0).subscribe((response: ICompany[]) => {
+    this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
     });
-    this.statusService.getStatues(0,50,0).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
       this.loading = false;
     });
@@ -43,9 +45,25 @@ export class EnterprisesComponent implements OnInit {
   resetCompanies() {
 
     this.loading = true;
+    this.offset = 0;
 
-    this.companieService.getCompanies(50,0).subscribe((response: ICompany[]) => {
+    this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
+      this.loading = false;
+    });
+
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
+      this.companies = response;
+      this.loading = false;
+    });
+    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
+      this.statues = response;
       this.loading = false;
     });
 

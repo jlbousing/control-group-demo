@@ -30,6 +30,8 @@ export class ProductionComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,
@@ -61,6 +63,7 @@ export class ProductionComponent implements OnInit {
   }
 
   setAssignament(value: any) {
+    this.offset = 0;
     this.loading = true;
     let assignament = <IAssignament> value;
     this.assignament = assignament;
@@ -74,13 +77,26 @@ export class ProductionComponent implements OnInit {
   }
 
   setRecipe(value: any) {
+    this.offset = 0;
     this.loading = true;
     this.recipe = <IRecipe> value;
-    this.productionService.getProductionByRecipe(50,0,this.recipe.id)
+    this.productionService.getProductionByRecipe(50,this.offset,this.recipe.id)
       .subscribe((response: IProduction[]) => {
         this.productions = response;
         this.loading = false;
       })
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.productionService.getProductionByRecipe(50,this.offset,this.recipe!.id)
+    .subscribe((response: IProduction[]) => {
+      this.productions = response;
+      this.loading = false;
+    })
+
   }
 
 }

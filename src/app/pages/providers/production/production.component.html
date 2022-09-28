@@ -62,6 +62,10 @@
                         [assignament]="assignament"
                         [supplierId]="supplierId"></production-table>
     </div>
+    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="productions.length < 10">
+            </load-more>
   </div>
 </div>
 

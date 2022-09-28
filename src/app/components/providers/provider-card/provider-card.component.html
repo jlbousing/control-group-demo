@@ -29,6 +29,13 @@
             </div>
           </a>
 
+          <a [routerLink]="'/providers/items/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
+            <div class="text-xl font-bold">
+              <i class="bi bi-cart flex justify-center lg:inline-block"></i>
+              <span class="">Productos</span>
+            </div>
+          </a>
+
           <a [routerLink]="'/providers/instructions/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
             <div class="text-xl font-bold">
               <i class="bi bi-card-checklist flex justify-center lg:inline-block"></i>

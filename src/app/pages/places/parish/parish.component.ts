@@ -25,6 +25,8 @@ export class ParishComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 10;
+
   constructor(
     private stateService: StateService,
     private muncipalityService: MunicipalityService,
@@ -43,6 +45,7 @@ export class ParishComponent implements OnInit {
 
   setState(value: any) {
 
+    this.offset = 0;
     this.loading = true;
     this.state = <IState>value;
 
@@ -55,14 +58,27 @@ export class ParishComponent implements OnInit {
 
   setMunicipality(value: any) {
 
+    this.offset = 0;
     this.loading = true;
     this.municipality = <IMunicipality>value;
 
-    this.parishService.getParish(50,0,this.municipality.id)
+    this.parishService.getParish(50,this.offset,this.municipality.id)
       .subscribe((response: IParish[]) => {
         this.parishs = response;
         this.loading = false;
       });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.parishService.getParish(50,this.offset,this.municipality!.id)
+      .subscribe((response: IParish[]) => {
+        this.parishs = response;
+        this.loading = false;
+      });
+
   }
 
 }

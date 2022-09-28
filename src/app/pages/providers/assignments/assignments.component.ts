@@ -30,6 +30,8 @@ export class AssignmentsComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,

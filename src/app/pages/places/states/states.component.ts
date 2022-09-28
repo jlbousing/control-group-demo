@@ -13,17 +13,30 @@ export class StatesComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     private stateService: StateService
   ) { }
 
   ngOnInit(): void {
 
-    this.stateService.getStates(50,0)
+    this.stateService.getStates(50,this.offset)
       .subscribe((response: IState[]) => {
         this.states = response;
         this.loading = false;
-      })
+      });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.stateService.getStates(50,this.offset)
+      .subscribe((response: IState[]) => {
+        this.states = response;
+        this.loading = false;
+      });
   }
 
 }
