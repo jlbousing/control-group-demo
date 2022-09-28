@@ -116,6 +116,9 @@ import { ViewParishModalComponent } from './components/modals/view-parish-modal/
 import { EditParishModalComponent } from './components/modals/edit-parish-modal/edit-parish-modal.component';
 import { EditSettingsCategoryModalComponent } from './components/modals/edit-settings-category-modal/edit-settings-category-modal.component';
 import { LoadMoreComponent } from './components/load-more/load-more.component';
+import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
+import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
+import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
 
 @NgModule({
   declarations: [
@@ -215,6 +218,9 @@ import { LoadMoreComponent } from './components/load-more/load-more.component';
     EditParishModalComponent,
     EditSettingsCategoryModalComponent,
     LoadMoreComponent,
+    AssignamentsReportComponent,
+    ProductionReportComponent,
+    DispatchReportComponent,
   ],
   imports: [
     BrowserModule,

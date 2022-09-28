@@ -2,6 +2,32 @@
   <sidebar></sidebar>
   <div>
     <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
+      <div class="w-full flex flex-row justify-start lg:justify-center overflow-auto">
+        <div class="w-1/3 mx-8">
+          <a [routerLink]="'/reports/charts'">
+            <button class="text-white bg-blue-700 text-sm lg:text-custom-button rounded-lg py-4 px-6 text-[20px]">
+              Asignaciones
+            </button>
+          </a>
+        </div>
+
+        <div class="w-1/3 mx-8">
+          <a [routerLink]="'/reports/charts'">
+            <button class="text-black bg-white text-sm lg:text-custom-button rounded-lg py-4 px-6 text-[20px]">
+              Producción
+            </button>
+          </a>
+        </div>
+
+        <div class="w-1/3 mx-8">
+          <a [routerLink]="'/reports/charts'">
+            <button class="text-white bg-green-500 text-sm lg:text-custom-button rounded-lg py-4 px-6 text-[20px]">
+              Despacho
+            </button>
+          </a>
+        </div>
+
+      </div>
         <div class="flex flex-col lg:flex-row">
           <div class="w-full lg:pt-4">
             <router-outlet></router-outlet>
