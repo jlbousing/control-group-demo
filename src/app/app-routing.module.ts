@@ -37,6 +37,7 @@ import { ParishComponent } from './pages/places/parish/parish.component';
 import { CreateStateComponent } from './pages/places/create-state/create-state.component';
 import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
+import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
 
 const routes: Routes = [
   {
@@ -213,9 +214,9 @@ const routes: Routes = [
     component: ReportsComponent,
     children: [
       {
-        path: "charts",
-        title: "Reportes",
-        component: ChartsComponent
+        path: "assignaments",
+        title: "Reportes Asignaciones",
+        component: AssignamentsReportComponent
       }
     ]
   },

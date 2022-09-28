@@ -119,6 +119,8 @@ import { LoadMoreComponent } from './components/load-more/load-more.component';
 import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
 import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
 import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
+import { BartchartAssignamentsComponent } from './components/reports/bartchart-assignaments/bartchart-assignaments.component';
+import { PiechartAssignamentsComponent } from './components/reports/piechart-assignaments/piechart-assignaments.component';
 
 @NgModule({
   declarations: [
@@ -221,6 +223,8 @@ import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatc
     AssignamentsReportComponent,
     ProductionReportComponent,
     DispatchReportComponent,
+    BartchartAssignamentsComponent,
+    PiechartAssignamentsComponent,
   ],
   imports: [
     BrowserModule,
