@@ -1,0 +1,32 @@
+<separator-title title="Recuperar contraseña"></separator-title>
+
+<form [formGroup]="form">
+  <div class="w-full lg:w-4/5 bg-white rounded-lg">
+    <div class="flex flex-col p-8">
+      <div class="w-full flex flex-row justify-center">
+        <h3>Indique su correo electronico para resetear la contraseña</h3>
+      </div>
+      <div class="w-full flex flex-row justify-center">
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2 flex flex-row justify-center" for="email">
+            Email
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline
+                        flex flex-row
+                        justify-center"
+                 type="text"
+                 placeholder="email"
+                 formControlName="email"
+           />
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<div class="w-full flex flex-row justify-center mt-8">
+  <custom-button text="Resetear" [disable]="form.invalid" (click)="onSubmit()"></custom-button>
+</div>

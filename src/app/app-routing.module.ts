@@ -39,6 +39,7 @@ import { CreateMunicipalityComponent } from './pages/places/create-municipality/
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
 import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
 import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
 
 const routes: Routes = [
   {
@@ -230,6 +231,11 @@ const routes: Routes = [
     path: "login",
     title: "Inicio de Sesion",
     component: LoginComponent
+  },
+  {
+    path: "recovery",
+    title: "Recuperar contraseña",
+    component: RecoveryComponent
   },
   {
     path: "**",

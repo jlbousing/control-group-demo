@@ -125,6 +125,7 @@ import { CreateSubcategoryComponent } from './pages/providers/create-subcategory
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
 
 @NgModule({
   declarations: [
@@ -230,6 +231,7 @@ import { AuthInterceptorService } from './services/auth-interceptor/auth-interce
     BartchartAssignamentsComponent,
     PiechartAssignamentsComponent,
     CreateSubcategoryComponent,
+    RecoveryComponent,
   ],
   imports: [
     BrowserModule,
