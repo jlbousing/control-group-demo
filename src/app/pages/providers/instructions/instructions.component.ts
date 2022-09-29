@@ -99,7 +99,7 @@ export class InstructionsComponent implements OnInit {
     if(name && name !== "") {
 
 
-      this.recipesService.findRecipe(name)
+      this.recipesService.findRecipe(name,this.assignament!.id)
         .subscribe((response: IRecipe) => {
           this.recipes.push(response);
           this.loading = false;
@@ -107,6 +107,10 @@ export class InstructionsComponent implements OnInit {
           this.errorHandler.handleError(error);
           this.loading = false;
         });
+    }else {
+
+      this.recipes = [];
+      this.assignament = null;
     }
   }
 

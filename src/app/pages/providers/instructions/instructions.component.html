@@ -6,7 +6,7 @@
   <div class="flex flex-col">
     <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
-      <search-input class="flex flex-row justify-center px-4"
+      <search-input *ngIf="assignament" class="flex flex-row justify-center px-4"
                     [label]="'Buscar Receta'"
                     [placeholder]="'Buscar por id'"
                     (searching)="getSearch($event)"
