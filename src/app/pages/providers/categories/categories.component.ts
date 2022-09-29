@@ -90,7 +90,10 @@ export class CategoriesComponent implements OnInit {
         this.subcategories = [];
         this.subcategories.push(response);
         this.loading = false;
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        this.loading = false;
+      });
     }else {
 
       this.supplierService.findSupplierById(this.supplierId)
@@ -108,9 +111,11 @@ export class CategoriesComponent implements OnInit {
                                     this.loading = false;
                                  },(error: HttpErrorResponse) => {
                                       this.errorHandler.handleError(error);
+                                      this.loading = false;
                                 });
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         });
     }
   }

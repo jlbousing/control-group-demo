@@ -115,6 +115,7 @@ export class AssignmentsComponent implements OnInit {
         this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       })
     }else {
 
@@ -125,6 +126,7 @@ export class AssignmentsComponent implements OnInit {
           this.loading = false;
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         });
     }
   }

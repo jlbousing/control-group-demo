@@ -109,7 +109,6 @@ export class ItemsComponent implements OnInit {
                   this.errorHandler.handleError(error);
                   this.loading = false;
                 });
-
   }
 
 }

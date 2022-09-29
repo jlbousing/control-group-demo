@@ -7,8 +7,9 @@
     <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
       <search-input class="flex flex-row justify-center px-4"
-                    [label]="'Buscar Asignación'"
+                    [label]="'Buscar Receta'"
                     [placeholder]="'Buscar por id'"
+                    (searching)="getSearch($event)"
                    ></search-input>
    </div>
     <div class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">

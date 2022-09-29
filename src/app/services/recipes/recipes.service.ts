@@ -68,9 +68,9 @@ export class RecipesService {
     );
   }
 
-  findRecipe(id: number) {
+  findRecipe(name: string) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.find}`;
-    const params: string = `f?recipeId=${id}&getProducts=true`;
+    const params: string = `?name=${name}&getProducts=true`;
 
     return this.http.get<IRecipe>(
       url + params,

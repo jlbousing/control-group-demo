@@ -47,7 +47,7 @@ export class InstructionsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.statusService.getStatues(1,50,0)
+    this.statusService.getStatues(2,50,0)
       .subscribe((response: IStatus[]) => {
         this.statues = response;
       },(error: HttpErrorResponse) => {
@@ -92,6 +92,22 @@ export class InstructionsComponent implements OnInit {
 
   getSearch(value: any) {
 
+    this.loading = true;
+    this.recipes = [];
+    const name = <string>value;
+
+    if(name && name !== "") {
+
+
+      this.recipesService.findRecipe(name)
+        .subscribe((response: IRecipe) => {
+          this.recipes.push(response);
+          this.loading = false;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+    }
   }
 
 

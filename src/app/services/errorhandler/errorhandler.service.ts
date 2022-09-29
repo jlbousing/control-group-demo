@@ -26,6 +26,16 @@ export class ErrorHandlerService {
         }
       });
     }
+    else if (error.status === 404) {
+      //this.handle500Error(error);
+      console.log("hey, not found ",error);
+      /*this.dialog.open(AlertModalComponent,{
+        data: {
+          status: error.status,
+          message: <string>error.error.result.message
+        }
+      }); */
+    }
     else {
       console.log(error.error.result.message);
       this.dialog.open(AlertModalComponent,{

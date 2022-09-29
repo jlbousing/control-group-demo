@@ -33,9 +33,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this.statues = StorageManager.getFromLocalStorage("statues");
-    //console.log("mostrando statues ",this.statues)
-
     this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
@@ -80,6 +77,33 @@ export class UsersComponent implements OnInit {
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
     });
+  }
+
+  getSearch(value: any) {
+
+    this.loading = true;
+    this.users = [];
+    const username: string = <string>value;
+
+    if(username && username !== "") {
+      this.userService.findUsers(username)
+      .subscribe((response: IUser) => {
+        this.users.push(response);
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        this.loading = false;
+      });
+    }else {
+
+      this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
+        this.users = response;
+        console.log(this.users)
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
+    }
   }
 
 }

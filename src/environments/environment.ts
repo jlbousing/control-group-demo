@@ -41,7 +41,8 @@ export const environment = {
         list: '/api/users/rols'
       },
       create: '/api/users/create',
-      changes: '/api/users/changes/'
+      changes: '/api/users/changes/',
+      find: '/api/users/findbyuser',
     },
     companies: {
       list: '/api/companies/',
