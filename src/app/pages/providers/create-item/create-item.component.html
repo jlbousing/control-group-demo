@@ -8,7 +8,7 @@
       <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Indique los datos del producto</h3>
       </div>
-      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="subcategoryId > 0">
+      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="subcategory">
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
@@ -19,7 +19,7 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="text"
-                 [value]="subcategoryId"
+                 [value]="subcategory?.name"
                  [disabled]="true"
            />
         </div>
@@ -64,7 +64,7 @@
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="unit">
-            Unidad
+            Indique la unidad de medida (Kg, Gr, etc)
           </label>
           <input class="shadow appearance-none border
                         rounded w-full py-2 px-3 text-gray-700

@@ -25,4 +25,11 @@ export class ProviderCardComponent implements OnInit {
     this.router.navigateByUrl(`providers/assignments/${supplierId}`)
   }
 
+  getPendingAssignaments() {
+
+    let assignaments: string[] = [];
+
+    this.supplier?.asignaments
+  }
+
 }

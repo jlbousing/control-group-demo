@@ -38,6 +38,7 @@ import { CreateStateComponent } from './pages/places/create-state/create-state.c
 import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
 import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
+import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 
 const routes: Routes = [
   {
@@ -134,6 +135,11 @@ const routes: Routes = [
         path: "create-item/:supplierId",
         title: "Nuevo producto",
         component: CreateItemComponent
+      },
+      {
+        path: "create-subcategory/:supplierId",
+        title: "Nueva subcategoria",
+        component: CreateSubcategoryComponent
       }
     ]
   },

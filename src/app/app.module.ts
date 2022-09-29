@@ -121,6 +121,7 @@ import { ProductionReportComponent } from './pages/reports/production-report/pro
 import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
 import { BartchartAssignamentsComponent } from './components/reports/bartchart-assignaments/bartchart-assignaments.component';
 import { PiechartAssignamentsComponent } from './components/reports/piechart-assignaments/piechart-assignaments.component';
+import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 
 @NgModule({
   declarations: [
@@ -225,6 +226,7 @@ import { PiechartAssignamentsComponent } from './components/reports/piechart-ass
     DispatchReportComponent,
     BartchartAssignamentsComponent,
     PiechartAssignamentsComponent,
+    CreateSubcategoryComponent,
   ],
   imports: [
     BrowserModule,

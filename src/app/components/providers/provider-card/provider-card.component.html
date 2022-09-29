@@ -9,9 +9,9 @@
     <div class="text-gray-700 text-base">
       <div class="w-full flex flex-row justify-between">
         <div class="w-full lg:w-1/2 flex flex-col justify-items-start">
-          <span>Estatus: <b> {{ supplier?.statusData?.status }}</b></span>
-          <span>Asignaciones pendientes: <b>{{ supplier?.asignaments}}</b></span>
-          <span>Categoría:  <b>Alimentos</b></span>
+          <span>Estatus: <b> Activo</b></span>
+         <!-- <span>Asignaciones pendientes: <b>{{ supplier?.asignaments }}</b></span> -->
+          <span>Categoría:  <b>GENERICO</b></span>
         </div>
 
         <div class="w-full lg:w-1/2 flex flex-col justify-items-start">
@@ -39,7 +39,7 @@
           <a [routerLink]="'/providers/instructions/'+supplier?.id" class="cursor-pointer hover:text-blue-700 mx-2">
             <div class="text-xl font-bold">
               <i class="bi bi-card-checklist flex justify-center lg:inline-block"></i>
-              <span class="">Instrucciones</span>
+              <span class="">Recetas</span>
             </div>
           </a>
 
