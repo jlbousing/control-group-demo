@@ -5,10 +5,10 @@
 
     <loading *ngIf="loading"></loading>
     <form [formGroup]="form">
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Indique los datos del producto</h3>
       </div>
-      <div class="w-full flex flex-row justify-start" *ngIf="subcategoryId > 0">
+      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="subcategoryId > 0">
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
@@ -25,10 +25,10 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Asigne un nombre al producto</h3>
       </div>
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
             Nombre
@@ -44,10 +44,10 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Asigne la cantidad y unidad del producto</h3>
       </div>
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx">
             Cantidad
@@ -77,10 +77,10 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Escriba un comentario del producto</h3>
       </div>
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="comments">
             Comentario
@@ -98,7 +98,7 @@
 
     </form>
 
-    <div class="w-full flex flex-row justify-end mt-8">
+    <div class="w-full flex flex-row justify-center lg:justify-end mt-8">
       <custom-button text="Registrar producto"
         [disable]="form.invalid"
         (click)="onSubmit()"></custom-button>

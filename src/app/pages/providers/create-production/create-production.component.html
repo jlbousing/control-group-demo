@@ -5,10 +5,10 @@
 
     <loading *ngIf="loading"></loading>
     <form [formGroup]="form">
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Seleccione la instrucción a producir:</h3>
       </div>
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
@@ -51,10 +51,10 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <h3>Indique los datos de la Producción</h3>
       </div>
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
@@ -94,7 +94,7 @@
 
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
             Observaciones
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
             Incidencias
@@ -122,7 +122,7 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-end mt-8">
+      <div class="w-full flex flex-row justify-center lg:justify-end mt-8">
 
         <div class="w-1/2 mx-4 lg:w-[10%]">
           <button data-modal-toggle="defaultModal"
