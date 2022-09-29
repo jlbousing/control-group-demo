@@ -4,6 +4,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (token) {
       request = req.clone({
         setHeaders: {
-          authorization: `Bearer ${ token }`
+          //authorization: `Bearer ${ token }`
+          authorization: `Bearer ${ environment.token }`
         }
       });
     }else {
