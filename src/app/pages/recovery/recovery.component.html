@@ -1,6 +1,11 @@
 <div>
   <div>
     <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
+      <div class="w-full flex flex-row justify-start">
+        <a class="cursor-pointer text-blue-700 hover:text-white" [routerLink]="'/login'">
+          <i class="bi bi-caret-left"></i><span class="">Atras</span>
+        </a>
+      </div>
         <div class="flex flex-col lg:flex-row">
           <div class="w-full lg:pt-4">
             <form [formGroup]="form" class="w-full lg:w-4/5 bg-white rounded-lg">
