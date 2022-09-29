@@ -11,6 +11,8 @@ import { ProductionService } from 'src/app/services/production/production.servic
 import { ActivatedRoute } from '@angular/router';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-dispatch',
@@ -42,7 +44,8 @@ export class DispatchComponent implements OnInit {
     private assignamentService: AssignamentService,
     private recipeService: RecipesService,
     private productionService: ProductionService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
 
@@ -54,13 +57,17 @@ export class DispatchComponent implements OnInit {
       this.supplierService.findSupplierById(this.supplierId)
         .subscribe((response: ISupplier) => {
           this.supplier = response
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           this.loading = false;
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
     });
   }
 
@@ -75,7 +82,9 @@ export class DispatchComponent implements OnInit {
       this.recipes = response;
       this.loading = false;
       console.log("mostrando recipes ",this.recipes)
-    })
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
   }
 
   setRecipe(value: any) {
@@ -86,7 +95,9 @@ export class DispatchComponent implements OnInit {
       .subscribe((response: IProduction[]) => {
         this.productions = response;
         this.loading = false;
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
   }
 
   setProduction(value: any) {
@@ -99,6 +110,8 @@ export class DispatchComponent implements OnInit {
         this.dispatchs = response;
         this.loading = false;
         console.log("probando despachos ",this.dispatchs);
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -111,6 +124,8 @@ export class DispatchComponent implements OnInit {
         this.dispatchs = response;
         this.loading = false;
         console.log("probando despachos ",this.dispatchs);
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 

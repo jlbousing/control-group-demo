@@ -6,6 +6,8 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-items',
@@ -28,7 +30,8 @@ export class ItemsComponent implements OnInit {
     private route: ActivatedRoute,
     private itemService: ItemsService,
     private categoriesService: CategoriesService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -50,8 +53,17 @@ export class ItemsComponent implements OnInit {
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
+                },(error: HttpErrorResponse) => {
+                  this.errorHandler.handleError(error);
+                  this.loading = false;
                 });
+            },(error: HttpErrorResponse) => {
+              this.errorHandler.handleError(error);
+              this.loading = false;
             })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
         })
     });
   }
@@ -66,6 +78,9 @@ export class ItemsComponent implements OnInit {
       this.itemService.findItems(this.subcategory!.id,name)
         .subscribe((response: IItem) => {
           this.items.push(response);
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
         });
       }else {
 
@@ -74,6 +89,9 @@ export class ItemsComponent implements OnInit {
         this.itemService.getItems(50,this.offset,this.subcategory!.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
+                  this.loading = false;
+                },(error: HttpErrorResponse) => {
+                  this.errorHandler.handleError(error);
                   this.loading = false;
                 })
       }
@@ -86,6 +104,9 @@ export class ItemsComponent implements OnInit {
     this.itemService.getItems(50,this.offset,this.subcategory!.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
+                  this.loading = false;
+                },(error: HttpErrorResponse) => {
+                  this.errorHandler.handleError(error);
                   this.loading = false;
                 });
 

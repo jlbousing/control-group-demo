@@ -80,8 +80,6 @@ export class CreateItemComponent implements OnInit {
         this.itemService.createItem(payload)
           .subscribe((response: any) => {
 
-            //alert(response.message.label);
-
             this.dialog.open(AlertModalComponent,{
               data: {
                 status: 201,

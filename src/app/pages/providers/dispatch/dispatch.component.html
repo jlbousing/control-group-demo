@@ -72,7 +72,8 @@
     <div class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <dispatch-table class="w-full"
         [dispatchs]="dispatchs"
-        [production]="production"></dispatch-table>
+        [production]="production"
+        [supplier]="supplier"></dispatch-table>
     </div>
     <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
                        (changePagination)="changePagination($event)"

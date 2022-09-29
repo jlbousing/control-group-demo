@@ -7,7 +7,8 @@ import { IInquirySupplierData } from 'src/app/interfaces/InquirySupplierData';
 import { IConciliationData } from 'src/app/interfaces/IConcilationData';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
-import { last } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-assignaments-report',
@@ -53,7 +54,8 @@ export class AssignamentsReportComponent implements OnInit {
   };
 
   constructor(
-    private conciliationService: ConciliationService
+    private conciliationService: ConciliationService,
+    private errorHandler: ErrorHandlerService
   ) {
 
   }

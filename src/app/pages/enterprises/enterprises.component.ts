@@ -3,6 +3,8 @@ import { CompaniesService } from 'src/app/services/companies/companies.service';
 import { ICompany } from 'src/app/interfaces/ICompanies';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { StatusService } from 'src/app/services/status/status.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-enterprises',
@@ -20,17 +22,24 @@ export class EnterprisesComponent implements OnInit {
 
   constructor(
     private companieService: CompaniesService,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
     this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+
+      this.errorHandler.handleError(error);
     });
     this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+
+      this.errorHandler.handleError(error);
     });
   }
 
@@ -50,6 +59,9 @@ export class EnterprisesComponent implements OnInit {
     this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+
+      this.errorHandler.handleError(error);
     });
 
   }
@@ -61,10 +73,16 @@ export class EnterprisesComponent implements OnInit {
     this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+
+      this.errorHandler.handleError(error);
     });
     this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+
+      this.errorHandler.handleError(error);
     });
 
   }

@@ -63,7 +63,7 @@ export class CreateUserComponent implements OnInit {
        && this.form.value.phone) {
 
         if(this.form.value.password1 !== this.form.value.password2){
-          //alert("Las contrasenas no coinciden");
+
           this.dialog.open(AlertModalComponent,{
             data: {
               status: 400,
@@ -71,7 +71,7 @@ export class CreateUserComponent implements OnInit {
             }
           });
         }else if(this.form.value.rol === 0){
-          //alert("Debe seleccionar un Rol de usuario");
+
           this.dialog.open(AlertModalComponent,{
             data: {
               status: 400,
@@ -100,8 +100,6 @@ export class CreateUserComponent implements OnInit {
               if(response.status !== undefined){
                 if(response.status === 400){
 
-
-                  //alert(response.body.result.exception)
                   this.dialog.open(AlertModalComponent,{
                     data: {
                       status: 400,
@@ -110,7 +108,7 @@ export class CreateUserComponent implements OnInit {
                   })
                 }
               }else{
-                //alert(response.message.label)
+
                 this.dialog.open(AlertModalComponent,{
                   data: {
                     status: 201,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/app/interfaces/ICategory';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-settings-categories',
@@ -15,7 +17,8 @@ export class SettingsCategoriesComponent implements OnInit {
   offset: number = 0;
 
   constructor(
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +27,8 @@ export class SettingsCategoriesComponent implements OnInit {
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -35,6 +40,8 @@ export class SettingsCategoriesComponent implements OnInit {
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 

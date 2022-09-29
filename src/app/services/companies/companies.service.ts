@@ -6,14 +6,15 @@ import { environment } from 'src/environments/environment';
 import { Observable, throwError} from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
-import { handleError } from 'src/app/utils/handleError';
+import { ErrorHandlerService } from '../errorhandler/errorhandler.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompaniesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private errorHandler: ErrorHandlerService) { }
 
   getCompanies(limit: number, offset: number) {
 
@@ -30,7 +31,6 @@ export class CompaniesService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -54,7 +54,6 @@ export class CompaniesService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -83,7 +82,6 @@ export class CompaniesService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;

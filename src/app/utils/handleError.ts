@@ -17,7 +17,7 @@ export const handleError = (error: HttpErrorResponse) => {
     console.log(message);
 
     //this.presentAlert("Error al registrar informacion de paciente",message);
-    alert(message);
+    //alert(message);
 
   }
   // Return an observable with a user-facing error message.

@@ -1,14 +1,14 @@
 <separator-title title="Lista de categorias"></separator-title>
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
-    <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
+    <div class="flex flex-col justify-center lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
       <search-input class="flex flex-row justify-center px-4"
                      [label]="'Buscar Asignación'"
                      [placeholder]="'Buscar por id'"
                      (searching)="getSearch($event)"></search-input>
 
-      <custom-button text="Nueva Categoria" (click)="showCreateModal()"></custom-button>
+      <custom-button class="m-auto lg:m-0" text="Nueva Categoria" (click)="showCreateModal()"></custom-button>
     </div>
 
     <loading *ngIf="loading"></loading>

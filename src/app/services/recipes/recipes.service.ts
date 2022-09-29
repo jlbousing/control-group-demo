@@ -33,7 +33,6 @@ export class RecipesService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -56,7 +55,6 @@ export class RecipesService {
     }
     ).pipe(
       retry(1),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -84,7 +82,6 @@ export class RecipesService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -94,7 +91,7 @@ export class RecipesService {
   }
 
   patchRecipe(payload: IRecipePatch, id: number) {
-    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.instructions}${id}`;
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.changes}${id}`;
 
     return this.http.patch<IRecipePatch>(
       url,
@@ -107,7 +104,6 @@ export class RecipesService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 200){

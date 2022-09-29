@@ -1,10 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { DialogRef, DIALOG_DATA, Dialog } from '@angular/cdk/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { IStatus} from 'src/app/interfaces/IStatus';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { ISubcategoryPatch } from 'src/app/interfaces/ISubcategoryPatch';
 
 interface IDialogData {
@@ -30,17 +33,17 @@ export class EditCategoriesModalComponent implements OnInit {
     @Inject(DIALOG_DATA) public data: IDialogData,
     public dialogRef: DialogRef,
     private categoryService: CategoriesService,
-    private router: Router) {
+    private router: Router,
+    private errorHandler: ErrorHandlerService,
+    private dialog: Dialog) {
 
      }
 
   ngOnInit(): void {
-
-    console.log(this.data);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   onSubmit() {
-
 
     console.log(this.form.value);
     if(this.form.value.name
@@ -57,12 +60,20 @@ export class EditCategoriesModalComponent implements OnInit {
         this.categoryService.patchSubcategory(payload,this.data.subcategory.id)
           .subscribe((response: any) => {
             console.log(response);
-            alert(response.label);
-            this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-            this.router.onSameUrlNavigation = "reload";
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 200,
+                message: <string>response.label
+              }
+            });
+
+            this.dialogRef.close();
             this.router.navigateByUrl(`/providers/categories/${this.data.supplierId}`);
 
-          })
+          },(error: HttpErrorResponse) => {
+
+            this.errorHandler.handleError(error);
+          });
       }
   }
 

@@ -9,6 +9,8 @@ import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { StatusService } from 'src/app/services/status/status.service';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-categories',
@@ -30,7 +32,8 @@ export class CategoriesComponent implements OnInit {
     private categoriesService: CategoriesService,
     private supplierService: SuppliersService,
     private route: ActivatedRoute,
-    private statusSevice: StatusService
+    private statusSevice: StatusService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -45,10 +48,14 @@ export class CategoriesComponent implements OnInit {
 
           //SE CONSUMEN LAS CATEGORIAS
           this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
-        .subscribe((response: ISubcategory[]) => {
-          this.subcategories = response;
-          this.loading = false;
-        })
+                                .subscribe((response: ISubcategory[]) => {
+                                    this.subcategories = response;
+                                    this.loading = false;
+                                },(error: HttpErrorResponse) => {
+                                  this.errorHandler.handleError(error);
+                                });
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         });
 
 
@@ -56,6 +63,8 @@ export class CategoriesComponent implements OnInit {
       this.statusSevice.getStatues(1,50,0)
         .subscribe((response: IStatus[]) => {
           this.statues = response;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         })
 
    });
@@ -90,17 +99,18 @@ export class CategoriesComponent implements OnInit {
 
           //SE CONSUMEN LAS CATEGORIAS
           this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
-        .subscribe((response: ISubcategory[]) => {
-          console.log("entra aqui ",response);
-          if(response) {
-            this.subcategories = response;
-          }else {
-            console.log("entra aqui ",response);
-            this.subcategories = [];
-          }
-
-          this.loading = false;
-        })
+                                .subscribe((response: ISubcategory[]) => {
+                                    if(response) {
+                                        this.subcategories = response;
+                                    }else {
+                                        this.subcategories = [];
+                                    }
+                                    this.loading = false;
+                                 },(error: HttpErrorResponse) => {
+                                      this.errorHandler.handleError(error);
+                                });
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         });
     }
   }

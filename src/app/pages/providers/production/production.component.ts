@@ -11,6 +11,8 @@ import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IProduction } from 'src/app/interfaces/IProduction';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-production',
@@ -38,7 +40,8 @@ export class ProductionComponent implements OnInit {
     private recipesService: RecipesService,
     private productionService: ProductionService,
     private route: ActivatedRoute,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
 
@@ -50,14 +53,18 @@ export class ProductionComponent implements OnInit {
       this.supplierService.findSupplierById(this.supplierId)
         .subscribe((response: ISupplier) => {
           this.supplier = response
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
    });
 
   }
@@ -73,7 +80,9 @@ export class ProductionComponent implements OnInit {
       this.recipes = response;
       this.loading = false;
       console.log("mostrando recipes ",this.recipes)
-    })
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
   }
 
   setRecipe(value: any) {
@@ -84,7 +93,9 @@ export class ProductionComponent implements OnInit {
       .subscribe((response: IProduction[]) => {
         this.productions = response;
         this.loading = false;
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
   }
 
   changePagination(value: any) {
@@ -95,7 +106,9 @@ export class ProductionComponent implements OnInit {
     .subscribe((response: IProduction[]) => {
       this.productions = response;
       this.loading = false;
-    })
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
 
   }
 

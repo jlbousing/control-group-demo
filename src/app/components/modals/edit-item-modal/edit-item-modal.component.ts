@@ -5,6 +5,8 @@ import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { IItem } from 'src/app/interfaces/IItem';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { IItemPatch } from 'src/app/interfaces/IItemPatch';
 
 interface IDialogData {
@@ -31,7 +33,8 @@ export class EditItemModalComponent implements OnInit {
     public dialogRef: DialogRef,
     private itemsService: ItemsService,
     private router: Router,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +58,6 @@ export class EditItemModalComponent implements OnInit {
 
         this.itemsService.changeItem(payload,this.data.item.id)
           .subscribe((response: any) => {
-            //alert(response.label);
             this.dialog.open(AlertModalComponent,{
               data: {
                 status: 200,
@@ -64,6 +66,8 @@ export class EditItemModalComponent implements OnInit {
             });
             this.router.navigateByUrl("/providers/items/"+this.data.supplierId)
             this.dialogRef.close();
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
           });
       }
   }

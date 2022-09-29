@@ -12,6 +12,8 @@ import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { Router } from '@angular/router';
 
 
@@ -46,7 +48,8 @@ export class CreateProductionComponent implements OnInit {
     private assignamentService: AssignamentService,
     private productionService: ProductionService,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,8 @@ export class CreateProductionComponent implements OnInit {
     this.statusService.getStatues(2,50,0)
       .subscribe((response: IStatus[]) => {
         this.statues = response;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
 
       this.route.params.subscribe(params => {
@@ -66,7 +71,9 @@ export class CreateProductionComponent implements OnInit {
             this.assignaments = response;
             this.loading = false;
             console.log("probando asignaciones ",this.assignaments);
-          })
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
+          });
      });
   }
 
@@ -78,6 +85,8 @@ export class CreateProductionComponent implements OnInit {
       .subscribe((response: IRecipe[]) => {
         this.recipes = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -116,7 +125,7 @@ export class CreateProductionComponent implements OnInit {
         this.productionService.createProduction(payload)
           .subscribe((response: any) => {
             console.log(response);
-            //alert(response.message.label);
+
             this.dialog.open(AlertModalComponent,{
               data: {
                 status: 201,
@@ -125,7 +134,9 @@ export class CreateProductionComponent implements OnInit {
             });
 
             this.router.navigateByUrl("/providers/production/"+this.supplierId);
-          })
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
+          });
 
       }
   }

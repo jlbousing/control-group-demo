@@ -9,6 +9,8 @@ import { IStatus } from 'src/app/interfaces/IStatus';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { StatusService } from 'src/app/services/status/status.service';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-assignments',
@@ -37,7 +39,8 @@ export class AssignmentsComponent implements OnInit {
     private assignamentService: AssignamentService,
     private route: ActivatedRoute,
     private statusService: StatusService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
 
@@ -49,24 +52,32 @@ export class AssignmentsComponent implements OnInit {
       this.supplierService.findSupplierById(this.supplierId)
         .subscribe((response: ISupplier) => {
           this.supplier = response
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           console.log("probando asignaciones ",this.assignaments);
           this.loading = false;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         })
    });
 
    this.statusService.getStatues(1,50,0)
     .subscribe((response: IStatus[]) => {
       this.statues = response;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
     });
 
     this.supplierService.getSuppliers(1,50,0)
       .subscribe((response: ISupplier[]) => {
         this.suppliers = response;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
 
   }
@@ -102,6 +113,8 @@ export class AssignmentsComponent implements OnInit {
       .subscribe((response: IAssignament[]) => {
         this.assignaments = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       })
     }else {
 
@@ -110,7 +123,9 @@ export class AssignmentsComponent implements OnInit {
           this.assignaments = response;
           console.log("probando asignaciones ",this.assignaments);
           this.loading = false;
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
     }
   }
 

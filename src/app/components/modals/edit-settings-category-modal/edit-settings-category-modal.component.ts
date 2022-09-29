@@ -5,6 +5,8 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 import { ICategoyRequest } from 'src/app/interfaces/ICategoryRequest';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { ICategory } from 'src/app/interfaces/ICategory';
 
 interface IDialogData {
@@ -28,7 +30,8 @@ export class EditSettingsCategoryModalComponent implements OnInit {
     public dialogRef: DialogRef,
     private dialog: Dialog,
     private categoryService: CategoriesService,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +61,8 @@ export class EditSettingsCategoryModalComponent implements OnInit {
             this.dialogRef.close();
             this.router.navigateByUrl("/settings/categories");
 
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
           });
       }
   }

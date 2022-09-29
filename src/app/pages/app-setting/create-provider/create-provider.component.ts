@@ -8,6 +8,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ISupplierRequest } from 'src/app/interfaces/ISupplierRequest';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { Dialog } from '@angular/cdk/dialog';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-create-provider',
@@ -31,7 +35,9 @@ export class CreateProviderComponent implements OnInit {
     private categoryService: CategoriesService,
     private companyService: CompaniesService,
     private supplierService: SuppliersService,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
@@ -67,15 +73,30 @@ export class CreateProviderComponent implements OnInit {
             if(response !== undefined){
               if(response.status !== undefined){
                 if(response.status === 400){
-                  alert(response.body.result.exception)
+
+                  this.dialog.open(AlertModalComponent,{
+                    data: {
+                      status: 400,
+                      message: <string>response.body.result.message
+                    }
+                  });
                 }
               }else{
-                alert(response.message.label)
+
+                this.dialog.open(AlertModalComponent,{
+                  data: {
+                    status: 201,
+                    message: <string>response.message.label
+                  }
+                });
+
                 this.router.navigateByUrl('/enterprises')
               }
 
             }
-          })
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
+          });
       }
   }
 
