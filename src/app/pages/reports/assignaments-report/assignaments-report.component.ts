@@ -108,13 +108,13 @@ export class AssignamentsReportComponent implements OnInit {
           //METAS
           datasets.push({
             data: [],
-            labels: "Meta"
+            labels: ['Meta']
           });
 
            //METAS PENDIENTES
            datasets.push({
             data: [],
-            labels: "Meta Pendiente"
+            labels: ["Pendiente por produccion"]
           });
 
           this.conciliations.forEach((item: IConciliationData) => {
