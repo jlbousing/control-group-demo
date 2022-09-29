@@ -6,6 +6,8 @@ import { StorageManager } from 'src/app/utils/StorageManager';
 import { StatusService } from 'src/app/services/status/status.service';
 import { RolsService } from 'src/app/services/rols/rols.service';
 import { IRol } from 'src/app/interfaces/IRol';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-users',
@@ -25,7 +27,8 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private statusService: StatusService,
-    private rolsService: RolsService
+    private rolsService: RolsService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -33,14 +36,24 @@ export class UsersComponent implements OnInit {
     //this.statues = StorageManager.getFromLocalStorage("statues");
     //console.log("mostrando statues ",this.statues)
 
-    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => this.statues = response);
+    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
+      this.statues = response;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
 
-    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => this.roles = response);
+    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => {
+      this.roles = response;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
 
     this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
     });
   }
 
@@ -48,14 +61,24 @@ export class UsersComponent implements OnInit {
     this.offset = <number>value;
     console.log(this.offset);
 
-    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => this.statues = response);
+    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
+      this.statues = response;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
 
-    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => this.roles = response);
+    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => {
+      this.roles = response;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
 
     this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
     });
   }
 

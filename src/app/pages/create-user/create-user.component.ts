@@ -7,6 +7,8 @@ import { UsersService } from 'src/app/services/users/users.service';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'create-user',
@@ -34,7 +36,8 @@ export class CreateUserComponent implements OnInit {
     private rolService: RolsService,
     private userService: UsersService,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -121,7 +124,12 @@ export class CreateUserComponent implements OnInit {
 
             }
 
-          })
+          },
+          (error: HttpErrorResponse) => {
+
+            this.errorHandler.handleError(error);
+          }
+          )
         }
 
        }
