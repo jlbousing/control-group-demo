@@ -23,7 +23,6 @@ export class StatusService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

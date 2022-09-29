@@ -27,7 +27,6 @@ export class UsersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -51,7 +50,6 @@ export class UsersService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -79,7 +77,6 @@ export class UsersService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -108,7 +105,6 @@ export class UsersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

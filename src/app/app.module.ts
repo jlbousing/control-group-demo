@@ -123,6 +123,9 @@ import { BartchartAssignamentsComponent } from './components/reports/bartchart-a
 import { PiechartAssignamentsComponent } from './components/reports/piechart-assignaments/piechart-assignaments.component';
 import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -251,7 +254,11 @@ import { CreateSubcategoryComponent } from './pages/providers/create-subcategory
     TitleServicesService,
     Dialog,
     DIALOG_SCROLL_STRATEGY_PROVIDER,
-    //UsersService
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

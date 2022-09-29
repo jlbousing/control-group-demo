@@ -25,7 +25,6 @@ export class SuppliersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -49,7 +48,6 @@ export class SuppliersService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -76,7 +74,6 @@ export class SuppliersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

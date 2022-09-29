@@ -7,6 +7,7 @@ import { iterateJson } from 'src/app/utils/iterateJson';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { IAssignamentRequest } from 'src/app/interfaces/IAssignamentRequest';
 import { IAssigmentPatch } from 'src/app/interfaces/IAssignamentsPatch';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,6 @@ export class AssignamentService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
         }
       }
@@ -50,7 +50,6 @@ export class AssignamentService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -78,7 +77,6 @@ export class AssignamentService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -107,7 +105,6 @@ export class AssignamentService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

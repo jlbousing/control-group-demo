@@ -39,6 +39,7 @@ export class LoginFormComponent implements OnInit {
           .subscribe((response: any) => {
             console.log(response);
             StorageManager.setJSONToLocalStorage('userInfo',response);
+            StorageManager.setJSONToLocalStorage("token",response.token);
             this.router.navigateByUrl("/home");
           })
       }

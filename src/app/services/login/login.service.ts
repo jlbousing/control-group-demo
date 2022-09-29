@@ -6,6 +6,7 @@ import { Observable, throwError} from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
 import { handleError } from 'src/app/utils/handleError';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Injectable({
   providedIn: 'root'

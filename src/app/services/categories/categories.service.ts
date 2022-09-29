@@ -30,7 +30,6 @@ export class CategoriesService {
       url,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -54,7 +53,6 @@ export class CategoriesService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -83,7 +81,6 @@ export class CategoriesService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -107,7 +104,6 @@ export class CategoriesService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -134,7 +130,6 @@ export class CategoriesService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -162,7 +157,6 @@ export class CategoriesService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

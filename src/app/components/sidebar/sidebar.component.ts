@@ -45,4 +45,10 @@ export class SidebarComponent implements OnInit, OnChanges{
     this.isOpen = !this.isOpen;
   }
 
+  logOut() {
+    this.router.navigateByUrl("/login");
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("token");
+  }
+
 }

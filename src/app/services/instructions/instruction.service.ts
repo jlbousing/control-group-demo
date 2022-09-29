@@ -25,7 +25,6 @@ export class InstructionService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

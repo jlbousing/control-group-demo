@@ -78,9 +78,9 @@
                  hover:bg-blue-600 text-white"
         >
           <i class="bi bi-box-arrow-in-right text-2xl"></i>
-          <a [routerLink]="'/login'">
-            <span class="text-2xl ml-4 text-gray-200 font-bold">Logout</span>
-          </a>
+          <span class="text-2xl ml-4 text-gray-200 font-bold cursor-pointer"
+                (click)="logOut()">
+            Logout</span>
         </div>
     </div>
     </div>
