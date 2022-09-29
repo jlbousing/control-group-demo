@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IStateRequest } from 'src/app/interfaces/IStateRequest';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,7 +23,8 @@ export class CreateStateComponent implements OnInit {
   constructor(
     private stateService: StateService,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,8 @@ export class CreateStateComponent implements OnInit {
               message: <string>response.message.label
             }
           })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         });
 
         this.router.navigateByUrl("/places/state");

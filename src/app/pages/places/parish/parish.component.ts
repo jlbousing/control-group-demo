@@ -6,6 +6,8 @@ import { MunicipalityService } from 'src/app/services/municipality/municipality.
 import { ParishService } from 'src/app/services/parsih/parish.service';
 import { IParish } from 'src/app/interfaces/IParish';
 import { Dialog } from '@angular/cdk/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 
 @Component({
@@ -31,7 +33,8 @@ export class ParishComponent implements OnInit {
     private stateService: StateService,
     private muncipalityService: MunicipalityService,
     private parishService: ParishService,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +43,8 @@ export class ParishComponent implements OnInit {
       .subscribe((response: IState[]) => {
         this.states = response
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -53,6 +58,8 @@ export class ParishComponent implements OnInit {
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -66,6 +73,8 @@ export class ParishComponent implements OnInit {
       .subscribe((response: IParish[]) => {
         this.parishs = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -77,6 +86,8 @@ export class ParishComponent implements OnInit {
       .subscribe((response: IParish[]) => {
         this.parishs = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
 
   }

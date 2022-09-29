@@ -3,6 +3,8 @@ import { IMunicipality } from 'src/app/interfaces/IMunicipality';
 import { IState } from 'src/app/interfaces/IState';
 import { StateService } from 'src/app/services/states/state.service';
 import { MunicipalityService } from 'src/app/services/municipality/municipality.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-municipality',
@@ -21,7 +23,8 @@ export class MunicipalityComponent implements OnInit {
 
   constructor(
     private stateService: StateService,
-    private municipalityService: MunicipalityService
+    private municipalityService: MunicipalityService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +33,9 @@ export class MunicipalityComponent implements OnInit {
       .subscribe((response: IState[]) => {
         this.states = response;
         this.loading = false;
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
   }
 
   setState(value: any) {
@@ -43,6 +48,8 @@ export class MunicipalityComponent implements OnInit {
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -54,6 +61,8 @@ export class MunicipalityComponent implements OnInit {
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
 
   }

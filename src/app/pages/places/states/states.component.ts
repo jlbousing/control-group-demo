@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IState } from 'src/app/interfaces/IState';
 import { StateService } from 'src/app/services/states/state.service';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-states',
@@ -16,7 +18,8 @@ export class StatesComponent implements OnInit {
   offset: number = 0;
 
   constructor(
-    private stateService: StateService
+    private stateService: StateService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,8 @@ export class StatesComponent implements OnInit {
       .subscribe((response: IState[]) => {
         this.states = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
@@ -36,6 +41,8 @@ export class StatesComponent implements OnInit {
       .subscribe((response: IState[]) => {
         this.states = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RolsService } from 'src/app/services/rols/rols.service';
 import { IRol } from 'src/app/interfaces/IRol';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+
 
 @Component({
   selector: 'app-rols',
@@ -16,7 +19,8 @@ export class RolsComponent implements OnInit {
   offset: number = 0;
 
   constructor(
-    private rolService: RolsService
+    private rolService: RolsService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +28,8 @@ export class RolsComponent implements OnInit {
     this.rolService.getRoles(50,this.offset)
       .subscribe((response: IRol[]) => {
         this.rols = response;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
