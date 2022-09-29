@@ -96,6 +96,8 @@ export class CreateUserComponent implements OnInit {
             if(response !== undefined){
               if(response.status !== undefined){
                 if(response.status === 400){
+
+
                   //alert(response.body.result.exception)
                   this.dialog.open(AlertModalComponent,{
                     data: {

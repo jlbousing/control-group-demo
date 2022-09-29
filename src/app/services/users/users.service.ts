@@ -8,13 +8,14 @@ import { IUser } from 'src/app/interfaces/user.model';
 import { IUserPatch } from 'src/app/interfaces/IUserPatch';
 import { handleError } from 'src/app/utils/handleError';
 import { IUserRequest } from 'src/app/interfaces/IUserRequest';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dialog: Dialog) { }
 
   getUsers(rol: number, limit: number, offset: number) {
 
@@ -56,7 +57,6 @@ export class UsersService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -64,6 +64,11 @@ export class UsersService {
         }
 
         if(response.status === 400){
+          console.log("entrando en error 400");
+          return response;
+        }
+
+        if(response.status === 500) {
           return response;
         }
       })
