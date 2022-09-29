@@ -195,18 +195,18 @@
     </form>
 
     <div class="w-full flex flex-row mt-8">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-8">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <th scope="col" class="px-6 py-3">Producto</th>
           <th scope="col" class="px-6 py-3">Unidad</th>
           <th scope="col" class="px-6 py-3">Acciones</th>
         </thead>
         <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+          <tr class="bg-white border-b"
               *ngFor="let item of products">
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{ item.name}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"> {{ item.unit}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">
               <button>
                <i class="bi bi-trash3" (click)="deleteItem(item)"></i>
               </button>
