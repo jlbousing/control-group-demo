@@ -40,6 +40,7 @@ import { CreateParishComponent } from './pages/places/create-parish/create-paris
 import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
 import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
 
 const routes: Routes = [
   {
@@ -224,6 +225,11 @@ const routes: Routes = [
         path: "assignaments",
         title: "Reportes Asignaciones",
         component: AssignamentsReportComponent
+      },
+      {
+        path: "production",
+        title: "Reportes Produccion",
+        component: ProductionReportComponent
       }
     ]
   },
