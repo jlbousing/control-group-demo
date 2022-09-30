@@ -41,6 +41,7 @@ import { AssignamentsReportComponent } from './pages/reports/assignaments-report
 import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
+import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
 
 const routes: Routes = [
   {
@@ -230,6 +231,11 @@ const routes: Routes = [
         path: "production",
         title: "Reportes Produccion",
         component: ProductionReportComponent
+      },
+      {
+        path: "dispatch",
+        title: "Reportes Despacho",
+        component: DispatchReportComponent
       }
     ]
   },

@@ -1,1 +1,19 @@
-<p>dispatch-report works!</p>
+
+<div class="p-20">
+  <div>
+    <data-controllers
+      (inquiryData)="setCharData($event)"></data-controllers>
+    <loading *ngIf="loading"></loading>
+    <div style="display: block" *ngIf="!loading">
+      <canvas baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [type]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+    <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+  </div>
+</div>
