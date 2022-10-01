@@ -11,6 +11,7 @@ import { StatusService } from 'src/app/services/status/status.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Component({
   selector: 'app-categories',
@@ -26,6 +27,7 @@ export class CategoriesComponent implements OnInit {
   supplier: ISupplier | null = null;
 
   loading: boolean = true;
+  rol: number = 0;
 
   constructor(
     public dialog: Dialog,
@@ -37,6 +39,8 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.rol = StorageManager.getFromLocalStorage("userInfo").rol;
 
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
@@ -117,6 +121,23 @@ export class CategoriesComponent implements OnInit {
           this.errorHandler.handleError(error);
           this.loading = false;
         });
+    }
+  }
+
+  canCreate() {
+
+    switch(this.rol) {
+      case 1:
+        return true;
+        break;
+      case 2:
+        return true;
+        break;
+      case 3:
+        return true;
+        break;
+      default:
+        return false;
     }
   }
 
