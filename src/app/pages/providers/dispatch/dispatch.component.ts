@@ -105,7 +105,7 @@ export class DispatchComponent implements OnInit {
     this.loading = true;
     this.production = <IProduction> value;
 
-    this.dispatchService.getDispatchsByProductionId(50,this.offset,this.production.id)
+    this.dispatchService.getDispatchsByProductionId(10,this.offset,this.production.id)
       .subscribe((response: IDispatch[]) => {
         this.dispatchs = response;
         this.loading = false;

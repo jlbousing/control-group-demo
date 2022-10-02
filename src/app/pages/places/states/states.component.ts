@@ -26,7 +26,7 @@ export class StatesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.stateService.getStates(50,this.offset)
+    this.stateService.getStates(10,this.offset)
       .subscribe((response: IState[]) => {
         this.states = response;
         this.loading = false;
@@ -39,7 +39,7 @@ export class StatesComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.stateService.getStates(50,this.offset)
+    this.stateService.getStates(10,this.offset)
       .subscribe((response: IState[]) => {
         this.states = response;
         this.loading = false;

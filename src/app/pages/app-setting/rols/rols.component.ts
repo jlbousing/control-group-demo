@@ -25,7 +25,7 @@ export class RolsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.rolService.getRoles(50,this.offset)
+    this.rolService.getRoles(10,this.offset)
       .subscribe((response: IRol[]) => {
         this.rols = response;
       },(error: HttpErrorResponse) => {

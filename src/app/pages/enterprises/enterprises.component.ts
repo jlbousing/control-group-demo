@@ -27,7 +27,7 @@ export class EnterprisesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
+    this.companieService.getCompanies(10,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
     },(error: HttpErrorResponse) => {
@@ -35,7 +35,7 @@ export class EnterprisesComponent implements OnInit {
       this.errorHandler.handleError(error);
       this.loading = false;
     });
-    this.statusService.getStatues(1,50,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(1,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
       this.loading = false;
     },(error: HttpErrorResponse) => {
@@ -58,7 +58,7 @@ export class EnterprisesComponent implements OnInit {
     this.loading = true;
     this.offset = 0;
 
-    this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
+    this.companieService.getCompanies(10,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
     },(error: HttpErrorResponse) => {
@@ -73,14 +73,14 @@ export class EnterprisesComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.companieService.getCompanies(50,this.offset).subscribe((response: ICompany[]) => {
+    this.companieService.getCompanies(10,this.offset).subscribe((response: ICompany[]) => {
       this.companies = response;
       this.loading = false;
     },(error: HttpErrorResponse) => {
 
       this.errorHandler.handleError(error);
     });
-    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
       this.loading = false;
     },(error: HttpErrorResponse) => {

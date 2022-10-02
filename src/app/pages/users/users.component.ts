@@ -33,19 +33,19 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
     });
 
-    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => {
+    this.rolsService.getRoles(10,this.offset).subscribe((response: IRol[]) => {
       this.roles = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
     });
 
-    this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
+    this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
@@ -58,19 +58,19 @@ export class UsersComponent implements OnInit {
     this.offset = <number>value;
     console.log(this.offset);
 
-    this.statusService.getStatues(0,50,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
     });
 
-    this.rolsService.getRoles(50,this.offset).subscribe((response: IRol[]) => {
+    this.rolsService.getRoles(10,this.offset).subscribe((response: IRol[]) => {
       this.roles = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
     });
 
-    this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
+    this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
@@ -96,7 +96,7 @@ export class UsersComponent implements OnInit {
       });
     }else {
 
-      this.userService.getUsers(1,50,this.offset).subscribe((response: IUser[]) => {
+      this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
         this.users = response;
         console.log(this.users)
         this.loading = false;

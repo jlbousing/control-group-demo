@@ -71,7 +71,7 @@ export class ParishComponent implements OnInit {
     this.loading = true;
     this.municipality = <IMunicipality>value;
 
-    this.parishService.getParish(50,this.offset,this.municipality.id)
+    this.parishService.getParish(10,this.offset,this.municipality.id)
       .subscribe((response: IParish[]) => {
         this.parishs = response;
         this.loading = false;
@@ -84,7 +84,7 @@ export class ParishComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.parishService.getParish(50,this.offset,this.municipality!.id)
+    this.parishService.getParish(10,this.offset,this.municipality!.id)
       .subscribe((response: IParish[]) => {
         this.parishs = response;
         this.loading = false;
