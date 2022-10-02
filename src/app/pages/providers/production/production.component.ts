@@ -91,7 +91,7 @@ export class ProductionComponent implements OnInit {
     this.offset = 0;
     this.loading = true;
     this.recipe = <IRecipe> value;
-    this.productionService.getProductionByRecipe(50,this.offset,this.recipe.id)
+    this.productionService.getProductionByRecipe(10,this.offset,this.recipe.id)
       .subscribe((response: IProduction[]) => {
         this.productions = response;
         this.loading = false;
@@ -104,7 +104,7 @@ export class ProductionComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.productionService.getProductionByRecipe(50,this.offset,this.recipe!.id)
+    this.productionService.getProductionByRecipe(10,this.offset,this.recipe!.id)
     .subscribe((response: IProduction[]) => {
       this.productions = response;
       this.loading = false;

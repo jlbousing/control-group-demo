@@ -46,7 +46,7 @@ export class MunicipalityComponent implements OnInit {
     this.loading = true;
     this.state = <IState>value;
 
-    this.municipalityService.getMunicipality(50,this.offset,this.state.id)
+    this.municipalityService.getMunicipality(10,this.offset,this.state.id)
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;
@@ -59,7 +59,7 @@ export class MunicipalityComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.municipalityService.getMunicipality(50,this.offset,this.state!.id)
+    this.municipalityService.getMunicipality(10,this.offset,this.state!.id)
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;

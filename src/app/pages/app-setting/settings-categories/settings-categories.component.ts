@@ -23,7 +23,7 @@ export class SettingsCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categoryService.getCategories(50,this.offset)
+    this.categoryService.getCategories(10,this.offset)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;
@@ -36,7 +36,7 @@ export class SettingsCategoriesComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.categoryService.getCategories(50,this.offset)
+    this.categoryService.getCategories(10,this.offset)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
         this.loading = false;

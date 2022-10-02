@@ -51,7 +51,7 @@ export class ItemsComponent implements OnInit {
               this.subcategories = response;
               this.subcategory = response[0]
 
-              this.itemService.getItems(50,this.offset,this.subcategory.id)
+              this.itemService.getItems(10,this.offset,this.subcategory.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
@@ -88,7 +88,7 @@ export class ItemsComponent implements OnInit {
 
         this.loading = true;
         this.offset = 0;
-        this.itemService.getItems(50,this.offset,this.subcategory!.id)
+        this.itemService.getItems(10,this.offset,this.subcategory!.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
@@ -103,7 +103,7 @@ export class ItemsComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.itemService.getItems(50,this.offset,this.subcategory!.id)
+    this.itemService.getItems(10,this.offset,this.subcategory!.id)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
