@@ -93,7 +93,7 @@ const routes: Routes = [
       },
       {
         path: "instructions/:supplierId",
-        title: "Instrucciones",
+        title: "Recetas",
         component: InstructionsComponent
       },
       {
@@ -114,7 +114,7 @@ const routes: Routes = [
       },
       {
         path: "create-assigment",
-        title: "Nueva asignacion",
+        title: "Nueva Asignacion",
         canActivate: [AccessGuard],
         component: CreateAssignmentsComponent
       },
@@ -143,13 +143,13 @@ const routes: Routes = [
       },
       {
         path: "create-item/:supplierId",
-        title: "Nuevo producto",
+        title: "Nuevo Producto",
         canActivate: [AccessGuard],
         component: CreateItemComponent
       },
       {
         path: "create-subcategory/:supplierId",
-        title: "Nueva subcategoria",
+        title: "Nueva Subcategoria",
         canActivate: [AccessGuard],
         component: CreateSubcategoryComponent
       }
@@ -166,19 +166,19 @@ const routes: Routes = [
       },
       {
         path: "create-category",
-        title: "Nueva categoria",
+        title: "Nueva Categoria",
         canActivate: [AccessGuard],
         component: CreateCategoryComponent
       },
       {
         path: "create-enterprise",
-        title: "Nueva empresa",
+        title: "Nueva Empresa",
         canActivate: [AccessGuard],
         component: CreateEnterpriseComponent
       },
       {
         path: "create-provider",
-        title: "Nuevo proveedor",
+        title: "Nuevo Proveedor",
         canActivate: [AccessGuard],
         component: CreateProviderComponent
       },
@@ -189,7 +189,7 @@ const routes: Routes = [
       },
       {
         path: "create-rol",
-        title: "Nuevo rol",
+        title: "Nuevo Rol",
         canActivate: [AccessGuard],
         component: CreateRolComponent
       }
@@ -216,19 +216,19 @@ const routes: Routes = [
       },
       {
         path: "create-state",
-        title: "Nuevo estado",
+        title: "Nuevo Estado",
         canActivate: [AccessGuard],
         component: CreateStateComponent
       },
       {
         path: "create-municipality",
-        title: "Nuevo municipio",
+        title: "Nuevo Municipio",
         canActivate: [AccessGuard],
         component: CreateMunicipalityComponent
       },
       {
         path: "create-parish",
-        title: "Nueva parroquia",
+        title: "Nueva Parroquia",
         canActivate: [AccessGuard],
         component: CreateParishComponent
       }
@@ -262,7 +262,7 @@ const routes: Routes = [
   },
   {
     path: "recovery",
-    title: "Recuperar contraseña",
+    title: "Recuperar Contraseña",
     component: RecoveryComponent
   },
   {

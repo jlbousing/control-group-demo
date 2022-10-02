@@ -30,7 +30,7 @@ export const iconTitleList: IIconTitleList[] = [
     iconClass: "bi bi-pencil-square"
   },
   {
-    title: "Instrucciones",
+    title: "Recetas",
     iconClass: "bi bi-card-checklist"
   },
   {
@@ -54,15 +54,15 @@ export const iconTitleList: IIconTitleList[] = [
     iconClass: "bi bi-gear"
   },
   {
-    title: "Nueva categoria",
+    title: "Nueva Categoria",
     iconClass: "bi bi-plus-circle"
   },
   {
-    title: "Nueva empresa",
+    title: "Nueva Empresa",
     iconClass: "bi bi-plus-circle"
   },
   {
-    title: "Nuevo proveedor",
+    title: "Nuevo Proveedor",
     iconClass: "bi bi-plus-circle"
   },
   {
@@ -70,8 +70,75 @@ export const iconTitleList: IIconTitleList[] = [
     iconClass: "bi bi-people"
   },
   {
-    title: "Nuevo rol",
+    title: "Nuevo Rol",
     iconClass: "bi bi-plus-circle"
   },
-
+  {
+    title: "Nueva Asignacion",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nueva Receta",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nueva Produccion",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nuevo Despacho",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Producto",
+    iconClass: "bi bi-cart"
+  },
+  {
+    title: "Nuevo Producto",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nuevo Subcategoria",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nuevo Producto",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Estados",
+    iconClass: "bi bi-building"
+  },
+  {
+    title: "Municipios",
+    iconClass: "bi bi-building"
+  },
+  {
+    title: "Parroquias",
+    iconClass: "bi bi-building"
+  },
+  {
+    title: "Nuevo Estado",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nuevo Municipio",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Nueva Parroquia",
+    iconClass: "bi bi-plus-circle"
+  },
+  {
+    title: "Reportes Asignaciones",
+    iconClass: "bi bi-bar-chart"
+  },
+  {
+    title: "Reportes Produccion",
+    iconClass: "bi bi-bar-chart"
+  },
+  {
+    title: "Reportes Despacho",
+    iconClass: "bi bi-bar-chart"
+  },
 ];
