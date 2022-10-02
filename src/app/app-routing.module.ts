@@ -109,6 +109,7 @@ const routes: Routes = [
       {
         path: "settings/:supplierId",
         title: "Configuracion",
+        canActivate: [AccessGuard],
         component: SettingsComponent
       },
       {

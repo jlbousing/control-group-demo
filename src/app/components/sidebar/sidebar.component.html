@@ -32,7 +32,7 @@
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
       >
         <i class="bi bi-house-door-fill text-2xl"></i>
-        <a [routerLink]="'/home'">
+        <a [routerLink]="'/home'" (click)="closeMenu()">
           <span class="text-2xl ml-4 text-gray-200 font-bold">Inicio</span>
         </a>
       </div>
@@ -40,7 +40,7 @@
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
       >
         <i class="bi bi-people-fill text-2xl"></i>
-        <a [routerLink]="'/users'">
+        <a [routerLink]="'/users'" (click)="closeMenu()">
           <span class="text-2xl ml-4 text-gray-200 font-bold">Usuario</span>
         </a>
       </div>
@@ -48,7 +48,7 @@
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
     >
       <i class="bi bi-briefcase-fill text-2xl"></i>
-      <a [routerLink]="'/enterprises'">
+      <a [routerLink]="'/enterprises'" (click)="closeMenu()">
         <span class="text-2xl ml-4 text-gray-200 font-bold">Empresas</span>
       </a>
     </div>
@@ -56,7 +56,7 @@
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
     >
       <i class="bi bi-card-checklist text-2xl"></i>
-      <a [routerLink]="'/reports/assignaments'">
+      <a [routerLink]="'/reports/assignaments'" (click)="closeMenu()">
         <span class="text-2xl ml-4 text-gray-200 font-bold">Reportes</span>
       </a>
     </div>
@@ -64,7 +64,7 @@
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white lg:mb-40"
     >
       <i class="bi bi-gear-fill text-2xl"></i>
-      <a [routerLink]="'/settings/categories'">
+      <a [routerLink]="'/settings/categories'" (click)="closeMenu()">
         <span class="text-2xl ml-4 text-gray-200 font-bold">Ajustes</span>
       </a>
     </div>

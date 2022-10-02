@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit, OnChanges{
 
   isOpen: boolean = true;
   currentTitle: string = "";
+  isMobile: boolean = false;
 
   constructor(
     private titleServices: TitleServicesService,
@@ -30,9 +31,11 @@ export class SidebarComponent implements OnInit, OnChanges{
     ]).subscribe((result: BreakpointState) => {
       if (result.matches) {
           this.isOpen = false;
+          this.isMobile = true;
       } else {
           // show stuff
           this.isOpen = true;
+          this.isMobile = false;
       }
     });
   }
@@ -43,6 +46,12 @@ export class SidebarComponent implements OnInit, OnChanges{
 
   buttonSideMenu(): void {
     this.isOpen = !this.isOpen;
+  }
+
+  closeMenu() {
+    if(this.isMobile){
+      this.isOpen = false;
+    }
   }
 
   logOut() {
