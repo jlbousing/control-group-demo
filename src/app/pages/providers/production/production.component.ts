@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateProductionModalComponent } from 'src/app/components/modals/create-production-modal/create-production-modal.component';
-import { ViewProductionModalComponent } from 'src/app/components/modals/view-production-modal/view-production-modal.component';
 import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';

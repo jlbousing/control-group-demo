@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateAssignmentsModalComponent } from 'src/app/components/modals/create-assignments-modal/create-assignments-modal.component';
 import { EditAssignmentsModalComponent } from 'src/app/components/modals/edit-assignments-modal/edit-assignments-modal.component';
 import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
@@ -82,11 +81,6 @@ export class AssignmentsComponent implements OnInit {
         this.errorHandler.handleError(error);
       });
 
-  }
-
-  showCreateModal() {
-    //this.showModalCreate = true;
-    this.dialog.open(CreateAssignmentsModalComponent);
   }
 
   closeModalCreate(msg: boolean){

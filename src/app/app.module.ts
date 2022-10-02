@@ -22,25 +22,20 @@ import { EnterprisesComponent } from './pages/enterprises/enterprises.component'
 import { ProvidersComponent } from './pages/providers/providers.component';
 import { CategoriesTableComponent } from './components/providers/categories-table/categories-table.component';
 import { CategoriesComponent } from './pages/providers/categories/categories.component';
-import { CreateCategoriesModalComponent } from './components/modals/create-categories-modal/create-categories-modal.component';
 import { EditCategoriesModalComponent } from './components/modals/edit-categories-modal/edit-categories-modal.component';
 import { SubmenuProvidersComponent } from './components/providers/submenu-providers/submenu-providers.component';
 import { AssignmentsComponent } from './pages/providers/assignments/assignments.component';
 import { AssignmentsTableComponent } from './components/providers/assignments-table/assignments-table.component';
-import { CreateAssignmentsModalComponent } from './components/modals/create-assignments-modal/create-assignments-modal.component';
 import { EditAssignmentsModalComponent } from './components/modals/edit-assignments-modal/edit-assignments-modal.component';
 import { InstructionsComponent } from './pages/providers/instructions/instructions.component';
 import { InstructionsTableComponent } from './components/providers/instructions-table/instructions-table.component';
-import { CreateInstructionsModalComponent } from './components/modals/create-instructions-modal/create-instructions-modal.component';
 import { EditInstructionsModalComponent } from './components/modals/edit-instructions-modal/edit-instructions-modal.component';
 import { ProductionComponent } from './pages/providers/production/production.component';
 import { ProductionTableComponent } from './components/providers/production-table/production-table.component';
-import { CreateProductionModalComponent } from './components/modals/create-production-modal/create-production-modal.component';
 import { EditProductionModalComponent } from './components/modals/edit-production-modal/edit-production-modal.component';
 import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
 import { DispatchTableComponent } from './components/providers/dispatch-table/dispatch-table.component';
-import { CreateDispatchModalComponent } from './components/modals/create-dispatch-modal/create-dispatch-modal.component';
 import { EditDispatchModalComponent } from './components/modals/edit-dispatch-modal/edit-dispatch-modal.component';
 import { ViewDispatchModalComponent } from './components/modals/view-dispatch-modal/view-dispatch-modal.component';
 import { SettingsComponent } from './pages/providers/settings/settings.component';
@@ -146,25 +141,20 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
     ProvidersComponent,
     CategoriesTableComponent,
     CategoriesComponent,
-    CreateCategoriesModalComponent,
     EditCategoriesModalComponent,
     SubmenuProvidersComponent,
     AssignmentsComponent,
     AssignmentsTableComponent,
-    CreateAssignmentsModalComponent,
     EditAssignmentsModalComponent,
     InstructionsComponent,
     InstructionsTableComponent,
-    CreateInstructionsModalComponent,
     EditInstructionsModalComponent,
     ProductionComponent,
     ProductionTableComponent,
-    CreateProductionModalComponent,
     EditProductionModalComponent,
     ViewProductionModalComponent,
     DispatchComponent,
     DispatchTableComponent,
-    CreateDispatchModalComponent,
     EditDispatchModalComponent,
     ViewDispatchModalComponent,
     SettingsComponent,

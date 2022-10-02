@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
-import { CreateInstructionsModalComponent } from 'src/app/components/modals/create-instructions-modal/create-instructions-modal.component';
 import { EditInstructionsModalComponent } from 'src/app/components/modals/edit-instructions-modal/edit-instructions-modal.component';
 import { ActivatedRoute } from '@angular/router';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
@@ -82,10 +81,6 @@ export class InstructionsComponent implements OnInit {
     let assignament = <IAssignament> value;
     this.assignament = assignament;
     console.log("probando asignacion ",value)
-  }
-
-  showCreateModal() {
-    this.dialog.open(CreateInstructionsModalComponent);
   }
 
   showEditModal(obj: any) {

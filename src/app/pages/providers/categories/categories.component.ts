@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import {Dialog, DIALOG_DATA} from '@angular/cdk/dialog';
-import { CreateCategoriesModalComponent } from 'src/app/components/modals/create-categories-modal/create-categories-modal.component';
 import { EditCategoriesModalComponent } from 'src/app/components/modals/edit-categories-modal/edit-categories-modal.component';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
@@ -71,10 +70,6 @@ export class CategoriesComponent implements OnInit {
         })
 
    });
-  }
-
-  showCreateModal() {
-    this.dialog.open(CreateCategoriesModalComponent);
   }
 
   showEditModal(obj: any) {
