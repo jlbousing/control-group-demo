@@ -17,6 +17,7 @@ export class ProductionTableComponent implements OnInit {
   @Input("recipe") recipe: IRecipe | null = null;
   @Input("assignament") assignament: IAssignament | null = null;
   @Input("supplierId") supplierId: number = 0;
+  @Input("canAccess") canAccess: boolean = false;
 
   constructor(
     private dialog: Dialog

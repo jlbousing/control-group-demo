@@ -25,6 +25,7 @@ export class CreateItemComponent implements OnInit {
   });
 
   subcategoryId: number = 0;
+  subcategory: ISubcategory | null = null;
 
   supplier: ISupplier | null = null;
   supplierId: number = 0;
@@ -53,6 +54,7 @@ export class CreateItemComponent implements OnInit {
 
           this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
             .subscribe((response: ISubcategory[]) => {
+              this.subcategory = response[0];
               this.subcategoryId = response[0].id
               this.loading = false;
             })
@@ -79,8 +81,6 @@ export class CreateItemComponent implements OnInit {
 
         this.itemService.createItem(payload)
           .subscribe((response: any) => {
-
-            //alert(response.message.label);
 
             this.dialog.open(AlertModalComponent,{
               data: {

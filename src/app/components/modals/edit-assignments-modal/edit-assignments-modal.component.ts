@@ -7,6 +7,8 @@ import { IAssigmentPatch } from 'src/app/interfaces/IAssignamentsPatch';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 
 
@@ -36,13 +38,13 @@ export class EditAssignmentsModalComponent implements OnInit {
     public dialogRef: DialogRef,
     private assignamentService: AssignamentService,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    console.log("hey uya ",this.data.assignment)
   }
 
   onSubmit() {
@@ -64,7 +66,6 @@ export class EditAssignmentsModalComponent implements OnInit {
         this.assignamentService.patchAssignaments(payload,this.data.assignment.id)
           .subscribe((response: any) => {
             console.log("probando patch ",response);
-            //alert(response.label);
             this.dialog.open(AlertModalComponent,{
               data: {
                 status: 200,
@@ -74,6 +75,8 @@ export class EditAssignmentsModalComponent implements OnInit {
 
             this.dialogRef.close();
             this.router.navigateByUrl('/providers/assignments/'+this.data.supplierId);
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
           })
        }
   }

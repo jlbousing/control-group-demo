@@ -3,6 +3,9 @@ import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { ICompany } from 'src/app/interfaces/ICompanies'
 import { ActivatedRoute } from '@angular/router';
 import { CompaniesService } from 'src/app/services/companies/companies.service';
+import { ErrorHandler } from '@angular/core';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-provider-page',
@@ -19,7 +22,8 @@ export class ProviderPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private companyService: CompaniesService
+    private companyService: CompaniesService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +35,8 @@ export class ProviderPageComponent implements OnInit {
         this.suppliers = response[0].suppliersOfCompany;
 
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       })
    });
   }

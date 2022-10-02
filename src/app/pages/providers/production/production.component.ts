@@ -11,6 +11,9 @@ import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IProduction } from 'src/app/interfaces/IProduction';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-production',
@@ -30,13 +33,17 @@ export class ProductionComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,
     private recipesService: RecipesService,
     private productionService: ProductionService,
     private route: ActivatedRoute,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
 
@@ -48,19 +55,24 @@ export class ProductionComponent implements OnInit {
       this.supplierService.findSupplierById(this.supplierId)
         .subscribe((response: ISupplier) => {
           this.supplier = response
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
    });
 
   }
 
   setAssignament(value: any) {
+    this.offset = 0;
     this.loading = true;
     let assignament = <IAssignament> value;
     this.assignament = assignament;
@@ -70,17 +82,36 @@ export class ProductionComponent implements OnInit {
       this.recipes = response;
       this.loading = false;
       console.log("mostrando recipes ",this.recipes)
-    })
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
   }
 
   setRecipe(value: any) {
+    this.offset = 0;
     this.loading = true;
     this.recipe = <IRecipe> value;
-    this.productionService.getProductionByRecipe(50,0,this.recipe.id)
+    this.productionService.getProductionByRecipe(50,this.offset,this.recipe.id)
       .subscribe((response: IProduction[]) => {
         this.productions = response;
         this.loading = false;
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.productionService.getProductionByRecipe(50,this.offset,this.recipe!.id)
+    .subscribe((response: IProduction[]) => {
+      this.productions = response;
+      this.loading = false;
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
+
   }
 
 }

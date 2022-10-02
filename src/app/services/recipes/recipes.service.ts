@@ -27,13 +27,11 @@ export class RecipesService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -50,13 +48,11 @@ export class RecipesService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(1),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -70,21 +66,19 @@ export class RecipesService {
     );
   }
 
-  findRecipe(id: number) {
+  findRecipe(name: string,assignamentId: number) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.find}`;
-    const params: string = `f?recipeId=${id}&getProducts=true`;
+    const params: string = `?name=${name}&asignamentId=${assignamentId}`;
 
     return this.http.get<IRecipe>(
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -94,20 +88,18 @@ export class RecipesService {
   }
 
   patchRecipe(payload: IRecipePatch, id: number) {
-    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.instructions}${id}`;
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.changes}${id}`;
 
     return this.http.patch<IRecipePatch>(
       url,
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 200){

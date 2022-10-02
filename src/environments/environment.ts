@@ -41,7 +41,8 @@ export const environment = {
         list: '/api/users/rols'
       },
       create: '/api/users/create',
-      changes: '/api/users/changes/'
+      changes: '/api/users/changes/',
+      find: '/api/users/findbyuser',
     },
     companies: {
       list: '/api/companies/',
@@ -89,7 +90,8 @@ export const environment = {
     recipes: {
       list: '/api/clap/recipes',
       create: '/api/clap/recipes/create',
-      find: '/api/clap/recipes/find'
+      find: '/api/clap/recipes/find',
+      changes: '/api/clap/recipes/changes/'
     },
     states: {
       list: '/api/clap/states/',
@@ -100,7 +102,8 @@ export const environment = {
     suppliers: {
       list: '/api/suppliers/',
       create: '/api/suppliers/create',
-      findById: '/api/suppliers/finder'
+      findById: '/api/suppliers/finder',
+      changes: '/api/suppliers/changes/'
     }
   }
 

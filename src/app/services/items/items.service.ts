@@ -27,13 +27,11 @@ export class ItemsService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -50,13 +48,11 @@ export class ItemsService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -79,13 +75,11 @@ export class ItemsService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -103,13 +97,11 @@ export class ItemsService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;

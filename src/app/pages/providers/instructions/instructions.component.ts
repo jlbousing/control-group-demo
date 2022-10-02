@@ -10,7 +10,10 @@ import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-instructions',
@@ -30,21 +33,27 @@ export class InstructionsComponent implements OnInit {
 
   supplier: ISupplier | null = null;
 
+  offset: number = 0;
+
   constructor(
     private dialog: Dialog,
     private assignamentService: AssignamentService,
     private recipesService: RecipesService,
     private route: ActivatedRoute,
     private statusService: StatusService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
 
   ngOnInit(): void {
 
-    this.statusService.getStatues(1,50,0)
+    this.statusService.getStatues(2,50,0)
       .subscribe((response: IStatus[]) => {
         this.statues = response;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
 
     this.route.params.subscribe(params => {
@@ -53,6 +62,8 @@ export class InstructionsComponent implements OnInit {
       this.supplierService.findSupplierById(this.supplierId)
         .subscribe((response: ISupplier) => {
           this.supplier = response
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         })
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
@@ -60,6 +71,8 @@ export class InstructionsComponent implements OnInit {
           this.assignaments = response;
           this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
         })
    });
 
@@ -81,6 +94,26 @@ export class InstructionsComponent implements OnInit {
 
   getSearch(value: any) {
 
+    this.loading = true;
+    this.recipes = [];
+    const name = <string>value;
+
+    if(name && name !== "") {
+
+
+      this.recipesService.findRecipe(name,this.assignament!.id)
+        .subscribe((response: IRecipe) => {
+          this.recipes.push(response);
+          this.loading = false;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+    }else {
+
+      this.recipes = [];
+      this.assignament = null;
+    }
   }
 
 

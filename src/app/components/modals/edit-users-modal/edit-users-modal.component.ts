@@ -1,11 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
+import { DIALOG_DATA, DialogRef, Dialog } from '@angular/cdk/dialog';
 import { IUser } from 'src/app/interfaces/user.model';
 import { IStatus } from 'src/app/interfaces/IStatus';
 import { IRol } from 'src/app/interfaces/IRol';
 import { IUserPatch } from 'src/app/interfaces/IUserPatch';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 interface IDialogData {
   user: IUser,
@@ -31,11 +35,14 @@ export class EditUsersModalComponent implements OnInit {
   constructor(
     @Inject(DIALOG_DATA) public data: IDialogData,
     public dialogRef: DialogRef,
-    private userService: UsersService
+    private userService: UsersService,
+    private dialog: Dialog,
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
-    console.log("hey uya ",this.data)
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   onSubmit() {
@@ -54,8 +61,19 @@ export class EditUsersModalComponent implements OnInit {
 
         this.userService.patchUser(payload,this.data.user.id)
           .subscribe((response: any) => {
-            alert(response.label);
-          })
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 200,
+                message: <string>response.label
+              }
+            });
+
+            this.dialogRef.close();
+            this.router.navigateByUrl("/users");
+
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
+          });
 
        }
   }

@@ -6,8 +6,8 @@
        <search-input class="flex flex-row justify-center px-4"
                      [label]="'Buscar estados'"
                      [placeholder]="'Buscar por nombre'"></search-input>
-      <a [routerLink]="'/places/create-state'"
-         class="flex items-center">
+      <a *ngIf="accessService.canCreate()" [routerLink]="'/places/create-state'"
+         class="flex items-center m-auto lg:m-0">
         <custom-button text="Nuevo estado"></custom-button>
       </a>
     </div>
@@ -17,6 +17,10 @@
       <state-table class="w-full"
                    [states]="states"></state-table>
     </div>
+    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="states.length < 10">
+            </load-more>
   </div>
 </div>
 

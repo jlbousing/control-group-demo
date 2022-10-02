@@ -51,7 +51,8 @@
 
       </div>
       <a class="flex flex-row justify-start"
-      [routerLink]="'/places/create-parish'">
+        [routerLink]="'/places/create-parish'"
+        *ngIf="accessService.canCreate()">
         <custom-button class="mx-12" text="Nueva parroquia"></custom-button>
       </a>
     </div>
@@ -64,6 +65,11 @@
                     [municipality]="municipality"
                     [municipalities]="municipalities"></parish-table>
     </div>
+
+    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="parishs.length < 10">
+            </load-more>
   </div>
 </div>
 

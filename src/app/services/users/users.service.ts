@@ -14,7 +14,9 @@ import { IUserRequest } from 'src/app/interfaces/IUserRequest';
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getUsers(rol: number, limit: number, offset: number) {
 
@@ -25,13 +27,11 @@ export class UsersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -50,13 +50,11 @@ export class UsersService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -66,8 +64,8 @@ export class UsersService {
         if(response.status === 400){
           return response;
         }
-      })
-    );
+      }
+    ));
   }
 
   patchUser(payload: IUserPatch, id: number) {
@@ -79,13 +77,11 @@ export class UsersService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 200){
@@ -94,6 +90,29 @@ export class UsersService {
 
         if(response.status === 400){
           return response;
+        }
+      })
+    );
+
+  }
+
+  findUsers(username: string) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.find}`;
+    const params: string = `?findbyuser?username=${username}`;
+
+    return this.http.get<any>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
         }
       })
     );

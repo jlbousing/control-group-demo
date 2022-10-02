@@ -11,6 +11,8 @@ import { AssignamentService } from 'src/app/services/assignaments/assignament.se
 import { Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-create-assignments',
@@ -42,7 +44,8 @@ export class CreateAssignmentsComponent implements OnInit {
     private suppliersService: SuppliersService,
     private assignmentService: AssignamentService,
     private router: Router,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +55,9 @@ export class CreateAssignmentsComponent implements OnInit {
     this.categoryService.getCategories(50,0)
       .subscribe((response: ICategory[]) => {
         this.categories = response;
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
         this.loading = false;
       });
 
@@ -71,6 +77,9 @@ export class CreateAssignmentsComponent implements OnInit {
     this.suppliersService.getSuppliers(id,50,0)
       .subscribe((response: ISupplier[]) => {
         this.suppliers = response;
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
         this.loading = false;
       });
   }
@@ -109,7 +118,6 @@ export class CreateAssignmentsComponent implements OnInit {
           if(response !== undefined){
             if(response.status !== undefined){
               if(response.status === 400){
-                //alert(response.body.result.exception)
                 this.dialog.open(AlertModalComponent,{
                   data: {
                     status: 400,
@@ -119,7 +127,6 @@ export class CreateAssignmentsComponent implements OnInit {
 
               }
             }else{
-              //alert(response.message.label)
               this.dialog.open(AlertModalComponent,{
                 data: {
                   status: 201,
@@ -132,6 +139,9 @@ export class CreateAssignmentsComponent implements OnInit {
 
           }
 
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
         })
        }
   }

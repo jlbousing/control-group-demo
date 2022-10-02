@@ -11,6 +11,8 @@ import { ProductionService } from 'src/app/services/production/production.servic
 import { ActivatedRoute } from '@angular/router';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-dispatch',
@@ -31,6 +33,8 @@ export class DispatchComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 0;
+
   supplier: ISupplier | null = null;
 
   constructor(
@@ -40,7 +44,8 @@ export class DispatchComponent implements OnInit {
     private assignamentService: AssignamentService,
     private recipeService: RecipesService,
     private productionService: ProductionService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
 
@@ -52,17 +57,22 @@ export class DispatchComponent implements OnInit {
       this.supplierService.findSupplierById(this.supplierId)
         .subscribe((response: ISupplier) => {
           this.supplier = response
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           this.loading = false;
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+        });
     });
   }
 
   setAssignament(value: any) {
+    this.offset = 0;
     this.loading = true;
     let assignament = <IAssignament> value;
     this.assignament = assignament;
@@ -72,28 +82,50 @@ export class DispatchComponent implements OnInit {
       this.recipes = response;
       this.loading = false;
       console.log("mostrando recipes ",this.recipes)
-    })
+    },(error: HttpErrorResponse) => {
+      this.errorHandler.handleError(error);
+    });
   }
 
   setRecipe(value: any) {
+    this.offset = 0;
     this.loading = true;
     this.recipe = <IRecipe> value;
     this.productionService.getProductionByRecipe(50,0,this.recipe.id)
       .subscribe((response: IProduction[]) => {
         this.productions = response;
         this.loading = false;
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
   }
 
   setProduction(value: any) {
+    this.offset = 0;
     this.loading = true;
     this.production = <IProduction> value;
 
-    this.dispatchService.getDispatchsByProductionId(50,0,this.production.id)
+    this.dispatchService.getDispatchsByProductionId(50,this.offset,this.production.id)
       .subscribe((response: IDispatch[]) => {
         this.dispatchs = response;
         this.loading = false;
         console.log("probando despachos ",this.dispatchs);
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.dispatchService.getDispatchsByProductionId(50,this.offset,this.production!.id)
+      .subscribe((response: IDispatch[]) => {
+        this.dispatchs = response;
+        this.loading = false;
+        console.log("probando despachos ",this.dispatchs);
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 

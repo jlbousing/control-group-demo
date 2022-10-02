@@ -4,6 +4,10 @@ import { ILogin } from 'src/app/interfaces/Ilogin';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { Dialog } from '@angular/cdk/dialog';
+import { AlertModalComponent } from '../modals/alert-modal/alert-modal.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'login-form',
@@ -19,7 +23,9 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService,
+    private dialog: Dialog
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +45,12 @@ export class LoginFormComponent implements OnInit {
           .subscribe((response: any) => {
             console.log(response);
             StorageManager.setJSONToLocalStorage('userInfo',response);
+            StorageManager.setJSONToLocalStorage("token",response.token);
             this.router.navigateByUrl("/home");
+          },
+          (error: HttpErrorResponse) => {
+            console.log("asdasdasd");
+            this.errorHandler.handleError(error);
           })
       }
   }

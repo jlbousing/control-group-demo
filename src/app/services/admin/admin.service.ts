@@ -6,6 +6,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
 import { IRecovery } from 'src/app/interfaces/IRecovery';
 import { handleError } from 'src/app/utils/handleError';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,6 @@ export class AdminService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
@@ -57,7 +57,6 @@ export class AdminService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }

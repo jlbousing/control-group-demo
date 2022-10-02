@@ -37,6 +37,12 @@ import { ParishComponent } from './pages/places/parish/parish.component';
 import { CreateStateComponent } from './pages/places/create-state/create-state.component';
 import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
+import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
+import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
+import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
+import { AccessGuard } from './guards/access/access.guard';
 
 const routes: Routes = [
   {
@@ -56,6 +62,7 @@ const routes: Routes = [
       {
         path: "create-user",
         title: "Crear Usuario",
+        canActivate: [AccessGuard],
         component: CreateUserComponent
       },
       {
@@ -102,26 +109,31 @@ const routes: Routes = [
       {
         path: "settings/:supplierId",
         title: "Configuracion",
+        canActivate: [AccessGuard],
         component: SettingsComponent
       },
       {
         path: "create-assigment",
         title: "Nueva asignacion",
+        canActivate: [AccessGuard],
         component: CreateAssignmentsComponent
       },
       {
         path: "create-recipe/:supplierId",
         title: "Nueva Receta",
+        canActivate: [AccessGuard],
         component: CreateRecipeComponent
       },
       {
         path: "create-production/:supplierId",
         title: "Nueva Produccion",
+        canActivate: [AccessGuard],
         component: CreateProductionComponent
       },
       {
         path: "create-dispatch/:supplierId/production/:productionId",
         title: "Nuevo Despacho",
+        canActivate: [AccessGuard],
         component: CreateDispatchComponent
       },
       {
@@ -132,7 +144,14 @@ const routes: Routes = [
       {
         path: "create-item/:supplierId",
         title: "Nuevo producto",
+        canActivate: [AccessGuard],
         component: CreateItemComponent
+      },
+      {
+        path: "create-subcategory/:supplierId",
+        title: "Nueva subcategoria",
+        canActivate: [AccessGuard],
+        component: CreateSubcategoryComponent
       }
     ]
   },
@@ -148,16 +167,19 @@ const routes: Routes = [
       {
         path: "create-category",
         title: "Nueva categoria",
+        canActivate: [AccessGuard],
         component: CreateCategoryComponent
       },
       {
         path: "create-enterprise",
         title: "Nueva empresa",
+        canActivate: [AccessGuard],
         component: CreateEnterpriseComponent
       },
       {
         path: "create-provider",
         title: "Nuevo proveedor",
+        canActivate: [AccessGuard],
         component: CreateProviderComponent
       },
       {
@@ -168,6 +190,7 @@ const routes: Routes = [
       {
         path: "create-rol",
         title: "Nuevo rol",
+        canActivate: [AccessGuard],
         component: CreateRolComponent
       }
     ]
@@ -194,16 +217,19 @@ const routes: Routes = [
       {
         path: "create-state",
         title: "Nuevo estado",
+        canActivate: [AccessGuard],
         component: CreateStateComponent
       },
       {
         path: "create-municipality",
         title: "Nuevo municipio",
+        canActivate: [AccessGuard],
         component: CreateMunicipalityComponent
       },
       {
         path: "create-parish",
         title: "Nueva parroquia",
+        canActivate: [AccessGuard],
         component: CreateParishComponent
       }
     ]
@@ -213,9 +239,19 @@ const routes: Routes = [
     component: ReportsComponent,
     children: [
       {
-        path: "charts",
-        title: "Reportes",
-        component: ChartsComponent
+        path: "assignaments",
+        title: "Reportes Asignaciones",
+        component: AssignamentsReportComponent
+      },
+      {
+        path: "production",
+        title: "Reportes Produccion",
+        component: ProductionReportComponent
+      },
+      {
+        path: "dispatch",
+        title: "Reportes Despacho",
+        component: DispatchReportComponent
       }
     ]
   },
@@ -223,6 +259,11 @@ const routes: Routes = [
     path: "login",
     title: "Inicio de Sesion",
     component: LoginComponent
+  },
+  {
+    path: "recovery",
+    title: "Recuperar contraseña",
+    component: RecoveryComponent
   },
   {
     path: "**",

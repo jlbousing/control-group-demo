@@ -7,7 +7,7 @@ import { iterateJson } from 'src/app/utils/iterateJson';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { IAssignamentRequest } from 'src/app/interfaces/IAssignamentRequest';
 import { IAssigmentPatch } from 'src/app/interfaces/IAssignamentsPatch';
-import { handleError } from 'src/app/utils/handleError';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +27,11 @@ export class AssignamentService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
         }
       }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -52,13 +50,11 @@ export class AssignamentService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -81,13 +77,11 @@ export class AssignamentService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 200){
@@ -111,13 +105,11 @@ export class AssignamentService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;

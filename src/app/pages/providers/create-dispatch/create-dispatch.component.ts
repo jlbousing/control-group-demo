@@ -95,7 +95,7 @@ export class CreateDispatchComponent implements OnInit {
 
         this.dispatchService.createProduction(payload)
           .subscribe((response: any) => {
-            //alert(response.message.label);
+
             this.dialog.open(AlertModalComponent,{
               data: {
                 status: 201,

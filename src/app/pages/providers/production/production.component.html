@@ -1,15 +1,9 @@
 
 
-<separator-title *ngIf="supplier" [title]="'Producción ('+supplier.name+')'"></separator-title>
+<separator-title *ngIf="supplier" [title]="'Producción '+supplier.name+''"></separator-title>
 <div class="w-full lg:w-4/5 bg-white rounded-lg">
   <div class="flex flex-col">
-    <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
 
-      <search-input class="flex flex-row justify-center px-4"
-                    [label]="'Buscar Asignación'"
-                    [placeholder]="'Buscar por id'"
-                   ></search-input>
-   </div>
     <div class="flex flex-col items-center lg:flex-row lg:justify-between pt-16">
       <loading *ngIf="loading"></loading>
       <div *ngIf="!loading" class="w-full flex flex-col items-center lg:flex-row lg:justify-start lg:mx-8">
@@ -51,7 +45,8 @@
         </div>
       </div>
       <a class="flex flex-row justify-start"
-      [routerLink]="'/providers/create-production/'+supplierId">
+        [routerLink]="'/providers/create-production/'+supplierId"
+        *ngIf="accessService.canCreate()">
         <custom-button class="mx-12" text="Nueva Producción"></custom-button>
       </a>
     </div>
@@ -60,8 +55,13 @@
                         [productions]="productions"
                         [recipe]="recipe"
                         [assignament]="assignament"
-                        [supplierId]="supplierId"></production-table>
+                        [supplierId]="supplierId"
+                        [canAccess]="accessService.canCreate()"></production-table>
     </div>
+    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="productions.length < 10">
+            </load-more>
   </div>
 </div>
 

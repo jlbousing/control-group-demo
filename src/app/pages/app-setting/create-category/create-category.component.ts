@@ -4,6 +4,8 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 import { Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { HttpResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { ICategoyRequest } from 'src/app/interfaces/ICategoryRequest';
 
 @Component({
@@ -22,7 +24,8 @@ export class CreateCategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoriesService,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +52,8 @@ export class CreateCategoryComponent implements OnInit {
                 message: <string>response.message.label
               }
             });
+          },(error) => {
+            this.errorHandler.handleError(error);
           });
 
           this.router.navigateByUrl("/settings/categories");

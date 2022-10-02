@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CompaniesService } from 'src/app/services/companies/companies.service';
 import { ICompany } from 'src/app/interfaces/ICompanies';
 import { IStatus } from 'src/app/interfaces/IStatus';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'search-enterprise',
@@ -25,7 +27,8 @@ export class SearchEnterpriseComponent implements OnInit {
   companies: ICompany[] = [];
 
   constructor(
-    private companieService: CompaniesService
+    private companieService: CompaniesService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +50,10 @@ export class SearchEnterpriseComponent implements OnInit {
           this.companies = response;
           this.loading.emit(false);
           this.searchedCompanies.emit(this.companies);
-        })
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading.emit(false);
+        });
     }
   }
 

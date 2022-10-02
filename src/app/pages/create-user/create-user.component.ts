@@ -7,6 +7,8 @@ import { UsersService } from 'src/app/services/users/users.service';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'create-user',
@@ -34,7 +36,8 @@ export class CreateUserComponent implements OnInit {
     private rolService: RolsService,
     private userService: UsersService,
     private dialog: Dialog,
-    private router: Router
+    private router: Router,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -60,7 +63,7 @@ export class CreateUserComponent implements OnInit {
        && this.form.value.phone) {
 
         if(this.form.value.password1 !== this.form.value.password2){
-          //alert("Las contrasenas no coinciden");
+
           this.dialog.open(AlertModalComponent,{
             data: {
               status: 400,
@@ -68,7 +71,7 @@ export class CreateUserComponent implements OnInit {
             }
           });
         }else if(this.form.value.rol === 0){
-          //alert("Debe seleccionar un Rol de usuario");
+
           this.dialog.open(AlertModalComponent,{
             data: {
               status: 400,
@@ -96,7 +99,7 @@ export class CreateUserComponent implements OnInit {
             if(response !== undefined){
               if(response.status !== undefined){
                 if(response.status === 400){
-                  //alert(response.body.result.exception)
+
                   this.dialog.open(AlertModalComponent,{
                     data: {
                       status: 400,
@@ -105,7 +108,7 @@ export class CreateUserComponent implements OnInit {
                   })
                 }
               }else{
-                //alert(response.message.label)
+
                 this.dialog.open(AlertModalComponent,{
                   data: {
                     status: 201,
@@ -119,7 +122,12 @@ export class CreateUserComponent implements OnInit {
 
             }
 
-          })
+          },
+          (error: HttpErrorResponse) => {
+
+            this.errorHandler.handleError(error);
+          }
+          )
         }
 
        }

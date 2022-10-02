@@ -6,7 +6,7 @@ import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { ISupplierRequest } from 'src/app/interfaces/ISupplierRequest';
-import { handleError } from 'src/app/utils/handleError';
+import { ISupplierPatch } from 'src/app/interfaces/ISupplierPatch';
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +26,11 @@ export class SuppliersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
@@ -51,13 +49,11 @@ export class SuppliersService {
       payload,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -79,16 +75,41 @@ export class SuppliersService {
       url + params,
       { observe: 'response',
         headers: {
-        'Authorization': `Bearer ${environment.token}`,
         'apikey': `${environment.apikey}`
       }
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
+        }
+      })
+    );
+  }
+
+  changesSupplier(payload: ISupplierPatch, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.suppliers.changes}`;
+
+    return this.http.patch<ISupplierRequest>(
+      url + id,
+      payload,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
         }
       })
     );

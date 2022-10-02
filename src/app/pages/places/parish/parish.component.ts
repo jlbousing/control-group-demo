@@ -6,6 +6,9 @@ import { MunicipalityService } from 'src/app/services/municipality/municipality.
 import { ParishService } from 'src/app/services/parsih/parish.service';
 import { IParish } from 'src/app/interfaces/IParish';
 import { Dialog } from '@angular/cdk/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 
 @Component({
@@ -25,11 +28,15 @@ export class ParishComponent implements OnInit {
 
   loading: boolean = true;
 
+  offset: number = 10;
+
   constructor(
     private stateService: StateService,
     private muncipalityService: MunicipalityService,
     private parishService: ParishService,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
   ngOnInit(): void {
@@ -38,11 +45,14 @@ export class ParishComponent implements OnInit {
       .subscribe((response: IState[]) => {
         this.states = response
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
   setState(value: any) {
 
+    this.offset = 0;
     this.loading = true;
     this.state = <IState>value;
 
@@ -50,19 +60,38 @@ export class ParishComponent implements OnInit {
       .subscribe((response: IMunicipality[]) => {
         this.municipalities = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
   }
 
   setMunicipality(value: any) {
 
+    this.offset = 0;
     this.loading = true;
     this.municipality = <IMunicipality>value;
 
-    this.parishService.getParish(50,0,this.municipality.id)
+    this.parishService.getParish(50,this.offset,this.municipality.id)
       .subscribe((response: IParish[]) => {
         this.parishs = response;
         this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
       });
+  }
+
+  changePagination(value: any) {
+
+    this.offset = <number>value;
+
+    this.parishService.getParish(50,this.offset,this.municipality!.id)
+      .subscribe((response: IParish[]) => {
+        this.parishs = response;
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
+
   }
 
 }

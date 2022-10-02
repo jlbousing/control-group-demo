@@ -33,7 +33,8 @@
 
       </div>
       <a class="flex flex-row justify-start"
-      [routerLink]="'/places/create-municipality'">
+        [routerLink]="'/places/create-municipality'"
+        *ngIf="accessService.canCreate()">
         <custom-button class="mx-12" text="Nuevo municipio"></custom-button>
       </a>
     </div>
@@ -45,6 +46,10 @@
                            [states]="states">
       </municipalitie-table>
     </div>
+    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="municipalities.length < 10">
+            </load-more>
   </div>
 </div>
 

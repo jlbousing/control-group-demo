@@ -115,6 +115,17 @@ import { EditMunicipalityModalComponent } from './components/modals/edit-municip
 import { ViewParishModalComponent } from './components/modals/view-parish-modal/view-parish-modal.component';
 import { EditParishModalComponent } from './components/modals/edit-parish-modal/edit-parish-modal.component';
 import { EditSettingsCategoryModalComponent } from './components/modals/edit-settings-category-modal/edit-settings-category-modal.component';
+import { LoadMoreComponent } from './components/load-more/load-more.component';
+import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
+import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
+import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
+import { BartchartAssignamentsComponent } from './components/reports/bartchart-assignaments/bartchart-assignaments.component';
+import { PiechartAssignamentsComponent } from './components/reports/piechart-assignaments/piechart-assignaments.component';
+import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
 
 @NgModule({
   declarations: [
@@ -213,6 +224,14 @@ import { EditSettingsCategoryModalComponent } from './components/modals/edit-set
     ViewParishModalComponent,
     EditParishModalComponent,
     EditSettingsCategoryModalComponent,
+    LoadMoreComponent,
+    AssignamentsReportComponent,
+    ProductionReportComponent,
+    DispatchReportComponent,
+    BartchartAssignamentsComponent,
+    PiechartAssignamentsComponent,
+    CreateSubcategoryComponent,
+    RecoveryComponent,
   ],
   imports: [
     BrowserModule,
@@ -237,7 +256,11 @@ import { EditSettingsCategoryModalComponent } from './components/modals/edit-set
     TitleServicesService,
     Dialog,
     DIALOG_SCROLL_STRATEGY_PROVIDER,
-    //UsersService
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

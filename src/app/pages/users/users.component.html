@@ -14,6 +14,7 @@
                 <search-input class="flex flex-row justify-center px-4"
                               [label]="'Buscar usuario'"
                               [placeholder]="'Buscar por id'"
+                              (searching)="getSearch($event)"
                              ></search-input>
                <a [routerLink]="'/providers/create-assigment'"
                   class="flex items-center">
@@ -27,6 +28,10 @@
                   [roles]="roles"
                 *ngIf="!loading"></users-table>
             </div>
+            <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="users.length < 10">
+            </load-more>
             </div>
           </div>
           </div>
