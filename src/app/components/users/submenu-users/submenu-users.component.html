@@ -9,7 +9,7 @@
   </div>
 
   <div class="w-full text-center lg:text-left lg:pb-4 lg:pl-4 lg:w-full">
-    <a [routerLink]="'/create-user'" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
+    <a *ngIf="accessService.canCreate()" [routerLink]="'/create-user'" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
       <div class="text-2xl">
         <i class="bi bi-pencil-square flex justify-center lg:inline-block"></i>
         <span class="ml-4">Crear Usuario</span>

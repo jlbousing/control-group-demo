@@ -13,6 +13,7 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-instructions',
@@ -41,7 +42,8 @@ export class InstructionsComponent implements OnInit {
     private route: ActivatedRoute,
     private statusService: StatusService,
     private supplierService: SuppliersService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
 

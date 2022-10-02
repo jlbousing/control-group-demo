@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'submenu-settings',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmenuSettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public accessService: AccessService
+  ) { }
 
   ngOnInit(): void {
   }

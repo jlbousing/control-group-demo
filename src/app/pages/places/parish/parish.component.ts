@@ -8,6 +8,7 @@ import { IParish } from 'src/app/interfaces/IParish';
 import { Dialog } from '@angular/cdk/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class ParishComponent implements OnInit {
     private muncipalityService: MunicipalityService,
     private parishService: ParishService,
     private dialog: Dialog,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
   ngOnInit(): void {

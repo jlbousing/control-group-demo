@@ -5,6 +5,7 @@ import { StateService } from 'src/app/services/states/state.service';
 import { MunicipalityService } from 'src/app/services/municipality/municipality.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-municipality',
@@ -24,7 +25,8 @@ export class MunicipalityComponent implements OnInit {
   constructor(
     private stateService: StateService,
     private municipalityService: MunicipalityService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
   ngOnInit(): void {

@@ -45,7 +45,8 @@
         </div>
       </div>
       <a class="flex flex-row justify-start"
-      [routerLink]="'/providers/create-production/'+supplierId">
+        [routerLink]="'/providers/create-production/'+supplierId"
+        *ngIf="accessService.canCreate()">
         <custom-button class="mx-12" text="Nueva Producción"></custom-button>
       </a>
     </div>
@@ -54,7 +55,8 @@
                         [productions]="productions"
                         [recipe]="recipe"
                         [assignament]="assignament"
-                        [supplierId]="supplierId"></production-table>
+                        [supplierId]="supplierId"
+                        [canAccess]="accessService.canCreate()"></production-table>
     </div>
     <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
                        (changePagination)="changePagination($event)"

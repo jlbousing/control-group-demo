@@ -11,6 +11,7 @@ import { StatusService } from 'src/app/services/status/status.service';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-assignments',
@@ -40,7 +41,8 @@ export class AssignmentsComponent implements OnInit {
     private route: ActivatedRoute,
     private statusService: StatusService,
     private supplierService: SuppliersService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
 

@@ -3,6 +3,7 @@ import { IState } from 'src/app/interfaces/IState';
 import { StateService } from 'src/app/services/states/state.service';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-states',
@@ -19,7 +20,8 @@ export class StatesComponent implements OnInit {
 
   constructor(
     private stateService: StateService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
   ngOnInit(): void {

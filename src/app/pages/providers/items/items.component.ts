@@ -8,6 +8,7 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-items',
@@ -31,7 +32,8 @@ export class ItemsComponent implements OnInit {
     private itemService: ItemsService,
     private categoriesService: CategoriesService,
     private supplierService: SuppliersService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
   ngOnInit(): void {

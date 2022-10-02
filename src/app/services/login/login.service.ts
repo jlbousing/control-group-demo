@@ -27,7 +27,6 @@ export class LoginService {
       {observe: 'response'}
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: any) => {
         console.log("login response ",response);
         if(response.status === 200){

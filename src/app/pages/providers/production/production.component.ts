@@ -13,6 +13,7 @@ import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
   selector: 'app-production',
@@ -41,7 +42,8 @@ export class ProductionComponent implements OnInit {
     private productionService: ProductionService,
     private route: ActivatedRoute,
     private supplierService: SuppliersService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    public accessService: AccessService
   ) { }
 
 
