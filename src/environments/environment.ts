@@ -102,7 +102,8 @@ export const environment = {
     suppliers: {
       list: '/api/suppliers/',
       create: '/api/suppliers/create',
-      findById: '/api/suppliers/finder'
+      findById: '/api/suppliers/finder',
+      changes: '/api/suppliers/changes/'
     }
   }
 

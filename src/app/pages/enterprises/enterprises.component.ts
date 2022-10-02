@@ -33,6 +33,7 @@ export class EnterprisesComponent implements OnInit {
     },(error: HttpErrorResponse) => {
 
       this.errorHandler.handleError(error);
+      this.loading = false;
     });
     this.statusService.getStatues(1,50,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
@@ -40,6 +41,7 @@ export class EnterprisesComponent implements OnInit {
     },(error: HttpErrorResponse) => {
 
       this.errorHandler.handleError(error);
+      this.loading = false;
     });
   }
 
@@ -62,6 +64,7 @@ export class EnterprisesComponent implements OnInit {
     },(error: HttpErrorResponse) => {
 
       this.errorHandler.handleError(error);
+      this.loading = false;
     });
 
   }
@@ -83,6 +86,7 @@ export class EnterprisesComponent implements OnInit {
     },(error: HttpErrorResponse) => {
 
       this.errorHandler.handleError(error);
+      this.loading = false;
     });
 
   }

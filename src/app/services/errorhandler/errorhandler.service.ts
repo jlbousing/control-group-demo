@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent
  } from 'src/app/components/modals/alert-modal/alert-modal.component';
+ import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,10 @@ export class ErrorHandlerService {
 
   public errorMessage: string = '';
 
-  constructor(private dialog: Dialog) { }
+  constructor(
+    private dialog: Dialog,
+    private router: Router
+  ) { }
 
   public handleError = (error: HttpErrorResponse) => {
 
@@ -35,6 +39,18 @@ export class ErrorHandlerService {
           message: <string>error.error.result.message
         }
       }); */
+    }
+    else if (error.status === 401) {
+      //this.handle500Error(error);
+      //console.log("hey, not found ",error);
+      this.dialog.open(AlertModalComponent,{
+        data: {
+          status: error.status,
+          message: <string>error.error
+        }
+      });
+
+      this.router.navigateByUrl("/login");
     }
     else {
       console.log(error.error.result.message);
