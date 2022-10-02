@@ -32,7 +32,6 @@ import { InstructionsTableComponent } from './components/providers/instructions-
 import { EditInstructionsModalComponent } from './components/modals/edit-instructions-modal/edit-instructions-modal.component';
 import { ProductionComponent } from './pages/providers/production/production.component';
 import { ProductionTableComponent } from './components/providers/production-table/production-table.component';
-import { EditProductionModalComponent } from './components/modals/edit-production-modal/edit-production-modal.component';
 import { ViewProductionModalComponent } from './components/modals/view-production-modal/view-production-modal.component';
 import { DispatchComponent } from './pages/providers/dispatch/dispatch.component';
 import { DispatchTableComponent } from './components/providers/dispatch-table/dispatch-table.component';
@@ -151,7 +150,6 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
     EditInstructionsModalComponent,
     ProductionComponent,
     ProductionTableComponent,
-    EditProductionModalComponent,
     ViewProductionModalComponent,
     DispatchComponent,
     DispatchTableComponent,
