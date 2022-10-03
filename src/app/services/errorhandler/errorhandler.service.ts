@@ -43,12 +43,21 @@ export class ErrorHandlerService {
     else if (error.status === 401) {
       //this.handle500Error(error);
       //console.log("hey, not found ",error);
-      this.dialog.open(AlertModalComponent,{
-        data: {
-          status: error.status,
-          message: <string>error.error
-        }
-      });
+      if(typeof error.error === "string") {
+        this.dialog.open(AlertModalComponent,{
+          data: {
+            status: error.status,
+            message: <string>error.error
+          }
+        });
+      }else{
+        this.dialog.open(AlertModalComponent,{
+          data: {
+            status: error.status,
+            message: error.error.result.message
+          }
+        });
+      }
 
       this.router.navigateByUrl("/login");
     }
