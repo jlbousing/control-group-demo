@@ -21,8 +21,16 @@ interface IDialogData {
 export class EditSettingsCategoryModalComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>(this.data.category.name,Validators.required),
-    description: new FormControl<string>(this.data.category.description,Validators.required)
+    name: new FormControl<string>(this.data.category.name,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
+    description: new FormControl<string>(this.data.category.description,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(90)
+    ])
   });
 
   constructor(

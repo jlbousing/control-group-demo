@@ -28,10 +28,18 @@ export class CreateProductionComponent implements OnInit {
     assignament: new FormControl<IAssignament | null>(null,Validators.required),
     recipe: new FormControl<IRecipe | null>(null,Validators.required),
     //name: new FormControl<string>('',Validators.required),
-    comments: new FormControl<string>('', Validators.required),
+    comments: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ]),
     quantity: new FormControl<number>(0,Validators.required),
     status: new FormControl<number>(0,Validators.required),
-    incidents: new FormControl<string>('',Validators.required)
+    incidents: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ])
   });
 
   statues: IStatus[] = [];

@@ -59,6 +59,7 @@
                                type="text"
                                placeholder="Usuario"
                                formControlName="statusId">
+                               <option></option>
                                <option *ngFor="let status of data.statues" [value]="status.id">
                                   {{status.status}}
                                </option>
@@ -77,6 +78,7 @@
                                type="text"
                                placeholder="Usuario"
                                formControlName="supplierId">
+                               <option></option>
                                <option *ngFor="let supplier of data.suppliers" [value]="supplier.id">
                                 {{supplier.name}}
                              </option>

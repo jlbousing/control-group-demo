@@ -21,7 +21,11 @@ export class CreateMunicipalityComponent implements OnInit {
   state: IState | null = null;
 
   form = new FormGroup({
-    name: new FormControl<string>("",Validators.required),
+    name: new FormControl<string>("",[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     state: new FormControl<IState | null>(null,Validators.required)
   });
 

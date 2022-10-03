@@ -22,10 +22,18 @@ interface IDialogData {
 export class EditItemModalComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>(this.data.item.name,Validators.required),
+    name: new FormControl<string>(this.data.item.name,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     quantity: new FormControl<number>(this.data.item.quantity,Validators.required),
     unit: new FormControl<string>(this.data.item.unit,Validators.required),
-    comments: new FormControl<string>(this.data.item.comments,Validators.required)
+    comments: new FormControl<string>(this.data.item.comments,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ])
   });
 
   constructor(

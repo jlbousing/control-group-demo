@@ -16,8 +16,16 @@ import { ICategoyRequest } from 'src/app/interfaces/ICategoryRequest';
 export class CreateCategoryComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
-    description: new FormControl<string>('',Validators.required)
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
+    description: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(90)
+    ])
   });
 
 
@@ -52,11 +60,11 @@ export class CreateCategoryComponent implements OnInit {
                 message: <string>response.message.label
               }
             });
+
+            this.router.navigateByUrl("/settings/categories");
           },(error) => {
             this.errorHandler.handleError(error);
           });
-
-          this.router.navigateByUrl("/settings/categories");
 
        }
   }

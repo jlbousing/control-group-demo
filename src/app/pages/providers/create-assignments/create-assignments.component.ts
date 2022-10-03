@@ -22,12 +22,24 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 export class CreateAssignmentsComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     supplierId: new FormControl<number>(0,Validators.required),
     categoryId: new FormControl<number>(0,Validators.required),
     subcategoryId: new FormControl<number>(0,Validators.required),
-    description: new FormControl<string>('',Validators.required),
-    comments: new FormControl<string>('',Validators.required),
+    description: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(90)
+    ]),
+    comments: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ]),
     record: new FormControl<number>(0,Validators.required),
     special: new FormControl<boolean>(false,Validators.required)
   });

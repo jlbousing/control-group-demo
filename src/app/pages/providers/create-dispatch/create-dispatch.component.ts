@@ -30,8 +30,16 @@ export class CreateDispatchComponent implements OnInit {
     destination: new FormControl<string>('',Validators.required),
     dispatchQuantity: new FormControl<number>(0,Validators.required),
     onHold: new FormControl<boolean>(false,Validators.required),
-    comments: new FormControl<string>('',Validators.required),
-    incidents: new FormControl<string>('',Validators.required),
+    comments: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ]),
+    incidents: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ]),
     registrationNumber: new FormControl<string>('',Validators.required)
   });
 

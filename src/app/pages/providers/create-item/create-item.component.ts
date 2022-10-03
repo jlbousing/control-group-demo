@@ -18,10 +18,18 @@ import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert
 export class CreateItemComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     quantity: new FormControl<number>(0,Validators.required),
     unit: new FormControl<string>('', Validators.required),
-    comments: new FormControl<string>('',Validators.required)
+     FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(250)
+    ])
   });
 
   subcategoryId: number = 0;

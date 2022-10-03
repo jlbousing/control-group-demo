@@ -20,7 +20,11 @@ export class CreateUserComponent implements OnInit {
   roles: IRol[] = []
 
   form = new FormGroup({
-    name: new FormControl<string>('', Validators.required),
+    name: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     username: new FormControl<string>('', Validators.required),
     rol: new FormControl<number | null>(0, Validators.required),
     email: new FormControl<string>('', Validators.required),
