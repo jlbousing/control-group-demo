@@ -16,7 +16,11 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 export class CreateEnterpriseComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     rif: new FormControl<string>('',Validators.required),
     comercialName: new FormControl<string>('',Validators.required)
   });

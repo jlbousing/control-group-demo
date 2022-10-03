@@ -20,7 +20,7 @@ export class SearchEnterpriseComponent implements OnInit {
   @Output() resetCompanies = new EventEmitter<boolean>();
 
   form = new FormGroup({
-    name: new FormControl<string | null>(''),
+    name: new FormControl<string | null>('',[Validators.maxLength(30),Validators.minLength(3)]),
     rif: new FormControl<string>('', Validators.required)
   });
 

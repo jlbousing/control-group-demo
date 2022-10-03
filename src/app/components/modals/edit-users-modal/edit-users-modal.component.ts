@@ -26,7 +26,11 @@ interface IDialogData {
 export class EditUsersModalComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>(this.data.user.name,Validators.required),
+    name: new FormControl<string>(this.data.user.name,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     //username: new FormControl<string>(this.data.user.username,Validators.required),
     rol: new FormControl<number>(this.data.user.rolData.id,Validators.required),
     status: new FormControl<number>(this.data.user.statusData.id, Validators.required)

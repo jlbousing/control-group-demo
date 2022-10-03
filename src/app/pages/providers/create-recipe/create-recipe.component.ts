@@ -24,8 +24,16 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 export class CreateRecipeComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
-    description: new FormControl<string>('',Validators.required),
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
+    description: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(90)
+    ]),
     assignament: new FormControl<IAssignament | null>(null,Validators.required),
     item: new FormControl<IItem | null>(null,Validators.required),
     qtx2: new FormControl<number>(0,Validators.required)

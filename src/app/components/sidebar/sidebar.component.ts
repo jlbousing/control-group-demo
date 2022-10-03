@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit, OnChanges{
     console.log(this.title.getTitle())
 
     this.breakpointObserver.observe([
-      "(max-width: 768px)"
+      "(max-width: 820px)"
     ]).subscribe((result: BreakpointState) => {
       if (result.matches) {
           this.isOpen = false;

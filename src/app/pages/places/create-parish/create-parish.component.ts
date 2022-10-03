@@ -19,7 +19,11 @@ import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert
 export class CreateParishComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required),
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     state: new FormControl<IState | null>(null,Validators.required),
     municipality: new FormControl<IMunicipality | null>(null,Validators.required)
   });

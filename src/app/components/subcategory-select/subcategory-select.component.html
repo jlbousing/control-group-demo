@@ -10,6 +10,7 @@
   [(ngModel)]="subcategoryId"
   (ngModelChange)="sendSubcategoryId(subcategoryId)"
   >
+  <option></option>
   <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
     {{ subcategory.name}}
   </option>

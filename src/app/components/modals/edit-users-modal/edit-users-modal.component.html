@@ -64,6 +64,7 @@
                                type="text"
                                placeholder="rol"
                                formControlName="rol">
+                               <option></option>
                                <option *ngFor="let rol of data.roles" [value]="rol.id">{{ rol.name }}</option>
                        </select>
                       </div>
@@ -83,6 +84,7 @@
                              type="text"
                              placeholder="status"
                              formControlName="status">
+                             <option></option>
                              <option *ngFor="let status of data.statues" [value]="status.id">{{ status.status}}</option>
                      </select>
                     </div>

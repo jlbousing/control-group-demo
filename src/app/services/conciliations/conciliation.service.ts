@@ -34,7 +34,6 @@ export class ConciliationService {
     }
     ).pipe(
       retry(3),
-      catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log("probando response ",response);
         if(response.status === 200){

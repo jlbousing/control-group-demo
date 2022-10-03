@@ -16,7 +16,11 @@ import { Router } from '@angular/router';
 export class CreateStateComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',Validators.required)
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ])
   });
 
 

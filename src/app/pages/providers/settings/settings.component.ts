@@ -23,7 +23,11 @@ export class SettingsComponent implements OnInit {
   form = new FormGroup({
     rif: new FormControl<string>('',Validators.required),
     categoryId: new FormControl<number | null>(null,Validators.required),
-    name: new FormControl<string>('',Validators.required),
+    name: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     comercialName: new FormControl<string>('',Validators.required)
   })
 

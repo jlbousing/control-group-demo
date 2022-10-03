@@ -19,7 +19,11 @@ interface IDialogData {
 export class EditStateModalComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>(this.data.state.name,Validators.required)
+    name: new FormControl<string>(this.data.state.name,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ])
   });
   constructor(
     @Inject(DIALOG_DATA) public data: IDialogData,

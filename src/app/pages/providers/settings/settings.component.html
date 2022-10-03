@@ -18,6 +18,7 @@
                  focus:shadow-outline"
           id="category"
           formControlName="categoryId">
+            <option></option>
             <option *ngFor="let category of categories" [value]="category.id">
               {{ category.name }}
             </option>

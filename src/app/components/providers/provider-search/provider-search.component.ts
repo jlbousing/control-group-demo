@@ -18,7 +18,9 @@ export class ProviderSearchComponent implements OnInit {
   @Output() resetCompanies = new EventEmitter<boolean>();
 
   form = new FormGroup({
-    name: new FormControl<string | null>(''),
+    name: new FormControl<string | null>('',[
+      Validators.maxLength(30)
+    ]),
     rif: new FormControl<string>('', Validators.required)
   });
 

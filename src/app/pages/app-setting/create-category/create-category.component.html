@@ -43,7 +43,6 @@
       </div>
       <div class="w-full flex flex-row justify-end">
         <custom-button text="Agregar"
-                       [ngClass]="{'bg-green-300': form.invalid, 'bg-green-700': form.valid}"
                        [disable]="form.invalid"
                        (click)="onSubmit()">
         </custom-button>

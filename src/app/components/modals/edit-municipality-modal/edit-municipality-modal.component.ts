@@ -24,7 +24,11 @@ export class EditMunicipalityModalComponent implements OnInit {
   state: IState | null = null;
 
   form = new FormGroup({
-    name: new FormControl<string>(this.data.municipality.name,Validators.required),
+    name: new FormControl<string>(this.data.municipality.name,[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
     state: new FormControl<IState>(this.data.state,Validators.required)
   });
 
