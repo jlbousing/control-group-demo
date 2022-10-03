@@ -129,6 +129,9 @@ export class ProductionReportComponent implements OnInit {
           this.chart?.update();
           this.loading = false;
 
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
         });
   }
 }

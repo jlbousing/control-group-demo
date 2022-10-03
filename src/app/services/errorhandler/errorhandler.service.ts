@@ -31,6 +31,7 @@ export class ErrorHandlerService {
       });
     }
     else if (error.status === 404) {
+      console.log("ejele");
       //this.handle500Error(error);
       console.log("hey, not found ",error);
       /*this.dialog.open(AlertModalComponent,{
