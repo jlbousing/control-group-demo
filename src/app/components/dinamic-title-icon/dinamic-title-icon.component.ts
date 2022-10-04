@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IIconTitleList } from 'src/app/interfaces/iIConTitleList';
 import { iconTitleList } from 'src/app/utils/IconTitleList';
+import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Component({
   selector: 'dinamic-title-icon',
@@ -11,8 +12,12 @@ export class DinamicTitleIconComponent implements OnInit, OnChanges {
 
   @Input("title") title: string = "";
   currentTitle: string = "";
+  nameUser: string = "";
 
-  constructor() { }
+  constructor() {
+    const userInfo = StorageManager.getFromLocalStorage("userInfo");
+    this.nameUser = userInfo.name;
+   }
 
   ngOnInit(): void {
   }

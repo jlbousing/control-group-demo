@@ -51,7 +51,7 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        title: "Bienvenido Usuario",
+        title: "Bienvenido",
         component: HomeComponent
       },
       {

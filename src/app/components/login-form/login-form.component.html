@@ -22,7 +22,7 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                     Usuario
                   </label>
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                  <input class="w-[310px] portrait:shadow appearance-none border rounded w-full py-2  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
                          type="text"
                          placeholder="Usuario o correo electrónico"
                          formControlName="username">
@@ -32,7 +32,7 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                     Contraseña
                   </label>
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  <input class="w-[310px] shadow appearance-none border rounded w-full py-2  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                          id="username"
                          type="password"
                          placeholder="Contraseña"
@@ -44,14 +44,14 @@
                 </div>
                 <div class="mt-4">
                   <p class="text-xl">¿No puedes acceder? </p>
-                  <a href="#" class="text-blue-400">Contacte a su administrador</a>
+                  <a href="mailto:info@controlgroup.com" class="text-blue-400">Contacte a su administrador</a>
                 </div>
 
                 <div class="flex flex-col items-center mt-4">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    <button class="bg-gray-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button"
                             [disabled]="form.invalid"
-                            [ngClass]="{'bg-gray-300': form.invalid}"
+                            [ngClass]="{'bg-gray-300': form.invalid, 'bg-blue-700': form.valid}"
                             (click)="onSubmit()">
                       Ingresar
                    </button>

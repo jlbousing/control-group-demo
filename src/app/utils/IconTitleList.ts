@@ -2,7 +2,7 @@ import { IIconTitleList } from "../interfaces/iIConTitleList";
 
 export const iconTitleList: IIconTitleList[] = [
   {
-    title: "Bienvenido Usuario",
+    title: "Bienvenido",
     iconClass: "bi bi-house-door-fill"
   },
   {
