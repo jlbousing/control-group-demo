@@ -120,6 +120,7 @@ import { CreateSubCategoryComponent } from './pages/providers/create-subcategory
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ViewRecipeModalComponent } from './components/modals/view-recipe-modal/view-recipe-modal.component';
 
 @NgModule({
   declarations: [
@@ -220,6 +221,7 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
     PiechartAssignamentsComponent,
     CreateSubCategoryComponent,
     RecoveryComponent,
+    ViewRecipeModalComponent,
   ],
   imports: [
     BrowserModule,
