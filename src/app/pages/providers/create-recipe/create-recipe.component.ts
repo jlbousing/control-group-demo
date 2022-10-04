@@ -34,9 +34,7 @@ export class CreateRecipeComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(90)
     ]),
-    assignament: new FormControl<IAssignament | null>(null,Validators.required),
-    item: new FormControl<IItem | null>(null,Validators.required),
-    qtx2: new FormControl<number>(0,Validators.required)
+    assignament: new FormControl<IAssignament | null>(null,Validators.required)
   });
 
   supplierId: number = 0;
@@ -48,8 +46,9 @@ export class CreateRecipeComponent implements OnInit {
 
   products: IProductRecipe[] = [];
 
-  loading: boolean = true;
+  aux: number = 0;
 
+  loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -90,30 +89,35 @@ export class CreateRecipeComponent implements OnInit {
       this.itemsService.getItems(50,0,assignament.subcategoryData.id)
         .subscribe((response: IItem[]) => {
           this.items = response;
+
+          this.items.forEach((item: IItem) => {
+            let itemData: IItemData = {
+              itemData: {
+                itemId: item.id,
+                quantity: item.quantity
+              }
+            };
+
+            this.itemData.push(itemData);
+          });
+
+          console.log("probando itemData ",this.itemData);
           this.loading = false;
-          console.log("probando items ",this.items);
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
       });
     }
   }
 
-  setItem(value: any) {
-    if(value) {
-      this.form.value.item = <IItem>value.id;
-      this.currentItem = value;
+  setItemData(index: number) {
 
-      console.log("currentItem ",this.currentItem);
-      console.log("form ",this.form.value)
-    }
-   }
-
-  clear() {
-    this.form.reset();
-    console.log(this.form.value)
+    console.log("probando ",index);
   }
 
+
+/*
   storeItem(){
+
 
 
     if(this.form.value.name
@@ -140,7 +144,7 @@ export class CreateRecipeComponent implements OnInit {
         //this.form.reset();
       }
 
-  }
+  } */
 
   deleteItem(item: IProductRecipe) {
     let index = this.products.indexOf(item);
@@ -152,8 +156,7 @@ export class CreateRecipeComponent implements OnInit {
 
     if(this.form.value.name
       && this.form.value.description
-      && this.form.value.assignament
-      && this.products.length > 0) {
+      && this.form.value.assignament) {
 
         const payload: IInstructionRequest = {
           name: this.form.value.name,

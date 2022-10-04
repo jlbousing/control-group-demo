@@ -32,7 +32,7 @@
       </div>
 
       <div class="w-full flex flex-row justify-start">
-        <h3>Asigne un nombre a la receta</h3>
+        <h3>Indique un nombre a la receta</h3>
       </div>
       <div class="w-full flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
@@ -51,7 +51,7 @@
       </div>
 
       <div class="w-full flex flex-row justify-start">
-        <h3>Asigne una descripción de la receta</h3>
+        <h3>Indique una descripción de la receta</h3>
       </div>
       <div class="w-full flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
@@ -69,148 +69,23 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-row justify-start">
-        <h3>Indique los productos de la receta</h3>
-      </div>
-
-      <div class="w-full flex flex-row justify-start">
-
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
-            Seleccione el producto
-          </label>
-          <select
-            class="shadow appearance-none border
-                   rounded w-full py-2 px-3 text-gray-700
-                   leading-tight focus:outline-none
-                   focus:shadow-outline"
-            id="company"
-            formControlName="item"
-            (ngModelChange)="setItem($event)"
-            >
-            <option *ngFor="let item of items" [ngValue]="item">
-              {{ item.name }}
-            </option>
-
-          </select>
-        </div>
-
-      </div>
-
-      <div class="w-full flex flex-row justify-start">
-        <h3>información del producto</h3>
-      </div>
-
-      <div class="w-full flex flex-row justify-start">
-
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="currentItem">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx">
-            Cantidad
-          </label>
-          <input class="shadow appearance-none border
-                        rounded w-full py-2 px-3 text-gray-700
-                        leading-tight focus:outline-none
-                        focus:shadow-outline"
-                 type="number"
-                 [disabled]="true"
-                 [value]="currentItem.quantity"
-
-           />
-        </div>
-
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="currentItem">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="unit">
-            Unidad
-          </label>
-          <input class="shadow appearance-none border
-                        rounded w-full py-2 px-3 text-gray-700
-                        leading-tight focus:outline-none
-                        focus:shadow-outline"
-                 type="text"
-                 [value]="currentItem.unit"
-                 [disabled]="true"
-
-           />
-        </div>
-
-      </div>
-
-      <div class="w-full flex flex-row justify-start">
-        <h3>Indique la cantidad de productos asignados a la receta</h3>
-      </div>
-
-      <div class="w-full flex flex-row justify-start">
-
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx2">
-            Cantidad
-          </label>
-          <input class="shadow appearance-none border
-                        rounded w-full py-2 px-3 text-gray-700
-                        leading-tight focus:outline-none
-                        focus:shadow-outline"
-                 type="number"
-                 placeholder="1"
-                 formControlName="qtx2"
-
-           />
-        </div>
-
-      </div>
-
-      <div class="w-full flex flex-row justify-end mt-8">
-        <div class="w-1/2 mx-4 lg:w-[10%]">
-          <button data-modal-toggle="defaultModal"
-          type="button"
-          class="text-white
-                 bg-blue-700
-                 hover:bg-blue-800
-                   focus:ring-4
-                   focus:outline-none
-                 focus:ring-blue-300
-                   font-medium rounded-lg
-                   text-sm px-5 py-2.5 text-center"
-          (click)="clear()">
-                 Limpiar
-          </button>
-        </div>
-
-        <div class="w-1/2 mx-4 lg:w-[10%]">
-          <button data-modal-toggle="defaultModal"
-          type="button"
-          class="text-white
-                 hover:bg-green-800
-                   focus:ring-4
-                   focus:outline-none
-                 focus:ring-blue-300
-                   font-medium rounded-lg
-                   text-sm px-5 py-2.5 text-center"
-          [ngClass]="{'bg-green-700': !form.invalid, 'bg-gray-300': form.invalid}"
-          [disabled]="form.invalid"
-          (click)="storeItem()">
-                 Agregar
-          </button>
-        </div>
-      </div>
     </form>
 
     <div class="w-full flex flex-row mt-8">
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <th scope="col" class="px-6 py-3">Producto</th>
-          <th scope="col" class="px-6 py-3">Unidad</th>
-          <th scope="col" class="px-6 py-3">Acciones</th>
+          <th scope="col" class="px-6 py-3">Cantidad de empaque</th>
+          <th scope="col" class="px-6 py-3">Unidad de medición</th>
         </thead>
         <tbody>
           <tr class="bg-white border-b"
-              *ngFor="let item of products">
+              *ngFor="let item of items; let i = index">
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">
-              <button>
-               <i class="bi bi-trash3" (click)="deleteItem(item)"></i>
-              </button>
+              <input type="number" [value]="item.quantity" (change)="setItemData(i)">
             </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
           </tr>
         </tbody>
       </table>
