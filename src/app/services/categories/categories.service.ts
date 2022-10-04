@@ -173,4 +173,31 @@ export class CategoriesService {
       })
     )
   }
+
+  createSubCategory(payload: ISubcategoryRequest) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.categories.subcategories.create}`;
+
+    return this.http.post<ISubcategoryRequest>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 201){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
+        }
+      })
+    );
+  }
 }

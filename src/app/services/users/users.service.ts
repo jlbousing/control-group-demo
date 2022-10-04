@@ -72,7 +72,7 @@ export class UsersService {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.changes}${id}`;
 
-    return this.http.post<IUserPatch>(
+    return this.http.patch<IUserPatch>(
       url,
       payload,
       { observe: 'response',

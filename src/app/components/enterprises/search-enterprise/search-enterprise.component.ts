@@ -21,7 +21,7 @@ export class SearchEnterpriseComponent implements OnInit {
 
   form = new FormGroup({
     name: new FormControl<string | null>('',[Validators.maxLength(30),Validators.minLength(3)]),
-    rif: new FormControl<string>('', Validators.required)
+    rif: new FormControl<string>('', [Validators.maxLength(30), Validators.minLength(3)])
   });
 
   companies: ICompany[] = [];
@@ -52,6 +52,23 @@ export class SearchEnterpriseComponent implements OnInit {
           this.searchedCompanies.emit(this.companies);
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading.emit(false);
+        });
+    }else if(this.form.value.name) {
+
+      let name: string = this.form.value.name;
+      let rif: string | null = this.form.value.rif ? this.form.value.rif : null;;
+
+      this.companieService.findCompany(name,rif)
+        .subscribe((response: ICompany[]) => {
+          console.log("buscando empresas");
+          console.log(response)
+          this.companies = response;
+          this.loading.emit(false);
+          this.searchedCompanies.emit(this.companies);
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.searchedCompanies.emit([]);
           this.loading.emit(false);
         });
     }

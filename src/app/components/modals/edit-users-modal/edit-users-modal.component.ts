@@ -32,6 +32,24 @@ export class EditUsersModalComponent implements OnInit {
       Validators.maxLength(30)
     ]),
     //username: new FormControl<string>(this.data.user.username,Validators.required),
+    email: new FormControl<string>(this.data.user.email,[
+      Validators.required,
+      Validators.email,
+      Validators.maxLength(30)
+    ]),
+    phone: new FormControl<string>(this.data.user.phone,[
+      Validators.required,
+      Validators.minLength(7),
+      Validators.maxLength(30)
+    ]),
+    password1: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(10)
+    ]),
+    password2: new FormControl<string>('',[
+      Validators.required,
+      Validators.minLength(10)
+    ]),
     rol: new FormControl<number>(this.data.user.rolData.id,Validators.required),
     status: new FormControl<number>(this.data.user.statusData.id, Validators.required)
   });
@@ -54,30 +72,47 @@ export class EditUsersModalComponent implements OnInit {
     if(this.form.value.name
        //&& this.form.value.username
        && this.form.value.rol
-       && this.form.value.status) {
+       && this.form.value.status
+       && this.form.value.email
+       && this.form.value.phone
+       && this.form.value.password1
+       && this.form.value.password2) {
 
-        const payload: IUserPatch = {
-          name: this.form.value.name,
-          //username: this.form.value.username,
-          rol: this.form.value.rol,
-          status: this.form.value.status
-        };
+        if(this.form.value.password1 === this.form.value.password2) {
 
-        this.userService.patchUser(payload,this.data.user.id)
-          .subscribe((response: any) => {
-            this.dialog.open(AlertModalComponent,{
-              data: {
-                status: 200,
-                message: <string>response.label
-              }
+          const payload: IUserPatch = {
+            name: this.form.value.name,
+            email: this.form.value.email,
+            phone: this.form.value.phone,
+            password: this.form.value.password1,
+            rol: this.form.value.rol,
+            status: this.form.value.status
+          };
+
+          this.userService.patchUser(payload,this.data.user.id)
+            .subscribe((response: any) => {
+              this.dialog.open(AlertModalComponent,{
+                data: {
+                  status: 200,
+                  message: <string>response.label
+                }
+              });
+
+              this.dialogRef.close();
+              this.router.navigateByUrl("/users");
+
+            },(error: HttpErrorResponse) => {
+              this.errorHandler.handleError(error);
             });
+        }else{
 
-            this.dialogRef.close();
-            this.router.navigateByUrl("/users");
-
-          },(error: HttpErrorResponse) => {
-            this.errorHandler.handleError(error);
+          this.dialog.open(AlertModalComponent,{
+            data: {
+              status: 400,
+              message: "Las contraseñas no coincidien"
+            }
           });
+        }
 
        }
   }

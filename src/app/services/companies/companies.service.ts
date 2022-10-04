@@ -65,7 +65,7 @@ export class CompaniesService {
     );
   }
 
-  findCompany(name: string | null,rif: string) {
+  findCompany(name: string | null,rif: string | null) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.companies.find}`;
     const params: string = `?name=${name}&rif=${rif}&getSuppliers=true`;

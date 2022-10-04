@@ -38,7 +38,7 @@ import { CreateStateComponent } from './pages/places/create-state/create-state.c
 import { CreateMunicipalityComponent } from './pages/places/create-municipality/create-municipality.component';
 import { CreateParishComponent } from './pages/places/create-parish/create-parish.component';
 import { AssignamentsReportComponent } from './pages/reports/assignaments-report/assignaments-report.component';
-import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
+import { CreateSubCategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
 import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
@@ -151,7 +151,7 @@ const routes: Routes = [
         path: "create-subcategory/:supplierId",
         title: "Nueva Subcategoria",
         canActivate: [AccessGuard],
-        component: CreateSubcategoryComponent
+        component: CreateSubCategoryComponent
       }
     ]
   },

@@ -1,7 +1,7 @@
 <separator-title title="Crear Asignación"></separator-title>
 
 <loading *ngIf="loading"></loading>
-<div class="w-full lg:w-4/5 bg-white rounded-lg">
+<div class="w-full bg-white rounded-lg">
   <form [formGroup]="form" class="flex flex-col p-8">
     <div class="w-full flex flex-row justify-start">
       <h3>Indique la categoría</h3>
@@ -10,7 +10,7 @@
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-          Nombre
+          Indicar el nombre de asignación
         </label>
         <input class="shadow appearance-none border
                       rounded w-full py-2 px-3 text-gray-700
@@ -24,7 +24,7 @@
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
-          Categoría
+          Indicar la categoría
         </label>
         <select
           class="shadow appearance-none border
@@ -107,7 +107,7 @@
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="record">
-          Meta de asignación
+          Indique la meta de asignación
         </label>
         <input class="shadow appearance-none border
                       rounded w-full py-2 px-3 text-gray-700
@@ -130,7 +130,7 @@
                    focus:ring-2"
             formControlName="special">
 
-      <label for="hold-checkbox" class="ml-2 text-sm font-medium text-gray-900">¿Es una asignacion especial?</label>
+      <label for="hold-checkbox" class="ml-2 font-medium text-gray-900">¿Es una asignacion especial?</label>
     </div>
 
     <div class="w-full flex flex-row justify-center lg:justify-end mt-8">
