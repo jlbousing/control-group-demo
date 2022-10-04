@@ -59,6 +59,7 @@ export class DispatchComponent implements OnInit {
           this.supplier = response
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
@@ -67,6 +68,7 @@ export class DispatchComponent implements OnInit {
           this.loading = false;
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         });
     });
   }
@@ -84,6 +86,7 @@ export class DispatchComponent implements OnInit {
       console.log("mostrando recipes ",this.recipes)
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
+      this.loading = false;
     });
   }
 
@@ -97,6 +100,7 @@ export class DispatchComponent implements OnInit {
         this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
   }
 
@@ -112,6 +116,7 @@ export class DispatchComponent implements OnInit {
         console.log("probando despachos ",this.dispatchs);
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
   }
 

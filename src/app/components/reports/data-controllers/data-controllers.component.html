@@ -1,8 +1,8 @@
 
 <loading *ngIf="loading"></loading>
-<div class="flex flex-col items-center lg:flex-row lg:justify-center mb-8" *ngIf="!loading">
+<div class="flex flex-col items-center lg:flex-row lg:justify-center mb-8 overflow-x-auto" *ngIf="!loading">
 
-  <div class="w-full lg:w-1/4">
+  <div class="w-full lg:w-1/4 mx-4">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="companies">
       Compañías
     </label>
@@ -21,7 +21,7 @@
      </select>
   </div>
 
-  <div class="w-full lg:w-1/4">
+  <div class="w-full lg:w-1/4 mx-4">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="suppliers">
       Proveedores
     </label>
@@ -40,7 +40,7 @@
      </select>
   </div>
 
-  <div class="w-full lg:w-1/4">
+  <div class="w-full lg:w-1/4 mx-4">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="init-date">
       Fecha Inicio
     </label>
@@ -54,7 +54,7 @@
      />
   </div>
 
-  <div class="w-full lg:w-1/4">
+  <div class="w-full lg:w-1/4 mx-4">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="finish-date">
       Fecha Final
     </label>

@@ -115,7 +115,7 @@ import { ProductionReportComponent } from './pages/reports/production-report/pro
 import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
 import { BartchartAssignamentsComponent } from './components/reports/bartchart-assignaments/bartchart-assignaments.component';
 import { PiechartAssignamentsComponent } from './components/reports/piechart-assignaments/piechart-assignaments.component';
-import { CreateSubcategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
+import { CreateSubCategoryComponent } from './pages/providers/create-subcategory/create-subcategory.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
@@ -218,7 +218,7 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
     DispatchReportComponent,
     BartchartAssignamentsComponent,
     PiechartAssignamentsComponent,
-    CreateSubcategoryComponent,
+    CreateSubCategoryComponent,
     RecoveryComponent,
   ],
   imports: [

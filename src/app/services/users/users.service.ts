@@ -72,7 +72,7 @@ export class UsersService {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.changes}${id}`;
 
-    return this.http.post<IUserPatch>(
+    return this.http.patch<IUserPatch>(
       url,
       payload,
       { observe: 'response',
@@ -99,7 +99,7 @@ export class UsersService {
   findUsers(username: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.find}`;
-    const params: string = `?findbyuser?username=${username}`;
+    const params: string = `?username=${username}`;
 
     return this.http.get<any>(
       url + params,

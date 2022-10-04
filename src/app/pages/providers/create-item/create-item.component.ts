@@ -23,10 +23,12 @@ export class CreateItemComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(30)
     ]),
-    quantity: new FormControl<number>(0,Validators.required),
+    quantity: new FormControl<number>(0,[
+      Validators.required,
+      Validators.min(0)
+    ]),
     unit: new FormControl<string>('', Validators.required),
     comments: new FormControl<string>('',[
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(250)
     ])

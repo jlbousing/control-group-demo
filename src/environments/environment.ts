@@ -56,7 +56,8 @@ export const environment = {
       subcategories: {
         list: '/api/categories/subcategories',
         changes: '/api/categories/subcategory/changes/',
-        find: '/api/categories/subcategory/find'
+        find: '/api/categories/subcategory/find',
+        create: '/api/categories/subcategory/create'
       }
     },
     instructions: {

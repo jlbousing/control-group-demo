@@ -7,7 +7,7 @@
             <!-- Modal header -->
             <div class="flex justify-between items-start p-4 rounded-t border-b">
                 <h3 class="text-xl font-semibold text-gray-900">
-                  Editar Asignación
+                  Detalle Asignación
                 </h3>
                 <button type="button"
                         class="text-gray-400
@@ -29,28 +29,28 @@
                   <h5>Datos de Asignación</h5>
                   <div class="flex justify-around">
                     <div class="w-1/2">
-                        <span>ID: {{ data.assignment.id }}</span>
+                        <span>Identificador de asignación: {{ data.assignment.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span class="text-red-700">Estatus: {{data.assignment.statusData.status}}</span>
+                      <span>Estatus: {{data.assignment.statusData.status}}</span>
                     </div>
                   </div>
                   <div class="w-full flex-col justify-center items-center">
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                        Nombre
+                        Nombre de asignación
                       </label>
                       <span>{{ data.assignment.name}}</span>
                     </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
-                        Modificar Estatus
+                        Estatus
                       </label>
                       <span>{{ data.assignment.statusData.status }}</span>
                     </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
-                        Modificar Proveedor
+                        Proveedor
                       </label>
                       <span>{{ data.assignment.supplierData.name}}</span>
                     </div>

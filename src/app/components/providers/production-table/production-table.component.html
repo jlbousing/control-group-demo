@@ -7,7 +7,7 @@
                 ID
               </th>
               <th scope="col" class="px-6 py-3">
-                Instrucción
+                Receta
               </th>
               <th scope="col" class="px-6 py-3">
                 Asignación
@@ -41,7 +41,7 @@
                     <a *ngIf="canAccess" [routerLink]="'/providers/create-dispatch/'+supplierId+'/production/'+production.id">
                       <button><i class="bi bi-truck text-2xl mx-2 text-blue-700"></i></button>
                     </a>
-                    <button *ngIf="canAccess" (click)="selectRemake(production)"><i class="bi bi-trash text-2xl mx-2 text-blue-700"></i></button>
+                    <button *ngIf="canAccess" (click)="selectRemake(production)"><i class="bi bi-arrow-clockwise text-2xl mx-2 text-blue-700"></i></button>
                 </div>
               </td>
           </tr>

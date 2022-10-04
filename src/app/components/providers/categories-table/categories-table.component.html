@@ -10,6 +10,9 @@
                   Categorias
               </th>
               <th scope="col" class="px-6 py-3">
+                  Descripción
+              </th>
+              <th scope="col" class="px-6 py-3">
                   Estatus
               </th>
               <th scope="col" class="px-6 py-3">
@@ -27,7 +30,10 @@
                   {{ subcategory.name }}
               </td>
               <td class="px-6 py-4">
-                  {{ subcategory.status }}
+                {{ subcategory.description }}
+              </td>
+              <td class="px-6 py-4">
+                  {{ subcategory.status ? 'Activo' : 'Inactivo'}}
               </td>
               <td class="px-6 py-4 text-right">
                 <button (click)="selectEdit(subcategory)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
