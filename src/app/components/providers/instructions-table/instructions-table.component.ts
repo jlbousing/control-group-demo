@@ -51,7 +51,7 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
   selectEdit(instruction: IRecipe){
     this.dialog.open(EditInstructionsModalComponent,{
       data: {
-        instruction: instruction,
+        recipe: instruction,
         statues: this.statues
       }
     });

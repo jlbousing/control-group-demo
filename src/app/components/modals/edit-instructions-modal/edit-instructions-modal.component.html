@@ -25,36 +25,18 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form>
-                  <h5>Datos de Receta</h5>
+              <h5>Datos de Receta</h5>
                   <div class="flex justify-around">
                     <div class="w-1/2">
-                        <span>ID: {{ data.instruction.id }}</span>
+                        <span>ID: {{ data.recipe.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span class="text-red-700">Estatus: {{ data.instruction.statusData.status }} </span>
+                      <span [ngClass]="{'text-red-700': !colorStatus(), 'text-green-600': colorStatus()}">
+                        Estatus: {{ data.recipe.statusData.status }} </span>
                     </div>
                   </div>
+                <form [formGroup]="form">
                   <div class="w-full flex-col justify-center items-center">
-                    <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
-                        Modificar Estatus
-                      </label>
-                      <select
-                        class="shadow appearance-none border
-                               rounded w-full py-2 px-3 text-gray-700
-                               leading-tight focus:outline-none
-                               focus:shadow-outline"
-                               id="status"
-                               type="text"
-                               placeholder="Usuario"
-                               formControlName="statusId">
-                               <option></option>
-                               <option *ngFor="let status of data.statues" [value]="status.id">
-                                  {{ status.status }}
-                               </option>
-                       </select>
-                    </div>
 
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
@@ -64,6 +46,22 @@
                          type="text"
                          placeholder="nombre"
                          id="name"
+                         formControlName="name"
+                         >
+                    </div>
+                  </div>
+
+                  <div class="w-full flex-col justify-center items-center">
+
+                    <div class="my-4 w-full">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                        Descripcion
+                      </label>
+                      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
+                         type="text"
+                         placeholder="nombre"
+                         id="description"
+                         formControlName="description"
                          >
                     </div>
                   </div>
@@ -79,7 +77,9 @@
                                  focus:outline-none
                                focus:ring-blue-300
                                  font-medium rounded-lg
-                                 text-sm px-5 py-2.5 text-center">
+                                 text-sm px-5 py-2.5 text-center"
+                        [ngClass]="{'bg-gray-300': form.invalid, 'bg-green-700': form.valid}"
+                        (click)="onSubmit()">
                                Guardar
                   </button>
                 <button data-modal-toggle="defaultModal"
