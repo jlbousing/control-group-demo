@@ -17,6 +17,8 @@ interface IDialogData {
 })
 export class RemakeProductionModalComponent implements OnInit {
 
+  activeQuestion: boolean = false;
+
   constructor(
     @Inject(DIALOG_DATA) public data: IDialogData,
     public dialogRef: DialogRef,
@@ -26,6 +28,10 @@ export class RemakeProductionModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  setActiveQuestion() {
+    this.activeQuestion = true;
   }
 
   revert(id: number) {
