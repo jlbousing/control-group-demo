@@ -8,7 +8,7 @@
       <div class="w-full flex flex-row justify-start">
         <h3>Datos de la Producción</h3>
       </div>
-      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="production">
+      <div class="w-full flex flex-col lg:flex-row justify-start" *ngIf="production">
 
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="id">
@@ -42,7 +42,7 @@
 
       <div class="w-full flex-col lg:flex flex-row justify-start">
 
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="production">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="available-dispatch">
             Disponible para despachar
           </label>
@@ -73,6 +73,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="1234566789"
+                 maxlength="9"
                  formControlName="guideNumber"
            />
         </div>
@@ -86,12 +87,13 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="text"
-                 placeholder="1"
+                 placeholder="123456789"
+                 maxlength="9"
                  formControlName="noteNumber"
            />
         </div>
 
-        <div class="my-4 w-full lg:w-1/3 lg:mx-4">
+        <div class="my-4 w-full lg:w-1/3 lg:mx-4" *ngIf="production && production.stockProduction">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="nro-nota">
             Cantidad de despacho:
           </label>
@@ -100,6 +102,7 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 [max]="production!.stockProduction!.toString()"
                  placeholder="900"
                  formControlName="dispatchQuantity"
            />
@@ -136,7 +139,64 @@
         </div>
       </div>
 
-      <div class="w-full flex-col lg:flex flex-row justify-start">
+      <loading *ngIf="loading"></loading>
+      <div class="w-full flex flex-col lg:flex-row justify-start" *ngIf="!loading">
+        <div class="my-4 w-full lg:w-1/3 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="state">
+            Estado
+          </label>
+          <select
+              class="shadow appearance-none border
+                     rounded w-full py-2 px-5 text-gray-700
+                     leading-tight focus:outline-none
+                     focus:shadow-outline"
+                     id="state"
+                     formControlName="state"
+                     (ngModelChange)="setState($event)">
+                     <option *ngFor="let state of states" [ngValue]="state">
+                        {{ state.name }}
+                     </option>
+             </select>
+        </div>
+
+        <div class="my-4 w-full lg:w-1/3 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="municipality">
+            Municipio
+          </label>
+          <select
+              class="shadow appearance-none border
+                     rounded w-full py-2 px-5 text-gray-700
+                     leading-tight focus:outline-none
+                     focus:shadow-outline"
+                     id="municipality"
+                     formControlName="municipality"
+                     (ngModelChange)="setMunicipality($event)">
+                     <option *ngFor="let municipality of municipalities" [ngValue]="municipality">
+                        {{ municipality.name }}
+                     </option>
+             </select>
+        </div>
+
+        <div class="my-4 w-full lg:w-1/3 lg:mx-4" >
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="parish">
+            Parroquia
+          </label>
+          <select
+              class="shadow appearance-none border
+                     rounded w-full py-2 px-5 text-gray-700
+                     leading-tight focus:outline-none
+                     focus:shadow-outline"
+                     id="parish"
+                     formControlName="parish"
+                     (ngModelChange)="setParish($event)">
+                     <option *ngFor="let  parish of parishes" [ngValue]="parish">
+                        {{ parish.name }}
+                     </option>
+             </select>
+        </div>
+      </div>
+
+      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="state && municipality && parish">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
             Destino
@@ -146,8 +206,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="text"
-                 placeholder="Direccion"
-                 formControlName="destination"
+                 [value]="destination"
+                 disabled="true"
            />
         </div>
       </div>
@@ -162,7 +222,7 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="text"
-                 placeholder="Direccion"
+                 placeholder="comentario"
                  formControlName="comments"
            />
         </div>
@@ -189,7 +249,6 @@
           type="button"
           class="text-white
                  bg-green-700
-                 hover:bg-green-800
                    focus:ring-4
                    focus:outline-none
                  focus:ring-blue-300
