@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { ICompany } from 'src/app/interfaces/ICompanies';
 import { Router } from '@angular/router';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { StorageManager } from 'src/app/utils/StorageManager';
 
 @Component({
@@ -17,6 +18,10 @@ export class ProviderCardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  colorStatus() {
+    return statusNameColor(this.supplier!.statusData.status);
   }
 
   goToProvidersDetail(supplierId: number)

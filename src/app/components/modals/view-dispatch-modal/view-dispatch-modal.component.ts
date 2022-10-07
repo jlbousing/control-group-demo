@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 
 interface IDialogData {
@@ -19,6 +20,10 @@ export class ViewDispatchModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  colorStatus() {
+    return statusNameColor(this.data.dispatch.statusData.status);
   }
 
   onCloseModal(){

@@ -22,6 +22,9 @@ export const statusNameColor = (name: string) => {
     case "Remaquilado":
       return false;
       break;
+    case "Inactivo":
+      return false;
+      break;
     default:
       return true;
   }

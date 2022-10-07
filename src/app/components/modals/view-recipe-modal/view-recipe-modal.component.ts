@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Dialog, DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { IRecipe } from 'src/app/interfaces/IRecipe';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 
 interface IDialogData {
@@ -19,6 +20,10 @@ export class ViewRecipeModalComponent implements OnInit {
     @Inject(DIALOG_DATA) public data: IDialogData,
     public dialogRef: DialogRef
   ) { }
+
+  colorStatus() {
+    return statusNameColor(this.data.recipe.statusData.status);
+  }
 
   ngOnInit(): void {
 

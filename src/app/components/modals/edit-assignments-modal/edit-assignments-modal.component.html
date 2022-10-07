@@ -32,7 +32,8 @@
                         <span>ID: {{ data.assignment.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span class="text-red-700">Estatus: {{data.assignment.statusData.status}}</span>
+                      <span [ngClass]="{'text-red-700': !colorStatus(), 'text-green-700': colorStatus()}">
+                        Estatus: {{data.assignment.statusData.status}}</span>
                     </div>
                   </div>
                   <div class="w-full flex-col justify-center items-center">

@@ -4,6 +4,7 @@ import { ProductionService } from 'src/app/services/production/production.servic
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { DialogRef, DIALOG_DATA, Dialog } from '@angular/cdk/dialog';
 
 interface IDialogData {
@@ -32,6 +33,10 @@ export class RemakeProductionModalComponent implements OnInit {
 
   setActiveQuestion() {
     this.activeQuestion = true;
+  }
+
+  colorStatus() {
+    return statusNameColor(this.data.production.statusData.status);
   }
 
   revert(id: number) {
