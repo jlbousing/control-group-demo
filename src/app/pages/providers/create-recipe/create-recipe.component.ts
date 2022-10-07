@@ -148,7 +148,8 @@ export class CreateRecipeComponent implements OnInit {
       let itemData: IItemData = {
         itemData: {
           itemId: item.id,
-          quantity: item.quantity
+          //quantity: item.quantity
+          quantity: 1
         }
       };
 

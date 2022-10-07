@@ -115,17 +115,19 @@
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <th scope="col" class="px-6 py-3">Producto</th>
-          <th scope="col" class="px-6 py-3">Cantidad de empaque</th>
+          <th scope="col" class="px-6 py-3">Cantidad (editable)</th>
+          <th scope="col" class="px-6 py-3">Pesaje</th>
           <th scope="col" class="px-6 py-3">Unidad de medición</th>
         </thead>
         <tbody>
           <tr class="bg-white border-b"
               *ngFor="let item of template.items[0]; let i = index">
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900">
-              <input type="number" [value]="item.quantity" [(ngModel)]="itemData[i].itemData.quantity"
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 border-black" >
+              <input type="number"   [(ngModel)]="itemData[i].itemData.quantity"
                      (ngModelChange)="changeQuantity($event)">
             </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.quantity}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
           </tr>
         </tbody>
