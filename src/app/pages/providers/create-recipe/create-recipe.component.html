@@ -21,7 +21,7 @@
                    focus:shadow-outline"
             id="assignament"
             formControlName="assignament"
-            (ngModelChange)="setItems($event)"
+            (ngModelChange)="setTemplate($event)"
             >
             <option *ngFor="let assignament of assignaments" [ngValue]="assignament">
                 {{ assignament.name}}
@@ -69,9 +69,29 @@
         </div>
       </div>
 
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="template">
+          Plantilla
+        </label>
+        <select
+          class="shadow appearance-none border
+                 rounded w-full py-2 px-3 text-gray-700
+                 leading-tight focus:outline-none
+                 focus:shadow-outline"
+          id="template"
+          formControlName="template"
+          (ngModelChange)="setItems($event)"
+          >
+          <option *ngFor="let template of templates" [ngValue]="template">
+              {{ template.name }}
+          </option>
+
+        </select>
+      </div>
+
     </form>
 
-    <div class="w-full flex flex-row mt-8">
+    <!--<div class="w-full flex flex-row mt-8">
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <th scope="col" class="px-6 py-3">Producto</th>
@@ -84,6 +104,26 @@
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">
               <input type="number" [value]="item.quantity" (change)="setItemData(i)">
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+
+    <div class="w-full flex flex-row mt-8" *ngIf="template">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <th scope="col" class="px-6 py-3">Producto</th>
+          <th scope="col" class="px-6 py-3">Cantidad de empaque</th>
+          <th scope="col" class="px-6 py-3">Unidad de medición</th>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b"
+              *ngFor="let item of template.items[0]; let i = index">
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">
+              <input type="number" [value]="item.quantity">
             </td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
           </tr>

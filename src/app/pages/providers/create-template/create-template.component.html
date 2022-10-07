@@ -74,7 +74,7 @@
       <div class="w-full flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="currentItem">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx">
-            Cantidad
+            Pesaje
           </label>
           <input class="shadow appearance-none border
                         rounded w-full py-2 px-3 text-gray-700
@@ -137,16 +137,16 @@
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <th scope="col" class="px-6 py-3">Producto</th>
+          <th scope="col" class="px-6 py-3">Pesaje</th>
           <th scope="col" class="px-6 py-3">Unidad</th>
-          <th scope="col" class="px-6 py-3">Cantidad</th>
           <th scope="col" class="px-6 py-3">Acciones</th>
         </thead>
         <tbody>
           <tr class="bg-white border-b"
               *ngFor="let item of productsSelected">
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name }}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.quantity }}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.quantity}}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit }}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">
               <button>
                <i class="bi bi-trash3" (click)="deleteItem(item)"></i>

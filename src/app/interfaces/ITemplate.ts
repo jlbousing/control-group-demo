@@ -4,6 +4,6 @@ export interface ITemplate {
   id: number;
   name: string;
   image: string | null;
-  items: IItem[];
+  items: any[];
   status: boolean;
 }
