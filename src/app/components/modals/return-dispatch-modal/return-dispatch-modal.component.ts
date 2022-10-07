@@ -7,6 +7,7 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { Route, Router } from '@angular/router';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 interface IDialogData {
@@ -20,6 +21,8 @@ interface IDialogData {
   styleUrls: ['./return-dispatch-modal.component.scss']
 })
 export class ReturnDispatchModalComponent implements OnInit {
+
+  activeQuestion: boolean = false;
 
   constructor(
     @Inject(DIALOG_DATA) public data: IDialogData,
@@ -37,6 +40,14 @@ export class ReturnDispatchModalComponent implements OnInit {
 
   onCloseModal(){
     this.dialogRef.close();
+  }
+
+  setActiveQuestion() {
+    this.activeQuestion = true;
+  }
+
+  colorStatus() {
+    return statusNameColor(this.data.dispatch.statusData.status);
   }
 
   changeStatus(id: number) {

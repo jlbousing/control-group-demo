@@ -7,6 +7,7 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
 import { IDispatch } from 'src/app/interfaces/IDispacht';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 interface IDialogData {
@@ -32,6 +33,10 @@ export class EditDispatchModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
+
+  colorStatus() {
+    return statusNameColor(this.data.dispatch.statusData.status);
   }
 
   onCloseModal(){

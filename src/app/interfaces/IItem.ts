@@ -4,5 +4,8 @@ export interface IItem {
   name: string;
   quantity: number;
   unit: string;
-  comments: string;
+  comments: string | null;
+  incidents: string | null;
+  createdDate: string;
+  modifyDate: string;
 }

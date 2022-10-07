@@ -56,7 +56,7 @@
                  [(ngModel)]="production"
                  (ngModelChange)="setProduction($event)">
                  <option *ngFor="let production of productions" [ngValue]="production">
-                    {{ production.recipeData.name }}
+                    {{ production.id }}
                  </option>
          </select>
         </div>

@@ -92,7 +92,12 @@ export const environment = {
       list: '/api/clap/recipes',
       create: '/api/clap/recipes/create',
       find: '/api/clap/recipes/find',
-      changes: '/api/clap/recipes/changes/'
+      changes: '/api/clap/recipes/changes/',
+      templates: {
+        list: '/api/clap/recipes/templates/',
+        create: '/api/clap/recipes/templates/create',
+        find: '/api/clap/recipes/templates/find'
+      }
     },
     states: {
       list: '/api/clap/states/',

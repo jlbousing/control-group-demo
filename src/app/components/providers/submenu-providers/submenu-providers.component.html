@@ -27,6 +27,15 @@
   </div>
 
   <div class="w-full mx-2 lg:pb-4 lg:pl-4 lg:w-full lg:mx-0">
+    <a [routerLink]="'/providers/templates/'+supplierId" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
+      <div class="text-2xl">
+        <i class="bi bi-card-checklist flex justify-center lg:inline-block"></i>
+        <span class="ml-4">Plantillas</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="w-full mx-2 lg:pb-4 lg:pl-4 lg:w-full lg:mx-0">
     <a [routerLink]="'/providers/instructions/'+supplierId" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
       <div class="text-2xl">
         <i class="bi bi-card-checklist flex justify-center lg:inline-block"></i>

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { ISubcategoryPatch } from 'src/app/interfaces/ISubcategoryPatch';
 
 interface IDialogData {
@@ -49,6 +50,10 @@ export class EditCategoriesModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
+
+  colorStatus() {
+    return statusNameColor(this.data.subcategory.status ? "Activo" : "Inactivo");
   }
 
   onSubmit() {

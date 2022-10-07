@@ -15,6 +15,8 @@ import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { ITemplate } from 'src/app/interfaces/ITemplate';
+import { TemplateService } from 'src/app/services/templates/template.service';
 
 @Component({
   selector: 'app-create-recipe',
@@ -34,7 +36,8 @@ export class CreateRecipeComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(90)
     ]),
-    assignament: new FormControl<IAssignament | null>(null,Validators.required)
+    assignament: new FormControl<IAssignament | null>(null,Validators.required),
+    template: new FormControl<ITemplate | null>(null,Validators.required)
   });
 
   supplierId: number = 0;
@@ -50,6 +53,9 @@ export class CreateRecipeComponent implements OnInit {
 
   loading: boolean = true;
 
+  templates: ITemplate[] = [];
+  template: ITemplate | null = null;
+
   constructor(
     private route: ActivatedRoute,
     private assignamentService: AssignamentService,
@@ -58,7 +64,8 @@ export class CreateRecipeComponent implements OnInit {
     private instructionsService: InstructionService,
     private router: Router,
     private dialog: Dialog,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private templateService: TemplateService
   ) { }
 
   ngOnInit(): void {
@@ -78,6 +85,8 @@ export class CreateRecipeComponent implements OnInit {
    });
   }
 
+
+  /*
   setItems(value: any) {
 
     this.loading = false;
@@ -107,12 +116,51 @@ export class CreateRecipeComponent implements OnInit {
         this.errorHandler.handleError(error);
       });
     }
+  } */
+
+  setTemplate(value: any) {
+
+    this.loading = true;
+
+    if(this.form.value.assignament) {
+
+      let assignament: IAssignament = this.form.value.assignament;
+
+      this.templateService.getTemplates(assignament.id)
+        .subscribe((response: ITemplate[]) => {
+          this.templates = response;
+          this.loading = false;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+
+    }
   }
 
-  setItemData(index: number) {
+  setItems(value: any) {
 
-    console.log("probando ",index);
+    this.template = <ITemplate>value;
+
+    //SE OBTIENEN LOS PRODUCTOS DEPENDIENDO DE LA PLANTILLA
+    console.log("probando template ",this.template);
+    this.template.items[0].forEach((item: IItem) => {
+      let itemData: IItemData = {
+        itemData: {
+          itemId: item.id,
+          //quantity: item.quantity
+          quantity: 1
+        }
+      };
+
+      this.itemData.push(itemData);
+
+    });
+
   }
+
+
+
 
 
 /*
@@ -150,6 +198,10 @@ export class CreateRecipeComponent implements OnInit {
     let index = this.products.indexOf(item);
     this.products.splice(index,1);
     this.itemData.splice(index,1);
+  }
+
+  changeQuantity(value: any) {
+    console.log(this.itemData);
   }
 
   onSubmit() {

@@ -13,12 +13,17 @@
         (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)">
       </canvas>
-      <piechart-assignaments
+
+      <div class="w-full flex flex-col lg:flex-row lg:justify-center">
+        <piechart-assignaments
+        class="w-full lg:w-1/2 lg:mx-4"
         *ngFor="let conciliation of conciliations"
         [meta]="conciliation.asignamentData.record"
         [pending]="conciliation.asignamentQuantity"
         [name]="conciliation.asignamentData.name"
       ></piechart-assignaments>
+      </div>
+
     </div>
   </div>
 </div>

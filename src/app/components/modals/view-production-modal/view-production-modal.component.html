@@ -32,23 +32,22 @@
                         <span>ID: {{ data.production.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span class="text-red-700">Estatus: {{ data.production.statusData.status }}</span>
+                      <span [ngClass]="{'text-red-700': !colorStatus(), 'text-green-700': colorStatus()}">Estatus: {{ data.production.statusData.status }}</span>
                     </div>
                   </div>
 
                   <div class="flex flex-col justify-center mt-4">
                     <div class="w-full">
                         <div class="flex flex-col">
-                          <h3 class="font-bold">Asignación</h3>
+                          <h3 class="font-bold">Datos de la asignación</h3>
                           <span>Fecha: {{ assignamentDate }}</span>
-                          <span>Asignación: {{ data.production.conciliationsData[0].asignamentQuantity }}</span>
+                          <span>Meta pendiente: {{ data.production.conciliationsData[0].asignamentQuantity }}</span>
                         </div>
                     </div>
                     <div class="w-full">
                       <div class="flex flex-col">
-                        <h3 class="font-bold">Despacho</h3>
-                        <span>Despacho: {{ data.production.conciliationsData[0].dispatchQuantity }}</span>
-                        <span>Incidencias: {{ data.production.incidents }}</span>
+                        <h3 class="font-bold">Datos de despacho</h3>
+                        <span>Despachado: {{ data.production.conciliationsData[0].dispatchQuantity }}</span>
                       </div>
                   </div>
                   <div class="w-full">

@@ -56,7 +56,8 @@ export const environment = {
       subcategories: {
         list: '/api/categories/subcategories',
         changes: '/api/categories/subcategory/changes/',
-        find: '/api/categories/subcategory/find'
+        find: '/api/categories/subcategory/find',
+        create: '/api/categories/subcategory/create'
       }
     },
     instructions: {
@@ -91,7 +92,12 @@ export const environment = {
       list: '/api/clap/recipes',
       create: '/api/clap/recipes/create',
       find: '/api/clap/recipes/find',
-      changes: '/api/clap/recipes/changes/'
+      changes: '/api/clap/recipes/changes/',
+      templates: {
+        list: '/api/clap/recipes/templates/',
+        create: '/api/clap/recipes/templates/create',
+        find: '/api/clap/recipes/templates/find'
+      }
     },
     states: {
       list: '/api/clap/states/',

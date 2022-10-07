@@ -32,7 +32,9 @@
                         <span>ID: {{ data.dispatch.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span>Estatus: {{ data.dispatch.statusData.status }}</span>
+                      <span [ngClass]="{'text-red-700': !colorStatus(),
+                                        'text-green-700': colorStatus()}">
+                        Estatus: {{ data.dispatch.statusData.status }}</span>
                     </div>
                   </div>
 
@@ -55,9 +57,49 @@
                                    focus:ring-blue-300
                                      font-medium rounded-lg
                                      text-sm px-5 py-2.5 text-center"
-                            (click)="changeStatus(data.dispatch.id)">
+                            (click)="setActiveQuestion()">
                                     Devolución</button>
                   </div>
+
+                  <div class="relative bg-white mt-8" *ngIf="activeQuestion">
+                    <!-- Modal header -->
+                    <div class="flex justify-between items-start p-4">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                          ¿Esta seguro que desea devolver el despacho con Nro de guia: {{ data.dispatch.guideNumber }}?
+                        </h3>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <div>
+                          <div class="flex justify-center">
+
+                            <button class="text-white
+                                             px-8
+                                             mx-8
+                                             bg-blue-control-group
+                                             focus:ring-4
+                                             focus:outline-none
+                                           focus:ring-blue-300
+                                             font-medium rounded-lg
+                                             text-sm px-5 py-2.5 text-center"
+                                    (click)="changeStatus(data.dispatch.id)">
+                                    Sí</button>
+
+                            <button class="text-white
+                                             bg-red-700
+                                             px-8
+                                             mx-8
+                                             focus:ring-4
+                                             focus:outline-none
+                                           focus:ring-blue-300
+                                             font-medium rounded-lg
+                                             text-sm px-5 py-2.5 text-center"
+                                    (click)="this.dialogRef.close()">
+                                            No</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 

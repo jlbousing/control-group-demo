@@ -5,7 +5,7 @@
           <submenu-users class="w-full lg:w-1/4"></submenu-users>
           <div class="w-full lg:pt-4">
             <loading *ngIf="loading"></loading>
-            <form [formGroup]="form" class="w-full bg-white rounded-lg"
+            <form focusInvalidInput [formGroup]="form" class="w-full bg-white rounded-lg"
                   *ngIf="!loading">
               <div class="flex flex-col p-8">
                 <div class="w-full flex flex-row justify-start">
@@ -23,6 +23,7 @@
                            type="text"
                            placeholder="Nombre"
                            formControlName="name"
+                           [ngClass]="{'border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                      />
                   </div>
 
@@ -38,6 +39,7 @@
                              type="text"
                              placeholder="XXXXXXXXX"
                              formControlName="dni"
+                             [ngClass]="{'border-red-700': form.value.dni!.toString().length < 6}"
                        />
                     </div>
 
@@ -52,6 +54,7 @@
                              type="text"
                              placeholder="04161234567"
                              formControlName="phone"
+                             [ngClass]="{'border-red-700': form.value.phone!.length < 10}"
                        />
                     </div>
 
@@ -91,6 +94,7 @@
                            type="text"
                            placeholder="username"
                            formControlName="username"
+                           [ngClass]="{'border-red-700': form.value.username!.length < 3}"
                      />
                   </div>
 
@@ -125,6 +129,7 @@
                            type="password"
                            placeholder="Contraseña"
                            formControlName="password1"
+                           [ngClass]="{'border-red-700': form.value.password1!.length < 10}"
                      />
                   </div>
 
@@ -139,6 +144,7 @@
                            type="password"
                            placeholder="Contraseña"
                            formControlName="password2"
+                           [ngClass]="{'border-red-700': form.value.password2!.length < 10}"
                      />
                   </div>
 

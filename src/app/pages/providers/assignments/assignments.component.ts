@@ -55,6 +55,7 @@ export class AssignmentsComponent implements OnInit {
           this.supplier = response
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         });
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
@@ -64,6 +65,7 @@ export class AssignmentsComponent implements OnInit {
           this.loading = false;
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         })
    });
 
@@ -72,6 +74,7 @@ export class AssignmentsComponent implements OnInit {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
+      this.loading = false;
     });
 
     this.supplierService.getSuppliers(1,50,0)
@@ -79,6 +82,7 @@ export class AssignmentsComponent implements OnInit {
         this.suppliers = response;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
 
   }

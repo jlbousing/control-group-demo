@@ -4,6 +4,7 @@ import { IRecipe } from 'src/app/interfaces/IRecipe';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { Dialog } from '@angular/cdk/dialog';
 import { EditInstructionsModalComponent } from '../../modals/edit-instructions-modal/edit-instructions-modal.component';
+import { ViewRecipeModalComponent } from '../../modals/view-recipe-modal/view-recipe-modal.component';
 import { IStatus } from 'src/app/interfaces/IStatus';
 
 @Component({
@@ -50,8 +51,17 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
   selectEdit(instruction: IRecipe){
     this.dialog.open(EditInstructionsModalComponent,{
       data: {
-        instruction: instruction,
+        recipe: instruction,
         statues: this.statues
+      }
+    });
+  }
+
+  selectView(instruction: IRecipe){
+    this.dialog.open(ViewRecipeModalComponent,{
+      data: {
+        recipe: instruction,
+        assignament: this.assignament
       }
     });
   }

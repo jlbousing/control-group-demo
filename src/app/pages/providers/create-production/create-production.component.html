@@ -72,29 +72,6 @@
       </div>
 
       <div class="w-full flex-col lg:flex flex-row justify-start">
-
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
-            Estatus
-          </label>
-          <select
-            class="shadow appearance-none border
-                   rounded w-full py-2 px-3 text-gray-700
-                   leading-tight focus:outline-none
-                   focus:shadow-outline"
-            id="assignament"
-            formControlName="status"
-            >
-            <option *ngFor="let status of statues" [value]="status.id">
-                {{ status.status}}
-            </option>
-
-          </select>
-        </div>
-
-      </div>
-
-      <div class="w-full flex-col lg:flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
             Observaciones

@@ -120,6 +120,12 @@ import { CreateSubCategoryComponent } from './pages/providers/create-subcategory
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ViewRecipeModalComponent } from './components/modals/view-recipe-modal/view-recipe-modal.component';
+import { focusInvalidInputDirective } from './directives/focus-invalid-input.directive';
+import { TemplatesComponent } from './pages/providers/templates/templates.component';
+import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
+import { TemplateTableComponent } from './components/providers/template-table/template-table.component';
+import { ViewTemplateModalComponent } from './components/modals/view-template-modal/view-template-modal.component';
 
 @NgModule({
   declarations: [
@@ -220,6 +226,12 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
     PiechartAssignamentsComponent,
     CreateSubCategoryComponent,
     RecoveryComponent,
+    ViewRecipeModalComponent,
+    focusInvalidInputDirective,
+    TemplatesComponent,
+    CreateTemplateComponent,
+    TemplateTableComponent,
+    ViewTemplateModalComponent,
   ],
   imports: [
     BrowserModule,

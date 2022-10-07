@@ -9,6 +9,7 @@ import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 
 
@@ -53,6 +54,10 @@ export class EditAssignmentsModalComponent implements OnInit {
   ngOnInit(): void {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
+
+  colorStatus() {
+    return statusNameColor(this.data.assignment.statusData.status);
   }
 
   onSubmit() {

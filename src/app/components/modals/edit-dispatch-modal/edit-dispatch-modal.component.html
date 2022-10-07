@@ -32,7 +32,9 @@
                         <span>ID: {{ data.dispatch.id }}</span>
                     </div>
                     <div class="w-1/2">
-                      <span>Estatus: {{ data.dispatch.statusData.status }}</span>
+                      <span [ngClass]="{'text-red-700': !colorStatus(), 'text-green-700': colorStatus()}">
+                        Estatus: {{ data.dispatch.statusData.status }}
+                    </span>
                     </div>
                   </div>
 
