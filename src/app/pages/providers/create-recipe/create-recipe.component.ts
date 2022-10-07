@@ -199,6 +199,10 @@ export class CreateRecipeComponent implements OnInit {
     this.itemData.splice(index,1);
   }
 
+  changeQuantity(value: any) {
+    console.log(this.itemData);
+  }
+
   onSubmit() {
 
     if(this.form.value.name

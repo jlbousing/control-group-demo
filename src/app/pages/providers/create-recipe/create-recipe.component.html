@@ -123,7 +123,8 @@
               *ngFor="let item of template.items[0]; let i = index">
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">
-              <input type="number" [value]="item.quantity">
+              <input type="number" [value]="item.quantity" [(ngModel)]="itemData[i].itemData.quantity"
+                     (ngModelChange)="changeQuantity($event)">
             </td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
           </tr>
