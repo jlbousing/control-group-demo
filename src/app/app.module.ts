@@ -125,6 +125,7 @@ import { focusInvalidInputDirective } from './directives/focus-invalid-input.dir
 import { TemplatesComponent } from './pages/providers/templates/templates.component';
 import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
 import { TemplateTableComponent } from './components/providers/template-table/template-table.component';
+import { ViewTemplateModalComponent } from './components/modals/view-template-modal/view-template-modal.component';
 
 @NgModule({
   declarations: [
@@ -230,6 +231,7 @@ import { TemplateTableComponent } from './components/providers/template-table/te
     TemplatesComponent,
     CreateTemplateComponent,
     TemplateTableComponent,
+    ViewTemplateModalComponent,
   ],
   imports: [
     BrowserModule,
