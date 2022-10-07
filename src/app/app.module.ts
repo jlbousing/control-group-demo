@@ -121,6 +121,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor/auth-interceptor.service';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ViewRecipeModalComponent } from './components/modals/view-recipe-modal/view-recipe-modal.component';
+import { focusInvalidInputDirective } from './directives/focus-invalid-input.directive';
 
 @NgModule({
   declarations: [
@@ -222,6 +223,7 @@ import { ViewRecipeModalComponent } from './components/modals/view-recipe-modal/
     CreateSubCategoryComponent,
     RecoveryComponent,
     ViewRecipeModalComponent,
+    focusInvalidInputDirective,
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,10 @@ export class CreateAssignmentsComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(250)
     ]),
-    record: new FormControl<number>(0,Validators.required),
+    record: new FormControl<number>(0,[
+      Validators.required,
+      Validators.min(1)
+    ]),
     special: new FormControl<boolean>(false,Validators.required)
   });
 
