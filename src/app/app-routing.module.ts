@@ -43,6 +43,8 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
 import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
 import { AccessGuard } from './guards/access/access.guard';
+import { TemplatesComponent } from './pages/providers/templates/templates.component';
+import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
 
 const routes: Routes = [
   {
@@ -152,6 +154,17 @@ const routes: Routes = [
         title: "Nueva Subcategoria",
         canActivate: [AccessGuard],
         component: CreateSubCategoryComponent
+      },
+      {
+        path: "templates/:supplierId",
+        title: "Plantillas",
+        component: TemplatesComponent
+      },
+      {
+        path: "create-template/:supplierId",
+        title: "Nueva Plantilla",
+        canActivate: [AccessGuard],
+        component: CreateTemplateComponent
       }
     ]
   },

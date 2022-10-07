@@ -29,7 +29,7 @@ export class EditItemModalComponent implements OnInit {
     ]),
     quantity: new FormControl<number>(this.data.item.quantity,Validators.required),
     unit: new FormControl<string>(this.data.item.unit,Validators.required),
-    comments: new FormControl<string>(this.data.item.comments,[
+    comments: new FormControl<string | null>(this.data.item.comments,[
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(250)

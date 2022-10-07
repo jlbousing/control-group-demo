@@ -122,6 +122,9 @@ import { AuthInterceptorService } from './services/auth-interceptor/auth-interce
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ViewRecipeModalComponent } from './components/modals/view-recipe-modal/view-recipe-modal.component';
 import { focusInvalidInputDirective } from './directives/focus-invalid-input.directive';
+import { TemplatesComponent } from './pages/providers/templates/templates.component';
+import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
+import { TemplateTableComponent } from './components/providers/template-table/template-table.component';
 
 @NgModule({
   declarations: [
@@ -224,6 +227,9 @@ import { focusInvalidInputDirective } from './directives/focus-invalid-input.dir
     RecoveryComponent,
     ViewRecipeModalComponent,
     focusInvalidInputDirective,
+    TemplatesComponent,
+    CreateTemplateComponent,
+    TemplateTableComponent,
   ],
   imports: [
     BrowserModule,

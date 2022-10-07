@@ -1,0 +1,42 @@
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+  <table  class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                ID
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Nombre
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Estatus
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Acciones
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="bg-white border-b text-black"
+              *ngFor="let template of templates">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                {{ template.id }}
+              </th>
+              <td class="px-6 py-4">
+                {{ template.name}}
+              </td>
+              <td class="px-6 py-4">
+                {{ template.status ? 'Activo' : 'Inactivo' }}
+              </td>
+              <td class="px-6 py-4 text-right">
+                <div class="flex flex-row justify-start">
+                    <button (click)="selectView(template)"><i class="bi bi-eye text-2xl mx-2 text-blue-700"></i></button>
+                    <button (click)="selectEdit(template)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
+                </div>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
