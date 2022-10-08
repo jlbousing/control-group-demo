@@ -18,6 +18,7 @@
                       focus:shadow-outline"
                type="text"
                placeholder="Nombre"
+               [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                formControlName="name"
          />
       </div>
@@ -83,6 +84,7 @@
                       focus:shadow-outline"
                type="text"
                placeholder="Descripción"
+               [ngClass]="{'focus:border-red-700': form.value.description!.length < 3 || form.value.description!.length > 90}"
                formControlName="description"
          />
       </div>
@@ -97,6 +99,7 @@
                       focus:shadow-outline"
                type="text"
                placeholder="Comentarios"
+               [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
                formControlName="comments"
          />
       </div>
@@ -116,6 +119,7 @@
                type="number"
                placeholder="meta"
                formControlName="record"
+               [ngClass]="{'focus:border-red-700': form.value.record === 0}"
          />
       </div>
 

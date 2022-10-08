@@ -45,6 +45,7 @@
                          type="text"
                          placeholder="Usuario"
                          formControlName="name"
+                         [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                          >
                     </div>
                     <div class="my-4 w-full">
@@ -94,6 +95,7 @@
                          placeholder="commentario"
                          id="commen"
                          formControlName="comments"
+                         [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
                          >
                     </div>
                   </div>

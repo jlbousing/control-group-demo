@@ -66,6 +66,7 @@
                         focus:shadow-outline"
                  type="number"
                  placeholder="1"
+                 [ngClass]="{'focus:border-red-700': form.value.quantity === 0}"
                  formControlName="quantity"
            />
         </div>
@@ -80,7 +81,8 @@
                            rounded w-full py-2 px-3 text-gray-700
                            leading-tight focus:outline-none
                            focus:shadow-outline"
-                           formControlName="comments">
+                           formControlName="comments"
+                           [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}">
           </textarea>
         </div>
       </div>
@@ -94,6 +96,7 @@
                            rounded w-full py-2 px-3 text-gray-700
                            leading-tight focus:outline-none
                            focus:shadow-outline"
+                           [ngClass]="{'focus:border-red-700': form.value.incidents!.length < 3 || form.value.incidents!.length > 250}"
                            formControlName="incidents">
           </textarea>
         </div>

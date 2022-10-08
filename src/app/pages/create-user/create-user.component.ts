@@ -36,6 +36,8 @@ export class CreateUserComponent implements OnInit {
 
   loading: boolean = true;
 
+  formActive: boolean = false;
+
   constructor(
     private rolService: RolsService,
     private userService: UsersService,

@@ -71,7 +71,8 @@
                                id="name"
                                type="text"
                                placeholder="nombre"
-                               formControlName="name">
+                               formControlName="name"
+                               [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}">
                     </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
@@ -85,6 +86,7 @@
                                id="description"
                                type="text"
                                placeholder="Descripción"
+                               [ngClass]="{'focus:border-red-700': form.value.description!.length < 3 || form.value.description!.length > 90}"
                                formControlName="description">
                     </div>
                   </div>

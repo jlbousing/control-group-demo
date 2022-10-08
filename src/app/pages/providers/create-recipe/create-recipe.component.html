@@ -45,6 +45,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="Nombre"
+                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                  formControlName="name"
            />
         </div>
@@ -64,6 +65,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="Descripción"
+                 [ngClass]="{'focus:border-red-700': form.value.description!.length < 3 || form.value.description!.length > 90}"
                  formControlName="description"
            />
         </div>
@@ -124,8 +126,10 @@
               *ngFor="let item of template.items[0]; let i = index">
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 border-black" >
-              <input type="number"   [(ngModel)]="itemData[i].itemData.quantity"
-                     (ngModelChange)="changeQuantity($event)">
+              <input type="number"
+                     [(ngModel)]="itemData[i].itemData.quantity"
+                     (ngModelChange)="changeQuantity($event)"
+                     [ngClass]="{'focus:border-red-700': itemData[i].itemData.quantity === 0}">
             </td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.quantity}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>

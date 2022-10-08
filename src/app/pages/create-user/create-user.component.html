@@ -23,7 +23,7 @@
                            type="text"
                            placeholder="Nombre"
                            formControlName="name"
-                           [ngClass]="{'border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
+                           [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                      />
                   </div>
 
@@ -39,7 +39,9 @@
                              type="text"
                              placeholder="XXXXXXXXX"
                              formControlName="dni"
-                             [ngClass]="{'border-red-700': form.value.dni!.toString().length < 6}"
+                             [ngClass]="{
+                               'focus:border-red-700': !form.value.dni || form.value.dni!.toString().length < 6
+                              }"
                        />
                     </div>
 
@@ -54,7 +56,7 @@
                              type="text"
                              placeholder="04161234567"
                              formControlName="phone"
-                             [ngClass]="{'border-red-700': form.value.phone!.length < 10}"
+                             [ngClass]="{'focus:border-red-700': form.value.phone!.length < 10}"
                        />
                     </div>
 
@@ -94,7 +96,7 @@
                            type="text"
                            placeholder="username"
                            formControlName="username"
-                           [ngClass]="{'border-red-700': form.value.username!.length < 3}"
+                           [ngClass]="{'focus:border-red-700': form.value.username!.length < 3}"
                      />
                   </div>
 
@@ -111,6 +113,7 @@
                                   focus:shadow-outline"
                            type="text"
                            placeholder="ejemplo@controlgroup.com"
+                           [ngClass]="{'focus:border-red-700': form.value.email!.length < 3}"
                            formControlName="email"
                      />
                   </div>
@@ -129,7 +132,7 @@
                            type="password"
                            placeholder="Contraseña"
                            formControlName="password1"
-                           [ngClass]="{'border-red-700': form.value.password1!.length < 10}"
+                           [ngClass]="{'focus:border-red-700': form.value.password1!.length < 10}"
                      />
                   </div>
 
@@ -144,7 +147,7 @@
                            type="password"
                            placeholder="Contraseña"
                            formControlName="password2"
-                           [ngClass]="{'border-red-700': form.value.password2!.length < 10}"
+                           [ngClass]="{'focus:border-red-700': form.value.password2!.length < 10}"
                      />
                   </div>
 

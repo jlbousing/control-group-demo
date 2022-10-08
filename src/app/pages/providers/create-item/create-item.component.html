@@ -38,6 +38,7 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="text"
+                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                  placeholder="Nombre"
                  formControlName="name"
            />
@@ -58,6 +59,7 @@
                         focus:shadow-outline"
                  type="number"
                  placeholder="10"
+                 [ngClass]="{'focus:border-red-700': form.value.quantity === 0}"
                  formControlName="quantity"
            />
         </div>
@@ -72,6 +74,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="Kg, Gr, etc"
+                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 2 || form.value.name!.length > 10}"
                  formControlName="unit"
            />
         </div>
@@ -91,6 +94,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="comentario"
+                 [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
                  formControlName="comments"
            />
         </div>
