@@ -37,6 +37,7 @@
                           <input class="shadow appearance-none border rounded w-full lg:w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
                                  type="text"
                                  placeholder="Usuario"
+                                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                                 formControlName="name">
                           </div>
                       </div>
@@ -52,6 +53,7 @@
                         <input class="shadow appearance-none border rounded w-full lg:w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
                                type="text"
                                placeholder="Usuario"
+                               [ngClass]="{'focus:border-red-700': form.value.email!.length < 3 || form.value.email!.length > 30}"
                               formControlName="email">
                         </div>
                     </div>
@@ -66,6 +68,7 @@
                         <input class="shadow appearance-none border rounded w-full lg:w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"
                                type="text"
                                placeholder="Usuario"
+                               [ngClass]="{'focus:border-red-700': form.value.phone!.length < 10}"
                               formControlName="phone">
                         </div>
                     </div>
@@ -80,6 +83,7 @@
                         <input class="shadow appearance-none border rounded w-full lg:w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password1"
                                type="password1"
                                placeholder="password"
+                               [ngClass]="{'focus:border-red-700': form.value.password1!.length < 10}"
                                formControlName="password1">
                         </div>
                     </div>
@@ -94,6 +98,7 @@
                         <input class="shadow appearance-none border rounded w-full lg:w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password1"
                                type="password1"
                                placeholder="password"
+                               [ngClass]="{'focus:border-red-700': form.value.password2!.length < 10}"
                                formControlName="password2">
                         </div>
                     </div>

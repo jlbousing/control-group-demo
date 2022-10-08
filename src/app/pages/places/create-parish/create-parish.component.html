@@ -19,6 +19,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="Nombre"
+                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                  formControlName="name"
            />
         </div>

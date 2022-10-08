@@ -46,6 +46,7 @@
                          type="text"
                          placeholder="nombre"
                          id="name"
+                         [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                          formControlName="name"
                          >
                     </div>
@@ -61,6 +62,7 @@
                          type="text"
                          placeholder="nombre"
                          id="description"
+                         [ngClass]="{'focus:border-red-700': form.value.description!.length < 3 || form.value.description!.length > 90}"
                          formControlName="description"
                          >
                     </div>

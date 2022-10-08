@@ -74,6 +74,7 @@
                  type="text"
                  placeholder="1234566789"
                  maxlength="9"
+                 [ngClass]="{'focus:border-red-700': form.value.guideNumber!.length < 9 || form.value.guideNumber!.length > 9}"
                  formControlName="guideNumber"
            />
         </div>
@@ -89,6 +90,7 @@
                  type="text"
                  placeholder="123456789"
                  maxlength="9"
+                 [ngClass]="{'focus:border-red-700': form.value.noteNumber!.length < 9 || form.value.noteNumber!.length > 9}"
                  formControlName="noteNumber"
            />
         </div>
@@ -104,6 +106,8 @@
                  type="number"
                  [max]="production!.stockProduction!.toString()"
                  placeholder="900"
+                 [ngClass]="{'focus:border-red-700': production &&
+                           form.value.dispatchQuantity === 0 && form.value.dispatchQuantity > production!.stockProduction}"
                  formControlName="dispatchQuantity"
            />
         </div>
@@ -120,6 +124,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder=""
+                 [ngClass]="{'focus:border-red-700': form.value.registrationNumber!.length < 3 || form.value.registrationNumber!.length > 30}"
                  formControlName="registrationNumber"
            />
         </div>
@@ -223,6 +228,7 @@
                         focus:shadow-outline"
                  type="text"
                  placeholder="comentario"
+                 [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
                  formControlName="comments"
            />
         </div>
@@ -237,6 +243,7 @@
                            rounded w-full py-2 px-3 text-gray-700
                            leading-tight focus:outline-none
                            focus:shadow-outline"
+                           [ngClass]="{'focus:border-red-700': form.value.incidents!.length < 3 || form.value.incidents!.length > 250}"
                            formControlName="incidents">
           </textarea>
         </div>

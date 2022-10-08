@@ -42,6 +42,7 @@
                                id="name"
                                type="text"
                                [placeholder]="data.item.name"
+                               [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                                formControlName="name">
                     </div>
                     <div class="my-4 w-full">
@@ -56,6 +57,7 @@
                                id="description"
                                type="number"
                                [placeholder]="data.item.quantity"
+                               [ngClass]="{'focus:border-red-700': form.value.quantity === 0 || form.value.quantity <= 0}"
                                formControlName="quantity">
                     </div>
 
@@ -71,6 +73,7 @@
                                id="description"
                                type="text"
                                [placeholder]="data.item.unit"
+                               [ngClass]="{'focus:border-red-700': form.value.unit!.length < 2 || form.value.name!.length > 10}"
                                formControlName="unit">
                     </div>
 
@@ -86,6 +89,7 @@
                                id="comments"
                                type="text"
                                [placeholder]="data.item.comments"
+                               [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
                                formControlName="comments">
                     </div>
                   </div>
