@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
       this.errorHandler.handleError(error);
     });
 
-    this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
+    this.userService.getUsers(10,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
@@ -70,7 +70,7 @@ export class UsersComponent implements OnInit {
       this.errorHandler.handleError(error);
     });
 
-    this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
+    this.userService.getUsers(10,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
@@ -96,7 +96,7 @@ export class UsersComponent implements OnInit {
       });
     }else {
 
-      this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
+      this.userService.getUsers(10,this.offset).subscribe((response: IUser[]) => {
         this.users = response;
         console.log(this.users)
         this.loading = false;
