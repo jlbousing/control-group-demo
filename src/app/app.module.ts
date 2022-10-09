@@ -126,6 +126,9 @@ import { TemplatesComponent } from './pages/providers/templates/templates.compon
 import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
 import { TemplateTableComponent } from './components/providers/template-table/template-table.component';
 import { ViewTemplateModalComponent } from './components/modals/view-template-modal/view-template-modal.component';
+import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
+import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
+import { DataControllerCompanyComponent } from './components/reports/data-controller-company/data-controller-company.component';
 
 @NgModule({
   declarations: [
@@ -232,6 +235,9 @@ import { ViewTemplateModalComponent } from './components/modals/view-template-mo
     CreateTemplateComponent,
     TemplateTableComponent,
     ViewTemplateModalComponent,
+    CompanyReportComponent,
+    ProviderReportComponent,
+    DataControllerCompanyComponent,
   ],
   imports: [
     BrowserModule,

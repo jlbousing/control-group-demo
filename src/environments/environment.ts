@@ -22,7 +22,8 @@ export const environment = {
     },
     conciliations: {
       inquiry: {
-        supplier: '/api/clap/conciliations/inquiry/supplier'
+        supplier: '/api/clap/conciliations/inquiry/supplier',
+        company: '/api/clap/conciliations/inquiry/company'
       }
     },
     dispatch: {

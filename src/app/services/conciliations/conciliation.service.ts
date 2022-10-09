@@ -7,6 +7,7 @@ import { iterateJson } from 'src/app/utils/iterateJson';
 //import { IConcilation } from 'src/app/interfaces/IConcilation';
 import { IConciliationData } from 'src/app/interfaces/IConcilationData';
 import { handleError } from 'src/app/utils/handleError';
+import { IInquiryCompany } from 'src/app/interfaces/IInquiryCompany';
 
 
 @Injectable({
@@ -26,6 +27,32 @@ export class ConciliationService {
     console.log("conciliacion ",url+params);
 
     return this.http.get<IConciliationData[]>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        console.log("probando response ",response);
+        if(response.status === 200){
+          console.log(response);
+          return response.body.result;
+        }
+      })
+    );
+  }
+
+
+  getConciliationInquiryByCompany(companyId: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.conciliations.inquiry.company}`;
+    const params: string = `?companyId=${companyId}&getStatus=true&getSupplier=true&getAsignament=true&getConciliationData=true`;
+
+
+    return this.http.get<IInquiryCompany>(
       url + params,
       { observe: 'response',
         headers: {

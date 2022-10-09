@@ -1,0 +1,15 @@
+
+<div class="p-20">
+  <div>
+    <data-controller-company (inquiryData)="setCharData($event)"></data-controller-company>
+    <loading *ngIf="loading"></loading>
+    <div style="display: block" *ngIf="!loading">
+      <canvas baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [type]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>

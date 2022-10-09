@@ -1,0 +1,25 @@
+
+<loading *ngIf="loading"></loading>
+<div class="flex flex-col items-center lg:flex-row lg:justify-center mb-8 overflow-x-auto" *ngIf="!loading">
+
+  <div class="w-full lg:w-1/4 mx-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="companies">
+      Compañías
+    </label>
+    <select
+      class="shadow appearance-none border
+             rounded w-full py-2 px-3 text-gray-700
+             leading-tight focus:outline-none
+             focus:shadow-outline"
+             id="companies"
+             [(ngModel)]="company"
+             (ngModelChange)="setCompany($event)">
+             <option *ngFor="let company of companies"
+              [ngValue]="company">
+                {{ company.name }}
+             </option>
+     </select>
+  </div>
+
+
+</div>
