@@ -45,6 +45,8 @@ import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatc
 import { AccessGuard } from './guards/access/access.guard';
 import { TemplatesComponent } from './pages/providers/templates/templates.component';
 import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
+import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
+import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
 
 const routes: Routes = [
   {
@@ -265,6 +267,16 @@ const routes: Routes = [
         path: "dispatch",
         title: "Reportes Despacho",
         component: DispatchReportComponent
+      },
+      {
+        path: "companies",
+        title: "Reportes Empresas",
+        component: CompanyReportComponent
+      },
+      {
+        path: "providers",
+        title: "Reportes Proveedores",
+        component: ProviderReportComponent
       }
     ]
   },

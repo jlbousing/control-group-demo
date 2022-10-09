@@ -3,7 +3,6 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ConciliationService } from 'src/app/services/conciliations/conciliation.service';
 import { IInquirySupplierData } from 'src/app/interfaces/InquirySupplierData';
-//import { IConcilation } from 'src/app/interfaces/IConcilation';
 import { IConciliationData } from 'src/app/interfaces/IConcilationData';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
