@@ -132,7 +132,8 @@
                            type="password"
                            placeholder="Contraseña"
                            formControlName="password1"
-                           [ngClass]="{'focus:border-red-700': form.value.password1!.length < 10}"
+                           [ngClass]="{'focus:border-red-700': form.value.password1!.length < 10
+                                      || form.value.password1!.length > 30}"
                      />
                   </div>
 
@@ -147,7 +148,8 @@
                            type="password"
                            placeholder="Contraseña"
                            formControlName="password2"
-                           [ngClass]="{'focus:border-red-700': form.value.password2!.length < 10}"
+                           [ngClass]="{'focus:border-red-700': form.value.password2!.length < 10
+                                      || form.value.password2!.length > 30}"
                      />
                   </div>
 
