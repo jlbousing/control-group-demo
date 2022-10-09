@@ -96,10 +96,10 @@ export class UsersService {
 
   }
 
-  findUsers(username: string) {
+  findUsers(dni: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.find}`;
-    const params: string = `?username=${username}`;
+    const params: string = `?dni=${dni}`;
 
     return this.http.get<any>(
       url + params,

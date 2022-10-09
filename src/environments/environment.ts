@@ -43,7 +43,7 @@ export const environment = {
       },
       create: '/api/users/create',
       changes: '/api/users/changes/',
-      find: '/api/users/findbyuser',
+      find: '/api/users/findbydni',
     },
     companies: {
       list: '/api/companies/',

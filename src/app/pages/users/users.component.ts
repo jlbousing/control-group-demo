@@ -83,10 +83,10 @@ export class UsersComponent implements OnInit {
 
     this.loading = true;
     this.users = [];
-    const username: string = <string>value;
+    const dni: string = <string>value;
 
-    if(username && username !== "") {
-      this.userService.findUsers(username)
+    if(dni && dni !== "") {
+      this.userService.findUsers(dni)
       .subscribe((response: IUser) => {
         this.users.push(response);
         this.loading = false;
