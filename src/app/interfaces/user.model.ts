@@ -7,7 +7,7 @@ export interface IUser {
   name: string;
   username: string;
   email: string;
-  dni: number;
+  dni: string;
   phone: string;
   session: string;
   statusData: IStatus;
