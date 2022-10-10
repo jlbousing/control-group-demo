@@ -69,7 +69,7 @@ export class AssignmentsComponent implements OnInit {
         })
    });
 
-   this.statusService.getStatues(1,50,0)
+   this.statusService.getStatues(2,50,0)
     .subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {

@@ -80,7 +80,7 @@ export class EnterprisesComponent implements OnInit {
 
       this.errorHandler.handleError(error);
     });
-    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(1,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
       this.loading = false;
     },(error: HttpErrorResponse) => {

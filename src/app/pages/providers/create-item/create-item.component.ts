@@ -77,7 +77,6 @@ export class CreateItemComponent implements OnInit {
     if(this.form.value.name
       && this.form.value.quantity
       && this.form.value.unit
-      && this.form.value.comments
       && this.subcategoryId > 0) {
 
         const payload: IItemRequest = {
@@ -85,7 +84,7 @@ export class CreateItemComponent implements OnInit {
           name: this.form.value.name,
           quantity: this.form.value.quantity,
           unit: this.form.value.unit,
-          comments: this.form.value.comments
+          comments: this.form.value.comments ? this.form.value.comments : ""
         };
 
         this.itemService.createItem(payload)

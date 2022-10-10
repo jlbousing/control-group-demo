@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(1,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
@@ -58,7 +58,7 @@ export class UsersComponent implements OnInit {
     this.offset = <number>value;
     console.log(this.offset);
 
-    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(1,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);

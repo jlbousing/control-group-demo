@@ -40,7 +40,7 @@ export class CreateTemplateComponent implements OnInit {
   assignaments: IAssignament[] = [];
   assignament: IAssignament | null = null;
   itemData: IItemData[] = [];
-  currentItem: any = null;
+  currentItem: IItem | null = null;
 
   products: IProductRecipe[] = [];
 
@@ -102,8 +102,24 @@ export class CreateTemplateComponent implements OnInit {
 
 
   storeItem() {
-    this.productsSelected.push(this.currentItem);
-   }
+
+    if(this.currentItem) {
+
+      let result: any = this.productsSelected.find((item: IItem) => { return item.id === this.currentItem?.id});
+      if(!result){
+        this.productsSelected.push(this.currentItem);
+      }else{
+
+        this.dialog.open(AlertModalComponent,{
+          data: {
+            status: 400,
+            message: `El producto ${this.currentItem.name} ya ha sido agregado`
+          }
+        });
+      }
+    }
+
+  }
 
   clear() {
     this.form.reset();
