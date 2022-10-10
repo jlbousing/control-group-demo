@@ -105,8 +105,14 @@ export class CreateDispatchComponent implements OnInit {
 
   setState(value: any) {
 
+    this.destination = "";
+
     this.loading = true;
     this.state = <IState>value;
+
+    if(this.state) {
+      this.destination = this.state.name;
+    }
 
     this.municipalityService.getMunicipality(50,0,this.state.id)
       .subscribe((response: IMunicipality[]) => {
@@ -122,9 +128,14 @@ export class CreateDispatchComponent implements OnInit {
   setMunicipality(value: any) {
 
     this.loading = true;
+    this.destination = "";
     this.municipality = <IMunicipality>value;
 
     console.log(this.municipality);
+
+    if(this.state && this.municipality) {
+      this.destination = this.state.name + ', ' + this.municipality.name;
+    }
 
     this.parishService.getParish(50,0,this.municipality.id)
       .subscribe((response: IParish[]) => {
@@ -135,6 +146,7 @@ export class CreateDispatchComponent implements OnInit {
 
   setParish(value: any) {
 
+    this.destination = "";
     this.parish = <IParish>value;
 
     if(this.state && this.municipality && this.parish) {

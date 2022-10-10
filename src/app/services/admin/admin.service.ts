@@ -30,7 +30,6 @@ export class AdminService {
       }
     }
     ).pipe(
-      retry(3),
       catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
@@ -61,7 +60,6 @@ export class AdminService {
       }
     }
     ).pipe(
-      retry(3),
       catchError(handleError),
       map((response: HttpResponse<any>) => {
         console.log(response)
