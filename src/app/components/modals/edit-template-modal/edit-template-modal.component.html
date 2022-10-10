@@ -7,7 +7,7 @@
             <!-- Modal header -->
             <div class="flex justify-between items-start p-4 rounded-t border-b">
                 <h3 class="text-xl font-semibold text-gray-900">
-                  Configurar Categoría
+                  Configurar Plantilla
                 </h3>
                 <button type="button"
                         class="text-gray-400
@@ -29,11 +29,11 @@
                   <h5>Datos de la categoría</h5>
                   <div class="flex justify-around">
                       <div class="w-1/2">
-                          <span>ID {{data.subcategory.id}}</span>
+                          <span>ID {{data.template.id}}</span>
                       </div>
                       <div class="w-1/2">
-                        <span [ngClass]="{'text-green-700': data.subcategory.status, 'text-red-700': !data.subcategory.status}">
-                          Estatus: {{ data.subcategory.status ? 'Activo' : 'Inactivo' }}
+                        <span [ngClass]="{'text-green-700': data.template.status, 'text-red-700': !data.template.status}">
+                          Estatus: {{ data.template.status ? 'Activo' : 'Inactivo' }}
                         </span>
                     </div>
                   </div>
@@ -55,8 +55,8 @@
                                placeholder="Usuario"
                                formControlName="status">
                                <option></option>
-                               <option [value]="true" [selected]="data.subcategory.status">Activo</option>
-                               <option [value]="false" [selected]="!data.subcategory.status">Inactivo</option>
+                               <option [value]="true" [selected]="data.template.status">Activo</option>
+                               <option [value]="false" [selected]="!data.template.status">Inactivo</option>
                        </select>
                     </div>
                     <div class="my-4 w-full">
@@ -73,21 +73,6 @@
                                placeholder="nombre"
                                formControlName="name"
                                [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}">
-                    </div>
-                    <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
-                        Descripción
-                      </label>
-                      <input
-                        class="shadow appearance-none border
-                               rounded w-full py-2 px-3 text-gray-700
-                               leading-tight focus:outline-none
-                               focus:shadow-outline"
-                               id="description"
-                               type="text"
-                               placeholder="Descripción"
-                               [ngClass]="{'focus:border-red-700': form.value.description!.length < 3 || form.value.description!.length > 90}"
-                               formControlName="description">
                     </div>
                   </div>
                 </form>

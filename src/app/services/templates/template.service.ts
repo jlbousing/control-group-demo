@@ -7,6 +7,7 @@ import { iterateJson } from 'src/app/utils/iterateJson';
 import { ITemplate } from 'src/app/interfaces/ITemplate';
 import { ITemplateRequest } from 'src/app/interfaces/ITemplateRequest';
 import { handleError } from 'src/app/utils/handleError';
+import { ITemplatePatch } from 'src/app/interfaces/ITemplatePatch';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,33 @@ export class TemplateService {
       map((response: HttpResponse<any>) => {
         if(response.status === 200){
           return response.body.result;
+        }
+      })
+    );
+  }
+
+  patchTemplate(payload: ITemplatePatch, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.templates.change}`;
+
+    return this.http.patch<ITemplateRequest>(
+      url + id,
+      payload,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(1),
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
         }
       })
     );

@@ -97,7 +97,8 @@ export const environment = {
       templates: {
         list: '/api/clap/recipes/templates/',
         create: '/api/clap/recipes/templates/create',
-        find: '/api/clap/recipes/templates/find'
+        find: '/api/clap/recipes/templates/find',
+        change: '/api/clap/recipes/templates/changes/'
       }
     },
     states: {

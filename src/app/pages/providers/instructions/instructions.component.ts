@@ -53,6 +53,7 @@ export class InstructionsComponent implements OnInit {
         this.statues = response;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
 
     this.route.params.subscribe(params => {
@@ -63,6 +64,7 @@ export class InstructionsComponent implements OnInit {
           this.supplier = response
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         })
 
       this.assignamentService.getAssignamentsBySupplier(this.supplierId)
@@ -72,6 +74,7 @@ export class InstructionsComponent implements OnInit {
           console.log("probando asignaciones ",this.assignaments);
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
+          this.loading = false;
         })
    });
 

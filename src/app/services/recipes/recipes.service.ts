@@ -21,7 +21,7 @@ export class RecipesService {
   getRecipes(limit: number, offset: number, asignamentId: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.list}`;
-    const params: string = `?offset=${offset}&limit=${limit}&asignamentId=${asignamentId}`;
+    const params: string = `?offset=${offset}&limit=${limit}&asignamentId=${asignamentId}&getInstructionsClap=true`;
 
     return this.http.get<IRecipe[]>(
       url + params,
