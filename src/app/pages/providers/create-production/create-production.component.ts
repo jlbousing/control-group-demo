@@ -36,7 +36,6 @@ export class CreateProductionComponent implements OnInit {
       Validators.min(1)
     ]),
     incidents: new FormControl<string>('',[
-      Validators.minLength(3),
       Validators.maxLength(250)
     ])
   });
