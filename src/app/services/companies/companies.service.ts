@@ -68,7 +68,14 @@ export class CompaniesService {
   findCompany(name: string | null,rif: string | null) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.companies.find}`;
-    const params: string = `?name=${name}&rif=${rif}&getSuppliers=true`;
+
+    let params: string = "";
+
+    if(rif) {
+      params = `?rif=${rif}&getSuppliers=true`;
+    }else if(name){
+      params = `?name=${name}&getSuppliers=true`;
+    }
 
     return this.http.get<ICompany[]>(
       url + params,
