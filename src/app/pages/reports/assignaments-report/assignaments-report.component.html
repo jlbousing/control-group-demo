@@ -14,10 +14,10 @@
         (chartClick)="chartClicked($event)">
       </canvas>
 
-      <div class="w-full flex-col lg:flex flex-row justify-start">
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+      <div class="flex flex-col lg:flex-row">
+        <div class="flex flex-col lg:flex-row flex-wrap" >
           <piechart-assignaments
-            class="my-4 w-full lg:w-1/2 lg:mx-4"
+            class="flex flex-col lg:flex-row w-full lg:w-1/2"
             *ngFor="let conciliation of conciliations"
             [meta]="conciliation.asignamentData.record"
             [pending]="conciliation.asignamentQuantity"
