@@ -129,6 +129,7 @@ import { ViewTemplateModalComponent } from './components/modals/view-template-mo
 import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
 import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
 import { DataControllerCompanyComponent } from './components/reports/data-controller-company/data-controller-company.component';
+import { EditTemplateModalComponent } from './components/modals/edit-template-modal/edit-template-modal.component';
 
 @NgModule({
   declarations: [
@@ -238,6 +239,7 @@ import { DataControllerCompanyComponent } from './components/reports/data-contro
     CompanyReportComponent,
     ProviderReportComponent,
     DataControllerCompanyComponent,
+    EditTemplateModalComponent,
   ],
   imports: [
     BrowserModule,

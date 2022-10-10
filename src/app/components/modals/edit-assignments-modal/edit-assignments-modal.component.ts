@@ -54,10 +54,16 @@ export class EditAssignmentsModalComponent implements OnInit {
   ngOnInit(): void {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    console.log(this.data);
   }
 
   colorStatus() {
     return statusNameColor(this.data.assignment.statusData.status);
+  }
+
+  toInt(value: string) {
+    return parseInt(value);
   }
 
   onSubmit() {

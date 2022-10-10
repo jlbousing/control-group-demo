@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(1,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
       this.errorHandler.handleError(error);
     });
 
-    this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
+    this.userService.getUsers(10,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
@@ -58,7 +58,7 @@ export class UsersComponent implements OnInit {
     this.offset = <number>value;
     console.log(this.offset);
 
-    this.statusService.getStatues(0,10,this.offset).subscribe((response: IStatus[]) => {
+    this.statusService.getStatues(1,10,this.offset).subscribe((response: IStatus[]) => {
       this.statues = response;
     },(error: HttpErrorResponse) => {
       this.errorHandler.handleError(error);
@@ -70,7 +70,7 @@ export class UsersComponent implements OnInit {
       this.errorHandler.handleError(error);
     });
 
-    this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
+    this.userService.getUsers(10,this.offset).subscribe((response: IUser[]) => {
       this.users = response;
       console.log(this.users)
       this.loading = false;
@@ -83,10 +83,10 @@ export class UsersComponent implements OnInit {
 
     this.loading = true;
     this.users = [];
-    const username: string = <string>value;
+    const dni: string = <string>value;
 
-    if(username && username !== "") {
-      this.userService.findUsers(username)
+    if(dni && dni !== "") {
+      this.userService.findUsers(dni)
       .subscribe((response: IUser) => {
         this.users.push(response);
         this.loading = false;
@@ -96,7 +96,7 @@ export class UsersComponent implements OnInit {
       });
     }else {
 
-      this.userService.getUsers(1,10,this.offset).subscribe((response: IUser[]) => {
+      this.userService.getUsers(10,this.offset).subscribe((response: IUser[]) => {
         this.users = response;
         console.log(this.users)
         this.loading = false;

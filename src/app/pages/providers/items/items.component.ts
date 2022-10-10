@@ -77,13 +77,18 @@ export class ItemsComponent implements OnInit {
     if(name && name !== "") {
 
       this.items = [];
-      this.itemService.findItems(this.subcategory!.id,name)
+
+      if(name.length >= 3){
+        this.itemService.findItems(this.subcategory!.id,name)
         .subscribe((response: IItem) => {
           this.items.push(response);
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
           this.loading = false;
         });
+      }else{
+        this.loading = false;
+      }
       }else {
 
         this.loading = true;

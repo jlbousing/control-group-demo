@@ -60,15 +60,6 @@ export class CategoriesComponent implements OnInit {
           this.errorHandler.handleError(error);
         });
 
-
-
-      this.statusSevice.getStatues(1,50,0)
-        .subscribe((response: IStatus[]) => {
-          this.statues = response;
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-        })
-
    });
   }
 

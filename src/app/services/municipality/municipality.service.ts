@@ -52,7 +52,6 @@ export class MunicipalityService {
       }
     }
     ).pipe(
-      retry(1),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){

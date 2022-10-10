@@ -33,7 +33,7 @@
                       </div>
                       <div class="w-1/2">
                         <span [ngClass]="{'text-green-700': data.subcategory.status, 'text-red-700': !data.subcategory.status}">
-                          Estatus: {{ data.subcategory.status }}
+                          Estatus: {{ data.subcategory.status ? 'Activo' : 'Inactivo' }}
                         </span>
                     </div>
                   </div>

@@ -62,6 +62,7 @@ export class TemplatesComponent implements OnInit {
   }
 
   setAssignament(value: any) {
+    this.templates = [];
     let assignament = <IAssignament> value;
     this.assignament = assignament;
 

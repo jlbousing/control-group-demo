@@ -99,7 +99,6 @@
                       focus:shadow-outline"
                type="text"
                placeholder="Comentarios"
-               [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
                formControlName="comments"
          />
       </div>
@@ -117,6 +116,8 @@
                       leading-tight focus:outline-none
                       focus:shadow-outline"
                type="number"
+               inputmode="numeric"
+               min="0"
                placeholder="meta"
                formControlName="record"
                [ngClass]="{'focus:border-red-700': form.value.record === 0}"

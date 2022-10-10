@@ -65,6 +65,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  placeholder="1"
                  [ngClass]="{'focus:border-red-700': form.value.quantity === 0}"
                  formControlName="quantity"
@@ -104,7 +106,7 @@
 
       <div class="w-full flex flex-row justify-center lg:justify-end mt-8">
 
-        <div class="w-1/2 mx-4 lg:w-[10%]">
+        <div class="mx-4 lg:w-[10%]">
           <button data-modal-toggle="defaultModal"
           type="button"
           class="text-white

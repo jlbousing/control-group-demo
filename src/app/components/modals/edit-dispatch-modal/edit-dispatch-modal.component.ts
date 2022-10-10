@@ -46,7 +46,7 @@ export class EditDispatchModalComponent implements OnInit {
   changeStatus(id: number) {
 
     const payload: IDispatchPatch = {
-      status: 10
+      status: 9
     };
 
     this.dispatchService.changeStatus(payload,this.data.dispatch.id)

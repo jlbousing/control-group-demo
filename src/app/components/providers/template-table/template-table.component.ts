@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ITemplate } from 'src/app/interfaces/ITemplate';
 import { Dialog } from '@angular/cdk/dialog';
 import { ViewTemplateModalComponent } from '../../modals/view-template-modal/view-template-modal.component';
+import { EditTemplateModalComponent } from '../../modals/edit-template-modal/edit-template-modal.component';
 
 @Component({
   selector: 'template-table',
@@ -11,6 +12,7 @@ import { ViewTemplateModalComponent } from '../../modals/view-template-modal/vie
 export class TemplateTableComponent implements OnInit {
 
   @Input("templates") templates: ITemplate[] = [];
+  @Input("supplierId") supplierId: number | null = 0;
 
   constructor(
     private dialog: Dialog
@@ -21,6 +23,12 @@ export class TemplateTableComponent implements OnInit {
 
   selectEdit(template: ITemplate) {
 
+    this.dialog.open(EditTemplateModalComponent,{
+      data: {
+        template: template,
+        supplierId: this.supplierId
+      }
+    });
   }
 
   selectView(template: ITemplate) {

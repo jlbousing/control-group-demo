@@ -19,6 +19,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [disabled]="true"
                  [value]="production?.id"
            />
@@ -51,6 +53,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [disabled]="true"
                  [value]="production?.stockProduction"
            />
@@ -104,6 +108,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [max]="production!.stockProduction!.toString()"
                  placeholder="900"
                  [ngClass]="{'focus:border-red-700': production &&
@@ -201,7 +207,7 @@
         </div>
       </div>
 
-      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="state && municipality && parish">
+      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="state">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
             Destino

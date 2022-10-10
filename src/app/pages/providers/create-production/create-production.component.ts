@@ -29,7 +29,6 @@ export class CreateProductionComponent implements OnInit {
     recipe: new FormControl<IRecipe | null>(null,Validators.required),
     //name: new FormControl<string>('',Validators.required),
     comments: new FormControl<string>('', [
-      Validators.minLength(3),
       Validators.maxLength(250)
     ]),
     quantity: new FormControl<number>(0,[
@@ -37,7 +36,6 @@ export class CreateProductionComponent implements OnInit {
       Validators.min(1)
     ]),
     incidents: new FormControl<string>('',[
-      Validators.minLength(3),
       Validators.maxLength(250)
     ])
   });

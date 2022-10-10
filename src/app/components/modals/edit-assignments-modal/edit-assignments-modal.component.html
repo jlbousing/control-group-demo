@@ -61,8 +61,8 @@
                                type="text"
                                placeholder="Usuario"
                                formControlName="statusId">
-                               <option></option>
-                               <option *ngFor="let status of data.statues" [value]="status.id">
+                               <option *ngFor="let status of data.statues" [value]="status.id"
+                                       [selected]="status.status === data.assignment.statusData.status">
                                   {{status.status}}
                                </option>
                        </select>
@@ -80,8 +80,9 @@
                                type="text"
                                placeholder="Usuario"
                                formControlName="supplierId">
-                               <option></option>
-                               <option *ngFor="let supplier of data.suppliers" [value]="supplier.id">
+                               <option *ngFor="let supplier of data.suppliers"
+                                       [value]="supplier.id"
+                                       [selected]="supplier.id == data.supplierId">
                                 {{supplier.name}}
                              </option>
                        </select>

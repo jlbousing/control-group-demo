@@ -18,10 +18,10 @@ export class UsersService {
     private http: HttpClient
   ) { }
 
-  getUsers(rol: number, limit: number, offset: number) {
+  getUsers(limit: number, offset: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.list}`;
-    const params: string = `?rol=${rol}&limit=${limit}&offset=${offset}`;
+    const params: string = `?limit=${limit}&offset=${offset}`;
 
     return this.http.get<any>(
       url + params,
@@ -54,7 +54,6 @@ export class UsersService {
       }
     }
     ).pipe(
-      retry(3),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){
@@ -96,10 +95,10 @@ export class UsersService {
 
   }
 
-  findUsers(username: string) {
+  findUsers(dni: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.users.find}`;
-    const params: string = `?username=${username}`;
+    const params: string = `?dni=${dni}`;
 
     return this.http.get<any>(
       url + params,

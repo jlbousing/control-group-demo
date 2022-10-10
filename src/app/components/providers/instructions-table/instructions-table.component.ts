@@ -6,6 +6,8 @@ import { Dialog } from '@angular/cdk/dialog';
 import { EditInstructionsModalComponent } from '../../modals/edit-instructions-modal/edit-instructions-modal.component';
 import { ViewRecipeModalComponent } from '../../modals/view-recipe-modal/view-recipe-modal.component';
 import { IStatus } from 'src/app/interfaces/IStatus';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'instructions-table',
@@ -23,7 +25,8 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
 
   constructor(
     private recipesService: RecipesService,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +47,10 @@ export class InstructionsTableComponent implements OnInit, OnChanges {
         this.recipes = response;
         this.loading = false;
         console.log("mostrando recipes ",this.recipes)
-      })
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        this.loading = false;
+      });
     }
   }
 

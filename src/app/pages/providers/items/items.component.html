@@ -23,7 +23,7 @@
         [subcategory]="subcategory"
         [supplier]="supplier"></items-table>
     </div>
-    <load-more class="flex flex-row justify-center my-8 lg:justify-start lg:px-4"
+    <load-more class="flex flex-row justify-center my-8  lg:px-4"
                        (changePagination)="changePagination($event)"
                        [isDisable]="items.length <= 10">
             </load-more>

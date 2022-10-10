@@ -52,7 +52,6 @@ export class ItemsService {
       }
     }
     ).pipe(
-      retry(3),
       map((response: HttpResponse<any>) => {
         console.log(response)
         if(response.status === 201){

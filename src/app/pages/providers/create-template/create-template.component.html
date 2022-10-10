@@ -20,6 +20,7 @@
             formControlName="assignament"
             (ngModelChange)="setItems($event)"
             >
+            <option></option>
             <option *ngFor="let assignament of assignaments" [ngValue]="assignament">
                 {{ assignament.name}}
             </option>
@@ -63,6 +64,7 @@
             formControlName="item"
             (ngModelChange)="setItem($event)"
             >
+            <option></option>
             <option *ngFor="let item of items" [ngValue]="item">
               {{ item.name }}
             </option>
@@ -82,6 +84,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [disabled]="true"
                  [value]="currentItem.quantity"
            />
@@ -120,7 +124,6 @@
           <button data-modal-toggle="defaultModal"
           type="button"
           class="text-white
-                 hover:bg-green-800
                   focus:ring-4
                    focus:outline-none
                  focus:ring-blue-300

@@ -29,7 +29,8 @@ export class DispatchTableComponent implements OnInit {
 
     this.dialog.open(EditDispatchModalComponent,{
       data: {
-        dispatch: dispatch
+        dispatch: dispatch,
+        supplier: this.supplier
       }
     });
   }

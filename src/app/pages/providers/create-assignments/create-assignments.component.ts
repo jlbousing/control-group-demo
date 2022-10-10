@@ -36,8 +36,6 @@ export class CreateAssignmentsComponent implements OnInit {
       Validators.maxLength(90)
     ]),
     comments: new FormControl<string>('',[
-      Validators.required,
-      Validators.minLength(3),
       Validators.maxLength(250)
     ]),
     record: new FormControl<number>(0,[
@@ -108,7 +106,6 @@ export class CreateAssignmentsComponent implements OnInit {
        && this.form.value.categoryId
        && this.form.value.subcategoryId
        && this.form.value.description
-       && this.form.value.comments
        && this.form.value.record
        && this.form.value.special !== undefined
        && this.form.value.special !== null) {
@@ -121,7 +118,7 @@ export class CreateAssignmentsComponent implements OnInit {
           suppliersId: this.form.value.supplierId,
           userId: userInfo.id,
           description: this.form.value.description,
-          comments: this.form.value.comments,
+          comments: this.form.value.comments ? this.form.value.comments : '',
           record: this.form.value.record,
           special: this.form.value.special
         };
