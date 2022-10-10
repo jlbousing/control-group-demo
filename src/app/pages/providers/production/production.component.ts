@@ -72,6 +72,9 @@ export class ProductionComponent implements OnInit {
   }
 
   setAssignament(value: any) {
+
+    this.productions = [];
+    this.recipes = [];
     this.offset = 0;
     this.loading = true;
     let assignament = <IAssignament> value;
@@ -89,6 +92,8 @@ export class ProductionComponent implements OnInit {
   }
 
   setRecipe(value: any) {
+
+    this.productions = [];
     this.offset = 0;
     this.loading = true;
     this.recipe = <IRecipe> value;
