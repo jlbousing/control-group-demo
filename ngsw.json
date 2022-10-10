@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1665295605102,
+  "timestamp": 1665416056539,
   "index": "https://jlbousing.github.io/control-group-demo/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "https://jlbousing.github.io/control-group-demo/favicon.ico",
         "https://jlbousing.github.io/control-group-demo/index.html",
-        "https://jlbousing.github.io/control-group-demo/main.0257c379158b43fd.js",
+        "https://jlbousing.github.io/control-group-demo/main.03a77ccbaf7189bf.js",
         "https://jlbousing.github.io/control-group-demo/manifest.webmanifest",
         "https://jlbousing.github.io/control-group-demo/polyfills.3054d04302cbeafc.js",
         "https://jlbousing.github.io/control-group-demo/runtime.5a890040eec59f30.js",
-        "https://jlbousing.github.io/control-group-demo/styles.f24fb28cb0c34fef.css"
+        "https://jlbousing.github.io/control-group-demo/styles.fbfff79c36c43a5c.css"
       ],
       "patterns": []
     },
@@ -34,6 +34,7 @@
         "https://jlbousing.github.io/control-group-demo/assets/icons/icon-152x152.png",
         "https://jlbousing.github.io/control-group-demo/assets/icons/icon-192x192.png",
         "https://jlbousing.github.io/control-group-demo/assets/icons/icon-384x384.png",
+        "https://jlbousing.github.io/control-group-demo/assets/icons/icon-48x48.png",
         "https://jlbousing.github.io/control-group-demo/assets/icons/icon-512x512.png",
         "https://jlbousing.github.io/control-group-demo/assets/icons/icon-72x72.png",
         "https://jlbousing.github.io/control-group-demo/assets/icons/icon-96x96.png",
@@ -50,26 +51,27 @@
   "dataGroups": [],
   "hashTable": {
     "https://jlbousing.github.io/control-group-demo/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-144x144.png": "9b9231c4621d176031abd375fd8d13fe85c36ba8",
     "https://jlbousing.github.io/control-group-demo/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-192x192.png": "53199bc1b65564f68dbfbce79639ca6a5e18f6be",
     "https://jlbousing.github.io/control-group-demo/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-48x48.png": "fa6945bb6755c63b2dcfe52ea886edcb94abbcb3",
+    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-512x512.png": "46abe6b0af8fb17689597e9e95e9a555e4664f1b",
+    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-72x72.png": "de45c4a35f606b3fc0fe5218ab027fef4e50019a",
+    "https://jlbousing.github.io/control-group-demo/assets/icons/icon-96x96.png": "7177ac67521ede34e99bce7bae2ed4ce09a5256b",
     "https://jlbousing.github.io/control-group-demo/assets/img/Icono.png": "2f68524b19d32e3d69470261d0b6856ecb4de96f",
     "https://jlbousing.github.io/control-group-demo/assets/img/bill.webp": "f2d7ebbc49e1b18e21f30907272288777753d86c",
     "https://jlbousing.github.io/control-group-demo/assets/img/login-image.jpg": "998289e83466ca60a0352b4b72a89c95db0ad56f",
     "https://jlbousing.github.io/control-group-demo/assets/img/logo_blanco.png": "7c9236babd58762b93849c17e49eeea258e115a2",
     "https://jlbousing.github.io/control-group-demo/assets/img/logo_color.png": "a75dd6c9e9ddc9d46674c097c9161ad80ff81a08",
     "https://jlbousing.github.io/control-group-demo/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://jlbousing.github.io/control-group-demo/index.html": "3ea1854ef939ba1e47752cf61a8c694244d44c24",
+    "https://jlbousing.github.io/control-group-demo/index.html": "8ccd4c25ff37a9bf3da54e88c1126acaf460fc24",
     "https://jlbousing.github.io/control-group-demo/login-image.2e83265fd0f4f782.jpg": "998289e83466ca60a0352b4b72a89c95db0ad56f",
-    "https://jlbousing.github.io/control-group-demo/main.0257c379158b43fd.js": "dce6c7b68a572c93912b8cd6e7101c941c1f88e3",
+    "https://jlbousing.github.io/control-group-demo/main.03a77ccbaf7189bf.js": "dcf190f139bbcc723fd62f39cc4551cc96161196",
     "https://jlbousing.github.io/control-group-demo/manifest.webmanifest": "516d3dd1c280a1335390b12c4adcc22dda0fce1e",
     "https://jlbousing.github.io/control-group-demo/polyfills.3054d04302cbeafc.js": "414d59083986aca45913383bce36c46d0e8118cb",
     "https://jlbousing.github.io/control-group-demo/runtime.5a890040eec59f30.js": "516e9fe29876499ffcea7bafa18a4030dc1737d5",
-    "https://jlbousing.github.io/control-group-demo/styles.f24fb28cb0c34fef.css": "1ef1377f3592a90d5a2ae6a1e0b7a8f9b4d3ab18"
+    "https://jlbousing.github.io/control-group-demo/styles.fbfff79c36c43a5c.css": "61997a00ba3453cb5efca6b5a0e29afc7f9d5b10"
   },
   "navigationUrls": [
     {
