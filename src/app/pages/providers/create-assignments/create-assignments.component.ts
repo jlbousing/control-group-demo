@@ -36,8 +36,6 @@ export class CreateAssignmentsComponent implements OnInit {
       Validators.maxLength(90)
     ]),
     comments: new FormControl<string>('',[
-      Validators.required,
-      Validators.minLength(3),
       Validators.maxLength(250)
     ]),
     record: new FormControl<number>(0,[

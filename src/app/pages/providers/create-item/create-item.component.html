@@ -58,6 +58,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  placeholder="10"
                  [ngClass]="{'focus:border-red-700': form.value.quantity === 0 || form.value.quantity && form.value.quantity < 0}"
                  formControlName="quantity"

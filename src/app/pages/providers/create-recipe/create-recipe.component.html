@@ -93,26 +93,6 @@
 
     </form>
 
-    <!--<div class="w-full flex flex-row mt-8">
-      <table class="w-full text-sm text-left text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-          <th scope="col" class="px-6 py-3">Producto</th>
-          <th scope="col" class="px-6 py-3">Cantidad de empaque</th>
-          <th scope="col" class="px-6 py-3">Unidad de medición</th>
-        </thead>
-        <tbody>
-          <tr class="bg-white border-b"
-              *ngFor="let item of items; let i = index">
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900">
-              <input type="number" [value]="item.quantity" (change)="setItemData(i)">
-            </td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.unit}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
-
     <div class="w-full flex flex-row mt-8" *ngIf="template">
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -127,6 +107,8 @@
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name}}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900 border-black" >
               <input type="number"
+                     inputmode="numeric"
+                     min="0"
                      [(ngModel)]="itemData[i].itemData.quantity"
                      (ngModelChange)="changeQuantity($event)"
                      [ngClass]="{'focus:border-red-700': itemData[i].itemData.quantity === 0}">

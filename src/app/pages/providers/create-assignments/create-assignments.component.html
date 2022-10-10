@@ -117,6 +117,8 @@
                       leading-tight focus:outline-none
                       focus:shadow-outline"
                type="number"
+               inputmode="numeric"
+               min="0"
                placeholder="meta"
                formControlName="record"
                [ngClass]="{'focus:border-red-700': form.value.record === 0}"

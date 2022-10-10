@@ -19,6 +19,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [disabled]="true"
                  [value]="production?.id"
            />
@@ -51,6 +53,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [disabled]="true"
                  [value]="production?.stockProduction"
            />
@@ -104,6 +108,8 @@
                         leading-tight focus:outline-none
                         focus:shadow-outline"
                  type="number"
+                 inputmode="numeric"
+                 min="0"
                  [max]="production!.stockProduction!.toString()"
                  placeholder="900"
                  [ngClass]="{'focus:border-red-700': production &&
