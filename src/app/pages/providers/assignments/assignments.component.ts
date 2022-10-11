@@ -11,6 +11,7 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { AccessService } from 'src/app/services/access/access.service';
+import { IAssignamentPicker } from 'src/app/interfaces/IAssignamentPicker';
 
 @Component({
   selector: 'app-assignments',
@@ -104,6 +105,48 @@ export class AssignmentsComponent implements OnInit {
 
   getSearch(value: any) {
 
+
+    console.log("llamand evento ",value);
+
+    const pickerData: IAssignamentPicker = <IAssignamentPicker>value;
+
+    if(pickerData) {
+
+      this.assignaments = [];
+
+      this.assignamentService.getAssignamentsByDates(this.supplierId,pickerData.startDate,pickerData.endDate)
+        .subscribe((response: IAssignament[]) => {
+          this.assignaments = response;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error)
+
+          this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+        .subscribe((response: IAssignament[]) => {
+          this.assignaments = response;
+          console.log("probando asignaciones ",this.assignaments);
+          this.loading = false;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+
+        });
+    }else {
+      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+        .subscribe((response: IAssignament[]) => {
+          this.assignaments = response;
+          console.log("probando asignaciones ",this.assignaments);
+          this.loading = false;
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+    }
+  }
+
+  /*
+  getSearch(value: any) {
+
     this.loading = true;
 
     if(value && value !== "") {
@@ -129,6 +172,6 @@ export class AssignmentsComponent implements OnInit {
           this.loading = false;
         });
     }
-  }
+  } */
 
 }

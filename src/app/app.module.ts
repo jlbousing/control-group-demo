@@ -131,6 +131,7 @@ import { ProviderReportComponent } from './pages/reports/provider-report/provide
 import { DataControllerCompanyComponent } from './components/reports/data-controller-company/data-controller-company.component';
 import { EditTemplateModalComponent } from './components/modals/edit-template-modal/edit-template-modal.component';
 import { ResetComponent } from './pages/reset/reset.component';
+import { AssignamentDatepickersComponent } from './components/assignament-datepickers/assignament-datepickers.component';
 
 @NgModule({
   declarations: [
@@ -242,6 +243,7 @@ import { ResetComponent } from './pages/reset/reset.component';
     DataControllerCompanyComponent,
     EditTemplateModalComponent,
     ResetComponent,
+    AssignamentDatepickersComponent,
   ],
   imports: [
     BrowserModule,

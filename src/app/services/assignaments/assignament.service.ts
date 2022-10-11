@@ -41,6 +41,29 @@ export class AssignamentService {
 
   }
 
+  getAssignamentsByDates(id: number,startDate: string, endDate: string) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.find}`;
+    const params: string = `?suppliersId=${id}&startDate=${startDate}&endDate=${endDate}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+
+    return this.http.get<IAssignament[]>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+        }
+      }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+
+  }
+
   createAssignaments(payload: IAssignamentRequest) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.create}`;
