@@ -1,0 +1,57 @@
+<div>
+  <div>
+    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
+      <div class="w-full flex flex-row justify-start">
+        <a class="cursor-pointer text-blue-700 hover:text-white" [routerLink]="'/login'">
+          <i class="bi bi-caret-left"></i><span class="">Atras</span>
+        </a>
+      </div>
+        <div class="flex flex-col lg:flex-row">
+          <div class="w-full lg:pt-4">
+            <form [formGroup]="form" class="w-full bg-white rounded-lg">
+              <div class="flex flex-col p-8">
+                <div class="w-full flex flex-row justify-center">
+                  <h3>Indique su contraseña</h3>
+                </div>
+                <div class="w-full flex flex-row justify-center">
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                      Contraseña
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="password1"
+                           formControlName="password1"
+                     />
+                  </div>
+
+                </div>
+
+                <div class="w-full flex flex-row justify-center">
+                  <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                      Verifique su contraseña
+                    </label>
+                    <input class="shadow appearance-none border
+                                  rounded w-full py-2 px-3 text-gray-700
+                                  leading-tight focus:outline-none
+                                  focus:shadow-outline"
+                           type="password"
+                           formControlName="password2"
+                     />
+                  </div>
+
+                </div>
+
+                <div class="w-full flex flex-row justify-center mt-8">
+                  <custom-button text="Resetear" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

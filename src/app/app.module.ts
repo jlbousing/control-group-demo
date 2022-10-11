@@ -130,6 +130,7 @@ import { CompanyReportComponent } from './pages/reports/company-report/company-r
 import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
 import { DataControllerCompanyComponent } from './components/reports/data-controller-company/data-controller-company.component';
 import { EditTemplateModalComponent } from './components/modals/edit-template-modal/edit-template-modal.component';
+import { ResetComponent } from './pages/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -240,6 +241,7 @@ import { EditTemplateModalComponent } from './components/modals/edit-template-mo
     ProviderReportComponent,
     DataControllerCompanyComponent,
     EditTemplateModalComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

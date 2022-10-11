@@ -7,6 +7,7 @@ import { iterateJson } from 'src/app/utils/iterateJson';
 import { IRecovery } from 'src/app/interfaces/IRecovery';
 import { handleError } from 'src/app/utils/handleError';
 import { StorageManager } from 'src/app/utils/StorageManager';
+import { IReset } from 'src/app/interfaces/IReset';
 
 @Injectable({
   providedIn: 'root'
@@ -44,14 +45,12 @@ export class AdminService {
     );
   }
 
-  reset(token: string) {
+  reset(payload: IReset,token: string) {
 
-    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.admin.recovery}`;
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.admin.reset}`;
     const params = `?token=${token}`;
 
-    let payload = {};
-
-    return this.http.post<IRecovery>(
+    return this.http.post<IReset>(
       url + token,
       payload,
       { observe: 'response',

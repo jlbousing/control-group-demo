@@ -47,6 +47,7 @@ import { TemplatesComponent } from './pages/providers/templates/templates.compon
 import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
 import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
 import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
+import { ResetComponent } from './pages/reset/reset.component';
 
 const routes: Routes = [
   {
@@ -289,6 +290,10 @@ const routes: Routes = [
     path: "recovery",
     title: "Recuperar Contraseña",
     component: RecoveryComponent
+  },
+  {
+    path: "reset/:token",
+    component: ResetComponent
   },
   {
     path: "**",
