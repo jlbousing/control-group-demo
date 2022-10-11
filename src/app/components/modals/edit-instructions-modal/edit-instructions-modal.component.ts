@@ -76,7 +76,7 @@ export class EditInstructionsModalComponent implements OnInit {
 
           this.dialogRef.close();
 
-          this.router.navigateByUrl("")
+          //this.router.navigateByUrl("/dashboard/instructions/")
 
         });
     }

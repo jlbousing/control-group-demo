@@ -19,7 +19,7 @@ export class EnterpriseCardComponent implements OnInit {
 
   goToProviders(company: ICompany)
   {
-    this.router.navigate(['/providers/supplier', company.rif]);
+    this.router.navigate(['/dashboard/providers/supplier', company.rif]);
   }
 
 }

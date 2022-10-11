@@ -67,7 +67,7 @@ export class ReturnDispatchModalComponent implements OnInit {
         });
 
         this.dialogRef.close();
-        this.router.navigateByUrl("providers/dispatch/"+this.data.supplier.id);
+        this.router.navigateByUrl("/providers/dispatch/"+this.data.supplier.id);
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
       });

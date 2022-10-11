@@ -99,7 +99,7 @@ export class EditUsersModalComponent implements OnInit {
               });
 
               this.dialogRef.close();
-              this.router.navigateByUrl("/users");
+              this.router.navigateByUrl("/dashboard/users");
 
             },(error: HttpErrorResponse) => {
               this.errorHandler.handleError(error);

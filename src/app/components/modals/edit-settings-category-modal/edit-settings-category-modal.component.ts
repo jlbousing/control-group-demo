@@ -67,7 +67,7 @@ export class EditSettingsCategoryModalComponent implements OnInit {
             });
 
             this.dialogRef.close();
-            this.router.navigateByUrl("/settings/categories");
+            this.router.navigateByUrl("/dashboard/settings/categories");
 
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);

@@ -56,7 +56,7 @@ export class EditStateModalComponent implements OnInit {
         })
 
         this.dialogRef.close();
-        this.router.navigateByUrl("/places/state");
+        this.router.navigateByUrl("/dashboard/places/state");
     }
   }
 

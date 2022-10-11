@@ -50,7 +50,7 @@ export class LoginFormComponent implements OnInit {
             console.log(response);
             StorageManager.setJSONToLocalStorage('userInfo',response);
             StorageManager.setJSONToLocalStorage("token",response.token);
-            this.router.navigateByUrl("/home");
+            this.router.navigateByUrl("/dashboard/home");
           },
           (error: HttpErrorResponse) => {
             console.log("asdasdasd");

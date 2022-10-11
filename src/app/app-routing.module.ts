@@ -53,6 +53,12 @@ import { ResetComponent } from './pages/reset/reset.component';
 const routes: Routes = [
   {
     path: "",
+    title: "Bienvenido",
+    redirectTo: "/dashboard/home",
+    pathMatch: 'full'
+  },
+  {
+    path: "dashboard",
     component: LayoutComponent,
     children: [
       {
@@ -314,7 +320,7 @@ const routes: Routes = [
     component: RecoveryComponent
   },
   {
-    path: "reset/:token",
+    path: "recovery/:token",
     component: ResetComponent
   },
   {

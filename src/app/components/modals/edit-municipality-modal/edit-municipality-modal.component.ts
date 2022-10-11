@@ -71,7 +71,7 @@ export class EditMunicipalityModalComponent implements OnInit {
             });
 
             this.dialogRef.close();
-            this.router.navigateByUrl("/places/municipality");
+            this.router.navigateByUrl("/dashboard/places/municipality");
           });
       }
   }
