@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /*
     const userInfo = StorageManager.getFromLocalStorage("userInfo");
 
     if(userInfo){
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
     }else{
       this.router.navigateByUrl("/login");
     }
+
+    */
   }
 
 

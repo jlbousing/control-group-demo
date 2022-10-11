@@ -43,6 +43,7 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProductionReportComponent } from './pages/reports/production-report/production-report.component';
 import { DispatchReportComponent } from './pages/reports/dispatch-report/dispatch-report.component';
 import { AccessGuard } from './guards/access/access.guard';
+import { LoginAccessGuard } from './guards/login-access/login-access.guard';
 import { TemplatesComponent } from './pages/providers/templates/templates.component';
 import { CreateTemplateComponent } from './pages/providers/create-template/create-template.component';
 import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
@@ -57,27 +58,31 @@ const routes: Routes = [
       {
         path: "home",
         title: "Bienvenido",
+        canActivate: [LoginAccessGuard],
         component: HomeComponent
       },
       {
         path: "users",
         title: "Usuarios",
+        canActivate: [LoginAccessGuard],
         component: UsersComponent
       },
       {
         path: "create-user",
         title: "Crear Usuario",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateUserComponent
       },
       {
         path: "enterprises",
         title: "Empresas",
+        canActivate: [LoginAccessGuard],
         component: EnterprisesComponent
       },
       {
         path: "providers/supplier/:rif",
         title: "Proveedores",
+        canActivate: [LoginAccessGuard],
         component: ProviderPageComponent
       }
     ]
@@ -89,84 +94,91 @@ const routes: Routes = [
       {
         path: "categories/:supplierId",
         title: "Categorias",
+        canActivate: [LoginAccessGuard],
         component: CategoriesComponent
       },
       {
         path: "assignments/:supplierId",
         title: "Asignaciones",
+        canActivate: [LoginAccessGuard],
         component: AssignmentsComponent
       },
       {
         path: "instructions/:supplierId",
         title: "Recetas",
+        canActivate: [LoginAccessGuard],
         component: InstructionsComponent
       },
       {
         path: "production/:supplierId",
         title: "Produccion",
+        canActivate: [LoginAccessGuard],
         component: ProductionComponent
       },
       {
         path: "dispatch/:supplierId",
         title: "Despacho",
+        canActivate: [LoginAccessGuard],
         component: DispatchComponent
       },
       {
         path: "settings/:supplierId",
         title: "Configuracion",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: SettingsComponent
       },
       {
         path: "create-assigment",
         title: "Nueva Asignacion",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateAssignmentsComponent
       },
       {
         path: "create-recipe/:supplierId",
         title: "Nueva Receta",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateRecipeComponent
       },
       {
         path: "create-production/:supplierId",
         title: "Nueva Produccion",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateProductionComponent
       },
       {
         path: "create-dispatch/:supplierId/production/:productionId",
         title: "Nuevo Despacho",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateDispatchComponent
       },
       {
         path: "items/:supplierId",
         title: "Productos",
+        canActivate: [LoginAccessGuard],
         component: ItemsComponent
       },
       {
         path: "create-item/:supplierId",
         title: "Nuevo Producto",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateItemComponent
       },
       {
         path: "create-subcategory/:supplierId",
         title: "Nueva Subcategoria",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateSubCategoryComponent
       },
       {
         path: "templates/:supplierId",
         title: "Plantillas",
+        canActivate: [LoginAccessGuard],
         component: TemplatesComponent
       },
       {
         path: "create-template/:supplierId",
         title: "Nueva Plantilla",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateTemplateComponent
       }
     ]
@@ -178,35 +190,37 @@ const routes: Routes = [
       {
         path: "categories",
         title: "Categorias",
+        canActivate: [LoginAccessGuard],
         component: SettingsCategoriesComponent
       },
       {
         path: "create-category",
         title: "Nueva Categoria",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateCategoryComponent
       },
       {
         path: "create-enterprise",
         title: "Nueva Empresa",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateEnterpriseComponent
       },
       {
         path: "create-provider",
         title: "Nuevo Proveedor",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateProviderComponent
       },
       {
         path: "rols",
         title: "Roles",
+        canActivate: [LoginAccessGuard],
         component: RolsComponent
       },
       {
         path: "create-rol",
         title: "Nuevo Rol",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateRolComponent
       }
     ]
@@ -218,34 +232,37 @@ const routes: Routes = [
       {
         path: "state",
         title: "Estados",
+        canActivate: [LoginAccessGuard],
         component: StatesComponent
       },
       {
         path: "municipality",
         title: "Municipios",
+        canActivate: [LoginAccessGuard],
         component: MunicipalityComponent
       },
       {
         path: "parish",
         title: "Parroquias",
+        canActivate: [LoginAccessGuard],
         component: ParishComponent
       },
       {
         path: "create-state",
         title: "Nuevo Estado",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateStateComponent
       },
       {
         path: "create-municipality",
         title: "Nuevo Municipio",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateMunicipalityComponent
       },
       {
         path: "create-parish",
         title: "Nueva Parroquia",
-        canActivate: [AccessGuard],
+        canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateParishComponent
       }
     ]
@@ -257,26 +274,31 @@ const routes: Routes = [
       {
         path: "assignaments",
         title: "Reportes Asignaciones",
+        canActivate: [LoginAccessGuard],
         component: AssignamentsReportComponent
       },
       {
         path: "production",
         title: "Reportes Produccion",
+        canActivate: [LoginAccessGuard],
         component: ProductionReportComponent
       },
       {
         path: "dispatch",
         title: "Reportes Despacho",
+        canActivate: [LoginAccessGuard],
         component: DispatchReportComponent
       },
       {
         path: "companies",
         title: "Reportes Empresas",
+        canActivate: [LoginAccessGuard],
         component: CompanyReportComponent
       },
       {
         path: "providers",
         title: "Reportes Proveedores",
+        canActivate: [LoginAccessGuard],
         component: ProviderReportComponent
       }
     ]
