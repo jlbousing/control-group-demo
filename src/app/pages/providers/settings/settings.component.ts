@@ -109,7 +109,7 @@ export class SettingsComponent implements OnInit {
                   }
                 });
 
-                this.router.navigateByUrl('/enterprises');
+                this.router.navigateByUrl('/dashboard/enterprises');
               }
 
             }

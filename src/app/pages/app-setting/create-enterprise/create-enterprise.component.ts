@@ -69,7 +69,7 @@ export class CreateEnterpriseComponent implements OnInit {
                   message: <string>response.message.label
                 }
               });
-              this.router.navigateByUrl('/enterprises')
+              this.router.navigateByUrl('/dashboard/enterprises')
             }
 
           }

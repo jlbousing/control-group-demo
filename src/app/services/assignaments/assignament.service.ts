@@ -44,7 +44,7 @@ export class AssignamentService {
   getAssignamentsByDates(id: number,startDate: string, endDate: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.list}`;
-    const params: string = `?suppliersId=${id}&startDate=${startDate}&endDate=${endDate}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+    const params: string = `?startDate=${startDate}&endDate=${endDate}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,

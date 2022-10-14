@@ -47,6 +47,7 @@ export class TemplatesComponent implements OnInit {
         this.supplier = response
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       })
 
     this.assignamentService.getAssignamentsBySupplier(this.supplierId)
@@ -56,6 +57,7 @@ export class TemplatesComponent implements OnInit {
         console.log("probando asignaciones ",this.assignaments);
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       })
     });
 
@@ -71,6 +73,7 @@ export class TemplatesComponent implements OnInit {
         this.templates = response;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
   }
 
