@@ -130,7 +130,7 @@ export class CreateUserComponent implements OnInit {
                   }
                 });
 
-                this.router.navigateByUrl("/users");
+                this.router.navigateByUrl("/dashboard/users");
 
               }
 
