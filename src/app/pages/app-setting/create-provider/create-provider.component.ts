@@ -94,7 +94,7 @@ export class CreateProviderComponent implements OnInit {
                   }
                 });
 
-                this.router.navigateByUrl('/enterprises')
+                this.router.navigateByUrl('/dashboard/enterprises');
               }
 
             }
