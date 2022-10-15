@@ -47,6 +47,33 @@
 
     <div class="w-full flex-col lg:flex flex-row justify-start">
 
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
+          Indique la empresa de la asignacion
+        </label>
+        <select
+          class="shadow appearance-none border
+                 rounded w-full py-2 px-3 text-gray-700
+                 leading-tight focus:outline-none
+                 focus:shadow-outline"
+          id="company"
+          formControlName="companyId"
+          >
+          <option></option>
+          <option *ngFor="let company of companies" [value]="company.id">
+            {{ company.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
+        <subcategory-select [categoryId]="form.value.categoryId" (subCategoryEmiter)="setSubcategoryId($event)"></subcategory-select>
+      </div>
+
+    </div>
+
+    <div class="w-full flex-col lg:flex flex-row justify-start">
+
       <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
           Proveedor
