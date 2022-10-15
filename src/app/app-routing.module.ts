@@ -90,7 +90,19 @@ const routes: Routes = [
         title: "Proveedores",
         canActivate: [LoginAccessGuard],
         component: ProviderPageComponent
-      }
+      },
+      {
+        path: "assignaments",
+        title: "Asignaciones",
+        canActivate: [LoginAccessGuard],
+        component: AssignmentsComponent
+      },
+      {
+        path: "create-assigment",
+        title: "Nueva Asignacion",
+        canActivate: [LoginAccessGuard,AccessGuard],
+        component: CreateAssignmentsComponent
+      },
     ]
   },
   {
@@ -132,12 +144,6 @@ const routes: Routes = [
         title: "Configuracion",
         canActivate: [LoginAccessGuard,AccessGuard],
         component: SettingsComponent
-      },
-      {
-        path: "create-assigment",
-        title: "Nueva Asignacion",
-        canActivate: [LoginAccessGuard,AccessGuard],
-        component: CreateAssignmentsComponent
       },
       {
         path: "create-recipe/:supplierId",

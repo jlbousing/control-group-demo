@@ -48,27 +48,12 @@ export class AssignmentsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => {
-      this.supplierId = params['supplierId'];
-
-      this.supplierService.findSupplierById(this.supplierId)
-        .subscribe((response: ISupplier) => {
-          this.supplier = response
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        });
-
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          console.log("probando asignaciones ",this.assignaments);
-          this.loading = false;
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        })
-   });
+    this.assignamentService.getAssignaments(this.offset,10)
+      .subscribe((response: IAssignament[]) => {
+        this.assignaments = response;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
 
    this.statusService.getStatues(2,50,0)
     .subscribe((response: IStatus[]) => {

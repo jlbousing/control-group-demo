@@ -18,10 +18,32 @@ export class AssignamentService {
     private http: HttpClient
   ) { }
 
+  getAssignaments(offset: number, limit: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.list}`;
+    const params: string = `?offset=${offset}&limit=${limit}`;
+
+    return this.http.get<IAssignament[]>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+        }
+      }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
+
   getAssignamentsBySupplier(id: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.find}`;
-    const params: string = `?suppliersId=${id}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+    const params: string = `?companyId=${id}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,
