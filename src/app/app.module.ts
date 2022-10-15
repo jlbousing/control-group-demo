@@ -132,6 +132,8 @@ import { DataControllerCompanyComponent } from './components/reports/data-contro
 import { EditTemplateModalComponent } from './components/modals/edit-template-modal/edit-template-modal.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { AssignamentDatepickersComponent } from './components/assignament-datepickers/assignament-datepickers.component';
+import { EnterpriseAssignamentsComponent } from './pages/enterprise-assignaments/enterprise-assignaments.component';
+import { EnterpriseAssignamentCardComponent } from './components/enterprises/enterprise-assignament-card/enterprise-assignament-card.component';
 
 @NgModule({
   declarations: [
@@ -244,6 +246,8 @@ import { AssignamentDatepickersComponent } from './components/assignament-datepi
     EditTemplateModalComponent,
     ResetComponent,
     AssignamentDatepickersComponent,
+    EnterpriseAssignamentsComponent,
+    EnterpriseAssignamentCardComponent,
   ],
   imports: [
     BrowserModule,

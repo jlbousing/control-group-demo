@@ -49,6 +49,7 @@ import { CreateTemplateComponent } from './pages/providers/create-template/creat
 import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
 import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
 import { ResetComponent } from './pages/reset/reset.component';
+import { EnterpriseAssignamentsComponent } from './pages/enterprise-assignaments/enterprise-assignaments.component';
 
 const routes: Routes = [
   {
@@ -92,7 +93,7 @@ const routes: Routes = [
         component: ProviderPageComponent
       },
       {
-        path: "assignaments",
+        path: "assignaments-list/:companyId",
         title: "Asignaciones",
         canActivate: [LoginAccessGuard],
         component: AssignmentsComponent
@@ -102,6 +103,12 @@ const routes: Routes = [
         title: "Nueva Asignacion",
         canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateAssignmentsComponent
+      },
+      {
+        path: "assignaments",
+        title: "Empresas",
+        canActivate: [LoginAccessGuard],
+        component: EnterpriseAssignamentsComponent
       },
     ]
   },
