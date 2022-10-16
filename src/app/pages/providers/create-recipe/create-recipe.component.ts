@@ -17,6 +17,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { ITemplate } from 'src/app/interfaces/ITemplate';
 import { TemplateService } from 'src/app/services/templates/template.service';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 @Component({
   selector: 'app-create-recipe',
@@ -65,7 +67,8 @@ export class CreateRecipeComponent implements OnInit {
     private router: Router,
     private dialog: Dialog,
     private errorHandler: ErrorHandlerService,
-    private templateService: TemplateService
+    private templateService: TemplateService,
+    private supplierService: SuppliersService
   ) { }
 
   ngOnInit(): void {
@@ -74,14 +77,20 @@ export class CreateRecipeComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
 
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          this.loading = false;
-          console.log("probando asignaciones ",this.assignaments);
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-        })
+      this.supplierService.findSupplierById(this.supplierId)
+          .subscribe((response: ISupplier) => {
+
+            this.assignamentService.getAssignamentsByCompany(response.companyData.id)
+              .subscribe((response: IAssignament[]) => {
+                  this.assignaments = response;
+              },(error: HttpErrorResponse) => {
+                this.errorHandler.handleError(error);
+                this.loading = false;
+              });
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
+            this.loading = false;
+          });
    });
   }
 

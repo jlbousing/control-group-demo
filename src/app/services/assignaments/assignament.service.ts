@@ -40,10 +40,10 @@ export class AssignamentService {
     );
   }
 
-  getAssignamentsBySupplier(id: number) {
+  getAssignamentsByCompany(id: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.find}`;
-    const params: string = `?companyId=${id}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+    const params: string = `?companyId=${id}&getRecipesClap=true&getStatus=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,

@@ -1,5 +1,6 @@
 import { IStatus } from "./IStatus";
 import { ICategory } from "./ICategory";
+import { ICompany } from "./ICompanies";
 
 export interface ISupplier {
   id: number;
@@ -8,5 +9,5 @@ export interface ISupplier {
   comercialName: string;
   statusData: IStatus;
   categoryData: ICategory;
-  asignaments: number;
+  companyData: ICompany;
 }

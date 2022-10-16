@@ -134,6 +134,7 @@ import { ResetComponent } from './pages/reset/reset.component';
 import { AssignamentDatepickersComponent } from './components/assignament-datepickers/assignament-datepickers.component';
 import { EnterpriseAssignamentsComponent } from './pages/enterprise-assignaments/enterprise-assignaments.component';
 import { EnterpriseAssignamentCardComponent } from './components/enterprises/enterprise-assignament-card/enterprise-assignament-card.component';
+import { SubmenuAssignamentsComponent } from './components/assignaments/submenu-assignaments/submenu-assignaments.component';
 
 @NgModule({
   declarations: [
@@ -248,6 +249,7 @@ import { EnterpriseAssignamentCardComponent } from './components/enterprises/ent
     AssignamentDatepickersComponent,
     EnterpriseAssignamentsComponent,
     EnterpriseAssignamentCardComponent,
+    SubmenuAssignamentsComponent,
   ],
   imports: [
     BrowserModule,

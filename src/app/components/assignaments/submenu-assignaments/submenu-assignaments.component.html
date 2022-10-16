@@ -1,0 +1,20 @@
+<div class="flex flex-row overflow-x-auto py-5 lg:flex-col w-full lg:ml-6  bg-grey-control-group h-full">
+  <div class="w-full text-center lg:text-left lg:pb-4 lg:pl-4 lg:w-full">
+    <a [routerLink]="'/dashboarda/ssignaments-list/'+companyId" [routerLinkActive]="['text-blue-700']"  class="cursor-pointer hover:text-blue-700">
+      <div class="text-2xl">
+        <i class="bi bi-person-fill flex justify-center lg:inline-block"></i>
+        <span class="ml-4">Lista de Usuarios</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="w-full text-center lg:text-left lg:pb-4 lg:pl-4 lg:w-full">
+    <a *ngIf="accessService.canCreate()" [routerLink]="'/dashboard/create-assigment'" [routerLinkActive]="['text-blue-700']" class="cursor-pointer hover:text-blue-700">
+      <div class="text-2xl">
+        <i class="bi bi-pencil-square flex justify-center lg:inline-block"></i>
+        <span class="ml-4">Crear Usuario</span>
+      </div>
+    </a>
+  </div>
+
+</div>

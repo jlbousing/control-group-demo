@@ -38,29 +38,32 @@ export class TemplatesComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.route.params.subscribe(params => {
+      this.supplierId = params['supplierId'];
 
-  this.route.params.subscribe(params => {
-    this.supplierId = params['supplierId'];
+      this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+          this.supplier = response
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        })
 
-    this.supplierService.findSupplierById(this.supplierId)
-      .subscribe((response: ISupplier) => {
-        this.supplier = response
-      },(error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        this.loading = false;
-      })
+        this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
 
-    this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-      .subscribe((response: IAssignament[]) => {
-        this.assignaments = response;
-        this.loading = false;
-        console.log("probando asignaciones ",this.assignaments);
-      },(error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        this.loading = false;
-      })
-    });
-
+          this.assignamentService.getAssignamentsByCompany(response.companyData.id)
+            .subscribe((response: IAssignament[]) => {
+                this.assignaments = response;
+            },(error: HttpErrorResponse) => {
+              this.errorHandler.handleError(error);
+              this.loading = false;
+            });
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+    })
   }
 
   setAssignament(value: any) {

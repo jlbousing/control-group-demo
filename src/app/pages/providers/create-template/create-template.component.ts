@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { IItem } from 'src/app/interfaces/IItem';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IProductRecipe } from 'src/app/interfaces/IProductRecipe';
 import { ITemplateRequest } from 'src/app/interfaces/ITemplateRequest';
@@ -14,6 +15,7 @@ import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { TemplateService } from 'src/app/services/templates/template.service';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 
 @Component({
   selector: 'app-create-template',
@@ -55,7 +57,8 @@ export class CreateTemplateComponent implements OnInit {
     private router: Router,
     private errorHandler: ErrorHandlerService,
     private dialog: Dialog,
-    private templateService: TemplateService
+    private templateService: TemplateService,
+    private supplierService: SuppliersService
   ) { }
 
   ngOnInit(): void {
@@ -64,14 +67,20 @@ export class CreateTemplateComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
 
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          this.loading = false;
-          console.log("probando asignaciones ",this.assignaments);
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-        })
+      this.supplierService.findSupplierById(this.supplierId)
+          .subscribe((response: ISupplier) => {
+
+            this.assignamentService.getAssignamentsByCompany(response.companyData.id)
+              .subscribe((response: IAssignament[]) => {
+                  this.assignaments = response;
+              },(error: HttpErrorResponse) => {
+                this.errorHandler.handleError(error);
+                this.loading = false;
+              });
+          },(error: HttpErrorResponse) => {
+            this.errorHandler.handleError(error);
+            this.loading = false;
+          });
    });
   }
 

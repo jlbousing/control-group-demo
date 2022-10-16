@@ -35,6 +35,8 @@ export class AssignmentsComponent implements OnInit {
 
   offset: number = 0;
 
+  companyId: number = 0;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,
@@ -48,12 +50,18 @@ export class AssignmentsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.assignamentService.getAssignaments(this.offset,10)
-      .subscribe((response: IAssignament[]) => {
-        this.assignaments = response;
-      },(error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-      });
+    this.route.params.subscribe(param => {
+      this.companyId = param["companyId"];
+
+      this.assignamentService.getAssignamentsByCompany(this.companyId)
+        .subscribe((response: IAssignament[]) => {
+
+        },(error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          this.loading = false;
+        });
+
+    });
 
    this.statusService.getStatues(2,50,0)
     .subscribe((response: IStatus[]) => {
@@ -105,7 +113,7 @@ export class AssignmentsComponent implements OnInit {
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error)
 
-          this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+          this.assignamentService.getAssignamentsByCompany(this.companyId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           console.log("probando asignaciones ",this.assignaments);
@@ -117,7 +125,7 @@ export class AssignmentsComponent implements OnInit {
 
         });
     }else {
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+      this.assignamentService.getAssignamentsByCompany(this.companyId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
           console.log("probando asignaciones ",this.assignaments);
