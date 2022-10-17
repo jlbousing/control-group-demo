@@ -1,4 +1,4 @@
-<separator-title title="Crear Asignación"></separator-title>
+<!--<separator-title title="Crear Asignación"></separator-title>
 
 <loading *ngIf="loading"></loading>
 <div class="w-full bg-white rounded-lg">
@@ -169,5 +169,186 @@
       <custom-button text="Agregar" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
     </div>
   </form>
+</div> -->
+
+<div>
+  <div>
+    <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
+        <div class="flex flex-col lg:flex-row">
+
+          <div class="w-full lg:pt-4">
+            <loading *ngIf="loading"></loading>
+            <form [formGroup]="form" class="flex flex-col p-8">
+              <div class="w-full flex flex-row justify-start">
+                <h3>Indique la categoría</h3>
+              </div>
+              <div class="w-full flex-col lg:flex flex-row justify-start">
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Indicar el nombre de asignación
+                  </label>
+                  <input class="shadow appearance-none border
+                                rounded w-full py-2 px-3 text-gray-700
+                                leading-tight focus:outline-none
+                                focus:shadow-outline"
+                         type="text"
+                         placeholder="Nombre"
+                         [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
+                         formControlName="name"
+                   />
+                </div>
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
+                    Indicar la categoría
+                  </label>
+                  <select
+                    class="shadow appearance-none border
+                           rounded w-full py-2 px-3 text-gray-700
+                           leading-tight focus:outline-none
+                           focus:shadow-outline"
+                    id="company"
+                    formControlName="categoryId"
+                    (ngModelChange)="setSuppliers(form.value.categoryId)"
+                    >
+                    <option></option>
+                    <option *ngFor="let category of categories" [value]="category.id">
+                      {{ category.name }}
+                    </option>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="w-full flex-col lg:flex flex-row justify-start">
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="company">
+                    Indique la empresa de la asignacion
+                  </label>
+                  <select
+                    class="shadow appearance-none border
+                           rounded w-full py-2 px-3 text-gray-700
+                           leading-tight focus:outline-none
+                           focus:shadow-outline"
+                    id="company"
+                    formControlName="companyId"
+                    >
+                    <option></option>
+                    <option *ngFor="let company of companies" [value]="company.id">
+                      {{ company.name }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
+                  <subcategory-select [categoryId]="form.value.categoryId" (subCategoryEmiter)="setSubcategoryId($event)"></subcategory-select>
+                </div>
+
+              </div>
+
+              <div class="w-full flex-col lg:flex flex-row justify-start">
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
+                    Proveedor
+                  </label>
+                  <select
+                    class="shadow appearance-none border
+                           rounded w-full py-2 px-3 text-gray-700
+                           leading-tight focus:outline-none
+                           focus:shadow-outline"
+                    id="company"
+                    formControlName="supplierId"
+                    >
+                    <option></option>
+                    <option *ngFor="let supplier of suppliers" [value]="supplier.id">
+                      {{supplier.name}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
+                  <subcategory-select [categoryId]="form.value.categoryId" (subCategoryEmiter)="setSubcategoryId($event)"></subcategory-select>
+                </div>
+
+              </div>
+
+              <div class="w-full flex-col lg:flex flex-row justify-start">
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                    Descripción
+                  </label>
+                  <input class="shadow appearance-none border
+                                rounded w-full py-2 px-3 text-gray-700
+                                leading-tight focus:outline-none
+                                focus:shadow-outline"
+                         type="text"
+                         placeholder="Descripción"
+                         [ngClass]="{'focus:border-red-700': form.value.description!.length < 3 || form.value.description!.length > 90}"
+                         formControlName="description"
+                   />
+                </div>
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="comments">
+                    Comentarios
+                  </label>
+                  <input class="shadow appearance-none border
+                                rounded w-full py-2 px-3 text-gray-700
+                                leading-tight focus:outline-none
+                                focus:shadow-outline"
+                         type="text"
+                         placeholder="Comentarios"
+                         formControlName="comments"
+                   />
+                </div>
+
+              </div>
+
+              <div class="w-full flex-col lg:flex flex-row justify-start">
+
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="record">
+                    Indique la meta de asignación
+                  </label>
+                  <input class="shadow appearance-none border
+                                rounded w-full py-2 px-3 text-gray-700
+                                leading-tight focus:outline-none
+                                focus:shadow-outline"
+                         type="number"
+                         inputmode="numeric"
+                         min="0"
+                         placeholder="meta"
+                         formControlName="record"
+                         [ngClass]="{'focus:border-red-700': form.value.record === 0}"
+                   />
+                </div>
+
+              </div>
+
+              <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+                <input id="hold-checkbok"
+                       type="checkbox"
+                       value=""
+                       class="w-4 h-4 text-blue-600 bg-gray-100 rounded
+                            border-gray-300 focus:ring-blue-500
+                             focus:ring-2"
+                      formControlName="special">
+
+                <label for="hold-checkbox" class="ml-2 font-medium text-gray-900">¿Es una asignacion especial?</label>
+              </div>
+
+              <div class="w-full flex flex-row justify-center lg:justify-end mt-8">
+                <custom-button text="Agregar" (click)="onSubmit()" [disable]="form.invalid"></custom-button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
+
 

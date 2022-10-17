@@ -157,7 +157,7 @@ export class CreateAssignmentsComponent implements OnInit {
                 }
               });
 
-              this.router.navigateByUrl("/providers/assignments/"+this.form.value.supplierId);
+              this.router.navigateByUrl("/dashboard/assignaments-list/"+this.form.value.companyId);
             }
 
           }
