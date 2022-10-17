@@ -63,10 +63,10 @@ export class AssignamentService {
 
   }
 
-  getAssignamentsByDates(id: number,startDate: string, endDate: string) {
+  getAssignamentsByDates(subCategoryId: number,startDate: string, endDate: string,limit: number, offset: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.list}`;
-    const params: string = `?startDate=${startDate}&endDate=${endDate}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+    const params: string = `?subcategoryId=${subCategoryId}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&offset=${offset}&getRecipesClap=true&getStatus=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,

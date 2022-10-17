@@ -15,7 +15,7 @@ export const environment = {
     },
     login: '/api/login',
     assignaments: {
-      list: '/api/asignaments/list',
+      list: '/api/asignaments/',
       find: '/api/asignaments/find',
       create: '/api/asignaments/create',
       changes: '/api/asignaments/changes/',

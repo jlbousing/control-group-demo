@@ -64,6 +64,7 @@ export class ProductionComponent implements OnInit {
           this.assignamentService.getAssignamentsByCompany(response.companyData.id)
             .subscribe((response: IAssignament[]) => {
                 this.assignaments = response;
+                this.loading = false;
             },(error: HttpErrorResponse) => {
               this.errorHandler.handleError(error);
               this.loading = false;
