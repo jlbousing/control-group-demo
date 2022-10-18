@@ -15,7 +15,7 @@ export const environment = {
     },
     login: '/api/login',
     assignaments: {
-      list: '/api/asignaments/list',
+      list: '/api/asignaments/',
       find: '/api/asignaments/find',
       create: '/api/asignaments/create',
       changes: '/api/asignaments/changes/',
@@ -70,6 +70,7 @@ export const environment = {
       create: '/api/clap/items/create',
       changes: '/api/clap/items/changes/',
       find: '/api/clap/items/find',
+      createType: '/api/clap/items/types/create'
     },
     municipality: {
       list: '/api/clap/municipality',
