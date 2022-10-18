@@ -88,7 +88,8 @@ export const environment = {
       list: '/api/clap/production/',
       create: '/api/clap/production/create',
       find: '/api/clap/production/find',
-      revert: '/api/clap/production/revert/'
+      revert: '/api/clap/production/revert/',
+      image: '/api/clap/production/find/image'
     },
     recipes: {
       list: '/api/clap/recipes',
