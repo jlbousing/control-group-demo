@@ -9,6 +9,9 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
+import { IRubro } from 'src/app/interfaces/IRubro';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 
 @Component({
   selector: 'app-create-item',
@@ -18,16 +21,17 @@ import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert
 export class CreateItemComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',[
+    itemId: new FormControl<number>(0,Validators.required),
+    brandName: new FormControl<string>('',[
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(30)
     ]),
-    quantity: new FormControl<number>(0,[
+    volume: new FormControl<number>(0,[
       Validators.required,
       Validators.min(0)
     ]),
-    unit: new FormControl<string>('', Validators.required),
+    measure: new FormControl<string>('ml', Validators.required),
     comments: new FormControl<string>('',[
       Validators.maxLength(250)
     ])
@@ -41,17 +45,25 @@ export class CreateItemComponent implements OnInit {
 
   loading: boolean = true;
 
+  rubros: IRubro[] = [];
+
   constructor(
     private supplierService: SuppliersService,
     private route: ActivatedRoute,
     private categoriesService: CategoriesService,
     private itemService: ItemsService,
     private router: Router,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    this.itemService.getRubros(50,0)
+      .subscribe((response: IRubro[]) => {
+        this.rubros = response;
+      });
 
     this.route.params.subscribe(params => {
 
@@ -74,16 +86,18 @@ export class CreateItemComponent implements OnInit {
 
   onSubmit() {
 
-    if(this.form.value.name
-      && this.form.value.quantity
-      && this.form.value.unit
-      && this.subcategoryId > 0) {
+
+    console.log(this.form.value);
+    if(this.form.value.brandName
+      && this.form.value.volume
+      && this.form.value.measure
+      && this.form.value.itemId) {
 
         const payload: IItemRequest = {
-          subcategoryId: this.subcategoryId,
-          name: this.form.value.name,
-          quantity: this.form.value.quantity,
-          unit: this.form.value.unit,
+          itemId: this.form.value.itemId,
+          brandName: this.form.value.brandName,
+          volume: this.form.value.volume,
+          measure: this.form.value.measure,
           comments: this.form.value.comments ? this.form.value.comments : ""
         };
 
@@ -97,7 +111,9 @@ export class CreateItemComponent implements OnInit {
               }
             });
 
-            this.router.navigateByUrl("/providers/items/"+this.supplierId);
+            this.router.navigateByUrl("/settings/items");
+          },(error: HttpErrorResponse) => {
+              this.errorHandler.handleError(error);
           });
 
       }

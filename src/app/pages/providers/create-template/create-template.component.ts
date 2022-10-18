@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IItemData } from 'src/app/interfaces/IItemData';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { ItemsService } from 'src/app/services/items/items.service';
-import { IItem } from 'src/app/interfaces/IItem';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IProductRecipe } from 'src/app/interfaces/IProductRecipe';
 import { ITemplateRequest } from 'src/app/interfaces/ITemplateRequest';
@@ -12,6 +11,7 @@ import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { TemplateService } from 'src/app/services/templates/template.service';
+import { IRubro } from 'src/app/interfaces/IRubro';
 
 @Component({
   selector: 'app-create-template',
@@ -26,18 +26,17 @@ export class CreateTemplateComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(30)
     ]),
-    assignament: new FormControl<IAssignament | null>(null,Validators.required),
-    item: new FormControl<IItem | null>(null,Validators.required)
+    item: new FormControl<IRubro | null>(null,Validators.required)
   });
 
-  items: IItem[] = [];
+  items: IRubro[] = [];
   itemsSelected: number[] = [];
-  productsSelected: IItem[] = [];
+  productsSelected: IRubro[] = [];
 
   assignaments: IAssignament[] = [];
   assignament: IAssignament | null = null;
   itemData: IItemData[] = [];
-  currentItem: IItem | null = null;
+  currentItem: IRubro | null = null;
 
   products: IProductRecipe[] = [];
 
@@ -57,32 +56,19 @@ export class CreateTemplateComponent implements OnInit {
   ngOnInit(): void {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.loading = false;
-  }
 
-  setItems(value: any) {
-    this.loading = false;
-    console.log(value)
-    if(this.form.value.assignament){
-      console.log(this.form.value)
-
-      //SE CONSULTAN LOS ITEMS POR LA SUBCATEGORIA SELECCIONADA
-      let assignament: IAssignament = this.form.value.assignament;
-      this.itemsService.getItems(50,0,assignament.subcategoryData.id)
-        .subscribe((response: IItem[]) => {
-          this.items = response;
-          this.loading = false;
-          console.log("probando items ",this.items);
+    this.itemsService.getRubros(50,0)
+      .subscribe((response: IRubro[]) => {
+        this.items = response;
+        this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
-    }
   }
 
-
   setItem(value: any) {
-    this.currentItem = <IItem>value;
-    console.log("probando current item ",this.currentItem);
+    this.currentItem = <IRubro>value;
    }
 
 
@@ -90,7 +76,7 @@ export class CreateTemplateComponent implements OnInit {
 
     if(this.currentItem) {
 
-      let result: any = this.productsSelected.find((item: IItem) => { return item.id === this.currentItem?.id});
+      let result: any = this.productsSelected.find((item: IRubro) => { return item.id === this.currentItem?.id});
       if(!result){
         this.productsSelected.push(this.currentItem);
       }else{
@@ -98,7 +84,7 @@ export class CreateTemplateComponent implements OnInit {
         this.dialog.open(AlertModalComponent,{
           data: {
             status: 400,
-            message: `El producto ${this.currentItem.brandName} ya ha sido agregado`
+            message: `El producto ${this.currentItem.name} ya ha sido agregado`
           }
         });
       }
@@ -111,7 +97,7 @@ export class CreateTemplateComponent implements OnInit {
     this.itemsSelected = [];
   }
 
-  deleteItem(item: IItem) {
+  deleteItem(item: IRubro) {
     let index = this.productsSelected.indexOf(item);
     this.productsSelected.splice(index,1);
   }
@@ -119,13 +105,11 @@ export class CreateTemplateComponent implements OnInit {
   onSubmit() {
 
     if(this.form.value.name
-      && this.form.value.assignament
       && this.productsSelected.length > 0) {
 
         const payload: ITemplateRequest = {
-          asignamentId: this.form.value.assignament.id,
           name: this.form.value.name,
-          items: this.productsSelected.map((item: IItem) => item.id)
+          items: this.productsSelected.map((item: IRubro) => item.id)
         };
 
         this.templateService.createTemplate(payload)

@@ -3,8 +3,8 @@
   <div  class="flex flex-col p-8">
     <loading *ngIf="loading"></loading>
     <form [formGroup]="form">
-      <div class="w-full flex flex-row justify-start">
-        <h3>Indique los datos de la plantilla</h3>
+      <div class="w-full flex flex-row justify-start mb-4">
+        <h3 class="font-bold">Indique los datos de la plantilla</h3>
       </div>
       <div class="w-full flex flex-row justify-start">
         <h3>Indique un nombre a la plantilla</h3>
@@ -27,12 +27,12 @@
       </div>
 
       <div class="w-full flex flex-row justify-start">
-        <h3>Indique los productos de la plantilla</h3>
+        <h3>Indique los rubros de la plantilla</h3>
       </div>
       <div class="w-full flex flex-row justify-start">
         <div class="my-4 w-full lg:w-1/2 lg:mx-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
-            Seleccione el producto
+            Seleccione el rubro
           </label>
           <select
             class="shadow appearance-none border
@@ -45,7 +45,7 @@
             >
             <option></option>
             <option *ngFor="let item of items" [ngValue]="item">
-              {{ item.brandName }}
+              {{ item.name }}
             </option>
           </select>
         </div>
@@ -53,36 +53,7 @@
       <div class="w-full flex flex-row justify-start">
         <h3>información del producto</h3>
       </div>
-      <div class="w-full flex flex-row justify-start">
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="currentItem">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx">
-            Volumen
-          </label>
-          <input class="shadow appearance-none border
-                        rounded w-full py-2 px-3 text-gray-700
-                        leading-tight focus:outline-none
-                        focus:shadow-outline"
-                 type="number"
-                 inputmode="numeric"
-                 min="0"
-                 [disabled]="true"
-                 [value]="currentItem.volume"
-           />
-        </div>
-        <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="currentItem">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="unit">
-            Medida
-          </label>
-          <input class="shadow appearance-none border
-                        rounded w-full py-2 px-3 text-gray-700
-                        leading-tight focus:outline-none
-                        focus:shadow-outline"
-                 type="text"
-                 [value]="currentItem.measure"
-                 [disabled]="true"
-           />
-        </div>
-      </div>
+
       <div class="w-full flex flex-row justify-end mt-8">
         <div class="w-1/2 mx-4 lg:w-[10%]">
           <button data-modal-toggle="defaultModal"
@@ -119,17 +90,13 @@
     <div class="w-full flex flex-row mt-8">
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-          <th scope="col" class="px-6 py-3">Producto</th>
-          <th scope="col" class="px-6 py-3">Pesaje</th>
-          <th scope="col" class="px-6 py-3">Unidad</th>
+          <th scope="col" class="px-6 py-3">Rubro</th>
           <th scope="col" class="px-6 py-3">Acciones</th>
         </thead>
         <tbody>
           <tr class="bg-white border-b"
               *ngFor="let item of productsSelected">
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.brandName }}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.volume}}</td>
-            <td scope="row" class="px-6 py-4 font-medium text-gray-900"> {{ item.measure }}</td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">{{ item.name }}</td>
             <td scope="row" class="px-6 py-4 font-medium text-gray-900">
               <button>
                <i class="bi bi-trash3" (click)="deleteItem(item)"></i>

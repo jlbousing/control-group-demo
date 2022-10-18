@@ -8,7 +8,7 @@ import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 import { StorageManager } from 'src/app/utils/StorageManager';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -55,6 +55,8 @@ export class CreateAssignmentsComponent implements OnInit {
 
   companies: ICompany[] = [];
 
+  companyId: number = 0;
+
   loading: boolean = true;
 
   constructor(
@@ -62,6 +64,7 @@ export class CreateAssignmentsComponent implements OnInit {
     private suppliersService: SuppliersService,
     private assignmentService: AssignamentService,
     private router: Router,
+    private route: ActivatedRoute,
     private dialog: Dialog,
     private errorHandler: ErrorHandlerService,
     private companyService: CompaniesService
@@ -70,6 +73,10 @@ export class CreateAssignmentsComponent implements OnInit {
   ngOnInit(): void {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    this.route.params.subscribe((params) => {
+      this.companyId = params["companyId"];
+    });
 
     this.categoryService.getCategories(50,0)
       .subscribe((response: ICategory[]) => {
