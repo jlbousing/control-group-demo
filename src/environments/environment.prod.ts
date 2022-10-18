@@ -30,7 +30,8 @@ export const environment = {
       list: '/api/clap/dispatch/',
       create: '/api/clap/dispatch/create',
       revert: '/api/clap/dispatch/revert/',
-      changes: '/api/clap/dispatch/changes/'
+      changes: '/api/clap/dispatch/changes/',
+      image: '/api/clap/dispatch/find/image'
     },
     status: {
       status_type_list: '',
@@ -88,13 +89,15 @@ export const environment = {
       list: '/api/clap/production/',
       create: '/api/clap/production/create',
       find: '/api/clap/production/find',
-      revert: '/api/clap/production/revert/'
+      revert: '/api/clap/production/revert/',
+      image: '/api/clap/production/find/image'
     },
     recipes: {
       list: '/api/clap/recipes',
       create: '/api/clap/recipes/create',
       find: '/api/clap/recipes/find',
       changes: '/api/clap/recipes/changes/',
+      image: '/api/clap/recipes/find/image',
       templates: {
         list: '/api/clap/recipes/templates/',
         create: '/api/clap/recipes/templates/create',
