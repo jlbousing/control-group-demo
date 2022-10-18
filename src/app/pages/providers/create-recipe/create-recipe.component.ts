@@ -136,7 +136,7 @@ export class CreateRecipeComponent implements OnInit {
 
       let assignament: IAssignament = this.form.value.assignament;
 
-      this.templateService.getTemplates(assignament.id)
+      this.templateService.getTemplates()
         .subscribe((response: ITemplate[]) => {
           this.templates = response;
           this.loading = false;

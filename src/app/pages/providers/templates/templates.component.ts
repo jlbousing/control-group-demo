@@ -41,44 +41,15 @@ export class TemplatesComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.supplierId = params['supplierId'];
 
-      this.supplierService.findSupplierById(this.supplierId)
-        .subscribe((response: ISupplier) => {
-          this.supplier = response
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        })
-
-        this.supplierService.findSupplierById(this.supplierId)
-        .subscribe((response: ISupplier) => {
-
-          this.assignamentService.getAssignamentsByCompany(response.companyData.id)
-            .subscribe((response: IAssignament[]) => {
-                this.assignaments = response;
-                this.loading = false;
-            },(error: HttpErrorResponse) => {
-              this.errorHandler.handleError(error);
-              this.loading = false;
-            });
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        });
-    })
-  }
-
-  setAssignament(value: any) {
-    this.templates = [];
-    let assignament = <IAssignament> value;
-    this.assignament = assignament;
-
-    this.templateService.getTemplates(this.assignament.id)
+      this.templateService.getTemplates()
       .subscribe((response: ITemplate[]) => {
         this.templates = response;
+        this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
         this.loading = false;
       });
+    })
   }
 
   getSearch(value: any) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items/items.service';
-import { IItem } from 'src/app/interfaces/IItem';
+import { IRubro } from 'src/app/interfaces/IRubro';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
@@ -11,15 +11,13 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 import { AccessService } from 'src/app/services/access/access.service';
 
 @Component({
-  selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  selector: 'app-rubros',
+  templateUrl: './rubros.component.html',
+  styleUrls: ['./rubros.component.scss']
 })
-export class ItemsComponent implements OnInit {
+export class RubrosComponent implements OnInit {
 
-  supplier: ISupplier | null = null;
-  supplierId: number = 0;
-  items: IItem[] = [];
+  items: IRubro[] = [];
   subcategories: ISubcategory[] = [];
   subcategory: ISubcategory | null = null;
 
@@ -38,14 +36,21 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.itemService.getItems(10,this.offset,1)
-                .subscribe((response: IItem[]) => {
-                  this.items = response;
-                  this.loading = false;
-                },(error: HttpErrorResponse) => {
-                  this.errorHandler.handleError(error);
-                  this.loading = false;
-                });
+    this.categoriesService.findSubcategory(1)
+      .subscribe((response: ISubcategory) => {
+        this.subcategory = response;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
+
+    this.itemService.getRubros(10,this.offset)
+      .subscribe((response: IRubro[]) => {
+        this.items = response
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        this.loading = false;
+      });
   }
 
   searchByName(value: any) {
@@ -58,7 +63,7 @@ export class ItemsComponent implements OnInit {
 
       if(name.length >= 3){
         this.itemService.findItems(this.subcategory!.id,name)
-        .subscribe((response: IItem) => {
+        .subscribe((response: IRubro) => {
           this.items.push(response);
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
@@ -72,7 +77,7 @@ export class ItemsComponent implements OnInit {
         this.loading = true;
         this.offset = 0;
         this.itemService.getItems(10,this.offset,this.subcategory!.id)
-                .subscribe((response: IItem[]) => {
+                .subscribe((response: IRubro[]) => {
                   this.items = response;
                   this.loading = false;
                 },(error: HttpErrorResponse) => {
@@ -87,7 +92,7 @@ export class ItemsComponent implements OnInit {
     this.offset = <number>value;
 
     this.itemService.getItems(10,this.offset,this.subcategory!.id)
-                .subscribe((response: IItem[]) => {
+                .subscribe((response: IRubro[]) => {
                   this.items = response;
                   this.loading = false;
                 },(error: HttpErrorResponse) => {

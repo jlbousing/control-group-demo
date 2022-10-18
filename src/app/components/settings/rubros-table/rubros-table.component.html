@@ -7,16 +7,13 @@
                   ID
               </th>
               <th scope="col" class="px-6 py-3">
+                  Subcategoria
+              </th>
+              <th scope="col" class="px-6 py-3">
                   Nombre
               </th>
               <th scope="col" class="px-6 py-3">
-                  Volumen
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Medida
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Comentario
+                Incidentes
             </th>
             <th scope="col" class="px-6 py-3">
               Acciones
@@ -30,16 +27,13 @@
                  {{ item.id }}
               </th>
               <td class="px-6 py-4">
-                  {{ item.brandName }}
+                  {{ subcategory?.name}}
               </td>
               <td class="px-6 py-4">
-                  {{ item.volume }}
+                  {{ item.name }}
               </td>
               <td class="px-6 py-4">
-                  {{ item.measure }}
-              </td>
-              <td class="px-6 py-4">
-                {{ item.comments }}
+                {{ item.incidents}}
             </td>
               <td class="px-6 py-4 text-right">
                 <button (click)="selectEdit(item)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>

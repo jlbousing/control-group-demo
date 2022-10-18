@@ -41,13 +41,13 @@
                                focus:shadow-outline"
                                id="name"
                                type="text"
-                               [placeholder]="data.item.name"
-                               [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
-                               formControlName="name">
+                               [placeholder]="data.item.brandName"
+                               [ngClass]="{'focus:border-red-700': form.value.brandName!.length < 3 || form.value.brandName!.length > 30}"
+                               formControlName="brandName">
                     </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx">
-                        Cantidad
+                        Volumen
                       </label>
                       <input
                         class="shadow appearance-none border
@@ -58,14 +58,14 @@
                                type="number"
                                inputmode="numeric"
                                min="0"
-                               [placeholder]="data.item.quantity"
-                               [ngClass]="{'focus:border-red-700': form.value.quantity === 0 || form.value.quantity && form.value.quantity < 0}"
-                               formControlName="quantity">
+                               [placeholder]="data.item.volume"
+                               [ngClass]="{'focus:border-red-700': form.value.volume === 0 || form.value.volume && form.value.volume < 0}"
+                               formControlName="volume">
                     </div>
 
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="unit">
-                        Unidad
+                        Medida
                       </label>
                       <input
                         class="shadow appearance-none border
@@ -74,9 +74,9 @@
                                focus:shadow-outline"
                                id="description"
                                type="text"
-                               [placeholder]="data.item.unit"
-                               [ngClass]="{'focus:border-red-700': form.value.unit!.length < 2 || form.value.name!.length > 10}"
-                               formControlName="unit">
+                               [placeholder]="data.item.measure"
+                               [ngClass]="{'focus:border-red-700': form.value.measure!.length < 2 || form.value.measure!.length > 10}"
+                               formControlName="measure">
                     </div>
 
                     <div class="my-4 w-full">

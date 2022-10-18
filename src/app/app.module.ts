@@ -135,6 +135,9 @@ import { AssignamentDatepickersComponent } from './components/assignament-datepi
 import { EnterpriseAssignamentsComponent } from './pages/enterprise-assignaments/enterprise-assignaments.component';
 import { EnterpriseAssignamentCardComponent } from './components/enterprises/enterprise-assignament-card/enterprise-assignament-card.component';
 import { SubmenuAssignamentsComponent } from './components/assignaments/submenu-assignaments/submenu-assignaments.component';
+import { RubrosComponent } from './pages/app-setting/rubros/rubros.component';
+import { CreateRubroComponent } from './pages/app-setting/create-rubro/create-rubro.component';
+import { RubrosTableComponent } from './components/settings/rubros-table/rubros-table.component';
 
 @NgModule({
   declarations: [
@@ -250,6 +253,9 @@ import { SubmenuAssignamentsComponent } from './components/assignaments/submenu-
     EnterpriseAssignamentsComponent,
     EnterpriseAssignamentCardComponent,
     SubmenuAssignamentsComponent,
+    RubrosComponent,
+    CreateRubroComponent,
+    RubrosTableComponent,
   ],
   imports: [
     BrowserModule,

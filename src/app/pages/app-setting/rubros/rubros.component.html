@@ -1,0 +1,30 @@
+<separator-title [title]="'Lista de Rubros '"></separator-title>
+<div class="w-full bg-white rounded-lg">
+  <div class="flex flex-col">
+    <div class="flex flex-col lg:flex-row lg:justify-between pt-16 lg:mr-12 px-8">
+
+       <search-input class="flex flex-row justify-center px-4"
+                     [label]="'Buscar rubro'"
+                     [placeholder]="'Buscar por nombre'"
+                     (searching)="searchByName($event)"
+                    ></search-input>
+      <a *ngIf="accessService.canCreate()"
+      [routerLink]="'/settings/create-rubro'"
+         class="flex items-center m-auto lg:m-0">
+        <custom-button text="Nuevo rubro"></custom-button>
+      </a>
+    </div>
+
+    <loading *ngIf="loading"></loading>
+    <div *ngIf="!loading"
+      class="flex justify-center px-8 py-12 max-w-full overflow-auto">
+      <rubros-table [items]="items"
+      [subcategory]="subcategory"></rubros-table>
+    </div>
+    <load-more class="flex flex-row justify-center my-8  lg:px-4"
+                       (changePagination)="changePagination($event)"
+                       [isDisable]="items.length <= 10">
+            </load-more>
+  </div>
+</div>
+

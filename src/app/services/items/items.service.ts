@@ -4,10 +4,12 @@ import { environment } from 'src/environments/environment';
 import { Observable, throwError} from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { iterateJson } from 'src/app/utils/iterateJson';
+import { IRubro } from 'src/app/interfaces/IRubro';
 import { IItem } from "src/app/interfaces/IItem";
 import { IItemPatch } from 'src/app/interfaces/IItemPatch';
 import { IItemRequest } from 'src/app/interfaces/IItemRequest';
 import { handleError } from 'src/app/utils/handleError';
+import { IRubroRequest } from 'src/app/interfaces/IRubroRequest';
 
 
 @Injectable({
@@ -18,6 +20,53 @@ export class ItemsService {
   constructor(
     private http: HttpClient
   ) { }
+
+  getRubros(limit: number, offset: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.list}`;
+    const params: string = `?offset=${offset}&limit=${limit}&getInstructions=true&subcategoryId=1`;
+
+    return this.http.get<IRubro[]>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
+
+  createRubro(payload: IRubroRequest) {
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.create}`;
+
+    return this.http.post<IRubroRequest>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 201){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
+        }
+      })
+    );
+  }
 
   getItems(limit: number, offset: number, subcategoryId: number) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.list}`;
