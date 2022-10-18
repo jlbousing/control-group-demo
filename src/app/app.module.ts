@@ -138,6 +138,7 @@ import { SubmenuAssignamentsComponent } from './components/assignaments/submenu-
 import { RubrosComponent } from './pages/app-setting/rubros/rubros.component';
 import { CreateRubroComponent } from './pages/app-setting/create-rubro/create-rubro.component';
 import { RubrosTableComponent } from './components/settings/rubros-table/rubros-table.component';
+import { EditRubroModalComponent } from './components/modals/edit-rubro-modal/edit-rubro-modal.component';
 
 @NgModule({
   declarations: [
@@ -256,6 +257,7 @@ import { RubrosTableComponent } from './components/settings/rubros-table/rubros-
     RubrosComponent,
     CreateRubroComponent,
     RubrosTableComponent,
+    EditRubroModalComponent,
   ],
   imports: [
     BrowserModule,

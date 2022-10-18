@@ -5,7 +5,7 @@ import { statusNameColor } from 'src/app/utils/statusNameColor';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
 import { RecipesService } from 'src/app/services/recipes/recipes.service';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
-import { HttpErrorResponse } from 'control-group-admin/node_modules/@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 interface IDialogData {
   recipe: IRecipe
