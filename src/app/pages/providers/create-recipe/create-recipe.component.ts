@@ -260,7 +260,7 @@ export class CreateRecipeComponent implements OnInit {
 
         const formData = new FormData();
         formData.append("name",payload.name);
-        formData.append("assignamentId",payload.asignamentId.toString());
+        formData.append("asignamentId",payload.asignamentId.toString());
         formData.append("description",payload.description);
         formData.append("itemGroup",JSON.stringify(this.itemData));
         formData.append('image',this.files[0])
