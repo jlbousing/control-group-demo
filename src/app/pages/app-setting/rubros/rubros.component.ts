@@ -89,7 +89,7 @@ export class RubrosComponent implements OnInit {
 
   changePagination(value: any) {
 
-    this.offset += 10;
+    this.offset = <number>value;
 
     this.itemService.getItems(10,this.offset,this.subcategory!.id)
                 .subscribe((response: IRubro[]) => {

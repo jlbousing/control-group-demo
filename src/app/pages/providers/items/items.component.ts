@@ -86,7 +86,7 @@ export class ItemsComponent implements OnInit {
 
     this.offset = <number>value;
 
-    this.itemService.getItems(10,this.offset,this.subcategory!.id)
+    this.itemService.getItems(10,this.offset,1)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
