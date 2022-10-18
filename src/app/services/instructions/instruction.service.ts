@@ -16,16 +16,17 @@ export class InstructionService {
     private http: HttpClient
   ) { }
 
-  createInstruction(payload: IInstructionRequest) {
+  createInstruction(payload: FormData) {
     console.log("entrando en function")
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.instructions.create_group}`;
 
-    return this.http.post<IInstructionRequest>(
+    return this.http.post<FormData>(
       url,
       payload,
       { observe: 'response',
         headers: {
-        'apikey': `${environment.apikey}`
+        'apikey': `${environment.apikey}`,
+        'Accept': 'multipart/form-data'
       }
     }
     ).pipe(

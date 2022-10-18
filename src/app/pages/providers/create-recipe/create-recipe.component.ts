@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ItemsService } from 'src/app/services/items/items.service';
-import { IItem } from 'src/app/interfaces/IItem';
+import { IRubro } from 'src/app/interfaces/IRubro';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IProductRecipe } from 'src/app/interfaces/IProductRecipe';
 import { IInstructionRequest } from 'src/app/interfaces/IInstuctionRequest';
@@ -19,6 +19,7 @@ import { ITemplate } from 'src/app/interfaces/ITemplate';
 import { TemplateService } from 'src/app/services/templates/template.service';
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-recipe',
@@ -44,7 +45,7 @@ export class CreateRecipeComponent implements OnInit {
 
   supplierId: number = 0;
   assignaments: IAssignament[] = [];
-  items: IItem[] = [];
+  rubros: IRubro[] = [];
   assignament: IAssignament | null = null;
   itemData: IItemData[] = [];
   currentItem: any = null;
@@ -58,6 +59,9 @@ export class CreateRecipeComponent implements OnInit {
   templates: ITemplate[] = [];
   template: ITemplate | null = null;
 
+  files: any = []
+  imagenPrevia: any;
+
   constructor(
     private route: ActivatedRoute,
     private assignamentService: AssignamentService,
@@ -68,7 +72,8 @@ export class CreateRecipeComponent implements OnInit {
     private dialog: Dialog,
     private errorHandler: ErrorHandlerService,
     private templateService: TemplateService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -152,57 +157,77 @@ export class CreateRecipeComponent implements OnInit {
 
     this.template = <ITemplate>value;
 
-    //SE OBTIENEN LOS PRODUCTOS DEPENDIENDO DE LA PLANTILLA
-    console.log("probando template ",this.template);
-    this.template.items[0].forEach((item: IItem) => {
-      let itemData: IItemData = {
-        itemData: {
-          itemId: item.id,
-          //quantity: item.quantity
-          quantity: 1
-        }
-      };
+    console.log("plantilla seleccionada ",this.template);
 
-      this.itemData.push(itemData);
+    //SE OBTIENEN LOS PRODUCTOS DEPENDIENDO DE LA PLANTILLA
+
+
+    this.template.items[0].forEach((item: any) => {
+
+      item.itemValues.forEach((element: any) => {
+        console.log("element ",element)
+
+        let itemData: IItemData = {
+          itemData: {
+            itemId: 1,
+            quantity: 1,
+            itemTypeId: 1
+          }
+        };
+
+        console.log("hey bro")
+        this.itemData.push(itemData);
+      })
 
     });
 
+    console.log("probando itemData ",this.itemData);
+
   }
 
-
-
-
-
-/*
-  storeItem(){
-
-
-
-    if(this.form.value.name
-      && this.form.value.item
-      && this.form.value.qtx2) {
-
-
-        let newProduct: IProductRecipe = {
-          name: this.currentItem.name,
-          unit: this.currentItem.unit,
-          qtx: this.currentItem.quantity
-        };
-
-        this.products.push(newProduct);
-
-        this.itemData.push({
-          itemData: {
-            itemId: this.currentItem.id,
-            quantity: this.form.value.qtx2
-          }
+  blobFile = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          blob: $event,
+          image,
+          base: reader.result
         });
+      };
+      reader.onerror = error => {
+        resolve({
+          blob: $event,
+          image,
+          base: null
+        });
+      };
 
-        this.form.value.qtx2 = 0;
-        //this.form.reset();
-      }
+    } catch (e) {
+      return null;
+    }
+  })
 
-  } */
+  onFileSelected(event: any) {
+
+    const imagen = event.target.files[0];
+    console.log(imagen);
+    let text = 'image/'
+    if (imagen.type.includes(text)) {
+      console.log('Si es una imagen');
+      this.files.push(imagen)
+      this.blobFile(imagen).then((res: any) => {
+        this.imagenPrevia = res.base;
+
+      })
+    } else {
+      console.log('No es imagen');
+
+    }
+  }
 
   deleteItem(item: IProductRecipe) {
     let index = this.products.indexOf(item);
@@ -216,19 +241,32 @@ export class CreateRecipeComponent implements OnInit {
 
   onSubmit() {
 
+    console.log(this.form.value)
+    console.log(this.files);
+
     if(this.form.value.name
       && this.form.value.description
-      && this.form.value.assignament) {
+      && this.form.value.assignament
+      && this.files) {
 
         const payload: IInstructionRequest = {
           name: this.form.value.name,
           asignamentId: this.form.value.assignament!.id,
           description: this.form.value.description,
-          itemGroup: this.itemData
+          itemGroup: this.itemData,
+          image: this.files
         };
 
         console.log(payload);
-        this.instructionsService.createInstruction(payload)
+
+        const formData = new FormData();
+        formData.append("name",payload.name);
+        formData.append("assignamentId",payload.asignamentId.toString());
+        formData.append("description",payload.description);
+        formData.append("itemGroup",JSON.stringify(this.itemData));
+        formData.append('image',this.files[0])
+
+        this.instructionsService.createInstruction(formData)
           .subscribe((response: any) => {
             console.log(response);
 
