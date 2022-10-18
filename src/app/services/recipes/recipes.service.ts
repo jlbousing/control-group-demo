@@ -111,4 +111,17 @@ export class RecipesService {
       })
     );
   }
+
+  getImage(img: string) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.image}`;
+    const params: string = `/${img}`;
+
+    return this.http.get(url + params, {
+      responseType: "blob",
+      headers: {
+        'apikey': `${environment.apikey}`
+      }
+    })
+  }
 }

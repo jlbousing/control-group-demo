@@ -17,6 +17,7 @@ import { IMunicipality } from 'src/app/interfaces/IMunicipality';
 import { IParish } from 'src/app/interfaces/IParish';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-dispatch',
@@ -42,6 +43,9 @@ export class CreateDispatchComponent implements OnInit {
   loading: boolean = true;
 
   destination: string | null = null;
+
+  files: any = []
+  imagenPrevia: any;
 
   form = new FormGroup({
     guideNumber: new FormControl<string>('',Validators.required),
@@ -73,7 +77,8 @@ export class CreateDispatchComponent implements OnInit {
     private stateService: StateService,
     private municipalityService: MunicipalityService,
     private parishService: ParishService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -154,6 +159,51 @@ export class CreateDispatchComponent implements OnInit {
     }
   }
 
+  blobFile = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          blob: $event,
+          image,
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          blob: $event,
+          image,
+          base: null
+        });
+      };
+
+    } catch (e) {
+      return null;
+    }
+  })
+
+  onFileSelected(event: any) {
+
+    const imagen = event.target.files[0];
+    console.log(imagen);
+    let text = 'image/'
+    if (imagen.type.includes(text)) {
+      console.log('Si es una imagen');
+      this.files.push(imagen)
+      this.blobFile(imagen).then((res: any) => {
+        this.imagenPrevia = res.base;
+
+      })
+    } else {
+      console.log('No es imagen');
+
+    }
+  }
+
+
   onSubmit() {
 
     console.log(this.form.value);
@@ -170,7 +220,8 @@ export class CreateDispatchComponent implements OnInit {
       && this.form.value.onHold !== null
       && this.form.value.incidents !== undefined
       && this.form.value.incidents !== null
-      && this.form.value.registrationNumber) {
+      && this.form.value.registrationNumber
+      && this.files) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
@@ -178,7 +229,6 @@ export class CreateDispatchComponent implements OnInit {
           guideNumber: this.form.value.guideNumber,
           noteNumber: this.form.value.noteNumber,
           productionId: this.productionId,
-          //destination: this.form.value.destination,
           destination: this.destination,
           dispatchQuantity: this.form.value.dispatchQuantity,
           userId: <number> userInfo.id,
@@ -186,13 +236,28 @@ export class CreateDispatchComponent implements OnInit {
           onHold: this.form.value.onHold,
           comments: this.form.value.comments,
           incidents: this.form.value.incidents,
-          registrationNumber: this.form.value.registrationNumber
+          registrationNumber: this.form.value.registrationNumber,
+          image: this.files
         };
 
         console.log(payload);
 
+        const formData = new FormData();
+        formData.append("guideNumber",payload.guideNumber.toString());
+        formData.append("noteNumber",payload.noteNumber.toString());
+        formData.append("productionId",payload.productionId.toString());
+        formData.append("destination",payload.destination.toString());
+        formData.append("dispatchQuantity",payload.dispatchQuantity.toString());
+        formData.append("userId",payload.userId.toString());
+        formData.append("partial",payload.partial.toString());
+        formData.append("onHold",payload.onHold.toString());
+        formData.append("comments",payload.comments.toString());
+        formData.append("incidents",payload.incidents.toString());
+        formData.append("registrationNumber",payload.registrationNumber);
+        formData.append("image",this.files[0]);
 
-        this.dispatchService.createProduction(payload)
+
+        this.dispatchService.createProduction(formData)
           .subscribe((response: any) => {
 
             this.dialog.open(AlertModalComponent,{

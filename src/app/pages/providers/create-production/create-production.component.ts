@@ -17,6 +17,7 @@ import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.
 import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { Router } from '@angular/router';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -51,6 +52,9 @@ export class CreateProductionComponent implements OnInit {
 
   loading: boolean = true;
 
+  files: any = [];
+  imagenPrevia: any;
+
   constructor(
     private statusService: StatusService,
     private recipeService: RecipesService,
@@ -60,7 +64,8 @@ export class CreateProductionComponent implements OnInit {
     private dialog: Dialog,
     private router: Router,
     private errorHandler: ErrorHandlerService,
-    private supplierService: SuppliersService
+    private supplierService: SuppliersService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -85,6 +90,50 @@ export class CreateProductionComponent implements OnInit {
             this.loading = false;
           });
      });
+  }
+
+  blobFile = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          blob: $event,
+          image,
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          blob: $event,
+          image,
+          base: null
+        });
+      };
+
+    } catch (e) {
+      return null;
+    }
+  })
+
+  onFileSelected(event: any) {
+
+    const imagen = event.target.files[0];
+    console.log(imagen);
+    let text = 'image/'
+    if (imagen.type.includes(text)) {
+      console.log('Si es una imagen');
+      this.files.push(imagen)
+      this.blobFile(imagen).then((res: any) => {
+        this.imagenPrevia = res.base;
+
+      })
+    } else {
+      console.log('No es imagen');
+
+    }
   }
 
   setAssignament(value: any) {
@@ -114,23 +163,35 @@ export class CreateProductionComponent implements OnInit {
       && this.form.value.comments
       && this.form.value.quantity
       && this.form.value.quantity > 0
-      && this.form.value.incidents) {
+      && this.form.value.incidents
+      && this.files
+      && this.supplierId > 0) {
 
         const userInfo: any = StorageManager.getFromLocalStorage('userInfo');
 
         console.log("bandera 2");
         const payload: IProductionRequest = {
           //name: this.form.value.name,
+          supplierId: this.supplierId,
           recipeId: this.form.value.recipe.id,
           userId: <number> userInfo.id,
           comments: this.form.value.comments,
           quantity: this.form.value.quantity,
-          incidents: this.form.value.incidents
+          incidents: this.form.value.incidents,
+          image: this.files
         };
 
         console.log(payload);
 
-        this.productionService.createProduction(payload)
+        const formData = new FormData();
+        formData.append("supplierId",this.supplierId.toString());
+        formData.append("recipeId",this.form.value.recipe.id.toString());
+        formData.append("userId",userInfo.id.toString());
+        formData.append("quantity",this.form.value.quantity.toString());
+        formData.append("incidents",this.form.value.incidents);
+        formData.append('image',this.files[0]);
+
+        this.productionService.createProduction(formData)
           .subscribe((response: any) => {
             console.log(response);
 

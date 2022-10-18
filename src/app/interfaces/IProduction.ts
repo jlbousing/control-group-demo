@@ -13,4 +13,5 @@ export interface IProduction {
   statusData: IStatus;
   incidents: string;
   createdDate: string;
+  image: string;
 }

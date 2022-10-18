@@ -41,10 +41,10 @@ export class ProductionService {
     );
   }
 
-  createProduction(payload: IProductionRequest) {
+  createProduction(payload: FormData) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.productions.create}`;
 
-    return this.http.post<IProductionRequest>(
+    return this.http.post<FormData>(
       url,
       payload,
       { observe: 'response',
@@ -107,5 +107,18 @@ export class ProductionService {
         }
       })
     );
+  }
+
+  getImage(img: string) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.productions.image}`;
+    const params: string = `/${img}`;
+
+    return this.http.get(url + params, {
+      responseType: "blob",
+      headers: {
+        'apikey': `${environment.apikey}`
+      }
+    })
   }
 }
