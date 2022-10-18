@@ -125,12 +125,6 @@ const routes: Routes = [
         component: CategoriesComponent
       },
       {
-        path: "assignments/:supplierId",
-        title: "Asignaciones",
-        canActivate: [LoginAccessGuard],
-        component: AssignmentsComponent
-      },
-      {
         path: "instructions/:supplierId",
         title: "Recetas",
         canActivate: [LoginAccessGuard],
@@ -173,34 +167,10 @@ const routes: Routes = [
         component: CreateDispatchComponent
       },
       {
-        path: "items/:supplierId",
-        title: "Productos",
-        canActivate: [LoginAccessGuard],
-        component: ItemsComponent
-      },
-      {
-        path: "create-item/:supplierId",
-        title: "Nuevo Producto",
-        canActivate: [LoginAccessGuard,AccessGuard],
-        component: CreateItemComponent
-      },
-      {
         path: "create-subcategory/:supplierId",
         title: "Nueva Subcategoria",
         canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateSubCategoryComponent
-      },
-      {
-        path: "templates/:supplierId",
-        title: "Plantillas",
-        canActivate: [LoginAccessGuard],
-        component: TemplatesComponent
-      },
-      {
-        path: "create-template/:supplierId",
-        title: "Nueva Plantilla",
-        canActivate: [LoginAccessGuard,AccessGuard],
-        component: CreateTemplateComponent
       }
     ]
   },

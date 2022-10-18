@@ -70,6 +70,7 @@ export const environment = {
       create: '/api/clap/items/create',
       changes: '/api/clap/items/changes/',
       find: '/api/clap/items/find',
+      createType: '/api/clap/items/types/create'
     },
     municipality: {
       list: '/api/clap/municipality',

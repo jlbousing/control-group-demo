@@ -8,8 +8,8 @@
                      [placeholder]="'Buscar por nombre'"
                      (searching)="searchByName($event)"
                     ></search-input>
-      <a *ngIf="supplier && accessService.canCreate()"
-      [routerLink]="'/providers/create-item/'+supplier.id"
+      <a *ngIf="accessService.canCreate()"
+      [routerLink]="'/settings/create-item'"
          class="flex items-center m-auto lg:m-0">
         <custom-button text="Nuevo producto"></custom-button>
       </a>

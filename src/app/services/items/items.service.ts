@@ -90,7 +90,7 @@ export class ItemsService {
   }
 
   createItem(payload: IItemRequest) {
-    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.create}`;
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.createType}`;
 
     return this.http.post<IItemRequest>(
       url,

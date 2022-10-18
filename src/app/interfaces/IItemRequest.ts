@@ -1,7 +1,7 @@
 export interface IItemRequest {
-  subcategoryId: number;
-  name: string;
-  quantity: number;
-  unit: string;
+  itemId: number;
+  brandName: string;
+  volume: number;
+  measure: string;
   comments: string;
 }

@@ -31,7 +31,7 @@ export class CreateRubroComponent implements OnInit {
       Validators.required,
       Validators.min(0)
     ]),
-    unit: new FormControl<string>('', Validators.required),
+    unit: new FormControl<string>('ml', Validators.required),
     comments: new FormControl<string>('',[
       Validators.maxLength(250)
     ])
@@ -64,18 +64,15 @@ export class CreateRubroComponent implements OnInit {
   onSubmit() {
 
     if(this.form.value.name
-      && this.form.value.quantity
-      && this.form.value.unit) {
+      && this.form.value.comments) {
 
         const payload: IRubroRequest = {
           subcategoryId: 1,
           name: this.form.value.name,
-          quantity: this.form.value.quantity,
-          unit: this.form.value.unit,
           comments: this.form.value.comments ? this.form.value.comments : ""
         };
 
-        this.itemService.createItem(payload)
+        this.itemService.createRubro(payload)
           .subscribe((response: any) => {
 
             this.dialog.open(AlertModalComponent,{

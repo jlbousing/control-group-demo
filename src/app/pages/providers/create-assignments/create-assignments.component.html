@@ -3,6 +3,8 @@
     <div class="lg:pl-72 bg-grey-control-group h-screen" style="background: #eeeeee;">
         <div class="flex flex-col lg:flex-row">
 
+          <submenu-assignaments class="w-full lg:w-1/4" [companyId]="companyId"></submenu-assignaments>
+
           <div class="w-full lg:pt-4">
             <loading *ngIf="loading"></loading>
             <form [formGroup]="form" class="flex flex-col p-8">
@@ -21,6 +23,7 @@
                                 focus:shadow-outline"
                          type="text"
                          placeholder="Nombre"
+                         [disabled]="true"
                          [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
                          formControlName="name"
                    />
