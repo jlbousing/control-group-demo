@@ -108,7 +108,7 @@
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <th scope="col" class="px-6 py-3">Producto</th>
-          <th scope="col" class="px-6 py-3">Cantidad (editable)</th>
+          <th scope="col" class="px-6 py-3">Cantidad</th>
         </thead>
         <tbody>
           <tr class="bg-white border-b"
@@ -120,9 +120,9 @@
                        rounded w-full py-2 px-3 text-gray-700
                        leading-tight focus:outline-none
                        focus:shadow-outline"
-                (ngModelChange)="changeQuantity($event)"
+                (change)="changeQuantity($event)"
               >
-                <option *ngFor="let value of item.itemValues" [ngValue]="value">
+                <option *ngFor="let value of item.itemValues; let j = index" [ngValue]="value">
                   {{ value.volume}} {{ value.measure}}
                 </option>
               </select>

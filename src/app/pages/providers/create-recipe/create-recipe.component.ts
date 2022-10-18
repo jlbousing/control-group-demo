@@ -61,6 +61,7 @@ export class CreateRecipeComponent implements OnInit {
 
   files: any = []
   imagenPrevia: any;
+  currentValue: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -165,13 +166,12 @@ export class CreateRecipeComponent implements OnInit {
     this.template.items[0].forEach((item: any) => {
 
       item.itemValues.forEach((element: any) => {
-        console.log("element ",element)
 
         let itemData: IItemData = {
           itemData: {
-            itemId: 1,
-            quantity: 1,
-            itemTypeId: 1
+            itemId: element.id,
+            quantity: element.volume,
+            itemTypeId: item.id
           }
         };
 
@@ -180,7 +180,6 @@ export class CreateRecipeComponent implements OnInit {
       })
 
     });
-
     console.log("probando itemData ",this.itemData);
 
   }
@@ -236,7 +235,7 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   changeQuantity(value: any) {
-    console.log(this.itemData);
+    console.log(value);
   }
 
   onSubmit() {
