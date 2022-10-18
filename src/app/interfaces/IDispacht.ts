@@ -13,4 +13,5 @@ export interface IDispatch {
   statusData: IStatus;
   incidents: string;
   registrationNumber: string;
+  image: string;
 }

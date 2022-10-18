@@ -40,10 +40,10 @@ export class DispachtService {
     );
   }
 
-  createProduction(payload: IDispatchRequest) {
+  createProduction(payload: FormData) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.dispatch.create}`;
 
-    return this.http.post<IDispatchRequest>(
+    return this.http.post<FormData>(
       url,
       payload,
       { observe: 'response',
@@ -85,5 +85,18 @@ export class DispachtService {
         }
       })
     );
+  }
+
+  getImage(img: string) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.dispatch.image}`;
+    const params: string = `/${img}`;
+
+    return this.http.get(url + params, {
+      responseType: "blob",
+      headers: {
+        'apikey': `${environment.apikey}`
+      }
+    })
   }
 }

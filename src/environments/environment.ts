@@ -30,7 +30,8 @@ export const environment = {
       list: '/api/clap/dispatch/',
       create: '/api/clap/dispatch/create',
       revert: '/api/clap/dispatch/revert/',
-      changes: '/api/clap/dispatch/changes/'
+      changes: '/api/clap/dispatch/changes/',
+      image: '/api/clap/dispatch/find/image'
     },
     status: {
       status_type_list: '',

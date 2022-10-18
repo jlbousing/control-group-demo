@@ -10,4 +10,5 @@ export interface IDispatchRequest {
   comments: string;
   incidents: string;
   registrationNumber: string;
+  image: string;
 }
