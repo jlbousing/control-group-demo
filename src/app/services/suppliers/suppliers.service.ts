@@ -68,7 +68,7 @@ export class SuppliersService {
 
   findSupplierById(id: number) {
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.suppliers.findById}`;
-    const params: string = `?id=${id}&getAsignaments=true`;
+    const params: string = `?id=${id}`;
 
     return this.http.get<ISupplier>(
       url + params,

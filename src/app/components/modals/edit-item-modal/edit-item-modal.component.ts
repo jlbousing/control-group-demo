@@ -22,13 +22,13 @@ interface IDialogData {
 export class EditItemModalComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>(this.data.item.name,[
+    brandName: new FormControl<string>(this.data.item.brandName,[
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(30)
     ]),
-    quantity: new FormControl<number>(this.data.item.quantity,Validators.required),
-    unit: new FormControl<string>(this.data.item.unit,Validators.required),
+    volume: new FormControl<number>(this.data.item.volume,Validators.required),
+    measure: new FormControl<string>(this.data.item.measure,Validators.required),
     comments: new FormControl<string | null>(this.data.item.comments,[
       Validators.required,
       Validators.minLength(3),
@@ -52,15 +52,15 @@ export class EditItemModalComponent implements OnInit {
 
   onSubmit() {
 
-    if(this.form.value.name
-      && this.form.value.quantity
-      && this.form.value.unit
+    if(this.form.value.brandName
+      && this.form.value.volume
+      && this.form.value.measure
       && this.form.value.comments) {
 
         const payload: IItemPatch = {
-          name: this.form.value.name,
-          quantity: this.form.value.quantity,
-          unit: this.form.value.unit,
+          brandName: this.form.value.brandName,
+          volume: this.form.value.volume,
+          measure: this.form.value.measure,
           comments: this.form.value.comments
         };
 
@@ -72,7 +72,7 @@ export class EditItemModalComponent implements OnInit {
                 message: <string>response.label
               }
             });
-            this.router.navigateByUrl("/providers/items/"+this.data.supplierId)
+            this.router.navigateByUrl("/settings/items/")
             this.dialogRef.close();
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);

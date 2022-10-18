@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IItemData } from 'src/app/interfaces/IItemData';
 import { IAssignament } from 'src/app/interfaces/IAssignament';
-import { ActivatedRoute } from '@angular/router';
-import { AssignamentService } from 'src/app/services/assignaments/assignament.service';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { IItem } from 'src/app/interfaces/IItem';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -36,7 +34,6 @@ export class CreateTemplateComponent implements OnInit {
   itemsSelected: number[] = [];
   productsSelected: IItem[] = [];
 
-  supplierId: number = 0;
   assignaments: IAssignament[] = [];
   assignament: IAssignament | null = null;
   itemData: IItemData[] = [];
@@ -49,30 +46,18 @@ export class CreateTemplateComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
-    private route: ActivatedRoute,
-    private assignamentService: AssignamentService,
     private itemsService: ItemsService,
     private router: Router,
     private errorHandler: ErrorHandlerService,
     private dialog: Dialog,
-    private templateService: TemplateService
+    private templateService: TemplateService,
+
   ) { }
 
   ngOnInit(): void {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.route.params.subscribe(params => {
-      this.supplierId = params['supplierId'];
-
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          this.loading = false;
-          console.log("probando asignaciones ",this.assignaments);
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-        })
-   });
+    this.loading = false;
   }
 
   setItems(value: any) {
@@ -113,7 +98,7 @@ export class CreateTemplateComponent implements OnInit {
         this.dialog.open(AlertModalComponent,{
           data: {
             status: 400,
-            message: `El producto ${this.currentItem.name} ya ha sido agregado`
+            message: `El producto ${this.currentItem.brandName} ya ha sido agregado`
           }
         });
       }
@@ -153,7 +138,7 @@ export class CreateTemplateComponent implements OnInit {
               }
             });
 
-            this.router.navigateByUrl("/providers/templates/"+this.supplierId);
+            this.router.navigateByUrl("/settings/templates");
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);
           });

@@ -38,20 +38,7 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => {
-
-      this.supplierId = params["supplierId"];
-
-      this.supplierService.findSupplierById(this.supplierId)
-        .subscribe((response: ISupplier) => {
-          this.supplier = response;
-
-          this.categoriesService.getSubcategoryByCategoryId(this.supplier.categoryData.id)
-            .subscribe((response: ISubcategory[]) => {
-              this.subcategories = response;
-              this.subcategory = response[0]
-
-              this.itemService.getItems(10,this.offset,this.subcategory.id)
+    this.itemService.getItems(10,this.offset,1)
                 .subscribe((response: IItem[]) => {
                   this.items = response;
                   this.loading = false;
@@ -59,15 +46,6 @@ export class ItemsComponent implements OnInit {
                   this.errorHandler.handleError(error);
                   this.loading = false;
                 });
-            },(error: HttpErrorResponse) => {
-              this.errorHandler.handleError(error);
-              this.loading = false;
-            })
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        })
-    });
   }
 
   searchByName(value: any) {

@@ -49,6 +49,9 @@ import { CreateTemplateComponent } from './pages/providers/create-template/creat
 import { CompanyReportComponent } from './pages/reports/company-report/company-report.component';
 import { ProviderReportComponent } from './pages/reports/provider-report/provider-report.component';
 import { ResetComponent } from './pages/reset/reset.component';
+import { EnterpriseAssignamentsComponent } from './pages/enterprise-assignaments/enterprise-assignaments.component';
+import { RubrosComponent } from './pages/app-setting/rubros/rubros.component';
+import { CreateRubroComponent } from './pages/app-setting/create-rubro/create-rubro.component';
 
 const routes: Routes = [
   {
@@ -90,7 +93,25 @@ const routes: Routes = [
         title: "Proveedores",
         canActivate: [LoginAccessGuard],
         component: ProviderPageComponent
-      }
+      },
+      {
+        path: "assignaments-list/:companyId",
+        title: "Asignaciones",
+        canActivate: [LoginAccessGuard],
+        component: AssignmentsComponent
+      },
+      {
+        path: "create-assigment",
+        title: "Nueva Asignacion",
+        canActivate: [LoginAccessGuard,AccessGuard],
+        component: CreateAssignmentsComponent
+      },
+      {
+        path: "assignaments",
+        title: "Empresas",
+        canActivate: [LoginAccessGuard],
+        component: EnterpriseAssignamentsComponent
+      },
     ]
   },
   {
@@ -132,12 +153,6 @@ const routes: Routes = [
         title: "Configuracion",
         canActivate: [LoginAccessGuard,AccessGuard],
         component: SettingsComponent
-      },
-      {
-        path: "create-assigment",
-        title: "Nueva Asignacion",
-        canActivate: [LoginAccessGuard,AccessGuard],
-        component: CreateAssignmentsComponent
       },
       {
         path: "create-recipe/:supplierId",
@@ -228,7 +243,43 @@ const routes: Routes = [
         title: "Nuevo Rol",
         canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateRolComponent
-      }
+      },
+      {
+        path: "rubros",
+        title: "Rubros",
+        canActivate: [LoginAccessGuard],
+        component: RubrosComponent
+      },
+      {
+        path: "create-rubro",
+        title: "Nuevo Rubro",
+        canActivate: [LoginAccessGuard, AccessGuard],
+        component: CreateRubroComponent
+      },
+      {
+        path: "items",
+        title: "Productos",
+        canActivate: [LoginAccessGuard],
+        component: ItemsComponent
+      },
+      {
+        path: "create-item",
+        title: "Nuevo Producto",
+        canActivate: [LoginAccessGuard],
+        component: CreateItemComponent
+      },
+      {
+        path: "templates",
+        title: "Plantillas",
+        canActivate: [LoginAccessGuard],
+        component: TemplatesComponent
+      },
+      {
+        path: "create-template",
+        title: "Nuevo Plantilla",
+        canActivate: [LoginAccessGuard],
+        component: CreateTemplateComponent
+      },
     ]
   },
   {

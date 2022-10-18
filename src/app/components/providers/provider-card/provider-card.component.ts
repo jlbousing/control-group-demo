@@ -33,8 +33,6 @@ export class ProviderCardComponent implements OnInit {
   getPendingAssignaments() {
 
     let assignaments: string[] = [];
-
-    this.supplier?.asignaments
   }
 
 }

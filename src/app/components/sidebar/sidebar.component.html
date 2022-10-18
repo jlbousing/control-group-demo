@@ -28,6 +28,7 @@
         </div>
         <div class="my-2 bg-gray-600 h-[1px]"></div>
       </div>
+
       <a [routerLink]="'/dashboard/home'" (click)="closeMenu()">
         <div
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
@@ -36,6 +37,7 @@
           <span class="text-2xl ml-4 text-gray-200 font-bold">Inicio</span>
       </div>
       </a>
+
       <a [routerLink]="'/dashboard/users'" (click)="closeMenu()">
         <div
         class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
@@ -44,6 +46,7 @@
           <span class="text-2xl ml-4 text-gray-200 font-bold">Usuario</span>
       </div>
       </a>
+
       <a [routerLink]="'/dashboard/enterprises'" (click)="closeMenu()">
         <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
@@ -52,6 +55,16 @@
         <span class="text-2xl ml-4 text-gray-200 font-bold">Empresas</span>
     </div>
       </a>
+
+      <a [routerLink]="'/dashboard/assignaments'" (click)="closeMenu()">
+        <div
+      class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+    >
+      <i class="bi bi-briefcase-fill text-2xl"></i>
+        <span class="text-2xl ml-4 text-gray-200 font-bold">Asignaciones</span>
+    </div>
+      </a>
+
    <a [routerLink]="'/reports/assignaments'" (click)="closeMenu()">
     <div
     class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
@@ -60,6 +73,7 @@
       <span class="text-2xl ml-4 text-gray-200 font-bold">Reportes</span>
   </div>
    </a>
+
     <a [routerLink]="'/settings/categories'" (click)="closeMenu()">
       <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white lg:mb-40"
@@ -68,6 +82,7 @@
         <span class="text-2xl ml-4 text-gray-200 font-bold">Ajustes</span>
     </div>
     </a>
+
     <div class="absolute bottom-4 w-full">
       <div>
         <sidebar-user-info></sidebar-user-info>

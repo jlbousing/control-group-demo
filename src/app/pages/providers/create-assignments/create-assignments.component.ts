@@ -13,6 +13,8 @@ import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { CompaniesService } from 'src/app/services/companies/companies.service';
+import { ICompany } from 'src/app/interfaces/ICompanies';
 
 @Component({
   selector: 'app-create-assignments',
@@ -28,6 +30,7 @@ export class CreateAssignmentsComponent implements OnInit {
       Validators.maxLength(30)
     ]),
     supplierId: new FormControl<number>(0,Validators.required),
+    companyId: new FormControl<number>(0,Validators.required),
     categoryId: new FormControl<number>(0,Validators.required),
     subcategoryId: new FormControl<number>(0,Validators.required),
     description: new FormControl<string>('',[
@@ -50,6 +53,8 @@ export class CreateAssignmentsComponent implements OnInit {
   subcategories: ISubcategory[] = [];
   suppliers: ISupplier[] = [];
 
+  companies: ICompany[] = [];
+
   loading: boolean = true;
 
   constructor(
@@ -58,7 +63,8 @@ export class CreateAssignmentsComponent implements OnInit {
     private assignmentService: AssignamentService,
     private router: Router,
     private dialog: Dialog,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private companyService: CompaniesService
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +80,10 @@ export class CreateAssignmentsComponent implements OnInit {
         this.loading = false;
       });
 
-    this.suppliersService.getSuppliers
+    this.companyService.getCompanies(50,0)
+      .subscribe((response: ICompany[]) => {
+        this.companies = response;
+      });
   }
 
   setSubcategoryId(id: any) {
@@ -104,6 +113,7 @@ export class CreateAssignmentsComponent implements OnInit {
     if(this.form.value.name
        && this.form.value.supplierId
        && this.form.value.categoryId
+       && this.form.value.companyId
        && this.form.value.subcategoryId
        && this.form.value.description
        && this.form.value.record
@@ -116,6 +126,7 @@ export class CreateAssignmentsComponent implements OnInit {
           name: this.form.value.name,
           subcategoryId: this.form.value.subcategoryId,
           suppliersId: this.form.value.supplierId,
+          companyId: this.form.value.companyId,
           userId: userInfo.id,
           description: this.form.value.description,
           comments: this.form.value.comments ? this.form.value.comments : '',
@@ -146,7 +157,7 @@ export class CreateAssignmentsComponent implements OnInit {
                 }
               });
 
-              this.router.navigateByUrl("/providers/assignments/"+this.form.value.supplierId);
+              this.router.navigateByUrl("/dashboard/assignaments-list/"+this.form.value.companyId);
             }
 
           }

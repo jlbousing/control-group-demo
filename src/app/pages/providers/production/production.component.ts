@@ -58,11 +58,17 @@ export class ProductionComponent implements OnInit {
           this.loading = false;
         });
 
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          this.loading = false;
-          console.log("probando asignaciones ",this.assignaments);
+        this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+
+          this.assignamentService.getAssignamentsByCompany(response.companyData.id)
+            .subscribe((response: IAssignament[]) => {
+                this.assignaments = response;
+                this.loading = false;
+            },(error: HttpErrorResponse) => {
+              this.errorHandler.handleError(error);
+              this.loading = false;
+            });
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
           this.loading = false;

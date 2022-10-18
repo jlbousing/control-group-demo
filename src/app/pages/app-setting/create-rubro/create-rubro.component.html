@@ -1,0 +1,113 @@
+<separator-title title="Crear producto"></separator-title>
+
+<div class="w-full bg-white rounded-lg">
+  <div  class="flex flex-col p-8">
+
+    <loading *ngIf="loading"></loading>
+    <form [formGroup]="form">
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <h3>Indique los datos del producto</h3>
+      </div>
+      <div class="w-full flex-col lg:flex flex-row justify-start" *ngIf="subcategory">
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="assignament">
+            Subcategoria
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="text"
+                 [value]="subcategory?.name"
+                 [disabled]="true"
+           />
+        </div>
+      </div>
+
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <h3>Indique un nombre al producto</h3>
+      </div>
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            Nombre
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="text"
+                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
+                 placeholder="Nombre"
+                 formControlName="name"
+           />
+        </div>
+      </div>
+
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <h3>Indique la cantidad y unidad del producto</h3>
+      </div>
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="qtx">
+            Indique cantidad por empaque
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="number"
+                 inputmode="numeric"
+                 min="0"
+                 placeholder="10"
+                 [ngClass]="{'focus:border-red-700': form.value.quantity === 0 || form.value.quantity && form.value.quantity < 0}"
+                 formControlName="quantity"
+           />
+        </div>
+
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="unit">
+            Indique la unidad de medida por empaque
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="text"
+                 placeholder="Kg, Gr, etc"
+                 [ngClass]="{'focus:border-red-700': form.value.name!.length < 2 || form.value.name!.length > 10}"
+                 formControlName="unit"
+           />
+        </div>
+      </div>
+
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <h3>Escriba un comentario del producto</h3>
+      </div>
+      <div class="w-full flex-col lg:flex flex-row justify-start">
+        <div class="my-4 w-full lg:w-1/2 lg:mx-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="comments">
+            Comentario
+          </label>
+          <input class="shadow appearance-none border
+                        rounded w-full py-2 px-3 text-gray-700
+                        leading-tight focus:outline-none
+                        focus:shadow-outline"
+                 type="text"
+                 placeholder="comentario"
+                 [ngClass]="{'focus:border-red-700': form.value.comments!.length < 3 || form.value.comments!.length > 250}"
+                 formControlName="comments"
+           />
+        </div>
+      </div>
+
+    </form>
+
+    <div class="w-full flex flex-row justify-center lg:justify-end mt-8">
+      <custom-button text="Registrar producto"
+        [disable]="form.invalid"
+        (click)="onSubmit()"></custom-button>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,9 @@ import { Dialog } from '@angular/cdk/dialog';
 import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
+import { SuppliersService } from 'src/app/services/suppliers/suppliers.service';
 import { Router } from '@angular/router';
+import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 
 @Component({
@@ -45,6 +47,8 @@ export class CreateProductionComponent implements OnInit {
   assignaments: IAssignament[] = [];
   supplierId: number = 0;
 
+  companyId: number = 0;
+
   loading: boolean = true;
 
   constructor(
@@ -55,7 +59,8 @@ export class CreateProductionComponent implements OnInit {
     private productionService: ProductionService,
     private dialog: Dialog,
     private router: Router,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private supplierService: SuppliersService
   ) { }
 
   ngOnInit(): void {
@@ -65,13 +70,19 @@ export class CreateProductionComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.supplierId = params['supplierId'];
 
-        this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-          .subscribe((response: IAssignament[]) => {
-            this.assignaments = response;
-            this.loading = false;
-            console.log("probando asignaciones ",this.assignaments);
+        this.supplierService.findSupplierById(this.supplierId)
+          .subscribe((response: ISupplier) => {
+
+            this.assignamentService.getAssignamentsByCompany(response.companyData.id)
+              .subscribe((response: IAssignament[]) => {
+                  this.assignaments = response;
+              },(error: HttpErrorResponse) => {
+                this.errorHandler.handleError(error);
+                this.loading = false;
+              });
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);
+            this.loading = false;
           });
      });
   }

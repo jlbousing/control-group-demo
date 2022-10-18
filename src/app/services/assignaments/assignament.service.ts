@@ -18,10 +18,32 @@ export class AssignamentService {
     private http: HttpClient
   ) { }
 
-  getAssignamentsBySupplier(id: number) {
+  getAssignaments(offset: number, limit: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.list}`;
+    const params: string = `?offset=${offset}&limit=${limit}`;
+
+    return this.http.get<IAssignament[]>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+        }
+      }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
+
+  getAssignamentsByCompany(id: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.find}`;
-    const params: string = `?suppliersId=${id}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+    const params: string = `?companyId=${id}&getRecipesClap=true&getStatus=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,
@@ -41,10 +63,10 @@ export class AssignamentService {
 
   }
 
-  getAssignamentsByDates(id: number,startDate: string, endDate: string) {
+  getAssignamentsByDates(subCategoryId: number,startDate: string, endDate: string,limit: number, offset: number) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.assignaments.list}`;
-    const params: string = `?startDate=${startDate}&endDate=${endDate}&getRecipesClap=true&getStatus=true&getSupplier=true&getSubcategory=true`;
+    const params: string = `?subcategoryId=${subCategoryId}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&offset=${offset}&getRecipesClap=true&getStatus=true&getSubcategory=true`;
 
     return this.http.get<IAssignament[]>(
       url + params,

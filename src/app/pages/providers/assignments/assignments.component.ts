@@ -12,6 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { AccessService } from 'src/app/services/access/access.service';
 import { IAssignamentPicker } from 'src/app/interfaces/IAssignamentPicker';
+import { AlertModalComponent } from 'src/app/components/modals/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-assignments',
@@ -35,6 +36,8 @@ export class AssignmentsComponent implements OnInit {
 
   offset: number = 0;
 
+  companyId: number = 0;
+
   constructor(
     public dialog: Dialog,
     private assignamentService: AssignamentService,
@@ -48,27 +51,19 @@ export class AssignmentsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => {
-      this.supplierId = params['supplierId'];
+    this.route.params.subscribe(param => {
+      this.companyId = param["companyId"];
 
-      this.supplierService.findSupplierById(this.supplierId)
-        .subscribe((response: ISupplier) => {
-          this.supplier = response
+      this.assignamentService.getAssignamentsByCompany(this.companyId)
+        .subscribe((response: IAssignament[]) => {
+          this.assignaments = response;
+          this.loading = false;
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
           this.loading = false;
         });
 
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          console.log("probando asignaciones ",this.assignaments);
-          this.loading = false;
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        })
-   });
+    });
 
    this.statusService.getStatues(2,50,0)
     .subscribe((response: IStatus[]) => {
@@ -114,15 +109,31 @@ export class AssignmentsComponent implements OnInit {
 
       this.assignaments = [];
 
-      this.assignamentService.getAssignamentsByDates(this.supplierId,pickerData.startDate,pickerData.endDate)
+      this.assignamentService.getAssignamentsByDates(
+        1,pickerData.startDate,
+        pickerData.endDate,
+        50,0)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
         },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error)
 
-          this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+          this.errorHandler.handleError(error);
+
+          if(error.status == 404) {
+
+            this.dialog.open(AlertModalComponent,{
+              data: {
+                status: 404,
+                message: "No se encuentran asignaciones en las fechas seleccionadas"
+              }
+            });
+
+          }
+
+          this.assignamentService.getAssignamentsByCompany(this.companyId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
+          this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
           this.loading = false;
         },(error: HttpErrorResponse) => {
@@ -132,9 +143,10 @@ export class AssignmentsComponent implements OnInit {
 
         });
     }else {
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
+      this.assignamentService.getAssignamentsByCompany(this.companyId)
         .subscribe((response: IAssignament[]) => {
           this.assignaments = response;
+          this.loading = false;
           console.log("probando asignaciones ",this.assignaments);
           this.loading = false;
         },(error: HttpErrorResponse) => {
@@ -143,35 +155,5 @@ export class AssignmentsComponent implements OnInit {
         });
     }
   }
-
-  /*
-  getSearch(value: any) {
-
-    this.loading = true;
-
-    if(value && value !== "") {
-      let id = <number>value;
-
-    this.assignamentService.findAssignaents(id)
-      .subscribe((response: IAssignament[]) => {
-        this.assignaments = response;
-        this.loading = false;
-      },(error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        this.loading = false;
-      })
-    }else {
-
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          console.log("probando asignaciones ",this.assignaments);
-          this.loading = false;
-        },(error: HttpErrorResponse) => {
-          this.errorHandler.handleError(error);
-          this.loading = false;
-        });
-    }
-  } */
 
 }

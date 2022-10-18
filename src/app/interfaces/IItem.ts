@@ -1,11 +1,12 @@
+interface IItemData {
+  name: string;
+}
+
 export interface IItem {
   id: number;
-  subcategoryId: number;
-  name: string;
-  quantity: number;
-  unit: string;
-  comments: string | null;
-  incidents: string | null;
-  createdDate: string;
-  modifyDate: string;
+  brandName: string;
+  volume: number;
+  measure: string;
+  comments: string;
+  itemData: IItemData
 }

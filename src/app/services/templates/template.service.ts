@@ -18,10 +18,10 @@ export class TemplateService {
     private http: HttpClient
   ) { }
 
-  getTemplates(asignamentId: number) {
+  getTemplates() {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.recipes.templates.list}`;
-    const params: string = `?asignamentId=${asignamentId}`;
+    const params: string = `?status=true`;
 
     return this.http.get<ITemplate[]>(
       url + params,

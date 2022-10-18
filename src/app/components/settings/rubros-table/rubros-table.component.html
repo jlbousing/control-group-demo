@@ -1,0 +1,44 @@
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  ID
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Subcategoria
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Nombre
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Incidentes
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Acciones
+          </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of items"
+              class="bg-white border-b text-black">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                 {{ item.id }}
+              </th>
+              <td class="px-6 py-4">
+                  {{ subcategory?.name}}
+              </td>
+              <td class="px-6 py-4">
+                  {{ item.name }}
+              </td>
+              <td class="px-6 py-4">
+                {{ item.incidents}}
+            </td>
+              <td class="px-6 py-4 text-right">
+                <button (click)="selectEdit(item)"><i class="bi bi-pencil-square text-2xl mx-2 text-blue-700"></i></button>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

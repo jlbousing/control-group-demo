@@ -1,6 +1,6 @@
 export interface IItemPatch {
-  name: string;
-  unit: string;
-  quantity: number;
+  brandName: string;
+  volume: number;
+  measure: string;
   comments: string;
 }

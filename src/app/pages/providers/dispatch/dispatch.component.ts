@@ -62,10 +62,17 @@ export class DispatchComponent implements OnInit {
           this.loading = false;
         });
 
-      this.assignamentService.getAssignamentsBySupplier(this.supplierId)
-        .subscribe((response: IAssignament[]) => {
-          this.assignaments = response;
-          this.loading = false;
+        this.supplierService.findSupplierById(this.supplierId)
+        .subscribe((response: ISupplier) => {
+
+          this.assignamentService.getAssignamentsByCompany(response.companyData.id)
+            .subscribe((response: IAssignament[]) => {
+                this.assignaments = response;
+                this.loading = false;
+            },(error: HttpErrorResponse) => {
+              this.errorHandler.handleError(error);
+              this.loading = false;
+            });
         },(error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
           this.loading = false;
