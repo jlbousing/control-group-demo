@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { AccessService } from 'src/app/services/access/access.service';
+import { IRubro } from 'src/app/interfaces/IRubro';
 
 @Component({
   selector: 'app-items',
@@ -27,25 +28,27 @@ export class ItemsComponent implements OnInit {
 
   offset: number = 0;
 
+  rubros: IRubro[] = [];
+  rubroId: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private itemService: ItemsService,
     private categoriesService: CategoriesService,
     private supplierService: SuppliersService,
     private errorHandler: ErrorHandlerService,
-    public accessService: AccessService
+    public accessService: AccessService,
   ) { }
 
   ngOnInit(): void {
 
-    this.itemService.getItems(10,this.offset,1)
-                .subscribe((response: IItem[]) => {
-                  this.items = response;
-                  this.loading = false;
-                },(error: HttpErrorResponse) => {
-                  this.errorHandler.handleError(error);
-                  this.loading = false;
-                });
+    this.itemService.getRubros(50,0)
+      .subscribe((response: IRubro[]) => {
+        this.rubros = response;
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+      });
   }
 
   searchByName(value: any) {
@@ -94,6 +97,21 @@ export class ItemsComponent implements OnInit {
                   this.errorHandler.handleError(error);
                   this.loading = false;
                 });
+  }
+
+  setItems(value: any) {
+
+    this.loading = true;
+    this.rubroId = <number>value;
+
+    this.itemService.getItemTypeByRubro(this.rubroId)
+      .subscribe((response: IItem[]) => {
+        this.items = response;
+        this.loading = false;
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        this.loading = false;
+      });
   }
 
 }

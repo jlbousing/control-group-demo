@@ -8,6 +8,23 @@
                      [placeholder]="'Buscar por nombre'"
                      (searching)="searchByName($event)"
                     ></search-input>
+        <div class="my-4 w-1/2 lg:w-1/3 mx-4 flex flex-col">
+          <label class="block text-gray-700 text-label font-bold mb-2" for="enterprises">
+            Rubro:
+          </label>
+        <select
+          class="shadow appearance-none border
+                 rounded w-full py-2 px-5 text-gray-700
+                 leading-tight focus:outline-none
+                 focus:shadow-outline"
+          id="assignament"
+          [(ngModel)]="rubroId"
+          (ngModelChange)="setItems($event)">
+            <option *ngFor="let rubro of rubros" [ngValue]="rubro.id">
+              {{rubro.name}}
+            </option>
+        </select>
+    </div>
       <a *ngIf="accessService.canCreate()"
       [routerLink]="'/settings/create-item'"
          class="flex items-center m-auto lg:m-0">
@@ -19,6 +36,7 @@
     <div *ngIf="!loading"
       class="flex justify-center px-8 py-12 max-w-full overflow-auto">
       <items-table
+        class="w-full"
         [items]="items"
         [subcategory]="subcategory"
         [supplier]="supplier"></items-table>

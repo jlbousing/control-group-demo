@@ -27,7 +27,7 @@ export class ProviderCardComponent implements OnInit {
   goToProvidersDetail(supplierId: number)
   {
     StorageManager.setStringValue("supplierId",supplierId.toString())
-    this.router.navigateByUrl(`/providers/assignments/${supplierId}`)
+    this.router.navigateByUrl(`/providers/instructions/${supplierId}`)
   }
 
   getPendingAssignaments() {

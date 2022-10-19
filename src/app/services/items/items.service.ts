@@ -162,4 +162,30 @@ export class ItemsService {
     );
 
   }
+
+  getItemTypeByRubro(id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.listType}`;
+    const params = `?itemId=${id}&getProduct=true`;
+
+    return this.http.get<IItem[]>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 404){
+          return null;
+        }
+      })
+    );
+  }
 }
