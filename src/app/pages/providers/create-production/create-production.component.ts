@@ -175,7 +175,7 @@ export class CreateProductionComponent implements OnInit {
           userId: <number> userInfo.id,
           comments: this.form.value.comments ? this.form.value.comments : "",
           quantity: this.form.value.quantity,
-          incidents: this.form.value.incidents ? this.form.value.incidents : "",
+          incidents: this.form.value.incidents ? this.form.value.incidents : " ",
           image: this.files
         };
 
