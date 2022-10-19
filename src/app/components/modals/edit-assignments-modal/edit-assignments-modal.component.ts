@@ -18,6 +18,7 @@ interface IDialogData {
   statues: IStatus[],
   suppliers: ISupplier[],
   supplierId: number;
+  companyId: number;
 }
 
 @Component({
@@ -34,7 +35,6 @@ export class EditAssignmentsModalComponent implements OnInit {
       Validators.maxLength(30)
     ]),
     statusId: new FormControl<number>(this.data.assignment.statusData.id,Validators.required),
-    supplierId: new FormControl<number>(this.data.assignment.supplierData.id,Validators.required),
     comments: new FormControl<string>(this.data.assignment.comments,[
       Validators.required,
       Validators.minLength(3),
@@ -72,7 +72,6 @@ export class EditAssignmentsModalComponent implements OnInit {
 
     if(this.form.value.name
        && this.form.value.statusId
-       && this.form.value.supplierId
        && this.form.value.comments) {
 
         const payload: IAssigmentPatch = {
@@ -93,7 +92,7 @@ export class EditAssignmentsModalComponent implements OnInit {
             });
 
             this.dialogRef.close();
-            this.router.navigateByUrl('/providers/assignments/'+this.data.supplierId);
+            this.router.navigateByUrl('/dashboard/assignaments-list/'+this.data.companyId);
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);
           })

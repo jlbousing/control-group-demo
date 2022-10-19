@@ -17,7 +17,7 @@
                   (assignamentData)="getSearch($event)">
                 </assignament-datepickers>
 
-                <a [routerLink]="'/dashboard/create-assigment/'+companyId"
+                <a [routerLink]="'/dashboard/create-assignament/'+companyId"
                    *ngIf="accessService.canCreate()"
                    class="flex items-center">
                     <custom-button class="m-auto lg:m-0" text="Nueva asignación"></custom-button>
@@ -30,7 +30,8 @@
                          [assignments]="assignaments"
                          [statues]="statues"
                          [suppliers]="suppliers"
-                         [supplierId]="supplierId"></assignments-table>
+                         [supplierId]="supplierId"
+                         [companyId]="companyId"></assignments-table>
               </div>
             </div>
           </div>

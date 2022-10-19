@@ -101,7 +101,7 @@ const routes: Routes = [
         component: AssignmentsComponent
       },
       {
-        path: "create-assignament/:companyIds",
+        path: "create-assignament/:companyId",
         title: "Nueva Asignacion",
         canActivate: [LoginAccessGuard,AccessGuard],
         component: CreateAssignmentsComponent

@@ -10,6 +10,7 @@ import { IItemPatch } from 'src/app/interfaces/IItemPatch';
 import { IItemRequest } from 'src/app/interfaces/IItemRequest';
 import { handleError } from 'src/app/utils/handleError';
 import { IRubroRequest } from 'src/app/interfaces/IRubroRequest';
+import { IRubroPatch } from 'src/app/interfaces/IRubroPatch';
 
 
 @Injectable({
@@ -184,6 +185,33 @@ export class ItemsService {
 
         if(response.status === 404){
           return null;
+        }
+      })
+    );
+  }
+
+  patchRubro(payload: IRubroPatch, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.changes}${id}`;
+
+    return this.http.patch<IRubroPatch>(
+      url,
+      payload,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        console.log(response)
+        if(response.status === 200){
+          return response.body.result;
+        }
+
+        if(response.status === 400){
+          return response;
         }
       })
     );

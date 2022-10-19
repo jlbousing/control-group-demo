@@ -27,11 +27,6 @@ export class CreateRubroComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(30)
     ]),
-    quantity: new FormControl<number>(0,[
-      Validators.required,
-      Validators.min(0)
-    ]),
-    unit: new FormControl<string>('ml', Validators.required),
     comments: new FormControl<string>('',[
       Validators.maxLength(250)
     ])
@@ -63,8 +58,7 @@ export class CreateRubroComponent implements OnInit {
 
   onSubmit() {
 
-    if(this.form.value.name
-      && this.form.value.comments) {
+    if(this.form.value.name) {
 
         const payload: IRubroRequest = {
           subcategoryId: 1,

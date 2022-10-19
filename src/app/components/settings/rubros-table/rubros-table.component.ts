@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IRubro } from 'src/app/interfaces/IRubro';
 import { ISubcategory } from 'src/app/interfaces/ISubcategory';
 import { Dialog } from '@angular/cdk/dialog';
-import { EditItemModalComponent } from '../../modals/edit-item-modal/edit-item-modal.component';
+import { EditRubroModalComponent } from '../../modals/edit-rubro-modal/edit-rubro-modal.component';
 import { ISupplier } from 'src/app/interfaces/ISupplier';
 
 
@@ -25,9 +25,9 @@ export class RubrosTableComponent implements OnInit {
 
   selectEdit(item: IRubro) {
 
-    this.dialog.open(EditItemModalComponent, {
+    this.dialog.open(EditRubroModalComponent, {
       data: {
-        item: item
+        rubro: item
       }
     })
   }

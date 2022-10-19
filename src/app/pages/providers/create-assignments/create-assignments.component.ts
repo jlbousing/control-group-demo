@@ -24,7 +24,7 @@ import { ICompany } from 'src/app/interfaces/ICompanies';
 export class CreateAssignmentsComponent implements OnInit {
 
   form = new FormGroup({
-    name: new FormControl<string>('',[
+    name: new FormControl<string>(this.getCurrentMonthName(),[
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(30)
@@ -34,7 +34,6 @@ export class CreateAssignmentsComponent implements OnInit {
     categoryId: new FormControl<number>(0,Validators.required),
     subcategoryId: new FormControl<number>(0,Validators.required),
     description: new FormControl<string>('',[
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(90)
     ]),
@@ -72,10 +71,13 @@ export class CreateAssignmentsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getCurrentMonthName();
+
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.route.params.subscribe((params) => {
       this.companyId = params["companyId"];
+      console.log("mostrando compania id ",this.companyId);
     });
 
     this.categoryService.getCategories(50,0)
@@ -91,6 +93,40 @@ export class CreateAssignmentsComponent implements OnInit {
       .subscribe((response: ICompany[]) => {
         this.companies = response;
       });
+  }
+
+  getCurrentMonthName() {
+
+    const month = new Date().getMonth();
+
+    switch(month) {
+      case 1:
+        return "Enero";
+      case 2:
+        return "Febrero";
+      case 3:
+        return "Marzo";
+      case 4:
+        return "Abril";
+      case 5:
+        return "Mayo";
+      case 6:
+        return "Junio";
+      case 7:
+        return "Julio";
+      case 8:
+        return "Agosto";
+      case 9:
+        return "Septiembre";
+      case 10:
+        return "Octubre";
+      case 11:
+        return "Noviembre";
+      case 12:
+        return "Diciembre";
+      default:
+        return "Enero";
+    }
   }
 
   setSubcategoryId(id: any) {
