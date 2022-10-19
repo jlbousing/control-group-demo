@@ -4,6 +4,7 @@
         <div class="flex flex-col lg:flex-row">
           <submenu-users class="w-full lg:w-1/4"></submenu-users>
           <div class="w-full lg:pt-4">
+            <back-link [route]="'/dashboard/users'"></back-link>
             <loading *ngIf="loading"></loading>
             <form focusInvalidInput [formGroup]="form" class="w-full bg-white rounded-lg"
                   *ngIf="!loading">

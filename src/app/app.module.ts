@@ -139,6 +139,7 @@ import { RubrosComponent } from './pages/app-setting/rubros/rubros.component';
 import { CreateRubroComponent } from './pages/app-setting/create-rubro/create-rubro.component';
 import { RubrosTableComponent } from './components/settings/rubros-table/rubros-table.component';
 import { EditRubroModalComponent } from './components/modals/edit-rubro-modal/edit-rubro-modal.component';
+import { BackLinkComponent } from './components/back-link/back-link.component';
 
 @NgModule({
   declarations: [
@@ -258,6 +259,7 @@ import { EditRubroModalComponent } from './components/modals/edit-rubro-modal/ed
     CreateRubroComponent,
     RubrosTableComponent,
     EditRubroModalComponent,
+    BackLinkComponent,
   ],
   imports: [
     BrowserModule,

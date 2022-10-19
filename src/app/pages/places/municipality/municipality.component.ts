@@ -37,6 +37,7 @@ export class MunicipalityComponent implements OnInit {
         this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
   }
 
@@ -52,6 +53,7 @@ export class MunicipalityComponent implements OnInit {
         this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
   }
 
@@ -65,6 +67,7 @@ export class MunicipalityComponent implements OnInit {
         this.loading = false;
       },(error: HttpErrorResponse) => {
         this.errorHandler.handleError(error);
+        this.loading = false;
       });
 
   }

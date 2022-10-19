@@ -1,9 +1,5 @@
 
-<div class="w-full flex flex-row justify-start">
-  <a class="cursor-pointer text-blue-700 hover:text-white" [routerLink]="'/settings/categories'">
-    <i class="bi bi-caret-left"></i><span class="">Atras</span>
-  </a>
-</div>
+<back-link [route]="'/providers/categories/'+supplierId"></back-link>
 <separator-title [title]="'Nueva Categoria'"></separator-title>
 <div class="w-full bg-white rounded-lg">
   <form [formGroup]="form">

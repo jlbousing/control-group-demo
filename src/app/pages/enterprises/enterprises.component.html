@@ -1,6 +1,7 @@
 <div>
   <div>
     <div class="lg:pl-80 lg:pt-4 h-screen"  style="background-color: #eeeeee">
+      <back-link [route]="'/dashboard/home'"></back-link>
       <search-enterprise
         [statues]="statues"
         (loading)="setLoading($event)"

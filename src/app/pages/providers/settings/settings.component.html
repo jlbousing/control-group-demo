@@ -1,4 +1,5 @@
 
+<back-link [route]="'/dashboard/home'"></back-link>
 <separator-title *ngIf="supplier" [title]="'Configuración '+supplier.name"></separator-title>
 <form *ngIf="supplier" [formGroup]="form" class="w-full bg-white rounded-lg">
   <div class="flex flex-col p-8">
