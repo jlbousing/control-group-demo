@@ -108,6 +108,7 @@
     <div class="w-full flex flex-row mt-8" *ngIf="template">
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <th scope="col" class="px-6 py-3">Rubro</th>
           <th scope="col" class="px-6 py-3">Producto</th>
           <th scope="col" class="px-6 py-3">Cantidad</th>
         </thead>
@@ -124,9 +125,12 @@
                 (change)="changeQuantity($event)"
               >
                 <option *ngFor="let value of item.itemValues; let j = index" [ngValue]="value">
-                  {{ value.volume}} {{ value.measure}}
+                 {{ value.brandName }} {{ value.volume}} {{ value.measure}}
                 </option>
               </select>
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900">
+              <input type="number" style="border: 2px solid black;" [(ngModel)]="itemData[i].itemData.quantity"/>
             </td>
           </tr>
         </tbody>
