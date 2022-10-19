@@ -137,6 +137,28 @@ export class ItemsService {
     );
   }
 
+  changeTypeItem(payload: IItemRequest, id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.changeType}`;
+
+    return this.http.patch<IItemRequest>(
+      url + id,
+      payload,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
+
   findItems(subcategoryId: number, name: string) {
 
     const url: string = `${environment.api_url}${environment.port}${environment.endpoints.items.find}`;

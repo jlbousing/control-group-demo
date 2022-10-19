@@ -30,6 +30,24 @@
                     <div class="my-4 w-full">
                       <h6>Modificar:</h6>
                     </div>
+                    <loading *ngIf="loading"></loading>
+                    <div class="my-4 w-1/2 lg:w-1/2 mx-4 flex flex-col" *ngIf="!loading">
+                      <label class="block text-gray-700 text-label font-bold mb-2">
+                        Rubro:
+                      </label>
+                    <select
+                      class="shadow appearance-none border
+                             rounded w-full py-2 px-5 text-gray-700
+                             leading-tight focus:outline-none
+                             focus:shadow-outline"
+                      formControlName="itemId"
+                      >
+                        <option></option>
+                        <option *ngFor="let rubro of rubros" [value]="rubro.id">
+                          {{rubro.name}}
+                        </option>
+                    </select>
+                    </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                         Nombre
@@ -64,21 +82,24 @@
                     </div>
 
                     <div class="my-4 w-full">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="unit">
-                        Medida
+                      <label class="block text-gray-700 text-label font-bold mb-2">
+                        Medida:
                       </label>
-                      <input
-                        class="shadow appearance-none border
-                               rounded w-full py-2 px-3 text-gray-700
-                               leading-tight focus:outline-none
-                               focus:shadow-outline"
-                               id="description"
-                               type="text"
-                               [placeholder]="data.item.measure"
-                               [ngClass]="{'focus:border-red-700': form.value.measure!.length < 2 || form.value.measure!.length > 10}"
-                               formControlName="measure">
-                    </div>
+                    <select
+                      class="shadow appearance-none border
+                             rounded w-full py-2 px-5 text-gray-700
+                             leading-tight focus:outline-none
+                             focus:shadow-outline"
+                      formControlName="measure"
+                      >
+                        <option></option>
+                        <option value="ml">ml</option>
+                        <option value="L">L</option>
+                        <option value="G">g</option>
+                        <option value="ml">kg</option>
+                    </select>
 
+                    </div>
                     <div class="my-4 w-full">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="comments">
                         Comentarios

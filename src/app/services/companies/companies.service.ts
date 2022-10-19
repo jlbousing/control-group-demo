@@ -92,4 +92,27 @@ export class CompaniesService {
       })
     );
   }
+
+  findCompanyById(id: number) {
+
+    const url: string = `${environment.api_url}${environment.port}${environment.endpoints.companies.findById}`;
+
+    const params: string = `?id=${id}`;
+
+    return this.http.get<ICompany>(
+      url + params,
+      { observe: 'response',
+        headers: {
+        'apikey': `${environment.apikey}`
+      }
+    }
+    ).pipe(
+      retry(3),
+      map((response: HttpResponse<any>) => {
+        if(response.status === 200){
+          return response.body.result;
+        }
+      })
+    );
+  }
 }

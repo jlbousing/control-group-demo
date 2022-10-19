@@ -8,9 +8,6 @@
           <div class="w-full lg:pt-4">
             <loading *ngIf="loading"></loading>
             <form [formGroup]="form" class="flex flex-col p-8 w-full bg-white rounded-lg">
-              <div class="w-full flex flex-row justify-start">
-                <h3>Indique la categoría</h3>
-              </div>
               <div class="w-full flex-col lg:flex flex-row justify-start">
 
                 <div class="my-4 w-full lg:w-1/2 lg:mx-4">
@@ -25,7 +22,8 @@
                          placeholder="Nombre"
                          [disabled]="true"
                          [ngClass]="{'focus:border-red-700': form.value.name!.length < 3 || form.value.name!.length > 30}"
-                         formControlName="name"
+                         disabled
+                         [value]="getCurrentMonthName()"
                    />
                 </div>
 
@@ -40,7 +38,6 @@
                            focus:shadow-outline"
                     id="company"
                     formControlName="categoryId"
-                    (ngModelChange)="setSuppliers(form.value.categoryId)"
                     >
                     <option></option>
                     <option *ngFor="let category of categories" [value]="category.id">
@@ -63,10 +60,11 @@
                            leading-tight focus:outline-none
                            focus:shadow-outline"
                     id="company"
-                    formControlName="companyId"
+                    (ngModelChange)="setSuppliers($event)"
+                    formControlName="company"
                     >
                     <option></option>
-                    <option *ngFor="let company of companies" [value]="company.id">
+                    <option *ngFor="let company of companies" [ngValue]="company">
                       {{ company.name }}
                     </option>
                   </select>
@@ -80,7 +78,7 @@
 
               <div class="w-full flex-col lg:flex flex-row justify-start">
 
-                <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.categoryId">
+                <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="form.value.company">
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
                     Proveedor
                   </label>

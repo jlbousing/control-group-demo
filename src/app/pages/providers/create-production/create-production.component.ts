@@ -81,6 +81,7 @@ export class CreateProductionComponent implements OnInit {
             this.assignamentService.getAssignamentsByCompany(response.companyData.id)
               .subscribe((response: IAssignament[]) => {
                   this.assignaments = response;
+                  this.loading = false;
               },(error: HttpErrorResponse) => {
                 this.errorHandler.handleError(error);
                 this.loading = false;
@@ -159,11 +160,8 @@ export class CreateProductionComponent implements OnInit {
     console.log("bandera 1");
     if(this.form.value.assignament
       && this.form.value.recipe
-      //&& this.form.value.name
-      && this.form.value.comments
       && this.form.value.quantity
       && this.form.value.quantity > 0
-      && this.form.value.incidents
       && this.files
       && this.supplierId > 0) {
 
@@ -175,20 +173,20 @@ export class CreateProductionComponent implements OnInit {
           supplierId: this.supplierId,
           recipeId: this.form.value.recipe.id,
           userId: <number> userInfo.id,
-          comments: this.form.value.comments,
+          comments: this.form.value.comments ? this.form.value.comments : "",
           quantity: this.form.value.quantity,
-          incidents: this.form.value.incidents,
+          incidents: this.form.value.incidents ? this.form.value.incidents : "",
           image: this.files
         };
 
         console.log(payload);
 
         const formData = new FormData();
-        formData.append("supplierId",this.supplierId.toString());
-        formData.append("recipeId",this.form.value.recipe.id.toString());
-        formData.append("userId",userInfo.id.toString());
-        formData.append("quantity",this.form.value.quantity.toString());
-        formData.append("incidents",this.form.value.incidents);
+        formData.append("supplierId",payload.supplierId.toString());
+        formData.append("recipeId",payload.recipeId.toString());
+        formData.append("userId",payload.userId.toString());
+        formData.append("quantity",payload.quantity.toString());
+        formData.append("incidents",payload.incidents.toString());
         formData.append('image',this.files[0]);
 
         this.productionService.createProduction(formData)

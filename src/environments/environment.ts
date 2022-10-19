@@ -49,7 +49,8 @@ export const environment = {
     companies: {
       list: '/api/companies/',
       create: '/api/companies/create',
-      find: '/api/companies/find'
+      find: '/api/companies/find',
+      findById: '/api/companies/find/findbyid'
     },
     categories: {
       list: '/api/categories/',
@@ -72,6 +73,7 @@ export const environment = {
       changes: '/api/clap/items/changes/',
       find: '/api/clap/items/find',
       createType: '/api/clap/items/types/create',
+      changeType: '/api/clap/items/types/changes/',
       listType: '/api/clap/items/types/'
     },
     municipality: {

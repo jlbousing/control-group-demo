@@ -47,6 +47,16 @@ export class EditTemplateModalComponent implements OnInit {
 
   onSubmit() {
 
+    console.log(this.form.value);
+
+    if(typeof this.form.value.status === 'string') {
+      if(this.form.value.status === 'true') {
+        this.form.value.status = true;
+      }else {
+        this.form.value.status = false;
+      }
+    }
+
     if(this.form.value.name
        && this.form.value.status !== undefined
        && this.form.value.status !== null) {
@@ -68,7 +78,7 @@ export class EditTemplateModalComponent implements OnInit {
 
             this.dialogRef.close();
 
-            this.router.navigateByUrl(`/providers/templates/${this.data.supplierId}`);
+            this.router.navigateByUrl(`/settings/templates`);
 
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);

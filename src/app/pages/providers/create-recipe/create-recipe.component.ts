@@ -35,7 +35,6 @@ export class CreateRecipeComponent implements OnInit {
       Validators.maxLength(30)
     ]),
     description: new FormControl<string>('',[
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(90)
     ]),
@@ -244,14 +243,13 @@ export class CreateRecipeComponent implements OnInit {
     console.log(this.files);
 
     if(this.form.value.name
-      && this.form.value.description
       && this.form.value.assignament
       && this.files) {
 
         const payload: IInstructionRequest = {
           name: this.form.value.name,
           asignamentId: this.form.value.assignament!.id,
-          description: this.form.value.description,
+          description: this.form.value.description ? this.form.value.description : "",
           itemGroup: this.itemData,
           image: this.files
         };

@@ -30,7 +30,7 @@ export class CreateAssignmentsComponent implements OnInit {
       Validators.maxLength(30)
     ]),
     supplierId: new FormControl<number>(0,Validators.required),
-    companyId: new FormControl<number>(0,Validators.required),
+    company: new FormControl<ICompany | null>(null,Validators.required),
     categoryId: new FormControl<number>(0,Validators.required),
     subcategoryId: new FormControl<number>(0,Validators.required),
     description: new FormControl<string>('',[
@@ -92,12 +92,14 @@ export class CreateAssignmentsComponent implements OnInit {
     this.companyService.getCompanies(50,0)
       .subscribe((response: ICompany[]) => {
         this.companies = response;
+        console.log("mostrando companias ",this.companies);
       });
   }
 
   getCurrentMonthName() {
 
-    const month = new Date().getMonth();
+    const month = new Date().getMonth() + 1;
+
 
     switch(month) {
       case 1:
@@ -136,17 +138,11 @@ export class CreateAssignmentsComponent implements OnInit {
     })
   }
 
-  setSuppliers(id: any){
+  setSuppliers(value: any){
 
-    this.loading = true;
-    this.suppliersService.getSuppliers(id,50,0)
-      .subscribe((response: ISupplier[]) => {
-        this.suppliers = response;
-        this.loading = false;
-      },(error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        this.loading = false;
-      });
+    let company = <ICompany>value;
+    console.log(company);
+    this.suppliers = this.form.value.company!.suppliersOfCompany;
   }
 
   onSubmit(){
@@ -156,7 +152,7 @@ export class CreateAssignmentsComponent implements OnInit {
     if(this.form.value.name
        && this.form.value.supplierId
        && this.form.value.categoryId
-       && this.form.value.companyId
+       && this.form.value.company
        && this.form.value.subcategoryId
        && this.form.value.description
        && this.form.value.record
@@ -169,7 +165,7 @@ export class CreateAssignmentsComponent implements OnInit {
           name: this.form.value.name,
           subcategoryId: this.form.value.subcategoryId,
           suppliersId: this.form.value.supplierId,
-          companyId: this.form.value.companyId,
+          companyId: this.form.value.company.id,
           userId: userInfo.id,
           description: this.form.value.description,
           comments: this.form.value.comments ? this.form.value.comments : '',
@@ -200,7 +196,7 @@ export class CreateAssignmentsComponent implements OnInit {
                 }
               });
 
-              this.router.navigateByUrl("/dashboard/assignaments-list/"+this.form.value.companyId);
+              this.router.navigateByUrl("/dashboard/assignaments-list/"+this.form.value.company!.id);
             }
 
           }

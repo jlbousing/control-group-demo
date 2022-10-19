@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerService } from 'src/app/services/errorhandler/errorhandler.service';
 import { IItemPatch } from 'src/app/interfaces/IItemPatch';
+import { IRubro } from 'src/app/interfaces/IRubro';
+import { IItemRequest } from 'src/app/interfaces/IItemRequest';
 
 interface IDialogData {
   item: IItem,
@@ -22,6 +24,7 @@ interface IDialogData {
 export class EditItemModalComponent implements OnInit {
 
   form = new FormGroup({
+    itemId: new FormControl<number>(this.data.item.itemData.id ? this.data.item.itemData.id : 0,Validators.required),
     brandName: new FormControl<string>(this.data.item.brandName,[
       Validators.required,
       Validators.minLength(3),
@@ -36,6 +39,10 @@ export class EditItemModalComponent implements OnInit {
     ])
   });
 
+  rubros: IRubro[] = [];
+
+  loading: boolean = true;
+
   constructor(
     @Inject(DIALOG_DATA) public data: IDialogData,
     public dialogRef: DialogRef,
@@ -47,6 +54,17 @@ export class EditItemModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    this.itemsService.getRubros(50,0)
+      .subscribe((response: IRubro[]) => {
+
+        this.rubros = response;
+        this.loading = false;
+
+      },(error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        this.loading = false;
+      });
   }
 
 
@@ -57,14 +75,15 @@ export class EditItemModalComponent implements OnInit {
       && this.form.value.measure
       && this.form.value.comments) {
 
-        const payload: IItemPatch = {
+        const payload: IItemRequest = {
+          itemId: this.form.value.itemId ? this.form.value.itemId : this.data.item.id,
           brandName: this.form.value.brandName,
           volume: this.form.value.volume,
           measure: this.form.value.measure,
           comments: this.form.value.comments
         };
 
-        this.itemsService.changeItem(payload,this.data.item.id)
+        this.itemsService.changeTypeItem(payload,this.data.item.id)
           .subscribe((response: any) => {
             this.dialog.open(AlertModalComponent,{
               data: {
@@ -72,7 +91,7 @@ export class EditItemModalComponent implements OnInit {
                 message: <string>response.label
               }
             });
-            this.router.navigateByUrl("/settings/items/")
+            this.router.navigateByUrl("/settings/items")
             this.dialogRef.close();
           },(error: HttpErrorResponse) => {
             this.errorHandler.handleError(error);
