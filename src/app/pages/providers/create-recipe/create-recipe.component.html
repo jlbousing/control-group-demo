@@ -74,13 +74,13 @@
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="template">
-          Imagen de la receta
+          Imagen del despachos
         </label>
         <input type="file" name="image" (change)="onFileSelected($event)">
       </div>
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4" *ngIf="imagenPrevia">
-        <img [src]="imagenPrevia" class="flex flex-row justify-center overflow-auto"/>
+        <img [src]="imagenPrevia" class="flex flex-row justify-center overflow-auto max-h-[200px]"/>
       </div>
 
       <div class="my-4 w-full lg:w-1/2 lg:mx-4">

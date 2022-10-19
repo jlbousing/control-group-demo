@@ -164,7 +164,7 @@ export class CreateAssignmentsComponent implements OnInit {
         const payload: IAssignamentRequest = {
           name: this.form.value.name,
           subcategoryId: this.form.value.subcategoryId,
-          suppliersId: this.form.value.supplierId,
+          suppliersId: parseInt(this.form.value.supplierId.toString()),
           companyId: this.form.value.company.id,
           userId: userInfo.id,
           description: this.form.value.description,
